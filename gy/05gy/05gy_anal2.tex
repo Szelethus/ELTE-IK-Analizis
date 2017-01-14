@@ -1,0 +1,180 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		5. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	
+	\section{Információ.}
+	Jövő héten is lesz kiszh az 5-6 gyakorlat anyagából.
+	\section{Differenciálszámítás (folytatás).}
+	\subsection{Paraméteres feladatok.}
+	\begin{task}
+		$\alpha\in\R,$
+		\[ f(x):=\left\{\begin{gathered}
+			\alpha x+x^2,\quad x<0\\
+			x-x^2,\quad x\geq 0
+		\end{gathered}\right. \]
+		Vizsgáljuk a deriválhatóságot.
+		
+		\medskip
+		\textit{Megoldás:} Ha $x\in \R\setminus\{0\}\quad \Rightarrow\quad f\in D\{x\}$ (müveleti és elemi függvények)
+		\[ f'(x)=\left\{\begin{gathered}
+			\alpha+2x,\quad x<0\\
+			1-2x,\quad x>0
+		\end{gathered}\right. \]
+		\fbox{$x=0$-ban:} ELőször vizsgáljuk a folytonosságot!
+		\begin{note}
+			A folytonosság szükséges feltétele a deriválhatóságnak.
+		\end{note}
+		\[ f\in C \quad \underset{f(0)=0}{\Leftrightarrow} \quad \exists\lim_{0+0}f,\quad \exists\lim_{0-0}f\quad \text{és ezek }\quad=f(0)  \]
+		\[ \lim_{0+0}f=\lim_{x\to0+0}(x-x^2)=\lim_{x\to0}(x-x^2)=0 \]
+		\[ \lim_{0-0}f=\lim_{x\to0-0}(\alpha x+x^2)=\lim_{x\to0}(\alpha x+x^2)=0 \]
+		$\Rightarrow$\quad $f\in C\{0\}\quad \forall \alpha\in\R$.
+		\medskip
+		
+		Most vizsgáljuk a deriválhatóságot! ($x=0$-ban)
+		\[ f\in D\{0\}\quad \Leftrightarrow\quad \exists f'_+(0)\quad \text{és}\quad \exists f'_-(0) \quad \text{és ezek egyenlőek.} \]
+		\[ f'_+(0)=(x-x^2)'_{\underset{(x=0)}{+}}=(x-x^2)'_{x=0}=(1-2x)_{x=0}=1 \]
+		\[ f'_-(0)=(\alpha x+x^2)'_{\underset{(x=0)}{-}}=(\alpha x+x^2)'_{x=0}=(\alpha+2x)_{x=0}=\alpha \]
+		\[ f'_+(0)=1\quad f'_-(0)=\alpha \]
+		$f\in D\{0\}\quad \Longleftrightarrow\quad$ $1=\alpha$ \quad és\quad $f'(0)=1.\quad \blacksquare$
+	\end{task}
+	\subsection{Érintő (paraméterezéssel).}
+	\begin{revision}
+		Érintő: $y=f'(a)(x-a)+f(a)$.
+	\end{revision}
+	\begin{note}
+		Korábbi tanulmányainkban láthattunk példát a kör és a parabola érintőjére, esetleg még a hiperbolánál is. Azonban itt a megoldási módszer minden görbénél más volt, és ez hosszútávon (minden görbének külön megoldási módszer) nem tartható fent. A derivált erre is megoldást nyújt.
+	\end{note}
+	\begin{task}
+		Kör érintője: $f(x)=\sqrt{1-x^2}\quad (x\in[-1,1])$, ha a görbénk egy egységsugarú félkör. $x^2+f^2(x)=1,\quad f(x)\geq0$
+		
+		\medskip
+		Ha $x\in(-1,1)\quad \Rightarrow\quad f\in D\{x\}\quad$ és
+		\[ f'(x)=\frac{1}{2\sqrt{1-x^2}}\cdot(-2x)=\frac{-x}{\sqrt{1-x^2}} \]
+		$(x_0, f(x_0))$ pont érintője a félkörön:
+		\[ f=f'(x_0)(x-x_0)+f(x_0) \]
+	\end{task}
+	\begin{task}
+		$f(x):=\sqrt{x}$. Ha $x=0$:
+		\[ \frac{f(x)-f(0)}{x-0}=\frac{\sqrt{x}}{x}=\frac{1}{\sqrt{x}}\quad \underset{x\to0}{\longrightarrow}\quad +\infty \]
+		A határértéték nem véges.
+	\end{task}
+	\begin{task}
+		\[ f(x):=\sqrt{1+x^2}\quad (x\in\R),\quad a:=\frac{1}{2} \]
+		\textit{Megoldás:} 
+		$f\in D\left\{\frac{1}{2}\right\}\checkmark$
+		\[ \forall x\in\R:\quad f\in D\{x\}\]
+		Alkalmazzuk a kompozíció deriváltjának szabályát: $(f\circ g)'=f'(g(a))\cdot g'(a)$.
+		\[ f'(x)= \left(\sqrt{1+x^2}\right)'=\left((1+x^2)^\frac{1}{2}\right)'=\frac{1}{2}\cdot\left(1+x^2\right)^{-\frac{1}{2}}\cdot2x=\frac{2x}{2\sqrt{1+x^2}} \]
+		\[ f'\left(\frac{1}{2}\right)=\frac{\frac{1}{2}}{\sqrt{1+\left(\frac{1}{2}\right)^2}}=\ldots \]
+		\[ y=f'(a)(x-a)+f(a) \]
+		\[ y=f'\left(\frac{1}{2}\right)\cdot\left(x-\frac{1}{2}\right)+f\left(\frac{1}{2}\right) \] 
+	\end{task}
+	\begin{task}
+		\[ \lim_{h\to0}\frac{\sqrt[4]{16+h}-2}{h}=? \]
+		Ez egy különbségi hányados függvény! Észrevétel:
+		\[ f(x):=\sqrt[4]{x};\quad a=16 \]
+		\[ \frac{f(x)-f(a)}{\underbrace{x-a}_h}=\frac{f(a+h)-f(a)}{h}=\frac{\sqrt[4]{16+h}-\sqrt[4]{16}}{h}=f'(16)=\frac{1}{4}\cdot\left(x^{-\frac{3}{4}}\right)=\ldots \]
+	\end{task}
+\end{document}

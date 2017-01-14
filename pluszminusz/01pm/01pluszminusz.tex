@@ -1,0 +1,146 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap5%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Ra{\overline{\mathbb{R}}}
+	
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] 
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} 
+	\newtheorem{example}[theorem]{Példa} 
+	\newtheorem{task}[theorem]{Feladat} 
+	\newtheorem{note}[theorem]{Megjegyzés}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{+/$-$ kidolgozás}}
+		
+		2. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László előadása alapján. (\today)
+	
+	Gyakorlathoz pdf: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/An2_gyak_2016_osz.pdf}
+	\begin{enumerate}
+		\item \textbf{Definiálja az $A\in\Ra$\ elem $r > 0$ \textit{sugarú környezetét}.}
+		
+		\textbf{Válasz:} Az $A\in\R$\ valós szám $r>0$ sugarú környezetén a 
+		\[ K_r(A):=(A-r,A+r) \]
+		intervallumot értjük. Az $A=+\infty$ elem $r>0$ sugarú környezete a
+		\[ K_r(+\infty):=\left(\frac{1}{r},+\infty\right), \]
+		az $A=-\infty$ elemé pedig a
+		\[ K_r(-\infty):=\left(-\infty,-\frac{1}{r}\right) \]
+		intervallum.
+		
+		\item \textbf{Mikor mondja azt, hogy egy $f\in\R\to\R$ függvénynek valamely $a\in\Ra$ helyen van határértéke?}
+		
+		\textbf{Válasz:} Legyen $f\in\R\to\R$, és tegyük fel, hogy $a\in\mathcal{D'}_f.$ Ekkor azt mondjuk, hog az $f$ függvénynek az $a$ helyen \textit{van határértéke}, ha 
+		\[ \exists A\in\Ra,\quad \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall x\in (K_\delta(a)\backslash\{a\})\cap\mathcal{D}_f:\quad f(x)\in K_\varepsilon(A). \]
+		
+		\item \textbf{Adja meg egyenlőtlenségek segítségével a \textit{végesben vett véges} határérték definícióját.}
+		
+		\textbf{Válasz:} Legyen $f\in\R\to\R,\quad  a\in\mathcal{D'}_f\cap\R,\quad A\in\R.$ Ekkor:
+		\[ \lim_af=A\in\R\quad \Leftrightarrow\quad \forall \varepsilon>0, \quad \exists \delta>0, \quad \forall x\in\mathcal{D}_f,\quad 0<|x-a|<\delta:\quad |f(x)-A|<\varepsilon. \]
+		
+		\item \textbf{Adja meg egyenlőtlenségek segítségével a \textit{plusz végtelenben vett plusz végtelen}
+		határérték definícióját.}
+		
+		\textbf{Válasz:} Legyen $f\in\R\to\R,\quad  +\infty\in\mathcal{D'}_f.$ Ekkor:
+		\[ \lim_{+\infty}f=+\infty\quad \Leftrightarrow\quad \forall P>0, \quad \exists x_0>0, \quad \forall x\in\mathcal{D}_f,\quad x>x_0:\quad f(x)>P. \]
+		
+		\item \textbf{Írja le a \textit{hatványsor} definícióját.}
+		
+		\textbf{Válasz:} AZ $(\alpha_n):\N\to\R$ sorozattal és az $a\in\R$ számmal képzett
+		\[ \sum_{n=0}\alpha_n(x-a)^n\quad (x\in\R) \]
+		végtelen sort $a$ középpontú, $(\alpha_n)$ együtthatós \textit{hatványsornak} nevezzük.
+		
+		\item \textbf{Definiálja az $\exp$ függvényt.}
+		
+		\textbf{Válasz:} $\displaystyle \exp(x):=\sumn\frac{x^n}{n!}\quad (x\in\R).$
+		
+		\item \textbf{Mit tud mondani a hatványsor összegfüggvényének a határértékéről?}
+		
+		\textbf{Válasz:} Tegyük fel, hogy a $\sum_{n=0}\alpha_n(x-a)^n$ hatványsor $R$ konvergenciasugara pozitív. Legyen
+		\[f(x):=\sum_{n=0}^{+\infty}\alpha_n(x-a)^n\quad (x\in K_R(a))\]
+		az összegfüggvény. Ekkor bármely $b\in K_R(a)$ esetén létezik a $\lim_bf$ határérték és
+		\[ \lim_bf=f(b)=\sumn\alpha_n(b-a)^n. \]
+	\end{enumerate}
+\end{document}

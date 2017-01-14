@@ -1,0 +1,194 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		1. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Követelményrendszer.}
+		\begin{compactitem}
+			\item Ugyanazok mint az előző félévben.
+			\item Rendszeres számonkérés (első két GY\quad anyaga mér fentvan)
+			\item Előrehozott vizsgajegy ugyanúgy lesz.
+			\item Kezdés 14:15kor.
+		\end{compactitem}
+	\section{Függvények határértéke.}
+		\begin{note}
+			Határérték definíció:
+			\begin{compactitem}
+				\item Általános definíció (környezetekkel)
+				\item Speciális esetek (9 db.) abszolút értékkel IS!
+			\end{compactitem}
+		\end{note}
+				
+		\begin{task}
+			$\displaystyle \lim_{-2} f = 7$. Mit jelent?
+			
+			\textit{Levezetés.} 
+			
+			Abszolút értékkel:
+			\[ \forall \varepsilon>0,\quad \exists \delta>0:\quad \forall x\in\mathcal{D}_f \quad 0<|x-(-2)|<\delta:\quad |f(x)-7|<\varepsilon. \]
+			
+			Környezetekkel:
+			\[ \forall \varepsilon>0,\quad \exists \delta>0:\quad \forall x\in(\mathcal{D}_f\backslash\{-2\})\cap K_\delta(-2) \text{\quad esetén\quad } f(x)\in K_\varepsilon(7) \]
+		\end{task}
+		\begin{task}
+			$\limx f(x) = -1.$ Mit jelent?
+			
+			\textit{Levezetés.}
+			
+			
+			Abszolút értékkel:
+			\[ \forall \varepsilon>0,\quad \exists x_0>0:\quad \forall x\in\mathcal{D}_f,\quad x>x_0:\quad |f(x)-(-1)|<\varepsilon. \]
+			Környezettel:
+			\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall x\in\mathcal{D}_f\cap K_\delta(+\infty) \text{\quad esetén\quad } f(x)\in K_\varepsilon(-1). \]
+		\end{task}
+	\subsection{Hatérérték a definíció alapján.}
+		\begin{task}
+			A def. alapján határozzuk meg a következő határértéket.
+			\[ \lim_{x\to0}\frac{1}{1+x} \]
+			
+			\textit{Levezetés.} 
+			
+			\textbf{Sejtés:} $\displaystyle \lim_{x\to0}\frac{1}{1+x}=1$
+			
+			\textit{Bizonyítás:} 
+			Igazolnunk kell: 
+			\[ \forall \varepsilon>0,\quad \exists \delta>0, \quad \forall x\in\mathcal{D}_f:\quad 0<|x|<\delta \text{\quad esetén\quad } \left|\frac{1}{1+x}-1\right|<\varepsilon \]
+			\[ \left|\frac{1}{1+x}-1\right| = \left|\frac{1-1-x}{1+x}\right| = |x|\cdot\left|\frac{1}{1+x}\right|\quad \underset{|x|<\frac{1}{2}}{\leqq} \quad |x|\cdot \frac{1}{\frac{1}{2}} = 2|x|<\varepsilon,\text{\quad ha\quad }|x|<\frac{\varepsilon}{2}\quad \Rightarrow\quad  \]
+			$\varepsilon>0$-hoz $0<\delta<\frac{\varepsilon}{2}$ ,,jó''.
+		\end{task}
+		\begin{task}
+			A def alapján:
+			\[ \limx\frac{x^2-1}{2x^2+1} \]
+			
+			\textit{Levezetés.}
+			
+			\textit{Sejtéshez:} 
+			\[ \limx\frac{x^2-1}{2x^2+1}=\limx\frac{1-\frac{1}{x^2}}{2+\frac{1}{x^2}} \]
+			\textbf{Sejtés:} $\limx f(x)=\frac{1}{2}.$
+			
+			Bizonytás:
+			
+			Igazolnunk kell:
+			\[ \forall\varepsilon>0, \quad \exists x_0>0: \forall x>x_0:\quad \left|f(x)-\frac{1}{2}\right|<\varepsilon \]
+			\[ \left|\frac{x^2-1}{2x^2+1}-\frac{1}{2}\right| = \left|\frac{2x^2-2-2x^2-1}{2(2x^2+1)}\right| = \frac{3}{2}\cdot \frac{1}{2x^2+1}\leqq 2\cdot \frac{1}{2x^2}  =\frac{1}{x^2}<\varepsilon\text{\quad ha}\]
+			\[ x^2>\frac{1}{\varepsilon}\quad \Rightarrow\quad x>\sqrt{\frac{1}{\varepsilon}} \]
+			$\Rightarrow\quad \varepsilon>0$-hoz $0<x_0<\sqrt{\frac{1}{\varepsilon}}$ ,,jó''.
+		\end{task}
+		\begin{task}
+			A def alapján:
+			\[ \lim_{x\to1}\frac{x^4+2x^2-3}{x^2-3x+2} \]
+			
+			\textit{Levezetés:}
+			
+			$\frac{0}{0}$ típusú ez a határérték. Ez egy kritikus határértékre vezetne minket, itt jobban járunk hogyha átalakítunk. Ebben az esetben próbálkozzunk szorzatra bontással!
+			Itt az alsó rész könnyen átírható $(x-1)(x-2)$ alakra, amennyiben ez nem látszik elsőre, megoldás lehet a másodfokú egyenlet megoldása is.
+			\[ \frac{x^4+2x^2-3}{x^2-3x+2} = \frac{\overbrace{(x^2-1)}^{(x-1)(x+1)}(x^2+3)}{(x-1)(x-2)} = \frac{(x+1)(x^2+3)}{(x-2)}\]
+			\textbf{Sejtés:} $\displaystyle \lim_{x\to1}\frac{x^4+2x^3-3}{x^2-3x+2} = -8$
+			
+			Bizonyítás:
+			
+			Igazolnunk kell:
+			\[ \forall\varepsilon>0,\quad \exists\delta>0:\quad \forall x\in\mathcal{D}_f:\quad |x-1|<\delta:\quad  \left|\frac{x^4+2x^2-3}{x^2-3x+2}-(-8)\right|<\varepsilon\]
+			\[ \left|\frac{x^4+2x^2-3}{x^2-3x+2} + 8\right| = \left|\frac{(x+1)(x^2+3)}{x-2} + 8\right| = \frac{\left|x^3+x^2+11x-13\right|}{|x-2|} \quad \overset{\text{szorzatra}}{\underset{\text{bontás}}{=}}\]
+			\[ = \frac{\left|(x^3-x)+(x^2-x)+13(x-1)\right|}{|x-2|} = \frac{\big|(x-1)\big(x(x+1)+x+13\big)\big|}{|x-2|} = (x-1)\cdot\frac{\big|\big(x(x+1)+x+13\big)\big|}{|x-2|}\leqq \]
+			\[ \leqq |x-1|\cdot\frac{|x|^2+2|x|+13}{\frac{1}{2}}\leqq|x-1|\cdot \frac{\left(\frac{3}{2}\right)^2+2\cdot\frac{3}{2}+13}{\frac{1}{2}}<\varepsilon \]
+			ha $|x-1|<\frac{\varepsilon}{K}\quad \Rightarrow\quad \varepsilon>0$-hoz \quad $ 0<\delta<\min\left\{ \frac{\varepsilon}{K},\frac{1}{2}\right\}$.
+			
+		\end{task}
+		Házi feladat: Gyakorló feladatok 1ab.
+		
+\end{document}

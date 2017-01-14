@@ -1,0 +1,217 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		8. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Elemi függvények.}
+	\subsection{Trigonometrikus függvények.}
+	\begin{note}
+		Érdemes a már ismert ($\sin, \cos, \tg$) függvények nevezetesebb értékeit tudni.
+	\end{note}
+	\begin{task}
+		\begin{enumerate}
+			\item $\arc\sin\frac{1}{2}=\alpha\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]:\quad \sin \alpha=\frac{1}{2} \quad \Rightarrow\quad \alpha = \frac{\pi}{6}.$
+			\item $\arc\cos\left(-\frac{\sqrt{2}}{2}\right)=\alpha\in[0,\pi]:\quad \cos\alpha=-\frac{\sqrt{2}}{2}\quad \Rightarrow\quad \alpha=\frac{3}{4}\pi$
+			\item $\arc\tg1=\alpha\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right):\quad \tg\alpha=1\quad \Rightarrow\quad \alpha = \frac{\pi}{4}$
+			\item $\arc\ctg\sqrt{3}=\alpha\in(0,\pi):\quad \ctg\alpha=\sqrt{3}\quad \Rightarrow\quad \alpha=\frac{\pi}{6}$
+		\end{enumerate}
+	\end{task}
+	\begin{task} Bizonyítsuk be:
+		\[ \arc\sin x+\arc\cos x=\frac{\pi}{2}\quad (x\in[-1,1]) \]
+		\textit{Bizonyítás:}
+		\[ \arc\sin x=y_1\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]:\quad \sin y_1=x \]
+		\[ \arc\cos x=y_2\in\left[1,\pi\right]:\quad \cos y_2=x \]
+		$x=\cos y_2=$\fbox{$\sin y_1 = \cos\left(\frac{\pi}{2}-y_1\right)$}$\checkmark$
+		
+		Mivel $y_2\in[0,\pi]$, megállapítható hogy $\frac{\pi}{2}-y_1\in[0,\pi]$, ugyanis
+		\[y_1\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]\quad \Leftrightarrow\quad 0\leq \frac{\pi}{2}-y\leq\pi\quad \Leftrightarrow\quad y_1\leq \frac{\pi}{2}, \quad y_1\geq-\frac{\pi}{2} \]
+		\[ \Rightarrow y_2=\frac{\pi}{2}-y_1\quad \Rightarrow\quad \arc\cos x=\frac{\pi}{2}-\arc\sin x \]
+	\end{task}
+	\begin{task}
+		\[ \arc\tg x +\arc \ctg x = \frac{\pi}{2}\quad (x\in\R) \]
+		\textit{Bizonyítás:}
+		
+		\[\arc\tg x = y_1\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\quad  \Leftrightarrow\quad \tg y_1=x \]
+		\[\arc\ctg x = y_2\in\left(0,\pi\right)\quad  \Leftrightarrow\quad \ctg y_2=x \]
+		\[ x=\ctg y_2=\tg y_1= \]
+		Közben állapítsuk, meg, hogy $\ctg y_2=\th \left(-\frac{\pi}{2}-y_2\right)=\tg y_1\quad (y_1\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$
+		
+		Ha
+		\[ y_2\in(0,\pi)\quad \Rightarrow\quad \frac{\pi}{2}-y_2\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\quad \Rightarrow\quad \frac{\pi}{2}-y_2=y_1\quad \blacksquare \]
+	\end{task}
+	\begin{task}
+		\[ \arc\sin(\sin x)=\left\{\begin{gathered}
+			x,\quad x\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]\\
+			\pi-x,\quad x\in\left[\frac{\pi}{2},\frac{3}{2}\pi \right]
+		\end{gathered}\right. \]
+		$2\pi$ szerint periodikus lesz.$\checkmark\quad \Rightarrow\quad \left[-\frac{\pi}{2},\frac{3}{2}\pi\right]$
+			
+		\textit{Megoldás:}
+		
+		Ha \[x\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]:\quad \arc\sin(\sin x)=\alpha\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]:\quad \sin\alpha=\sin x\quad \Rightarrow\quad \alpha = x\]
+		Ha \[x\in\left[\frac{\pi}{2},\frac{3}{2}\pi\right]:\quad \arc\sin(\sin x)=y\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]:\quad \sin y=\sin x= \sin(\pi-x) \]
+		Ekkor, ha $x\in\left[\frac{\pi}{2},\frac{3}{2}\pi\right]\quad \Rightarrow\quad \pi-x\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$.
+		\[ \Rightarrow y=\pi-x. \]
+	\end{task}
+	\section{Konvexitás.}
+	\begin{task}
+		$f:=\exp$.
+		\[ f''(x)=e^x>0\quad (\forall x\in\R)\quad \Rightarrow\quad f\quad \text{szig konvex $\R$-en.} \]
+	\end{task}
+	\begin{task}
+		$f:=\ln$.
+		\[ f'(x)=\frac{1}{x};\quad f''(x)=-\frac{1}{x^2}<0\quad (x>0)\quad \Rightarrow\quad f\quad \text{szig. konkáv $(0,+\infty)$-n.} \]
+	\end{task}
+	\begin{task} Hatványfüggvények: $h_\alpha(x)=x^\alpha\quad (x>0, \alpha\in\R).$
+		\[ h'_\alpha(x)=\alpha\cdot x^{\alpha-1}\quad \Rightarrow\quad \text{monoton.} \]
+		\[ h''_\alpha(x)=\alpha(\alpha-1)\cdot x^{\alpha-2}\]
+		$h''_\alpha(x)>1,$ ha $\alpha>0\quad \Rightarrow\quad h_\alpha$ szig konvex $(0,+\infty)$-n.
+		
+		$h''_\alpha(x)>0,$ ha $\alpha<0\quad \Rightarrow\quad h_\alpha$ szig konvex $(0,+\infty)$-n.
+		
+		$h''_\alpha(x)<0,$ ha $0<\alpha<1\quad \Rightarrow\quad h_\alpha$ szig konkáv $(0,+\infty)$-n.
+	\end{task}
+	\subsection{Egyenlőtlenségek igazolása.}
+	\begin{task}
+		\[ \left(\frac{x+y}{2}\right)^n<\frac{x^n+y^n}{2},\quad 1<n\in\N;\quad x,y>0,\quad x\not=y. \]
+		\textit{Megoldás:}
+		
+		\[ f(x):=x^n\quad (x>0);\quad n=1,2,\ldots \]
+		Ez a fv szigorúan konvex $(0,+\infty)$-en. CSAK AKKOR:
+		\[ \forall x,y\in(0,+\infty),\quad \forall\lambda\in(0,1)\quad f(\lambda x+(1-\lambda)y)<\lambda f(x)+(1-\lambda)f(y) \]
+		\[ \lambda= \frac{1}{2}:\quad f\left(\frac{x+y}{2}\right)\leq\frac{f(x)+f(y)}{2}=\frac{x^n+y^n}{2} \]
+	\end{task}
+	\begin{task}
+		\[ e^{\frac{x+y}{2}}<\frac{e^x+e^y}{2}\quad (x,y\in\R;\quad x\not=y) \]
+		
+		\textit{Megoldás:}
+		\[ f(x):=e^x\quad (x\in\R) \]
+		\[ f''(x)=e^x>0\quad (x\in\R)\quad \Rightarrow\quad f\quad \text{szig konvex $\R$-en}\quad \Leftrightarrow\quad \forall x,y\in\R,\quad x<y;\quad \forall \lambda\in(0,1) \]
+		\[ f(\lambda x+(1-\lambda)y)<\lambda f(x)+(1-\lambda)f(y) \]
+		$\lambda=\frac{1}{2}\quad \blacksquare$
+	\end{task}
+	\begin{task}
+		\[ f(x):=2x^3-21x^2+36x\quad (x\in\R) \]
+		Hol konvex?
+		
+		\textit{Megoldás:} Ha 
+		\[ f''(x)=(6x^2-42x+36)'=12x-42>0\quad \Leftrightarrow\quad x>\frac{42}{12}=\frac{7}{2}\quad \Rightarrow\quad f \text{\quad szig konvex $\left(\frac{7}{2},+\infty\right)$-en} \]
+		
+		Ha 
+		\[ f''(x)=(6x^2-42x+36)'=12x-42>0\quad \Leftrightarrow\quad x<\frac{42}{12}=\frac{7}{2}\quad \Rightarrow\quad f \text{\quad szig konkáv $\left(-\infty,\frac{7}{2}\right)$-en} \]
+	\end{task}
+	\begin{task}
+		\[ f(x)=x+\sin x\quad (x\in\R) \]
+		Hol konvex?
+		
+		\textit{Megoldás:}
+		
+		\[ f''(x)=(1+\cos x)'=-\sin x\quad (x\in\R) \]
+		\[ f''(x)\quad \overset{>}{\underset{<}{=}}\quad 0\quad \Leftrightarrow\quad -\sin x \quad \overset{>}{\underset{<}{=}}\quad 0  \]
+		\[ \sin x >0\quad \Leftrightarrow\quad 0+2k\pi<x<\pi+2k\pi\quad (k\in\Z) \]
+	\end{task}
+\end{document}

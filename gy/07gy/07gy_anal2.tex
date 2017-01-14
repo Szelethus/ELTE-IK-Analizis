@@ -1,0 +1,243 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		7. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Információk.}
+	\begin{itemize}[$\bullet$]
+		\item ZH eredmények fent vannak honlapon.
+	\end{itemize}
+	\section{Monotonitás és szélső értékek.}
+	\subsection{Monotonitás vizsgálat.}
+	\begin{task}Határozzuk meg azokat az intervallumokat, ahol
+		 \[f(x):=x^2(x-3)\quad (x\in\R)\]
+		monoton.
+		
+		\textit{Megoldás:} $f\in D\checkmark$.
+		\[ f'(x)=3x^2-6x= \]
+		Itt a derivált előjelét szeretnénk meghatározni, ehhez segíthet ha szorzatra hozzuk az alakot.
+		\[ =3x(x-2)\quad (x\in\R) \]
+		\[ f'(x)\quad \text{előjele}\quad \leftrightarrow\quad 3x(x-2)\quad \text{előjele} \]
+		3-al kapásból egyszerűsíthetünk. Itt a szorzatban lévő alakból azonnal megállapíthatjuk, hogy egyik zérushely a 0, másik a +2. Ez egy nyitott parabola (azaz belefolyik, lol).
+		\[ \Rightarrow f'(x)>0,\quad x\in(-\infty,0)\quad \Rightarrow\quad f\uparrow, (-\infty, 0)\text{-n.} \]
+		\[ f'(x)<0,\quad x\in(0,2)\quad \Rightarrow\quad f\downarrow (0,2)\text{-őn} \]
+		\[ f'(x)>0\quad x\in (2,+\infty)\quad \Rightarrow\quad f\uparrow\quad (2,+\infty)\text{-en}\quad \blacksquare \]
+	\end{task}
+	\begin{task}
+		Vizsgáljuk a monotonizását az
+		\[ f(x):=\frac{x}{x^2-6x-16}\quad (x\in\R\setminus\{-2,8\}) \]
+		
+		\textit{Megoldás:}\[ x^2-6x-16=(x+2)(x-8)\checkmark\quad f\in D \]
+		\[ f'(x)=\frac{1\cdot(x^2-6x-16)-x(2x-6)}{(x^2-6x-16)^2}=\frac{-x^2-16}{(x^2-6x-16)^2}=-\frac{x^2+16}{(x^2-6x-16)^2} \]
+		Intervallumon nézni!! (mert a tétel csak akkor használható) Ha most arra vagyunk kíváncsiak, hogy $f'(x)$ mikor milyen előjelet vesz fel, muszáj intervallumokban vizsgálunk.
+		\[ f'(x) \quad \text{előjele}\quad \Leftrightarrow\quad -\frac{x^2+16}{(x^2-6x-16)^2}\quad \text{előjele} \]
+		\[ f'(x)<0, \quad x\in(-\infty,-2)\quad \Rightarrow\quad f\downarrow\quad (-\infty,-2)\text{-őn} \]
+		\[ f'(x)<0, \quad x\in(-2,8)\quad \Rightarrow\quad f\downarrow\quad  (-2,8)\text{-on} \]
+		\[ f'(x)<0, \quad x>8\quad \Rightarrow\quad f\downarrow\quad (8,+\infty)\text{-en} \]
+	\end{task}
+	\begin{task}
+		Monotonitásvizsgálat
+		\[ f(x):=x\ln x\quad (x>0) \]
+		
+		\textit{Megoldás:} $f\in D\checkmark$
+		\[ f'(x)=1\cdot\ln x +x\cdot\frac{1}{x}=\ln x+1\quad (x>0) \]
+		\[ f'(x) \quad \text{előjele}\quad \Leftrightarrow\quad \ln x+1\quad \text{előjele}\quad \Leftrightarrow\quad \ln x \overset{>}{\underset{<}{=}}-1 \]
+		\[ \ln x = -1 \quad \Leftrightarrow \quad e^{-1}=x=\frac{1}{e} \]
+		Azaz bátran használhatjuk itt az egész intervallumot.
+		\[ f'(x)<0,\quad x\in\left(0,\frac{1}{e}\right)\quad \Rightarrow\quad f\downarrow\quad \left(0,\frac{1}{e}\right)\text{-n} \]
+		\[ f'(x)>0 \quad x>\frac{1}{e}\quad \Rightarrow\quad f\uparrow\quad \left(\frac{1}{e},+\infty\right)\text{-en}\quad \blacksquare \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\frac{2}{x}-\frac{8}{1+x}\quad (x\in\R\setminus\{0,-1\}) \]
+		Monotonitás?
+		
+		\textit{Megoldás:} $f\in D\checkmark$ (műveleti tételek, elemi függvények)
+		
+		\[ f'(x)=-\frac{2}{x^2}+\frac{8}{(1+x)^2}=\frac{-2\cdot(1-x)^2+8x^2}{x^2(1+x)^2}  =\frac{6x^2-4x-2}{x^2(1+x)^2}=\frac{2\cdot(3x^2-2x-1)}{x^2(1+x)^2}=\frac{2\cdot(x-1)(3x+1)}{x^2(1+x)^2} \]
+		\[ f'(x)\quad \text{előjele}\quad \Leftrightarrow\quad \frac{2(x-1)(3x+1)}{x^2(1+x)^2}\quad \text{előjele}\quad \Leftrightarrow \]
+		Ez a tört előjele: a nevezpővel nem kell foglalkozni, az mindig pozitív, így csak a számlálótól függ.
+		\[ \Leftrightarrow\quad (x-1)(3x+1)\quad \text{előjele} \]
+		\[ f'(x)>0,\quad x<-1\quad \Rightarrow\quad f\uparrow\quad (-\infty,-1) \]
+		\[ f'(x)>0,\quad -1<x<\frac{1}{3}\quad \Rightarrow\quad f\uparrow\quad \left(-1,-\frac{1}{3}\right) \]
+		\[ f'(x)<0\quad -\frac{1}{3}<x<0\quad \Rightarrow\quad f\downarrow\quad \left(-\frac{1}{3},0\right)\text{-n} \]
+		\[ f'(x)<0,\quad 0<x<1\quad \Rightarrow\quad f\downarrow\quad (0,1) \]
+		\[ f'(x)>0\quad x>1\quad \Rightarrow\quad f\uparrow\quad (1,+\infty)\quad \blacksquare \] 
+	\end{task}
+	\subsection{Lokális és abszolút szélsőérték vizsgálat}
+	\begin{task}
+		\[f(x):=x^4-4x^3+10\quad (x\in\R)\]
+		Határozzuk meg a
+		\begin{enumerate}[1.)]
+			\item lokális szélső értékeket
+			\item abszolút szélső értékeket $A=[-1,4]$-en.
+		\end{enumerate}
+		
+		\textit{1.) Megoldás:} $f\in D^2?$
+		
+		Elsőrendű szükséges feltétel lokális szélső értékre:
+		\[ f'(x)=4x^3-12x^2=4x^2(x-3)=0\quad \Rightarrow\quad x_1=0,\quad x_2=3 \]
+		Ezek $f$ \textbf{stacionárius} pontjai. Itt \textit{lehetnek} lokális szélső értékek! Ehhez tekintsük az elégséges feltételeket: elsőrendű és másodrendű. Ez előbbihez az kell, hogy a derivált előjelet váltson: $x_2=3$-ban ez teljesül, így az \textbf{lokális minimum hely}. $x_1=0$ esetben ez nem fog teljesülni, lássuk is ezt be:
+		\[ f'(x)=4x^2(x-3)<0\quad x\in\left(-\frac{1}{2},\frac{1}{2}\right)\quad \Rightarrow\quad f'\downarrow\quad \left(-\frac{1}{2},\frac{1}{2}\right)\text{-en}\quad \Rightarrow\quad x_1=0 \quad \text{nem lokális szélső érték.}\]
+		
+		\textit{2.) Megoldás:} 
+		\[ f\in C[-1,4]\quad \overset{\text{Weierstrass}}{\underset{\text{tétel}}{\Longrightarrow}}\quad \exists \text{absz. max és min}. \]
+		Ezek lehetnek $f(-1)$ vagy $f(4)$ is, vagy az intervallumon belül: $(-1,4)$-ben, és ott lokális szélső értékek is lennének!
+		
+		\[ (-1,4)\text{-ben lokális szélső érték:}\quad x_2=3\quad \text{lokális minimum hely} \]
+		\[ f(-1)=15\]
+		\[\quad f(3)=-17\quad \text{lokális min.}\]
+		\[\quad f(4)=10 \]
+		$x_0=-1$ abszolút max. hely, 3 pedig abszolút minimumhely.
+		
+	\end{task}
+	\begin{task}
+		\[ f(x):=\frac{x}{x^2+1}\quad (x\in\R) \]
+		\begin{enumerate}[1.)]
+			\item lokális szélső érték
+			\item abszolút szélső érték $A=\left[-\frac{3}{2},2\right]$ intervallumon
+		\end{enumerate}
+		
+		\textit{1.) Megoldás:} $f\in D^2$
+		
+		Elsőrendű szükséges feltétel:
+		\[ f'(x)=\frac{1\cdot(x^2+1)-x\cdot 2x}{(x^2+1)^2}=\frac{-x^2+1}{(x^2+1)^2}=0 \quad  \Leftrightarrow \quad 1-x^2=0\quad \Leftrightarrow\quad x_{1,2}=\pm1 \]
+		
+		Elégséges feltétel: Megfigyelhető, hogy $-1$ helyen mínuszból pluszba megy.
+		\[ \Rightarrow x_1=-1\text{-ben előjelet vált}\quad \Rightarrow\quad x_1=-1\quad \text{lokális min.} \]
+		\[ x_2=1\text{-ben előjelet vált}\quad \Rightarrow\quad x_2=1 \quad \text{lokális max.} \]
+		
+		\textit{2.) Megoldás:} (lásd előbb, itt most kihagyjuk, de zh-n le kell írni)
+		\[ \left.\begin{gathered}
+		f\left(-\frac{3}{2}\right)\\
+		f\left(-1\right)\\
+		f(1)\\
+		f(2)
+		\end{gathered}\right\}\quad \text{összehasonlításától függ a min. és max. hely} \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=2x+\frac{200}{x}\quad (x>0) \]
+		\begin{enumerate}
+			\item lok. sz.é.
+			\item absz. sz.é. $\mathcal{D}_f$-en
+		\end{enumerate}
+		\textit{1.) Megoldás:} $f\in D^2$
+		
+		Elsőrendű szükséges feltétel:
+		\[ f'(x)=2-\frac{200}{x}=0\quad \Leftrightarrow\quad x^2=100\quad x=\pm 10,\]
+		de itt $-10$ nem kerülhet szóba, mert pozitívokat nézünk csak, így $x=10$. Elégésges feltételt az összes stacionárius pontban meg kell vizsgálni.
+		
+		$\Rightarrow x_1=10$,\quad itt lehet lok.sz.é.
+		
+		Elégséges feltétel: $x_1=10$-ben:
+		\[ f'(x)=\frac{2(x^2-100)}{x^2} \]
+		Rajzon könnyen látható az előjelváltás, így $x_1=10$ lokális min hely.
+		
+		\textit{2.) Megoldás:} Abszolút szélső érték
+		$\mathcal{D}_f=(0,+\infty)$ nem korlátos és zárt, így a Weierstrass tétel nem alkalmazható. Itt bármi lehet. Egyedi vizsgálat kell. Például:
+		
+		\[ f'(x)<0,\quad 0<x<10\quad \Rightarrow\quad f\downarrow \quad (0,10)\text{-en} \]
+		\[ f'(x)>0,\quad x>10\quad \Rightarrow\quad f\uparrow\quad (10,+\infty)\text{-en} \]
+		\[ \lim_{0+0}=+\infty;\quad \lim_{+\infty}f=+\infty \]
+		Megállapítható hogy van $\exists$ absz. minimum: $x_1=10$, abszolút maximuma pedig $\nexists$.
+	\end{task}
+\end{document}

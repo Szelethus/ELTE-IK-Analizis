@@ -1,0 +1,237 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		3. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Információk.}
+	\begin{compactenum}
+		\item Az első zh 6 zh anyagából lesz.
+		\item A mostani óra a 3. és 4. gyakorlat anyagáról szól, hogy be tudjuk a kimaradt órát hozni.
+		\item 5., 6. gyakorlat anyaga fel fog kerülni hamarosan.
+		\item következő gyakorlaton differenciálszámításból lesz kérdés. (ez azt jelenti, hogy a maradék kérdés nem fog kelleni a 3-4 gyakorlatról)
+		\item Lesz felrakva ZH témakörök. 
+		\item A megajánlott vizsgajegyhez kellő tételek listája is kikerül.
+	\end{compactenum}
+	Követelményrendszer: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/Kov_An2_2016.pdf}
+	\section{Folytonosság.}
+	\begin{revision}
+		$f\in C\{a\} \quad \Leftrightarrow\quad a\in\mathcal{D}_f,\quad \Rightarrow$\[\quad \forall\varepsilon>0,\quad \exists\delta>0:\quad \forall x\in\mathcal{D}_f:\quad |x-a|<\delta:\quad |f(x)-f(a)|<\varepsilon \]
+		\[f \notin C\{a\}\quad \Leftrightarrow\quad  \exists\varepsilon>0,\quad \forall \delta>0, \quad \exists x\in\mathcal{D}_f:\quad |x-a|<\delta:\quad |f(x)-f(a)|\geqq \varepsilon \]
+	\end{revision}
+	\begin{task}
+		\[ f(x):=\begin{cases}
+		2x+1,\quad x\leq -1\\
+		3x,\quad -1<x<1\\
+		2x-1,\quad x\geqq 1
+		\end{cases} \]
+		\textit{1. ábra.}
+		\begin{itemize}
+			\item 
+			$\forall a\in\R\setminus\{-1,1\}:\quad f\in C\{a\}$
+			\item $a=1;\quad f\notin C\{1\}$, elsőfajú szakadási hely. A fv jobbról folytonos.
+			\item $a=-1:$
+		\end{itemize}
+	\end{task}
+	\begin{task}
+		$f\in\R\to\R,\quad a\in \mathcal{D}_f, \quad f\in C\{a\}$, és tegyük fel, hogy $f(a)>0$.
+		\[ \Rightarrow\exists K(a):\quad \forall x\in K(a)\cap \mathcal{D}_f:\quad f(x)>0 \]
+		\textit{Bizonyítás:}
+		
+		\textit{2. ábra.}
+		
+		Az $f\in C\{a\}$ definíciót $\varepsilon = \frac{f(a)}{2}>0$-ra alkalmazzuk.\quad $\blacksquare$
+	\end{task}
+	\begin{task}
+		$f(x):=x\cdot\sin\frac{1}{x}\quad (x\in\R\setminus\{0\})$.
+		\medskip
+		
+		\textit{Megoldás:} 
+		\begin{itemize}
+			\item Ha $a\in\R\setminus\{0\}$:\quad $f\in C\{a\}.$ (ez belátható máveletei tételekkel és elemi függvényekkel)
+			\item Értelmezhető-e 0-ban úgy, hogy ott folytonos legyen?
+		\end{itemize}
+		Itt a folytonosság és a határérték kapcsolatára kéne gondolnunk. Az értlemezési tartománynak 0 torlódása pontja, és értelmezhező is.
+		
+		Meg kell néznünk $\lim_{x\to0}(x\cdot\sin\frac{1}{x})$-et. Ennek a határértéke 0 lesz. Egy -nak közeli szám és egy 1-hez közeli szám szorzata (érezhetően) 0 lesz. 
+		\textit{Bizonyítás:}
+		
+		\[ \overbrace{0}^{\overset{x\to0}{\longrightarrow}0}\leq\left|x\cdot\sin\frac{1}{x}\right|\leq \overbrace{|x|}^{\overset{x\to0}{\longrightarrow} 0}\quad \forall x\not=0 \]
+		Közrefogási elvet alkalmaztuk.
+		\[ \Rightarrow \tilde{f}(x):=\begin{cases}
+		f(x),\quad x\not=0\\
+		0,\quad x=0
+		\end{cases}\quad :\quad \tilde{f}\in C\{0\} \]
+	\end{task}
+	\begin{task}
+		\[f(x):=\begin{cases}
+		x^2-\alpha^2,\quad x<4\\
+		\alpha x+20,\quad x\geqq 4
+		\end{cases}\]
+		Milyen $\alpha\in\R$ értékekre lesz $f$ mindenütt folytonos?
+		
+		\textit{Megoldás:}
+		\begin{itemize}
+			\item 
+			$\forall a\in\R\setminus\{4\}:\quad f\in C\{a\}$
+			
+			Jegyezzük, meg, ez igaz minden $\alpha\in\R$ esetén.
+			\item $a=4$-ben?
+		\end{itemize}
+		\[f\in C\{4\}\quad \Leftrightarrow\quad \exists\lim_{4+0} f,\quad \exists\lim_{4-0}f,\quad \text{és ezek egyenlőek, továbbá} \quad \lim_{4+0} f= \lim_{4-0}f=f(4)\]
+		\[ f(4)=4\alpha+20. \]
+		\[ \lim_{4+0}f=\lim_{x\to4+0}(\alpha\cdot x+20)=4\alpha+20. \]
+		\[ \lim_{4-0}f=\lim_{x\to4-0}(x^2-\alpha^2)=16-\alpha^2. \]
+		\[ \lim_{4-0}f=\lim_{4+0}f\quad \Leftrightarrow \quad 16-\alpha^2=4\alpha+20\quad \Leftrightarrow\quad  \alpha^2+4\alpha+4=0\quad \Leftrightarrow\quad (\alpha+2)^2=0\quad \Leftrightarrow\quad \alpha = -2 \]
+		Ha $\alpha=-2$, akkor a jobb és bal oldali határérték megegyezik, méghozzá
+		\[ \lim_{4-0}f=\lim_{4+0}f=12=f(4)\quad \Rightarrow f\in C\{4\} \]
+		Ha $\alpha\in\R\setminus\{-2\}$, akkor $a=4$ elsőfokú szakadási hely.
+		
+	\end{task}
+	\begin{task}
+		\[f(x) :=\begin{cases}
+		\displaystyle \frac{x^2-5x+6}{x^2-7x+10},\quad x\in\R\{2,5\}\\
+		\\
+		0,\quad x=2 \vee x=5.
+		\end{cases} \]
+		Folyotonosság, illetve szakadási helyeket kell megvizsgálnunk.
+		
+		\textit{Megoldás:}
+		$\forall a\in\R\setminus\{2,5\}:\quad f\in C\{a\}$ (Lásd: műveleti függvények és elemi függvények.)
+		Ellenőrizzük, hogy 2 és 5 valóban zérushelyek-e!
+		$x^2-7x+10=(x-2)(x-5).$
+		
+		\medskip
+		Vizsgáljuk meg $\displaystyle \lim_2f$-t és $\displaystyle \lim_5f$-t!
+		\[ f(x)=\frac{x^2-5x+6}{x^2-7x+10}= \frac{(x-3)(x-2)}{(x-2)(x-5)} =\frac{x-3}{x-5}\quad (x\not=2,\quad x\not=5). \]
+		\fbox{$a=2$}
+		\[ \lim_2f=\lim_{x\to2}\frac{x-3}{x-5}=\frac{1}{3}\quad \not=\quad f(2)=0 \]
+		Ez azt jelenti, hogy $a=2$ egy szakadási hely. Létezik határérték, de nem egyezik meg a helyettesítési értékkel. Ezt megszüntethető szakadási helynek hívjuk.
+		\medskip
+		
+		\fbox{$a=5$}
+		\[ f(x)=\frac{x-3}{x-5}:\quad \frac{1}{0}\text{ típusú.} \quad \quad  \lim_{5+0}f=\lim_{x\to5+0}\frac{x+3}{x+5}=+\infty \]
+		\[ \lim_{5-0}f=\lim_{x\to5-0}\frac{x+3}{x+5}=-\infty \]
+		Az utolsó két sor konklúziója meggondolandó. Létezik a határérték, ezek különböznek, és nem végesek, így az $a=5$ másodfajú szakadási hely.
+	\end{task}
+	\section{Példák a Bolzano tételre.}
+	
+	\textit{3. ábra}
+	
+	,,$f:[a,b]\to\R$ esetén létezik zérushely valahol.''
+	\begin{task}
+		Bizonyítsuk be:
+		\[ \ln x=e^x-3 \]
+		egyenletnek van megoldása $(1,2)$ intervallumban.
+		\medskip
+		
+		\textit{Bizonyítás:}
+		
+		Lássuk be, hogy ennek van megoldása. Alkalmazzuk a Bolzano-tételt: legyen
+		\[ f:[1,2]\to \R,\quad [1,2]\text{-n folytonos,}\quad f(x):=\ln x-e^x+3 \quad (x>0).\]
+		$f(1)=\ln1-e+3=3-e>0$
+		
+		$f(2)=\ln2-e^2+3$
+		
+		Házi feladat befejezni. (mj.: erre vissza fogunk térni)
+	\end{task}
+	Házi feladat továbbá: Igazoljuk hogy $e^x=2-x$ egyenletnek van valós gyöke. Útmutatás ehhez a feladathoz, hogy a Bolzano tétellel érdemes nekiesni, továbbá érdemes átrendezni:
+	\[ f(x):=e^x-2+x \]
+	Keresünk olyan intervallumot ahol a két végpontban különböző a függvényérték.
+	\[ \nexists\quad \quad \not\exists \]
+	\[\not\in\notin \]
+\end{document}

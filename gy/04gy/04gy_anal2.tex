@@ -1,0 +1,210 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		4. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	
+	\section{Információ.}
+	\begin{compactitem}
+		\item Zh előtt 5 dolgozatot fogunk összesen írni. 
+		\item Ez azt jelenti, hogy a Zh hetében is fogunk írni.
+		\item A hátralévő 2 kisZH-n is a deriválásból lesz kérdés.
+		\item A feladat a házi feladatból is \textit{lehet}.
+		\item A ZH-val kapcsolatos dokumentumok \textit{időben} kikerülnek.
+	\end{compactitem}
+	\section{Differenciálszámítás.}
+	\begin{note}
+		Ez egy rendkívül hasznos eszköz a függvények tulajdonságainak vizsgálatához. Az előadáson elhangzott motiváció a töréspont jelemzése volt függvényeknél. Ebből kiindulva jutunk ahhoz, hogy lesz egy technikánk a függvényvizsgálatra.
+	\end{note}
+	\begin{task}
+		A definícióból vizsgáljuk deriválhatóság szempontjából a követekző függvényt:
+		\[ f(x)=\frac{1}{\sqrt{x+1}}\quad (x>-1);\quad a:=3 \]
+		$f\overset{?}{\in}D\{a\},\quad f'(a)=?$
+		\medskip
+		
+		\textit{Megoldás:} $3\in\text{int}D_f\quad \checkmark$
+		\[ f\in D\{3\}\quad \Leftrightarrow \quad \lim_{h\to0} \frac{f(3+h)-f(3)}{h} \]
+		\[ \frac{f(3+h)-f(3)}{h}=\frac{\frac{1}{\sqrt{3+h+1}}-\frac{1}{\sqrt{3+1}}}{h}=\frac{\sqrt{4}-\sqrt{4+h}}{h\cdot\sqrt{4}\cdot\sqrt{4+h}} \quad \overset{\frac{0}{0}}{=}\quad \frac{1}{2\sqrt{4+h}}\cdot\frac{\sqrt{4}-\sqrt{4+h}}{h}\cdot\frac{\sqrt{4}+\sqrt{4+h}}{\sqrt{4}+\sqrt{4+h}}=\]
+		\[ =\underbrace{\frac{1}{2\sqrt{4+h}}}_{\overset{h\to0}{\longrightarrow}\frac{1}{4}}\cdot\underbrace{\frac{-h}{h\cdot(2+\sqrt{4+h})}}_{\overset{h\to0}{\longrightarrow}-\frac{1}{4}}\longrightarrow-\frac{1}{16}\quad \Rightarrow\quad \]
+		$f\in D\{3\}$ \quad és \quad $f'(3)=\frac{1}{16}$.
+		
+		\medskip
+		\textit{Ellenőrzés:} Deriválási szabállyal:
+		\begin{compactenum}
+			\item $f\in D\{3\} \quad \checkmark$
+			\item $\displaystyle f'(x) = \left((x+1)^{-\frac{1}{2}}\right)'=-\frac{1}{2}\cdot(x-1)^{-\frac{1}{2}-1}\cdot(x+1)'=\left(-\frac{1}{2}\right)\cdot(x+1)^{-\frac{3}{2}}\cdot1\quad \Rightarrow\quad$
+			
+			$\displaystyle  f'(3)=\left(\frac{1}{2}\right)\cdot4^{-\frac{3}{2}} = -\frac{1}{2}\cdot\frac{1}{\sqrt{4^3}}=-\frac{1}{2}\cdot\frac{1}{4}\cdot\frac{1}{\sqrt{4}}=-\frac{1}{16}\quad \blacksquare$
+			
+			Ilyenkor a külső és a belső függvény deriváltjára kéne gondolni.
+		\end{compactenum}
+	\end{task}
+	\begin{task}
+		A def-ból:
+		\[ f(x):=\frac{x+2}{x^2-9}\quad (x\in\R\setminus\{\pm3 \});\quad a=-1 \]
+		
+		$f\overset{?}{\in}D\{-1\},\quad f'(-1)=?$
+		\medskip
+		
+		\textit{Megoldás:} $(-1)\in$int$\mathcal{D}_f\quad \checkmark\quad \lim_{h\to0}\frac{f(a+h)-f(a)}{h}=?$
+		\[ \frac{f(a+h)-f(a)}{h}=\frac{f(-1+h)-f(-1)}{h}=\frac{\frac{1+h+2}{(1+h)^2-9}-\frac{-1+2}{(-1)^2-9}}{h}=\frac{\frac{h+1}{(h-1)^2-9}+\frac{1}{8}}{h}=\frac{8h+8+(h-1)^2-9}{h\cdot8\left((h-1)^2-9\right)} =\]
+		\[=\frac{h^2+6h}{h\cdot8\left((h-1)^2-9\right)}\quad \underset{h\to0}{\longrightarrow} \quad \frac{6}{8\cdot(-8)}=-\frac{3}{32} \]
+		\begin{note}
+			Fent el kellett végezni a négyzetre emelést, lent még egyenlőre fölösleges. Ez ZH-n időnyerésre használható.
+		\end{note}
+		\textit{Ellenőrzés:} $f'(x)=?$ Itt most törtet kell deriválni.
+		\[ f'(x)=\frac{(x+2)'\cdot(x^2-9)-(x+2)\cdot(x^2-9)'}{(x^2-9)^2} = \frac{(x^2-9)-(x+2)\cdot2x}{(x^2-9)^2}\quad \Rightarrow\]
+		\[ f'(-1)=\frac{-8+6}{8^2}=-\frac{-6}{8^2}=-\frac{3}{32}\quad \blacksquare \]
+	\end{task}
+	\begin{note}
+		Deriválási táblázatot és deriválási szabályokat nagyon fontos jól tudni.
+	\end{note}
+	\begin{task}
+		Deriválni:
+		\[ f(x):=x^3+\frac{1}{x^2}-\frac{1}{5x^5} \]
+		\begin{note}
+			Most csak a deriválást technikáját fogjuk gyakorolni.
+		\end{note}
+		\[ x^3+\frac{1}{x^2}-\frac{1}{5x^5}=x^3+x^{-2}-\frac{1}{5}\cdot x^{-5}\quad \overset{(x^\alpha=\alpha\cdot x^{\alpha-1})}{\Rightarrow}\quad f'(x) =3x^2+(-2)\cdot x^{-3}-\frac{1}{5}\cdot(-5)\cdot x^{-6} \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\sqrt{x\sqrt{x\sqrt{x}}}=\left(x\cdot\left(x\cdot x^{\frac{1}{2}}\right)^{\frac{1}{2}}\right)^{\frac{1}{2}}=(x\cdot x^{\frac{3}{4}})^{\frac{1}{2}}=(x^{\frac{7}{4}})^{\frac{1}{2}}=x^{\frac{7}{8}} \]
+		\[ f'(x)=\left(x^{\frac{7}{8}}\right)'=\frac{7}{8}\cdot x^{\frac{7}{8}-1}=\ldots \]
+	\end{task}
+	\begin{task}
+		\[f(x) :=x^2\cdot\sin x \]
+		\medskip
+		
+		\textit{Megoldás:}
+		\[ f'(x)=(x^2)'\cdot\sin x+x^2\sin'x=2x\sin x+x^2\cdot \cos x \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\frac{x^2+3}{x^2-x-2} \]
+		\[ f'(x)=\frac{2x\cdot(x^2-x-2)-(x^2+3)\cdot(2x-1)}{(x^2-x-2)^2}=\ldots \]
+	\end{task}\subsection{
+	Összetett függvények.}
+	\begin{task}
+		\[ f(x):=\text{tg}(5x^2+3x) \]
+		\[ f'(x)=\text{tg}'(5x^2+3x)\cdot(10x+3)=\frac{1}{\cos^2(5x^2+3x)}\cdot(10x+3) \]
+	\end{task}
+	\begin{task}
+		\[ f(x)=\sin\frac{x^2+1}{x+3} \]
+		\[ f'(x)=\cos\frac{x^2+1}{x+3}\cdot\left(\frac{x^2+1}{x+3}\right)' = \cos\frac{x^2+1}{x+3}\cdot\frac{2x\cdot(x+3)-(x^2+1)\cdot1}{(x+3)^2} \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\sqrt{x^3+2x+1} \]
+		\[ f'(x)=\frac{1}{2\sqrt{x^3+2x+1}}\cdot\left(3x^2+2\right) \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\sqrt{x+\sqrt{x}} \]
+		\[ f'(x)=\frac{1}{2\sqrt{x+\sqrt{x}}}\cdot\left(1+\frac{1}{2\sqrt{x}}\right) \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=\ln\left(\frac{1}{x}+\sqrt{1+\frac{1}{x^2}}\right) \]
+		\[ f'(x)=\frac{1}{\frac{1}{x}+\sqrt{q+\frac{1}{x^2}}}\cdot\left(\frac{1}{x}+\sqrt{1+\frac{1}{x^2}}\right)'= \frac{1}{\frac{1}{x}+\sqrt{1+\frac{1}{x^2}}}\cdot\left(-\frac{1}{x^2}+\frac{1}{2\sqrt{1+\frac{1}{x^2}}}\cdot(-2)\right)\cdot x^{-3} \]
+	\end{task}
+	\begin{task}
+		\[f(x):=(\ln)^x\quad (x>1) \]
+		,,$f(x)^{g(x)}$ típusú''
+		\begin{note}
+			Amennyiben nem tudjuk milyen szabályt alkalmazzunk: Az alapot $e$ hatványként írjuk fel! \fbox{\fbox{$a=e^{\ln a}$}}
+		\end{note}
+		\[ f(x)=(\ln x)^x=\left(e^{\ln(\ln x)}\right)^x=\underbrace{e^{x\cdot\ln(\ln x)}}_{\substack{\text{külső fv: } e^x \\ \text{belső: }x\cdot\ln(\ln x)}}\quad =\quad e^{c\cdot\ln(\ln x)}\cdot\left(1\cdot\ln(\ln x)+x\cdot\frac{1}{\ln x}\cdot\frac{1}{x}\right) \]
+	\end{task}
+	Házi feladat: 1. feladat.
+\end{document}

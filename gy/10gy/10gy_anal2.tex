@@ -1,0 +1,230 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		10. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Információk}
+	\begin{itemize}
+		\item Megajánlott vizsgajeggyel kapcsolatban
+		\begin{itemize}
+			\item Elegendő gyakuv is a a megajánlott jegyhez, a fontos az hogy gyakjegy meglegyen.
+			\item A zh-n egy tétel kimondása és bizonyítása öszesen 4 pontot ér. Ebből garantált egy pont a tételkimondás. Amennyiben a tételkimondás rossz, az instant 0 pont.
+			\item a két zh-ból összesen 5 pont kell a megajnlott jegyhez.
+		\end{itemize}
+		\item aki gyakjegyet akar javítani, az beszéljen a gyakvezével (nálunk meg négyszemközt Szilivel)
+		\item kikerültek a zh témakörök: direkt nehezebb példák szerepelnek benne, de várhatóan a zh-ban könnyebbek lesznek. melyek ,,kellő'' gyakorlattal teljesíthetőek lesznek.
+		\item Következő órán lesznek a L'Hospital szabállyal és Taylor sorokkal kapcsolatos feladatok.
+		\item a 9. előadás jegyzete legkésőbb holnap felkerül.
+	\end{itemize}
+	\section{Teljes függvényvizsgálat}
+	\begin{task}
+		\[ f(x):=e^{-x^2}\quad (x\in\R) \]
+		\textit{Útmutatás:}
+		
+		\begin{enumerate}
+			\item Előzetes vizsgálatok
+			\begin{enumerate}
+				\item $f\in D^\infty$
+				\item $f$ páros, azaz $f(-x)=f(x)$ (képe szimmetrikus az y tengelyre) $\quad \Rightarrow\quad $ elég $(0,+\infty)$-n vizsgálni.
+				\item $f'(x)=-2e^{-x^2}$
+				\item $f''(x)=e^{-x^2}(4x^2-2)\quad (x\in\R)$
+			\end{enumerate}
+			\item A deriváltból következik a monotonitás,
+			\item lokális szélső érték.
+			\item a második deriváltból következik a konvexitás.
+			\item Határértéke $+\infty$-ben ( $[0,+\infty]$ ):\quad $\displaystyle \lim_{x\to+\infty}\frac{1}{e^{x^2}}=0$
+			\item a függvény görbéje a Gauss-féle háromszöggörbe.
+		\end{enumerate}
+	\end{task}
+	\begin{task}
+		\[ f:=x^x\quad (x>0) \]
+		\textit{Útmutatás:}
+		
+		$f(x)= x^x=(e^{\ln x})^x=e^{x\ln x}\quad (x\in\R)$
+		\begin{enumerate}
+			\item Előzetes vizsgálatok
+			\begin{enumerate}
+				\item $f\in D\{x\}\quad \forall x>0$
+				\item Első és második derivált meghatározása hf.
+			\end{enumerate}
+			\item határértéket $0+0$-ban és $+\infty$-ben kell vizsgálni.
+			\[ \lim_{x\to+\infty}e^{x\ln x}=+\infty,\quad \lim_{x\to0+0}x^x=e^{x\ln x}=? \]
+			Ehhez meg kéne határozni $\displaystyle \lim_{x\to0+0}x\ln x$-t.
+			\[\displaystyle \lim_{x\to0+0}x\ln x \quad \overset{0\cdot(-\infty)}{=}\quad \lim_{x\to0+0}\frac{\ln x}{\frac{1}{x}}\quad \overset{\frac{+\infty}{-\infty}}{\underset{\text{L'Hospital}}{=}}\quad \lim_{x\to0+0}\frac{\frac{1}{x}}{-\frac{1}{x^2}}=\lim_{x\to0+0}(-x)=0 \]
+			Visszatérve az eredeti problémára, ez alapján:
+			\[ \lim_{x\to0+0}e^{x\ln x}\quad \underset{\exp\in C(0)}{=}\quad 1=\lim_{x\to0+0}x^x \]
+		\end{enumerate}
+	\end{task}
+	\begin{task}
+		\[ f(x):=\frac{x^3+x}{x^2-1}\quad (x\in\R\setminus\{-1,1\}) \]
+		\textit{Útmutatás:}
+		
+		A szémolások elég hosszúak, így azok házi feladatok.
+		\begin{enumerate}
+			\item Kezdeti vizsgálat:
+			\begin{enumerate}
+				\item $f\in D^\infty$
+				\item $f$ páratlan, $f(-x)=-f(x)$, azaz az origóra középpontosan szimmetrikus $\quad \Rightarrow\quad $ elég $[0,+\infty]$-en vizsgálni.
+				\item Az első és második derivált részlete meghatározása hf.
+				\[ f'(x)=\frac{x^4-4x^2-1}{(x^2-1)^2} \]
+				\[ f''(x)=\frac{4x(x^2+3)}{(x^2-1)^3} \]
+			\end{enumerate}
+			\item Monotonitás most kicsit nehézkes, a derivált negyedfokú.
+			\[ \frac{x^4-4x^2-1}{(x^2-1)^2} \overset{?}{\overset{>}{\underset{<}{=}}}0\quad \Leftrightarrow\quad x^4-4x^2-1 \overset{>}{\underset{<}{=}}0 \]
+			Legyen $a:=x^2$. Így már $a_1=2+\sqrt{5}$ és $x_1=\sqrt{2+\sqrt{5}}$ megállapítható.
+			
+			Így az intervallumokhoz tekintsük a nevezetes pontokat: $x_1>1$, így $-1$-et is vizsgálnunk kell, hisz az nincs benne $f$ értelmezési tartományában. Későbbi megállapításunk miatt tudjuk, hogy elég a függvényt $0$tól vizsgálni, így ezt is meg kell néznünk.
+			\[ f'(x)<0,\quad x\in(0,1)\quad \Rightarrow\quad f\Downarrow\quad (0,1)\text{-en} \]
+			\[ f'(x)<0,\quad x\in(1,x_1)\quad \Rightarrow\quad f\Downarrow\quad (1,x_1)\text{-en} \]
+			\[ f'(x)>0,\quad x\in(x_1,+\infty)\quad \Rightarrow\quad f\Uparrow\quad (x_1,+\infty)\text{-en} \]
+			\item lokális szélső érték ($0;+\infty$)-en: $x_1$ lokális minimum hely.
+			\item konkévitás/konvexitás
+			\[ f''(x)\overset{?}{\overset{<}{\underset{>}{=}}}0\quad \Leftrightarrow\quad \frac{x}{(x^2-1)^3}\overset{>}{\underset{<}{=}}0\quad \Leftrightarrow\quad \frac{1}{(x^2-1)^3}\overset{>}{\underset{<}{=}}0 \]
+			\[ f''(x)<0,\quad x\in(0,1)\quad \Rightarrow\quad f\quad \text{konkáv}\quad (0,1)\text{-en} \]
+			\[ f''(x)>0,\quad x>1\quad \Rightarrow\quad f\quad \text{konvex}\quad (1,+\infty)\text{-en} \]
+			\item határérték: $(\mathcal{D'}_f\setminus\mathcal{D}_f)=\{+\infty\}$, valamint mlg az 1 pontban kell vizsgálni.
+			\[ \lim_{+\infty}f=\lim_{x\to+\infty}\frac{x^3+x}{x^2-1}\quad \overset{\frac{+\infty}{-\infty}}{=}\quad \lim_{x\to+\infty}x\cdot\frac{x^2+1}{x^2-1}=\lim_{x\to+\infty}\underbrace{x}_{\to+\infty}\cdot\frac{\overbrace{1+\frac{1}{x^2}}^{\to 1}} {\displaystyle 1-\frac{1}{x^2}} =+\infty \]
+			%Itt egyszerűbb hagyni a L'Hospital szabályt, és inkább egyszerűbb megoldást kerestni.
+			\[ \lim_1f=? \]
+			Ez $\frac{1}{0}$ típusú, azaz itt külön kell nézni a határértéket.
+			\[ \lim_{1+0}\frac{{x^3+x} }{x^2-1}=+\infty;\quad \lim_{1-0}\frac{{x^3+x} }{x^2-1}=-\infty;  \]
+			Így határérték nem létezik, de kétoldali igen.
+			\item Aszimptota (elegendő $(x>0):\quad (+\infty)$-ben
+			\[ \lim_{x\to+\infty}\frac{f(x)}{x}=\lim_{x\to+\infty}\frac{\frac{x^3+x}{x^2-1}}{x}=\lim_{x\to+\infty}\frac{x^2+1}{x^2-1}=1=:A \]
+			\[ \lim_{x\to+\infty}(f(x)-x)=\lim_{x\to+\infty}\left(\frac{x^3+x}{x^2-1}-x\right)=\lim_{x\to+\infty}\frac{2x}{x^2-1}=\lim_{x\to+\infty}\frac{\frac{2}{x}}{1-\frac{1}{x^2}}=0=:B \]
+			így az aszimptota $(+\infty)$-ben:
+			\[ y=Ax+B=x \]
+		\end{enumerate}
+		$f'(0)=-1$, így:
+		%TODO kép
+	\end{task}
+	\section{L'Hospital szabályok}
+	Ellenőrizzük...
+	\begin{task} $a\in(1,+\infty);\quad n\in\N$
+		\[ \lim_{x\to+\infty}\frac{a^x}{x^n}=+\infty. \]
+		\textit{Megoldás:}
+		\[ \lim_{x\to+\infty}\frac{a^x}{x^n}\quad \overset{\frac{+\infty}{+\infty}}{\underset{\text{L'Hospital}}{=}}\quad  \lim_{x\to+\infty}\frac{a^x\ln a}{nx^{n-1}}\quad \overset{\frac{+\infty}{+\infty}}{\underset{n>1}{\underset{L'Hospital}{=}}}\quad \lim_{x\to+\infty}\frac{a^x(\ln a)^2}{n(n-1)x^{n-2}}\quad \underset{n>2}{=}\quad \underbrace{\ldots}_{\text{n-szer végrehajtjuk}}\quad =\]
+		\[=\quad \lim_{x\to+\infty}\frac{a^x(\ln a)^x}{n!}=+\infty.  \]
+	\end{task}
+	\begin{note}
+		\[ \lim_{x\to+\infty}\frac{a^x}{x^n}=+\infty\quad (a>1) \]
+		Ez mit is jelent? Azt, hogy nagy $x$-ekre ez a tört is nagy. Ez úgy lehet, ha a számlálója lényegesen nagyobb mint a nevező.
+		\[ x^n << a^x \quad (\text{ha $x$ nagy}) \]
+		Azaz, $a^x$ gyorsabban növekszik mint $x^n$.
+	\end{note}
+	\begin{task}
+		$n,m\in \N$
+		\[ \lim_{x\to+\infty}\frac{\ln^n x}{x^m}=0 \]
+		\textit{Megoldás:}
+		\[ \lim_{x\to+\infty}\frac{\ln^nx}{x^m}\quad \overset{\frac{+\infty}{+\infty}}{=}\quad \lim_{x\to+\infty}\frac{n\cdot (\ln^{n-1}x)\cdot \frac{1}{x} }{m\cdot x^{m-1}}=\lim_{x\to+\infty}\frac{n\ln^{n-1}x}{m\cdot x^m} =\ldots=\lim_{x\to+\infty}\frac{n!}{m^n\cdot x^m}=0 \]
+	\end{task}
+	\begin{note}
+		\[ \lim_{x\to+\infty}\frac{\ln^n x}{x^m}=0 \]
+		Mit jelent az, hogy két szám hényadosa 0-hoz tart? Ha az $x$ nagy, akkor a tört kicsi. Nagyon kicsi a tört hogyna lehet, ha nevező nagyon nagy. Ez azt jelenti, hogy a hatvány sokakl nagyobb mint a logaritmus bármelyik kitevője.
+		\[ \ln^nx<<x^m\quad (\text{ha $x$ nagy.}) \]
+	\end{note}
+\end{document}

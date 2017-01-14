@@ -1,0 +1,201 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+%\usepackage[normalem]{ulem}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Konzultáció jegyzet}}
+		
+		%5. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Németh} Zsolt konzultációján. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	
+	\section{Csak hogy ne 0-val legyen a felsorolás.}
+	\subsection{Definícióval határérték számítása.}
+	\begin{task}
+		\[ \lim_{x\to-3}\frac{x^2+2x-3}{x^3+3x^2+x+3}=? \]
+		\[ \lim_{x\to-3}\frac{x^2+2x-3}{x^3+3x^2+x+3}\quad \overset{\frac{0}{0}}{=}\]
+		Kiemelhetünk $(x+3)$ gyöktényezőt.
+		
+		$(x^2+3x-3):(x+3)=x-1$\quad \quad \quad $(x^3+2x^2+x+3):(x+3)=x^2+1$
+		\[ =\frac{(x+3)(x-1)}{(x+3)(x^2+1)}= \]
+		\textbf{Sejtés:} (behelyettesítéssel) $\displaystyle \lim_{x\to-3}=\frac{-3-1}{(-3)^2+1}=-\frac{2}{5}$
+		
+		\medskip
+		\textit{Bizonyítás:}
+		\[ \forall\varepsilon>0\quad \exists\delta>0:\quad \forall x:\quad 0<|x+3|<\delta:\quad \left|f(x)-\left(-\frac{2}{5}\right)\right|<\varepsilon \]
+		Legyen $\varepsilon>0$ tetszőleges. Keressünk egy olyan $\varepsilon$ számot, melyre teljesül 
+		\[ \left|f(x)+\frac{2}{5}\right|<\varepsilon\quad \text{ha}\quad 0<|x+3|<\delta \]
+		Nekem delta egy eszköz arra, hogy szabályozzam $x$ értékét.
+		\[ \left|\frac{x-1}{x^2+1}+\frac{2}{5}\right|<\varepsilon \]
+		\[ \left|\frac{x-1}{x^2+1}+\frac{2}{5}\right|=\left|\frac{5(x-1)+2(x^2+1)}{5(x^2+1)}\right|=\left|\frac{2x^2+5x-3}{5x^2+5}\right|= \]
+		Ha nem rontottunk el semmit, akkor a deltával it tudok játszani. Cél az $|x+3|$ kiemelése. Ha ez nem lehetséges, akkor sanszos, hogy nem igaz az állítás. 
+		
+		$(2x+5x-3):(x+3)=2x-1$
+		\[ =\left|x+3\right|\frac{|2x-1|}{|5x^2+5|}< \]
+		Meg akarunk szabadulni ettől a törttől. Általában felülről becsülünk egy konkrét valós számmal. 
+		
+		Pl.:\quad $\delta\leq1\quad \Rightarrow\quad |x+3|<\delta\leq1\quad \Rightarrow\quad |x+3|<1\quad \Rightarrow\quad -1<x+3<1\quad \Rightarrow\quad -4<x<-2$
+		
+		Próbáljuk meg $\delta$-t úgy megválasztani, hogy azzal megszabaduljunk a törttől! Tudjuk, hogy 
+		\[-9<2x-1<-5\quad \Rightarrow\quad|2x-1|<9\]
+		\[ 25<5x^2+5<85\quad \Rightarrow\quad |5x^2+5|>25 \]
+		Lévén $x$ egy 3 sugarú környezetében dolgozunk, így megtehetjük, hogy még szűkebbre vesszük ezt. Mondjuk azt, hogy $ x$ 1 sugarú környezetére vesszük. A következő csak ezzel a feltétellel igaz!
+		\[ <|x+3|\frac{9}{25}=\frac{9}{25}|x+3|\overset{!}{<}\varepsilon \]
+		\[ \frac{9}{25}|x+3|<\varepsilon\quad \Leftrightarrow\quad |x+3|<\frac{25\varepsilon}{9}\quad \Leftrightarrow\quad |x+3|<\delta\leq\frac{25\varepsilon}{9} \]
+		Azaz $\delta:=\min\left(1;\frac{25\varepsilon}{9}\right)$. Ezzel bebizonyítottuk a sejtésünket.
+	\end{task}
+	\begin{task}
+		\[ \lim_{x\to+\infty}\frac{x^3+x-4}{x^2+1}=\lim_{x\to+\infty}\frac{x^3}{x^2}\cdot\frac{1+\frac{a1}{x^2}-\frac{4}{x^3}}{1+\frac{1}{x+2}}=\lim_{x\to+\infty}x\cdot\frac{1+\frac{1}{x+2}-\frac{4}{x^3}}{1+\frac{1}{x^2}}=(+\infty)\cdot\frac{1+0+0}{1+0} \]
+		\textbf{Sejtés:} $\displaystyle \lim_{x\to+\infty}\frac{x^3+x-4}{x^2+1}=+\infty$
+		
+		\medskip
+		\textit{Bizonyítás:}
+		\[ \forall\varepsilon>0\quad \exists\delta>0:\quad \frac{1}{\delta}<x:\quad \frac{1}{\varepsilon}<f(x) \]
+		vagy
+		\[ \forall >0\quad \exists L>0:\quad L<x:\quad K<f(x) \]
+		Nem kell abszolőt értékebe tenni $f(x)$-et, mert azt akarjuk megmutatni, hogy $+\infty$-hez tart.
+		
+		\smallskip
+		$K>0$ tetszőleges. \fbox{$x_0=?$}:\quad $K<f(x)\quad (\forall x>x_0)$
+		\[ f(x)=\frac{x^3+x-4}{x^2+1}\quad \overset{x_0\geq4}{\overset{\Rightarrow x-4>0}{\underset{\underset{\Rightarrow x^2>1}{x_0\geq1}}{>}}}\quad \frac{x^3}{x^2+x^2}=\frac{x^3}{2x^2}=\frac{x}{2}\overset{?}{>}K \]
+		$x>2K,\quad x>x_0\geq2K\quad \Rightarrow\quad x_0:=\max\{ 4;1;2K \}$.
+	\end{task}
+	\subsection{Tételek alapján határérték számítása.}
+	\begin{task}
+		\[ \lim_{x\to0}\frac{\sqrt{1+x}-1}{x}\quad \overset{\frac{0}{0}}{=}\quad \lim_{x\to0}\frac{\sqrt{1+x}-1}{x}\cdot\frac{\sqrt{1+x}+1}{\sqrt{1+x}+1}=\]
+		\[=\lim_{x\to0}\frac{(1+x)^2+0}{x(\sqrt{1+x}+1)}=\lim_{x\to0}\frac{x}{x(\sqrt{1+x}+1)}=\frac{1}{\sqrt{1+0}+1}=\frac{1}{2} \]
+		
+	\end{task}
+	\begin{task}
+		\[ \lim_{x\to0}\frac{\sqrt[4]{16+x}-2}{x}\quad \overset{\frac{0}{0}}{=}\quad \lim_{x\to0}\frac{\overbrace{\sqrt[4]{16+x}}^a-\overbrace{2}^b}{x}\cdot\frac{a^3+a^2b+ab^2+b^3}{a^3+a^2b+ab^2+b^3}=\]
+		\[=\lim_{x\to0}\frac{\sqrt[4]{16+x}-2}{x}\cdot\frac{(\sqrt[4]{16+x})^3+(\sqrt[4]{16+x})^2\cdot2+(\sqrt[4]{16+x})\cdot2^2+2^3}{(\sqrt[4]{16+x})^3+(\sqrt[4]{16+x})^2(\cdot2+\sqrt[4]{16+x})\cdot2^2+2^3}=\]
+		\[=\lim_{x\to0}\frac{16+x-2^4}{x(\ldots)}=\lim_{x\to0}\frac{x}{x(\ldots)}=\frac{1}{2^3+2^2\cdot2+2\cdot2^2+2^3}=\frac{1}{32} \]
+	\end{task}
+	\begin{task}
+		\[ \lim_{x\to0}\frac{1-\cos x}{\cos(7x)-\cos(3x)} \]
+		Ezeket akarjuk használni:
+		\[ \lim_{x\to0}\frac{\sin ax}{ax}=1,\quad \lim_{x\to0}\frac{1-\cos(ax)}{(ax)^2}=\frac{1}{2} \]
+		\[ \lim_{x\to0}\frac{1-\cos x}{\cos(7x)-\cos(3x)}=\lim_{x\to0}\frac{\frac{1-\cos x}{x^2}\cdot x^2}{(\cos(7x)-1)+(1-\cos(3x))}=\]
+		\[=\lim_{x\to0}\frac{\frac{1-\cos x}{x^2}\cdot x^2}{-\left(\frac{1-\cos(7x)}{(7x)^2}\right)\cdot(7x)^2+\frac{1-\cos(3x)}{(3x)^2}\cdot(3x)^2}=\lim_{x\to0}\frac{\frac{1-\cos x}{x^2}}{-\frac{1-\cos(2x)}{(2x)^2}\cdot49+\frac{1-\cos(3x)}{(3x)^2}\cdot9} =\]
+			
+		\[ =\frac{\frac{1}{2}}{-\frac{1}{2}\cdot49+\frac{1}{2}\cdot9}=\frac{1}{-49+9}=-\frac{1}{40} \]
+		Alternatív megoldás: hatványsorok alkalmazása.
+		\[ \lim_{x\to0}\frac{x-\sin x}{e^x-\cos x}=\lim_{x\to0}\frac{x-\left(\frac{x}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}-\ldots\right)}{\left(1+\frac{x}{1!}+\frac{x^2}{2!}+\ldots\right)-\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\ldots\right)} \]
+		Összeadást csak abszolút konvergencia miatt lehetséges!
+		\[ \lim_{x\to0}\frac{x^3-\frac{x^5}{5!}-\frac{x^5}{5!}+\frac{x^7}{7!}-\ldots}{\frac{x}{1}+2\cdot\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^5}{5!}-\ldots}=\lim_{x\to0}\frac{x^3(\frac{1}{3!}-\frac{x^2}{5!}+\ldots)}{x\left(1+\frac{2x}{2!}+\frac{x^3}{3!}+\ldots\right)} \]
+		\[ =0\cdot\frac{\ldots}{\ldots}=0. \]
+	\end{task}
+	\subsection{Deriválás.}
+	\begin{task}
+		\[ f(x)=(\sin\sqrt{x})^{e^{\frac{1}{x}}}\quad 0<y<\pi^2;\quad a=\frac{\pi^2}{4} \]
+		Érintő egyenes?
+		\begin{center}
+			\fbox{$\displaystyle y=f'(a)(x-a)+f(a)$}
+		\end{center}
+		\[ f(a)=\left(\sin\sqrt{\frac{\pi^2}{4}}\right)=\sin\left(\frac{\pi}{2}\right)=1 \]
+		\fbox{$f(a)=1$}
+		\[ f'(x)=\left((\sin\sqrt{x})^{e^{\frac{1}{x}}}\right)'=\left((e^{\ln f})^g\right)'=\left(e^{g\cdot\ln f}\right)' \]
+		\[ \left(\left[e^{\ln(sin\sqrt{x})}\right]^{e^{\frac{1}{x}}}\right)'=\left(e^{e^{\frac{1}{x}}\cdot\ln(\sin\sqrt{x})}\right)'=e^{e^{\frac{1}{x}}\cdot\ln(\sin\sqrt{x})}\cdot\left(e^{\frac{1}{x}}\cdot\ln(\sin\sqrt{x})\right)'= \]
+		\[= e^{e^{\frac{1}{x}}\cdot\ln(\sin\sqrt{x})}\cdot\left[\left(e^{\frac{1}{x}}\right)'\cdot\ln(\sin\sqrt{x})+e^{\frac{1}{x}}\cdot\left(\ln(\sin\sqrt{x})\right)'\right]=\]
+		\[=(sin\sqrt{x})^{e^{\frac{1}{x}}}\cdot\left[e^{\frac{1}{x}}\frac{-\ln(\sin\sqrt{x})}{x^2}+e^{\frac{1}{x}}\cdot\frac{\cos\sqrt{x}}{\sin\sqrt{x}}\cdot\frac{1}{2\sqrt{x}}\right] \]
+		\[ f'(a)=\left(\sin\frac{\pi}{2}\right)^{e^{\frac{4}{\pi^2}}}\cdot\left[e^{\frac{4}{\pi^2}}\cdot\frac{-\ln\left(\sin\frac{\pi}{2}\right)}{\left(\frac{\pi^2}{4}\right)^2}+e^{\frac{4}{\pi^2}}\cdot\frac{\cos\left(\frac{\pi}{2}\right)}{\sin\left(\frac{\pi}{2}\right)}\cdot\frac{1}{2\cdot\frac{\pi}{2}}\right]=0 \]
+		\[ y=0\left(x-a\frac{\pi^2}{4}\right)+1=1 \]
+	\end{task}
+\end{document}

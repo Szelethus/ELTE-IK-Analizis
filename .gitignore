@@ -1,0 +1,8 @@
+#LaTeX temp files
+*.log
+*.aux
+*.out
+*.gz
+*.pdf
+*.toc
+./cpp_book/*

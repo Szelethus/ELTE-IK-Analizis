@@ -1,0 +1,303 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx,float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Ra{\overline{\mathbb{R}}}
+	
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] 
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} 
+	\newtheorem{example}[theorem]{Példa} 
+	\newtheorem{task}[theorem]{Feladat} 
+	\newtheorem{note}[theorem]{Megjegyzés}
+	\newtheorem{revision}[theorem]{Emlékeztető}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis II.}}
+		
+		{\Large Előadás jegyzet}
+		
+		7. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László  előadásán. (\today)
+	
+	%Külön köszönet jár \textsc{Csonka} Szilviának a képek elkészítésért.
+	%\bigskip
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	
+	\section{Információ.}
+	Fontos, hogy azt kell követni ami le van írva, nem feltétlenül elég ami ea-n el van mondva.
+	\section{Konvex és konkáv függvények.}
+	\begin{note}
+		Intervallumon értelmezett függvényekre. $I\subset \R$ int.; pl.: $(-1,1); [-1,1); (0,+\infty)$
+	\end{note}
+	Szemléletesen: $f\nearrow$ lehet 
+	\begin{center}
+		\textit{1. ábra}
+	\end{center}
+	Jellemzés: 
+	\begin{note}
+		Teljesen lehetetlen mindent lerajzolni. A lényeg az, hogy \textbf{húrokkal} jellemezzük ezeket a függvényeket. Konvex függvényeknél minden függvényérték a húr alatt, konkávnál a húr felett lesznek.
+	\end{note}
+	A húregyenes egyenlete: $\displaystyle y=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)$
+	\begin{definition}
+		$I\subset\R$ intervallum, $f$ függvény \textbf{konvex $I$ intervallumon}, ha 
+		\[ \forall a,b\in I,\quad a<b:\quad  f(x)\leq\frac{f(b)-f(a)}{b-a}(x-a)+f(a)\quad (\forall x\in(a,b)) \]
+	\end{definition}
+	\begin{note}
+		Szigorúan konv, ha $\leq$ helyet $<$ van, konvex ha $\leq$ helyett $\geq$ van, és szigorúan konvex ha $>$ van.
+	\end{note}
+	\begin{theorem}
+		$I\subset\R$ intervallum, $f:I\to\R$ konvex $\Leftrightarrow$
+		\[ \forall a,b\in I,\quad a<b\quad \text{és}\quad \forall\lambda\in[0,1] \]
+		\[ f(\lambda a+(1+\lambda)b)\leq\lambda f(a)+(1-\lambda)f(b) \]
+		\textit{Bizonyítás:}
+		Ha $a<b$ és $0<\lambda<1\quad \Rightarrow$
+		\[ x=\lambda a+(1-\lambda)b\in(a,b), \]
+		Ugyanis
+		\[ a= \lambda a+(1-\lambda)a<\lambda a+(1-\lambda)b=x<\lambda b+(1-\lambda)b=b \]
+		Fordítva: $x\in(a,b)$, legyen
+		\[ \lambda:=\frac{b-x}{b-a} \]
+		\[ \Rightarrow \frac{b-x}{b-a}\cdot a+\left(1-\frac{b-x}{b-a}\right)\cdot b=x\checkmark \]
+		A konvexitás definíciója $\Leftrightarrow\quad a<b,\quad \lambda\in(0,1)$
+		\[ x=\lambda a+(1-\lambda)b\in(a,b) \]
+		\[ f(x)=f(\lambda a+(1-\lambda)b)\leq \frac{f(b)-f(a)}{b-a}\Big(\big(\lambda a+(1-\lambda)b\big)-a\Big)+f(a)= \]
+		\[ =\big(f(b)-f(a)\big)(1-\lambda)+f(a)=\lambda f(a)+(1-\lambda)f(b).\quad \blacksquare \]
+	\end{theorem}
+	\begin{theorem}
+		$I\subset \R$ intervallum, $f:I\to\R$ konvec $I$-n $\Leftrightarrow$
+		\[ \forall c\in I:\quad \varDelta_c f(x)=\frac{f(x)-f(c)}{x-c}\quad (x\in I\setminus\{c\}) \]
+		$fv\nearrow$
+		
+		\textit{Bizonyítás:} Csak szóbelin, honlapon található.\quad $\blacksquare$
+	\end{theorem}
+	\begin{note}
+		Konkávra hasonló.
+	\end{note}
+	\begin{note}
+		folytonosság fogalmának és a derivált fogalmának köztüs fogalma a konvexitás.
+	\end{note}
+	\begin{theorem}
+		Ha $f:(\alpha,\beta)\to\R$ konvex, $(\alpha,\beta)$-n $\Rightarrow$
+		\begin{enumerate}
+			\item $\forall c\in(\alpha,\beta):\quad f\in C\{c\};$
+			\item $\forall c\in(\alpha,\beta):\quad \exists f'_+(c)\quad \text{és}\quad \exists f'_-(c)$
+		\end{enumerate}
+		\textit{Bizonyítás:} csak szóbelin.
+	\end{theorem}
+	\begin{theorem}
+		Tegyük fel, hogy $f\in F(\alpha,\beta)$
+		\begin{enumerate}
+			\item $f$ konvex\quad $\Leftrightarrow\quad f'\nearrow(\alpha,\beta)$-n
+			\item $f$ konkáv\quad $\Leftrightarrow\quad f'\searrow(\alpha,\beta)$-n
+		\end{enumerate}
+		\textit{Bizonyítás:} \fbox{$\Rightarrow$} Legyen $a,b,\quad \alpha<a<b<\beta$.
+		\[ \varDelta_af(x)=\frac{f(x)-f(a)}{x-a}\quad \big(x\in(\alpha,\beta)\setminus\{a\}\big)\nearrow \]
+		\[ \Rightarrow\quad x<b,\quad x\not=a:\quad \varDelta_af(x)\leq\frac{f(b)-f(a)}{b-a} \]
+		Mivel $f'(a)=\lim_{x\to a}\varDelta_af(x)\leq\frac{f(b)-f(a)}{b-a}$
+		Hasonlóan:
+		\[ \varDelta_bf(x)=\frac{f(x)-f(b)}{x-b}\nearrow \]
+		\[ \Rightarrow \forall x>a,\quad x\not=b:\quad \varDelta_bf(x)\geq\frac{f(b)-f(a)}{b-a} \]
+		\[ f'(b)=\lim_b\varDelta_bf\geq\frac{f(b)-f(a)}{b-a} \]
+		$a<b$
+		\[ f'(a)\leq\frac{f(b)-f(a)}{b-a}\leq f'(b) \]
+		$\Rightarrow f'\nearrow$
+		
+		\fbox{$\Leftarrow$} (Lagrange k.ét)
+		Legyen $a,b,x:\quad \alpha<a<x<b<\beta$
+		$[a,x]\text{-n}\quad \Rightarrow\quad \exists\xi_1\in(a,x):$
+		\[ f'(\xi_1)=\frac{f(x)-f(a)}{x-a} \]
+		$[x,b]$-re\quad $\exists\xi_2\in(x,b):$
+		\[ f'(\xi_2)=\frac{f(b)-f(x)}{b-x} \]
+		$\xi_2<\xi_2,\quad f\nearrow:\quad f'(\xi_1)\leq f'(\xi_2)\quad \Leftrightarrow$
+		\[ \frac{f(x)-f(a)}{x-a}\leq\frac{f(b)-f(x)}{b-x} \]
+		Átrendezve: $f(x)\leq\frac{f(b)-f(a)}{b-a}(x-a)+f(a)\quad \Rightarrow\quad f$ konvex.\quad $ \blacksquare$
+	\end{theorem}
+	\begin{theorem}
+		Tegyük fel, hogy $f\in D^2(\alpha,\beta)$
+		\begin{enumerate}
+			\item $f$ konvex $(\alpha,\beta)$-n\quad $\Leftrightarrow \quad f''\geq 0 \quad (\alpha,\beta)$-n.
+			\item $f$ konkáv $(\alpha,\beta)$-n\quad $\Leftrightarrow \quad f''\leq 0 \quad (\alpha,\beta)$-n.
+		\end{enumerate}
+	\end{theorem}
+	\begin{theorem}
+		Tegyük fel, hogy $f:(\alpha,\beta)\to\R$
+		\[ \left.\begin{gathered}
+		f\in D(\alpha,\beta)\\
+		f\text{ konvex } (\alpha,\beta)\text{-n}
+		\end{gathered}\right\}\quad \Leftrightarrow\quad \begin{gathered}
+		\forall c\in(\alpha,\beta)\\
+		f(x)\geq f'(c)(x-c)+f(c)\quad (\forall c\in(\alpha,\beta))
+		\end{gathered} \]
+		\textit{Bizonyítás nélkül.}
+	\end{theorem}
+	\begin{definition}
+		Tegyük fel, hogy $f\in D(\alpha,\beta).$ A $c\in(\alpha,\beta)$ az $f$ függvény \textbf{inflexiós pontja}, ha
+		\[ \exists\delta>0:\quad f\quad  \text{konvex}\quad (c-\delta,c]\text{-n} \]
+		\[ \exists\delta>0:\quad f\quad  \text{konkáv}\quad [c-\delta,c)\text{-n} \]
+		vagy fordítva.
+	\end{definition}
+	\begin{theorem}
+		(Szükséges feltétel az inflexiós pontra.)
+		\[\left.
+		\begin{gathered}
+		\text{Tegyük fel, hogy } f\in D^2(\alpha,\beta)\\
+		c\in(\alpha,\beta)\text{ infációs pontja $f$-nek}
+		\end{gathered}\right\}\quad \Rightarrow\quad f''(c)=0.
+		\]
+	\end{theorem}
+	\begin{theorem}
+		Tegyük fel, hogy $f:(\alpha,\beta)\to\R; n\in\N $ és $c\in (\alpha,\beta)$ pontban:
+		\[ f'(c)=f''(c)=f'''(c)=\ldots=f^{(n-1)}(c)=0\quad \text{és}\quad f^{(n)}(c)\not=0 \]
+		Ekkor:
+		\begin{enumerate}
+			\item $c$ lokális szélső érték hely \quad $\Leftrightarrow\quad n$ páros.
+			\item $c$ inflációs pont \quad $\Leftrightarrow\quad n$ páratlan.
+		\end{enumerate}
+	\end{theorem}
+	\begin{note}
+		Lehet, hogy nem alkalmazható:
+		\[ f(x):=\begin{cases}
+		e^{-\frac{1}{x^2}},\quad (x\in \R\setminus\{0\})\\
+		0,\quad x=0
+		\end{cases} \]
+		Igazolható:
+		\[ f^{(n)}(0)=0(\forall n\in N)\quad \blacksquare \]
+	\end{note}
+	\begin{definition}
+		Az $f:(a,+\infty)\to\R$ függvénynek van \textbf{aszimptotája} $(+\infty)$-ben:
+		\[ \exists l(x):=Ax+B\quad (x\in\R) \]
+		\[ \lim_{x\to+\infty}(f(x)-l(x))=0 \]
+		$l:$ az $f$ függvény aszimptotája $(+\infty)$-ben.
+	\end{definition}
+	\begin{note}
+		$(-\infty)$-ben hasonló.
+	\end{note}
+	\begin{theorem}
+		Az $f:(a,+\infty)\to\R$ függvénynek $(+\infty)$-ben, van aszimptotája $\quad \Leftrightarrow$ léteznek és végesek:
+		\[ \lim_{x\to+\infty}\frac{f'(x)}{x}=:A\in\R;\quad \lim_{x\to+\infty}(f(x)-Ax)=:B\in\R \]
+		Ekkor $l(x)=Ax-B\quad (x\in\R)$ egyenes $f$ aszimptotája $(+\infty)$-ben.
+	\end{theorem}
+	\section{Teljes függvény vizsgálat.}
+	\begin{compactenum}[1. {lépés}:]
+		\item Kezdeti lépések (deriválás, paritás,\ldots) (RÖVIDEN)
+		\item Monoton intervallumok
+		\item Lokális szélső értékeke vizsgálata $\left.\begin{cases}
+		\text{szükséges}\\
+		\text{elégséges}\left\{\begin{gathered}
+		\text{elsőrendű}\\
+		\text{másodrendű}
+		\end{gathered}\right.
+		\end{cases}\right.$
+		\item Konvecitási intervallum
+		\item Határértékek vizsgálata:\quad $\mathcal{D'_f}\setminus\mathcal{D_f}$
+		\item aszimptota
+		\item ábrázolás
+	\end{compactenum}
+	\begin{note}
+		Gyakon lesz bemutatva.
+	\end{note}
+	\subsection{Trigonometrikus függvényekről.}
+	\begin{revision}
+		Középiskolai definíció, anal1-es definíció.
+	\end{revision}
+	\begin{definition}
+		$f:\R\to\R$ periodikus, ha
+		\[ \exists>0\quad \forall x\in\mathcal{D}_f:\quad x\pm p\in\mathcal{D}_f\quad \text{és}\quad f(x+p)=f(x). \]
+		$p$: az $f$ periódusa.
+	\end{definition}
+	\begin{note}
+		Trivi: ha $p>0$ periódus$\quad \Rightarrow\quad \forall k=2,3,\ldots\quad k\cdot p$ is periódus.
+		
+		Legkisebb pozitív periódus nem feltétlen van. Pl.: $f(x):=\begin{cases}
+		0,\quad x\in\Q\\
+		1,\quad x\in\Q^*
+		\end{cases}\quad \Rightarrow\quad \forall$ racionális szám periódusa.
+	\end{note}
+	
+	
+\end{document}

@@ -1,0 +1,393 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx,float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Ra{\overline{\mathbb{R}}}
+	
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] 
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} 
+	\newtheorem{example}[theorem]{Példa} 
+	\newtheorem{task}[theorem]{Feladat} 
+	\newtheorem{note}[theorem]{Megjegyzés}
+	\newtheorem{revision}[theorem]{Emlékeztető}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis II.}}
+		
+		{\Large Előadás jegyzet}
+		
+		6. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László  előadásán. (\today)
+	
+	%Külön köszönet jár \textsc{Csonka} Szilviának a képek elkészítésért.
+	%\bigskip
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	
+	\section{Információk.}
+	Szili honlapján lesz:
+	\begin{compactitem}
+		\item mai előadás
+		\item zh témakörök
+		\item bizonyítással kért tételek listája
+		\item definíciók és tételek listája
+		\item beosztás
+	\end{compactitem}
+	ZH jövő héten várható.
+	\section{Magasabb rendű deriváltak.}
+	\begin{revision}
+		Rekurzió (indukció).
+	\end{revision}
+	\begin{definition}
+		$f\in\R\to\R, \quad \Int \mathcal{D}_f.$ $f$ \textbf{kétszer deriválható} $a$ pontban, (jel: $f\in D^2\{a\}$), ha:
+		\[\begin{gathered}
+		\bullet\exists r>0:\quad f\in D(K_r(a))\\
+		\bullet f'\in D\{a\}
+		\end{gathered}\]
+		Ekkor:
+		\[ f''(a):=(f')'(a) \]
+		az $f$ függvény második deriváltja $a$-ban.
+		
+		\bigskip
+		\textbf{Második derivált függvény:}
+		\[ f'':\{x\in\Int D_f\ |\ f\in D^2\{x\}\}\ni x\to f''(x) \]
+		Jelölés:
+		\[ f^{(1)}(a):=f'(a),\quad f^{(1)}:=f' \]
+		\[ f^{(2)}(a):=f''(a),\quad f^{(2)}:=f'' \]
+		\[ f^{(0)}(a):=f(a),\quad f^{(0)}:=f \]
+	\end{definition}
+	Tovább: indukcióval tegyük fel, hogy $n\in\N$-re:\quad $f\in D^{n-1}\{a\};\quad f^{(n)}$
+	\begin{definition}
+		$f\in\R\to\R,\quad a\in\Int D_f$, és tegyük fel, hogy $n=2,3\ldots$-re$ \quad \exists f^{(n-1)}$\ \ $(n-1)$-edik deriváltfüggvénye. Az $f$ \textbf{$n$-szer deriválható} $a$-ban (jel: $f\in D^n\{a\}$), ha
+		\begin{gather}
+			\exists r>0:\quad f\in D^{n-1}(K_r(a))\\
+			f^{(n-1)}\in D\{a\}
+		\end{gather}
+		Ekkor:
+		\[ f^{(n)}(a):=\left(f^{(n-1)}\right)'(a) \]
+		az $f$ $n$-edik deriváltja $a$-ban. ($n$-edik deriváltfüggvény hasonlóan)
+	\end{definition}
+	\begin{definition}
+		$f\in\R\to\R,\quad a\in\Int D_f$
+		\[ f\in D^{\infty}\{a\}\quad \Leftrightarrow \quad \forall n\in\N:\quad f\in D^n\{a\} \]
+	\end{definition}
+	\subsection{Műveletek}
+	\begin{theorem}
+		$n\in\N,\quad f,g\in D^n\{a\},$ akkor
+		\begin{enumerate}
+			\item $\displaystyle f+g\in D^n\{a\}$ \quad és\quad  $(f+g)^{(n)}(a)=f^{(n)}(a)+g^{(n)}(a)$
+			\item $\displaystyle f\cdot g\in D^n\{a\}$\quad  és\quad  $(f\cdot g)^{(a)}=\displaystyle \sum_{k=0}^n\binom{n}{k}f^{(k)}(a)g^{(n-k)}(a) $
+		\end{enumerate}
+	\end{theorem}
+	\subsection{Lokális szélső érték és a derivált kapcsolata.}
+	\begin{note}
+		Kapcsolat van a függvény (lokális és globális) tulajdonságai és a derivált között
+	\end{note}
+	\begin{revision}
+		Abszolút szélső értékek: lokális változatai
+	\end{revision}
+	\begin{definition}
+		Az $f\in\R\to\R$ függvénynek az $a\in\Int \mathcal{D}_f$ pontban \textbf{lokális maximum}a van, ha
+		\[ \exists K(a)\subset \mathcal{D}_f,\quad \forall x\in K(a):\quad f(x)\leq f(a). \]
+		$a$: \textbf{Lokális maximum hely},
+		\quad $f(a)$: $f$ \textbf{Lokális maximuma.}
+		
+		\medskip
+		Hasonlóan lehet a lokális minimumot is definiálni.
+		\medskip
+		
+		\textbf{Lokális szélső érték:} Lokális maximum / minimum.
+	\end{definition}
+	\begin{note}
+		Abszolút szélső érték\quad$ \longleftrightarrow$\quad lokális szélső érték.
+		
+		Ez a kapcsolat meggondolandó.
+	\end{note}
+	\begin{theorem}
+		(szükséges feltétel a lokális szélső értékre)
+		
+		Tegyük fel, hogy $f\in\R\to\R,$ és 
+		
+		\[\left.\begin{gathered}
+		f\in D\{a\}\quad a\in\Int D_f\\
+		f\text{-nek } a\text{-ban lokális szélső értéke van}
+		\end{gathered}\right\}\quad \Rightarrow\quad f'(a)=0\]
+		
+		\textit{Bizonyítás:} Lokális maximumra:
+		Tekintsük
+		\[ \frac{f(x)-f(a)}{x-a} \]
+		törtet. Ha $x>a$
+		\[ \frac{\overbrace{f(x)-f(a)}^{\leq 0}}{\underbrace{x-a}_{>0}}\leq 0\quad \overset{f\in D\{a\}}{\Rightarrow}\quad \lim_{x\to a+0}\frac{f(x)-f(a)}{x-a}=f'_+(a)=f'(a)<0 \]
+		Ha $x<a$
+		\[ \frac{\overbrace{f(x)-f(a)}^{\leq 0}}{\underbrace{x-a}_{<0}}\geq 0 \]
+		$f\in D\{a\}\quad \Rightarrow\quad f'(a)\geq0$
+		Tehát: $f'(a)\leq0\quad $és\quad $f'(a)\geq0\quad  \Rightarrow\quad f'(a)=0.\quad \blacksquare$
+	\end{theorem}
+	\begin{note}
+		Szükséges, de nem elégséges
+		\begin{center}
+			
+		\texttt{1. ábra}
+		\end{center}
+	\end{note}
+	\begin{definition}
+		$f$-nek $a\in\Int \mathcal{D}_f$ \textbf{stacionárius} pontja, ha $f\in D\{a\},\quad $és$\quad f'(a)=0$
+	\end{definition}
+	\begin{note}\
+		
+		\begin{center}
+			\textit{2. ábra}
+		\end{center}
+	\end{note}
+	\section{Középértékek.}
+	\begin{theorem}
+		(Rolle)
+		
+		\[\left.\begin{gathered}
+			f:[a,b]\to\R\\
+			f\in C[a,b]\\
+			f\in D(a,b)\\
+			f(a)=f(b)
+		\end{gathered}\right\}\quad \Rightarrow\quad \begin{gathered}
+		\xi\in (a,b)\\
+		f'(\xi)=0
+		\end{gathered}
+		\]
+		\textit{Bizonyítás:} $f\in C[a,b]\quad \overset{\text{Weier.}}{\underset{\text{tétel}}{\Longrightarrow}}\quad$
+		$ \exists \alpha\beta\in[a,b]:\quad $
+		\[ f(\alpha):=\min_{[a,b]}f=:m \]
+		\[ f(\beta):= \max_{[a,b]}f:=M \]
+		\begin{enumerate}
+			\item eset: $f\equiv$ áll. $(m=M)\quad \Rightarrow\quad f'\equiv 0$
+			\item eset: $f\not\equiv$ áll.$\quad \Rightarrow\quad m\not=M$ és $ m<M$
+		\end{enumerate}
+		Ha $m\not\equiv f(a)=f(b)\quad \Rightarrow\quad \alpha\in(a,b)$
+		Ekkor $\alpha$: abszolút minimum ér $\alpha$ lokális minimum is.
+		\[ f'(\alpha)=0,\quad \xi=\alpha\quad \text{,,jó''} \]
+		Ha $m=f(a)=f(b)\quad \blacksquare$
+	\end{theorem}
+	Szemléletesen:
+	\begin{center}
+		\textit{3. ábra}
+	\end{center}
+	\begin{theorem}
+		(Lagrange)
+		\[ \left.\begin{gathered}
+			f:[a,b]\to\R\\
+			f\in C[a,b]\\
+			f\in D(a,b)
+		\end{gathered}\right\}\quad \Rightarrow\quad \begin{gathered}
+			\exists \xi\in(a,b)\\
+			f'(\xi)=\frac{f(b)-f(a)}{b-a}
+		\end{gathered} \]
+		
+		Szemléletesen:
+		\begin{center}
+			\textit{4. ábra}
+		\end{center}
+		\textit{Bizonyítás:} A szelő egyenlete:
+		\[ y=h_{a,b}(x)=\frac{f(b)-f(a)}{b-a}(x-a)+f(a) \]
+		Legyen: \[ F(x):=f(x)-h_{a,b}(x)\quad (x\in[a,b]) \]
+		$F$-re a Rolle feltételei teljesülnek (ellenőrizni kell!)
+		\[ \Rightarrow \exists\xi\in(a,b):\quad F'(\xi)=f'(\xi)-\frac{f(b)-f(a)}{b-a}=0.\quad \blacksquare \]
+	\end{theorem}
+	\begin{theorem}
+		(Cauchy)
+		
+		\[f,g:[a,b]\to\R\left.\begin{gathered}
+			f,g\in C[a,b]\\
+			f,g\in D(a,b)\\
+			g'(x)\not=0\quad (\forall x\in(a,b))
+		\end{gathered}\quad \right\}\quad \Rightarrow\quad \begin{gathered}
+		\exists \xi\in(a,b):\\
+		\frac{f'(\xi)}{g'(\xi)}=\frac{f(b)-f(a)}{g(b)-g(a)}
+		\end{gathered}\]
+		\textit{Bizonyítás nem lesz kérdezve.}
+	\end{theorem}
+	Következmény:
+	\begin{theorem}
+		(A deriváltak egyenlősége)
+		
+		\begin{enumerate}
+			\item Ha $f\in D(a,b):\quad f'\equiv0(a,b)$-n\quad $\Leftrightarrow\quad f\equiv$ áll. $(a,b)-n.$
+			\item Ha $f,g\in D(a,b)$
+			\[ f'\equiv g'\quad (a,b)\text{-n}\quad \Leftrightarrow\quad \exists c\in\R:\quad f(x)=g(x)+c\quad (x\in(a,b)) \]
+			\textit{Bizonyítása meggondolandó.}
+		\end{enumerate}
+	\end{theorem}
+	\section{A monotonitás és a deriválás kapcsolata.}
+	\begin{theorem}
+		(Elégséges feltételek)
+		
+		Tegyük fel, hogy $f\in C[a,b],\quad f\in D(a,b)$
+		\begin{enumerate}
+			\item \begin{enumerate}
+				\item $f'\geq0\quad (a,b)$-n\quad $\Rightarrow f\nearrow[a,b]$-n
+				\item $f'\leq0\quad (a,b)$-n\quad $\Rightarrow f\searrow[a,b]$-n
+			\end{enumerate}
+			\item \begin{enumerate}
+				\item $f'>0\quad (a,b)$-n>\quad$ \Rightarrow\quad f\uparrow [a,b]$-n.
+				\item $f'<0\quad (a,b)$-n>\quad$ \Rightarrow\quad f\downarrow [a,b]$-n.
+			\end{enumerate}
+		\end{enumerate}
+		\textit{Bizonyítás:} Lagrange-hátértékék.\quad $\blacksquare$
+	\end{theorem}
+	\begin{note}
+		A derivált előjeléből\quad $\longrightarrow$\quad mon.
+	\end{note}
+	\begin{note}
+		Lényeges, hogy \textbf{intervallumon} értelmezzük a függvényt.
+		\[ f(x):=\frac{1}{x}\quad x\in\R\setminus\{0\},\quad f'(x)=-\frac{1}{x^2}<0 \]
+		és nem szig mon.
+	\end{note}
+	\begin{note}
+		Pl.:
+		  $f(x):=x^3\quad (x\in\R)$
+		  \begin{center}
+		  	szig mon\quad $\Leftarrow$\quad nem igaz.
+		  \end{center}
+	\end{note}
+	\begin{theorem}
+		(szükséges és elégséges feltétel monotonitásra)
+		
+		Tegyük fel, hogy $f\in C[a,b], \quad f\in D(a,b).$ Ekkor:
+		\begin{enumerate}
+			\item \begin{enumerate}
+				\item $f\nearrow \quad [a,b]\quad \Leftrightarrow\quad f'\geq0\quad (a,b)$-n.
+				\item $f\searrow \quad [a,b]\quad \Leftrightarrow\quad f'\leq0\quad (a,b)$-n.
+			\end{enumerate}
+			\item \begin{enumerate}
+				\item $f\uparrow \quad [a,b]$-n$\quad \Leftrightarrow\quad \left\{\begin{gathered}
+				f'\geq0\quad (a,b)\text{-n.}\\
+				\nexists (c,d)\subset(a,b): f'\equiv0 (c,d)\text{-n}
+				\end{gathered}\right.$
+				\medskip
+				
+				\item $f\downarrow \quad [a,b]$-n$\quad \Leftrightarrow\quad \left\{\begin{gathered}
+				f'\leq0\quad (a,b)\text{-n.}\\
+				\nexists (c,d)\subset(a,b): f'\equiv0 (c,d)\text{-n}
+				\end{gathered}\right.$
+			\end{enumerate}
+		\end{enumerate}
+	\end{theorem}
+	\section{A lokálos szélső érték elégséges feltétele.}
+	\begin{theorem}
+		(Elsőrendű)
+		
+		$f\in D(a,b)$. Ha egy $c\in(a,b)$-ben 
+		\[ \left.\begin{gathered}
+			f'(c)=0\\
+			f' \text{ $c$-ben előjelet vált}
+		\end{gathered}\right\}\quad \Rightarrow\quad \begin{gathered}
+		(a) \quad c \text{ lokális minimum hely.}\\
+		(b)\quad \text{ lokális maximum hely.}
+		\end{gathered} \]
+	\end{theorem}
+	\begin{theorem}
+		(Másodrendű)
+		
+		Tegyük fel, hogy $f\in D^2\{c\}$, és 
+		\[\left.\begin{gathered}
+			f'(c)=0\\
+			f''(c)\not=0
+		\end{gathered}\right\}\quad \Rightarrow\quad \begin{gathered}
+			\text{$c$ lokális szélső hely, ha:}\\
+			f''(x)>0\quad \Rightarrow\quad \text{$c$ lokális minium hely}\\
+			f''(x)<0\quad \Rightarrow\quad \text{$c$ lokális maximum hely}
+		\end{gathered} \]
+	\end{theorem}
+	\begin{note}
+		$f''(c)=0$ esetén bármi lehet
+		\begin{center}
+			\textit{5. ábra}
+		\end{center}
+	\end{note}
+	\begin{note}
+		Magasabb rendű elégséges feltétel is megfogalmazható.
+	\end{note}
+\end{document}

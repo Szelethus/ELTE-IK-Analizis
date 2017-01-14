@@ -1,0 +1,196 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Ra{\overline{\mathbb{R}}}
+	
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] 
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} 
+	\newtheorem{example}[theorem]{Példa} 
+	\newtheorem{task}[theorem]{Feladat} 
+	\newtheorem{note}[theorem]{Megjegyzés}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{+/$-$ kidolgozás}}
+		
+		5-6. óra
+	\end{center}
+	A jegyzet \textsc{Umann} Kristóf kidolgozásaiból készült, Dr. \textsc{Szili} László előadása alapján. (\today)
+	
+	Gyakorlathoz pdf: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/An2_gyak_2016_osz.pdf}
+	\begin{enumerate}
+		\item \textbf{Mi a \textit{belső pont} definíciója?}
+		
+		\textbf{Válasz:} 
+		$0\not=A\subset \R$ halmaz \textbf{belső pontja} $a\in A$, ha
+		\[  \exists K(a):\quad K(a)\subset A. \]
+		Jele:\quad $\Int A:=\{ a\in A\ | \ a $ belső pontja $A$-nak \}
+		\item \textbf{Mikor mondja azt, hogy egy $f:\R\to\R$ függvény \textit{differenciálható} valamely pontban?}	
+		
+		\textbf{Válasz:}
+		$f\in\R\to\R, \quad a\in\Int\mathcal{D}_f$.\quad  $f$ \textbf{differenciálható}, vagy \textbf{deriválható} az $a$ pontban, ha
+		\[ \exists\text{\quad és véges\quad }\lim_{h\to0}\frac{f(a+h)-f(a)}{h}=:f'(a)\quad \text{határérték.} \]
+		$f'(a)$: $f$ \textbf{deriváltja}, vagy \textbf{differenciálhányadosa} $a$ pontban.
+		Jelöljük így is: $f\in D\{a\}$.
+		\item \textbf{Mi a kapcsolat a pontbeli differenciálhatóság és a folytonosság között?}
+		
+		\textbf{Válasz:} Tegyük fel, hogy $f\in\R\to\R, \quad a\in\Int\mathcal{D}_f$.
+		\begin{enumerate}
+			\item $f\in D\{a\}\quad \Rightarrow \quad f\in C\{a\}$.
+			\item $f\in C\{a\}\quad \not\Rightarrow \quad f\in D\{a\}$.
+		\end{enumerate}
+		
+		\item\textbf{Mi a \textit{jobb oldali derivált} definíciója?}
+		
+		\textbf{Válasz:} $f\in\R\to\R,\quad a\in\mathcal{D}_f$, és tegyük fel, hogy $\exists\delta>0:\quad [a,a+\delta)\subset\mathcal{D}_f.$ Ha létezik és véges a $\displaystyle \lim_{x\to a+0}\frac{f(x)-f(a)}{x-a}$ hátérérték, akkor az $f$ függvény \textbf{jobbról deriválható} az $a$-ban.
+		\[\displaystyle \lim_{x\to a+0}\frac{f(x)-f(a)}{x-a} =:f'_+(a) \quad \text{az $f$ jobb oldali deriváltja az $a$-ban.} \]
+		
+		\item\textbf{Milyen ekvivalens átfogalmazást ismer a pontbeli deriválhatóságra a lineáris közelítéssel?}
+		
+		\textbf{Válasz:}
+		Tegyük fel, hogy $f\in\R\to\R,\quad a\in\Int\mathcal{D}_f$
+		\[ f\in D\{a\}\quad \Leftrightarrow\quad 
+		\left\{\begin{gathered}
+		\exists A\in\R\quad \text{és}\quad \exists \varepsilon:\quad \mathcal{D}_f\to\R,\quad \lim_a\varepsilon=0\\
+		f(x)-f(a)=A(x-a)+\varepsilon(x)(x-a)\quad (x\in\mathcal{D}_f)
+		\end{gathered}\right. \]
+		$A=f'(a)$.
+		
+		\item\textbf{Mi az \textit{érintő} definíciója?}
+		
+		\textbf{Válasz:}
+		$f:\R\to\R$ függvény grafikonjának van érintője, az $(a,f(a))$ pontban, ha $f\in D\{a\}$.
+		
+		\smallskip
+		A grafikon $(a,f(a))$-béli \textbf{érintője} az
+		\[ y=f'(a)(x-a)+f(a) \]
+		egyenletű egyenes.
+		
+		\item \textbf{Milyen tételt ismer két függvény szorzatának valamely pontbeli differenciálhatóságáról és a deriváltjáról?}
+		
+		\textbf{Válasz:} 
+		Tegyük fel, hogy $f,g:\R\to\R, \quad f,g\in D\{a\},\quad a\in \Int(\mathcal{D}_f\cap\mathcal{D}_g).$
+		 \[f\cdot g\in D\{a\}\quad \text{ és} \quad (f\cdot g)'(a)=f'(a)\cdot g(a)+f(a)\cdot g'(a)\]
+		
+		\item\textbf{Milyen tételt ismer két függvény hányadosának valamely pontbeli differenciálhatóságáról és a deriváltjáról?}
+		
+		\textbf{Válasz:}
+		Tegyük fel, hogy $f,g:\R\to\R, \quad f,g\in D\{a\},\quad a\in \Int(\mathcal{D}_f\cap\mathcal{D}_g),\quad g(a)\not=0\Rightarrow$
+		\[ \frac{f}{g}\in D\{a\}\quad \text{és}\quad \left(\frac{f}{g}\right)'(a)=\frac{f'(a)\cdot g(a)-f(a)\cdot g'(a)}{g^2(a)}. \]
+		\item\textbf{Milyen tételt ismer két függvény kompozíciójának valamely pontbeli differenciálhatóságáról és a deriváltjáról?}
+		
+		\textbf{Válasz:}
+		Tegyük fel, hogy $f,g\in\R\to\R,\quad a\in\Int\mathcal{D}_g$ és
+		
+		\[\left.\begin{gathered}
+		\mathcal{R}_g\subset\mathcal{D}_f\\
+		g\in D\{a\}\\
+		f\in D\{g(a) \}
+		\end{gathered}\right\}\quad \Rightarrow\quad \begin{gathered}
+		f\circ g\in D\{a\},\\
+		(f\circ g)'(a)=f'(g(a))\cdot g'(a)
+		\end{gathered}\]
+		\item\textbf{Írja fel az $\exp_a\quad (a\in\R, a>0)$ függvény deriváltját valamely helyen.}
+		
+		\textbf{Válasz:}
+		Az $\exp_a$ függvény: \quad $(a^x=e^{x\cdot\ln a})$
+		\quad $\forall x\in\R,\quad \exp_a\in D\{x\}$
+		\begin{center}
+			\fbox{$(a^x)'=a^x\ln a \quad (x\in\R)$}
+		\end{center}
+		\item\textbf{Írja fel az $\log_a\quad (a\in\R, 0<a\not=1)$ függvény deriváltját valamely helyen.}
+		
+		\textbf{Válasz:}
+		$\log_a$ függvény, $0<a$ és $a\not=1, \quad  \forall x\in(0,+\infty),\quad \log_a\in D\{x\} $
+		\begin{center}
+			\fbox{$\displaystyle \log_a'x=\frac{1}{x\cdot\ln a}\quad (x\in(0,+\infty))$}
+		\end{center}
+	\end{enumerate}
+\end{document}

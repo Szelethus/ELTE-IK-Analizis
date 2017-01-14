@@ -1,0 +1,297 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx,float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Ra{\overline{\mathbb{R}}}
+	
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] 
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} 
+	\newtheorem{example}[theorem]{Példa} 
+	\newtheorem{task}[theorem]{Feladat} 
+	\newtheorem{note}[theorem]{Megjegyzés}
+	\newtheorem{revision}[theorem]{Emlékeztető}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis II.}}
+		
+		{\Large Előadás jegyzet}
+		
+		10. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László  előadásán. (\today)
+	
+	%Külön köszönet jár \textsc{Csonka} Szilviának a képek elkészítésért.
+	%\bigskip
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Integrálszámítás}
+	Két fő része van: határozott és határozatlan integrálszámítás.
+	\subsection{Határozatlan integrálszámítás}
+	
+	\textbf{Probléma: (a deriválás megfordítása)}
+	
+	Adott: $f:I\to\R$, $I\subset\R$ nyílt intervallum. Van-e olyan
+	\[ F:I\to\R,\quad F'\equiv f? \]
+	Vizsgáljuk ezt a problémát.
+	\begin{example}
+		$f(x):= x+\frac{1}{1+x^2}\quad (x\in\R)$. Van-e olyan függvény, melyet deriválva ezt kapjuk? A válasz az hogy igen, ez pedig a
+		\[ F(x)=\frac{x^4}{4}+\arc\tg x + c\quad (x\in\R) \]
+	\end{example}
+	\begin{definition}
+		Legyen $I\subset\R$ nyílt intervallum.  Az $F:I\to\R$ függvény az $f:I\to\R$ primitív függvénye, ha 
+		\begin{itemize}[$\bullet$]
+			\item $F\in D(I)$
+			\item $F'(x)=f(x)\quad (x\in I)$
+		\end{itemize}
+	\end{definition}
+	Kérdéseink ezek után a következőek:
+	\begin{itemize}
+		\item Milyen függvénynek van primitív függvénye?
+		\item Ha van, hány van?
+		\item Hogyan lehet meghatározni?
+	\end{itemize}
+	\begin{theorem}
+		(elégséges feltétel primitív függvény létezésére)
+		
+		Tegyük fel, hogy 
+		\[\left.\begin{gathered}
+		I\subset\R \quad \text{nyílt intervallum,} \\
+		f:I\to\R \quad \text{{folytonos} }	
+		\end{gathered}\right\}\quad \Rightarrow \text{$f$-nek van primitív függvénye.}	\]
+		\textit{bizonyítása később.}
+	\end{theorem}
+	\begin{theorem}
+		(szükséges feltétel primitív függvény létezésére)
+		
+		Tegyük fel, hogy 
+		\[\left.\begin{gathered}
+			I\subset\R \quad \text{nyílt intervallum,} \\
+			f:I\to\R\quad  \text{{függvénynek van primitív részfüggvénye} }	
+		\end{gathered}\right\}\quad \Rightarrow \text{$f$ Darboux tulajdonságú $I$-n.}	\]
+		\textit{biz nélkül.}
+	\end{theorem}
+	\begin{example}
+		$f(x):={\sgn}(x)\quad (x\in(-1,1))$. Nincs primitív függvénye, mert nem Darbaux tulajdonságú.
+	\end{example}
+	\begin{theorem}
+		(a primitív függvények számára vonatkozó állítás)
+		
+		Tegyük fel, hogy $I\subset\R$ nyílt intervallum, $f:I\to\R$. Ekkor:
+		\begin{enumerate}
+			\item Ha\quad  $F:I\to\R$ \quad függvény egy primitív függvénye $\quad \Rightarrow\quad \forall c\in\R:\quad F+c$ \quad is primitív függvénye.
+			\item Ha $F_1, F_2:I\to\R\quad f$ primitív függvényei$\quad \Rightarrow\quad \exists c\in\R:\quad F_1(x)=F_2(x)+c\quad (x\in I)$.
+			
+		\end{enumerate}
+		\textit{a bizonyítás meggondolandó. $\blacksquare$}
+	\end{theorem}
+	\begin{note}
+		A primitív függvények konstansban különböznek csak egymástól.
+	\end{note}
+	\begin{note}
+		Miért értelmezünk mi mindent intervallumban? Ez igazán csak az állítás második részében lényeges. (Az elsőben nem feltétlenül szükséges)
+		
+		\begin{figure}[!h]
+			\centering
+			%\includegraphics[height=3cm]{}
+			\caption{}\label{}
+		\end{figure}
+		\[ F_1'\equiv F_2'\equiv f\quad \text{és}\quad F_1-F_2\not\equiv \text{áll.} \]
+	\end{note}
+	\begin{definition}
+		(Jelölések, elnevezések)
+		
+		$I\subset\R$ nyílt intervallum; \quad $f:I\to\R$, $F:I\to\R$ az $f$ primitív függvénye.
+		
+		\medskip
+		Ekkor $f$ összes primitív függvénye:
+		\[ \{ F+c\ | \ c\in\R \}=:\int f(x)dx \]
+		Kiejtésben ,,integrál $f$'', vagy inkább az $f$ függvény \textbf{határozatlan integrálja}.
+		
+		\medskip
+		Kevésbé precízen:
+		\[ \int f=F+c\quad (c\in\R) \]
+		vagy
+		\[  \int f(x)dx=F(x)+c\quad (x\in R, c\in\R) \]
+		A fenti halmazt kéne írnunk mindig, így használjuk ezt inkább.
+	\end{definition}
+	\begin{example}
+		\[ \int\frac{1}{1+x^2}dx=\arc\tg x + c\quad (x\in\R,c\in\R) \]
+	\end{example}
+	\begin{example}
+		\[ \int\frac{1}{\cos^2x}dx=\tg x + c\quad \left(x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right),c\in\R\right) \]
+	\end{example}
+	\subsection{Primitív függvények meghatározása}
+	Alapintegrálok:
+	\begin{example}
+		\[ \int x^\alpha dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (x>0, \alpha\in\R\setminus\{-1\}) \]
+	\end{example}
+	\begin{example}
+		\[ \int \frac{1}{x} dx=\ln x +c\quad (x>0) \]
+	\end{example}
+	\begin{example}
+		\[ \int \frac{1}{x} dx=\ln (-x) +c\quad (x<0) \]
+	\end{example}
+	\begin{theorem}
+		(műveleti tételek)
+		
+		Tegyük fel, hogy $I\subset\R$ nyílt intervallum, $f,g:I\to\R$, $\exists$ prím függvénye$\quad \Rightarrow\quad$
+		\[ \forall\alpha,\beta\in\R:\quad (\alpha f +\quad \beta g)\quad \text{függvénynek is van primitív függvénye, és}  \int(\alpha f +\beta g)=\alpha\int f+\beta \int g. \]
+	\end{theorem}
+	\begin{example}
+		Polinomok:
+		\[ \int(a_nx^n+a_{n-1}x^{n-1}+\ldots+a_0)dx=a_n\cdot
+		\frac{x^{n+1}}{n+1}+a_{n-1}\cdot\frac{x^n}{n}+\ldots+a_0\cdot x+c \]
+	\end{example}
+	\begin{theorem}
+		(hatványsorok)
+		
+		Tegyük fel, hogy 
+		\[ f(x):=\sumn\alpha_n(x-a)^n\quad (x\in K_R(a);\quad R>0). \]
+		Ekkor:
+		\[ \int f(x)dx = \sumn \alpha_n\cdot\frac{(x-a)^{n+1}}{n+1}+c\quad (x\in K_R(a),\quad c\in\R) \]
+	\end{theorem}
+	\begin{theorem}
+		(parciális integrálás (szorzat deriválásának a megfordítása))
+		
+		Tegyük fel, hogy $I\subset\R$ nyílt intervallum, $f,g\in D(I)$, és $f'g$-nek van primitív függvénye. 
+		
+		Ekkor $fg'$-nek is van primitív függvénye, és 
+		\[ \int f(x)\cdot g'(x)dx=f(x)g(x)-\int f'(x)g(x)dx. \]
+		
+		\textit{Ugyanis:}
+		\[ \left(f(x)g(x)+\int f'(x)g(x)dx \right)'=f'(x)g(x)+f(x)g'(x)-f'(x)g(x) = f(x)g'(x).\quad \blacksquare \]
+	\end{theorem}
+	\begin{example}
+		\[ \int x e^x dx=xe^x-\int 1\cdot e^xdx=xe^x-e^x+x\quad (x\in\R,c\in\R) \]
+	\end{example}
+	\begin{theorem}
+		(első helyettesítési szabály)
+		
+		Tegyük fel, hogy $I,J\subset\R$ nyílt intervallum,
+		\[ \left.\begin{gathered}
+			f\in D(I),\quad \mathcal{R}_g\subset J;\quad f:J\to\R \\
+			\text{$f$-nek van primitív függvénye}
+		\end{gathered}\right\}\quad \Rightarrow\quad 
+		\begin{gathered}
+			f\circ f\cdot g'\text{-nek is van primitív függvénye, és}\\
+			\int f(g(x))\cdot g'(x)dx=F(g(x))+c\quad (x\in I,c\in\R),\\
+			\text{ahol $F$ a $f$ primitív függvénye.}
+		\end{gathered} \]
+		\textit{Ugyanis:} 
+		\[ (F(g(x))+c)'=F'(g(x)\cdot g'(x)\quad \overset{F'=f}{=}\quad f(g(x))\cdot g'(x)\quad \blacksquare \]
+	\end{theorem}
+	\begin{example}
+		\[ \int x^2(1+x^3)^{2016}dx=\frac{1}{3}\int (3x^2)\cdot(1+x^3)^{2016}=\frac{1}{3}\cdot\frac{(1+x^3)^{2016}}{2017}+c\quad (x\in\R,c\in\R).\quad \blacksquare \]
+	\end{example}
+	\begin{theorem}
+		(második helyettesítési szabály)
+		
+		Tegyük fel, hogy $I,J\subset\R$ nyílt intervallum, $f:I\to\R$, $g:J\to I$ bijekció, $g\in D(I)$ és $f\circ g\cdot g'$-nek van primitív függvénye.
+		
+		 Ekkor $f$-nek is van primitív függvénye, és
+		 \[ \int f(x)dx\quad \overset{x:=g(t)}{=}\quad \int f(g(t))\cdot g'(t)dt\big|_{t=g^{-1}(x)} \]
+	\end{theorem}
+%	\begin{note}
+%		GT egy geci.
+%	\end{note}
+	\begin{example}
+		\[ \int\sqrt{1-x^2} dx = ? \]
+		\textit{Megoldás:} $\int \sqrt{1-x^2} dx.$
+		
+		Alkalmazzuk az $x=\sin t = g(t)\quad x\in(-1,1) \quad t\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$ helyettesítést:
+		\[ g'(t)=\cos t>0\quad \left(|t|<\frac{\pi}{2}\right)\quad \Rightarrow\quad \exists g^{-1}; \quad t:=\arc\sin x \]
+		\[ \int \sqrt{1-x^2}dx=\int\underbrace{\sqrt{1-\sin^2t}}_{=\cos t>0}\cdot\cos t\, dt\quad \overset{\cos2t=\cos^2t-\sin^2t}{\underset{\sin^2t+\cos^2t=1}{=}}\quad \int \frac{1+\cos2t}{2}dt= \]
+		\[ = \frac{t}{2}+\frac{\sin2t}{4} + c=\frac{t}{2}+\frac{2\sin t\cdot \cos t}{4}+c\big|_{t=\arc\sin x}=\frac{\arc\sin x + x\cdot\cos(\arc\sin x)}{2}+c \]
+		\[\cos(\underbrace{\arc\sin x}_{\stackrel{=:\alpha\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)}{\sin\alpha=x}})=\pm\sqrt{1-\sin^2\alpha}=\sqrt{1-x^2}\]
+		\[ \int\sqrt{1-x^2}dx=\frac{\arc\sin x+x\sqrt{1-x^2}}{2}+c.\quad \blacksquare \]
+	\end{example}
+\end{document}

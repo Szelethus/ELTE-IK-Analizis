@@ -1,0 +1,235 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	\def\limx{\displaystyle\lim_{x\to +\infty}}
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE \textbf{Analízis II.}}
+		
+		{\large \textbf{Gyakorlati óra jegyzet}}
+		
+		9. óra
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette Dr. \textsc{Szili} László gyakorlatán. (\today)
+	
+	Tantárgyi honlap: \url{http://numanal.inf.elte.hu/~szili/Oktatas/An2_BSc_2016/index_An2_2016.htm}
+	\section{Aszimptoták.}
+	Van-e aszimptotája a következő függvényeknek ($\pm\infty$)-ben?
+	\begin{task}
+		\[ f(x):=x^4+x^3\quad (x\in\R) \]
+		\textit{Megoldás:}
+		
+		Csak akkor létezik, ha a két határérték létezik és véges. Kezdjük $(+\infty)$-ben:
+		\[ \lim_{x\to+\infty}\frac{f(x)}{x}=\lim_{x\to+\infty}(x^3+x^2)=+\infty \]
+		Ennek a függvénynek nincs aszimptotája $(+\infty)$-ben.
+		
+		Tekintsük most ($-\infty)$ben:
+		\[ \lim_{x\to-\infty}\frac{f(x)}{x}=\lim_{x\to-\infty}(x^3+x^2)=-\infty \]
+		\[ \left(x^3+x^2=x^3\left(1+\frac{1}{x}\right)\right) \]
+	\end{task}
+	\begin{task}
+		\[ f(x):=x-2\arc\tg x\quad (x\in\R) \]
+		\textit{Megoldás:}
+		
+		\fbox{$(+\infty):$}
+		\[ \lim_{x\to+\infty}\frac{f(x)}{x}=\lim_{x\to+\infty}\left(1-2\cdot\frac{\overbrace{\arc\tg x}^{\text{véges}}}{\underbrace{x}_{\text{végtelen}}}\right) \quad \overset{\lim_{x\to+\infty}\arc\tg x = \frac{\pi}{2}}{=}\quad  1 =: A\in\R \]
+		Így létezik is a határérték, és ez véges.
+		\[ \lim_{x\to+\infty}(f(x)-Ax)=\lim_{x\to+\infty}[(x-2\cdot\arc\tg x)-x]=\lim_{x\to+\infty}(-2\arc\tg x)=-\pi=B\in\R \]
+		$\Rightarrow$ \quad Van aszimptota, és ez pedig a:
+		\[ y=Ax+B=x-\pi \]
+		egyenes.
+		
+		\fbox{$(-\infty):$}
+		\[ \lim_{x\to-\infty}\frac{f(x)}{x}=\lim_{x\to-\infty}\left(1-2\cdot\frac{\arc\tg x}{x}\right) = 1 =:A\in\R \]
+		Fontos megjegyezni az alábbi nevezetes határértéket:
+		\fbox{$\displaystyle \lim_{x\to-\infty}\arc\tg x = -\frac{\pi}{2}$}
+		\[ \lim_{x\to-\infty}(f(x)-Ax)=\lim_{x\to-\infty}(-2\arc\tg x)=\pi \]
+		$\Rightarrow$\quad Létezik aszimptota, és ez a
+		\[ y=x+\pi \]
+		egyenes.
+	\end{task}
+	\section{Teljes függvény vizsgálat}
+	\begin{task}
+		\[ f(x):=x^4-4x^3+10\quad (x\in\R) \]
+		\textit{Megoldás:}
+		
+		Kezdeti vizsgálat: $f\in D^2\checkmark$
+		\begin{note}
+			Középiskolában függvénytranszformációval dolgoztunk, ami egy negyedfokú függvényél aligha lehet célravezető.
+		\end{note}
+		\begin{enumerate}
+			\item \textbf{Monotonitási intervallumok:}
+			
+			Deriváljunk, hogy meg tudjuk határozni a monotonitási intervallumokat!
+			\[ f'(x)=4x^3-12x^2=4x^2(x-3)\quad (x\in\R) \]
+			$$f'(x)\overset{?}{\overset{>}{\underset{=}{<}}}\quad \Leftrightarrow\quad 4x^2(x-3)\overset{>}{\underset{<}{=}}0\quad \Leftrightarrow\quad x-3\overset{>}{\underset{<}{=}}0 $$
+			Így
+			\[ f'(x)<0,\quad \text{ha}\quad x<3\quad \Rightarrow\quad f\downarrow (-\infty,3) \quad (*) \]
+			\[ f'(x)>0,\quad \text{ha}\quad x>3\quad \Rightarrow\quad f\uparrow (3,+\infty)\quad (\#) \]
+			\item \textbf{Lokális szélső értékek:}
+			
+			Elsőrendű szükséges feltételt alkalmazzuk!
+			\[ f'(x)=4x^2(x-3)=0\quad \Rightarrow\quad x_1=0;\quad x_2=3. \]
+			E két pontban lehet lokális szélső érték (ezek $f$ stacionárius pontjai).
+			
+			Most alkalmazzuk az elégséges feltételt (első- és másodrendű).
+			
+			\fbox{$x_1=0:$}
+			\[ (*)\Rightarrow\quad x_1 \text{\quad nem lokális szélső érték hely.} \]
+			\fbox{$x_2=3:$}
+			\[ (\#) \text{\ és\ } (*)\Rightarrow\quad x_2 \text{\quad lokális minimum hely.} \]
+			(alt. megoldási módszer) Elsőrendű elégséges feltétel: mivel a derivált függvény előjelet vált, ebből is következik hogy $x_2$ lokális minimum lesz.
+			
+			(alt. megoldási módszer) További megoldási módszer lehet a másodrendű elégséges feltétel, ahol $f''(3)$-at kéne vizsgálni.
+			\item \textbf{Konvexitási intervallumok, inflexió:}
+			
+			\[ f''(x)=12x^2-24x=12x(x-2)\quad (x\in\R) \]
+			Konvexitásra van szükséges és elégséges tételünk.
+			\[ f''(x)\overset{?}{\overset{>}{\underset{<}{=}}}0\quad \Leftrightarrow\quad 12x(x-2)\overset{>}{\underset{<}{=}}0\quad \Leftrightarrow\quad x(x-2)\overset{>}{\underset{<}{=}}0 \]
+			\[ f''(x)>0,\quad \text{ha}\quad x<0\quad \Rightarrow\quad f \text{\quad szigorúan konvex}\quad (-\infty,0)\text{-n} \]
+			\[ f''(x)<0,\quad \text{ha}\quad 0<x<2\quad \Rightarrow\quad f \text{\quad szigorúan konkáv}\quad (0,2)\text{-n} \]
+			Ebből tudjuk, hogy $x_1=0$ egy inflexiós hely.
+			\[ f''(x)>0,\quad \text{ha}\quad x>2\quad \Rightarrow\quad f \text{\quad szigorúan konkáv}\quad (2,+\infty)\text{-n} \]
+			Így $x_3:=2$ egy inflexiós pont.
+			\item \textbf{Határértékek:}
+			
+			$(\pm\infty)$-ben kell vizsgálnunk őket. ($\mathcal{D}_f'\setminus\mathcal{D}_f=\{\pm\infty\}$)
+			\[ \lim_{x\to\pm\infty}(x^4-4x^3+10)=+\infty \]
+			Most ebben az esetben a $+$ és $-$ eseteket nem kellett külön kezelni. (Jegyezzük meg, hogy polinomoknál célszerű alkalmazni a nagyságrendi becslést)
+			\item \textbf{Aszimptoták:}
+			\[ \lim_{x\to+\infty}\frac{f(x)}{x}=\lim_{x\to\pm\infty}\left(x^3-4x^2+\frac{10}{x}\right)=\pm\infty \]
+			$\Rightarrow\quad $ nincs aszimptota ($\pm\infty$)-ben.
+			\item \textbf{Függvény képe:}
+			
+			Behelyettesítünk, és megállapítjuk hogy
+			\[ f(0)=10;\quad f(2)=-6;\quad f(3)=-17 \]
+			Ábrázolása házi feladat, mert \LaTeX ben picit nehéz :D
+			
+			Rajzhoz megjegyzések:
+			\begin{compactenum}
+				\item 0-ig konvex (szig mon csökken)
+				\item 0 és 2 között szigorúan konkáv (továbbra is szig mon csökken)
+				\item 2 után a függvény konvex lesz (innentól szig mon nő)
+			\end{compactenum}
+		\end{enumerate}
+	\end{task}
+	\begin{note}
+		Zérushelyek csak akkor írandóak le, ha nagyon nyilvánvalóak.
+	\end{note}
+	\begin{note}
+		Lehet táblázatot készíteni az eredményeink összefoglalására.
+	\end{note}
+	\begin{task}
+		\[ f(x):=\frac{x^3+x}{x^2-1}\quad (x\in\R\setminus\{-1,1\}) \]
+		\textit{Megoldás:}
+		
+		Kezdeti vizsgálatok: $f\in D^2\checkmark$
+		\begin{enumerate}
+			\item \textbf{Paritás:}
+			
+			$f$ páratlan, mert:
+			\[ f(-x)=-f(x)\quad \Leftrightarrow\quad \frac{(-x)^3+(-x)}{(-x^2)-1}=-\frac{x^3+x}{x^2-1} \]
+			$\Rightarrow\quad $ Jegyezzük meg, páratlanságából adódik hogy origóra szimmetrikus\quad $\Rightarrow$\quad elég a $(0,+\infty)$ intervallumon nézni. (Páros függvény az $y$ tengelyre tükrös)
+			\item \textbf{Monotonitási intervallumok:}
+			
+			Elegendő csupán $x>0$-n tekinteni. Azonban figyeljünk arra, hog a függvény 1-ben nincs értelmezve!
+			
+			\textit{Kövektező órán lesz befejezve.}
+		\end{enumerate}
+	\end{task}
+	
+\end{document}
