@@ -1,0 +1,332 @@
+\documentclass[a4paper,11.5pt]{article}
+
+\usepackage[textwidth=135mm]{geometry}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+
+\usepackage[magyar]{babel}
+
+\usepackage{amsmath,amssymb,paralist}
+
+\usepackage{ellipsis}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+
+
+\begin{document}
+	
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	
+	%\def\frac{\displaystyle\frac}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\x{\textbf{x}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\biz{\emph{Bizonyítás: }}
+	\def\sume{\sum_{n=1}^{+\infty}}
+	\def\sumn{\sum_{n=0}^{+\infty}}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{center}
+		\textbf{11. heti analízis gyakorlat}
+	\end{center}
+	
+	\begin{enumerate}
+	
+	\item \textbf{Feladat}:
+	
+	$\displaystyle\sume nq^n=?$
+	
+		\medskip
+	Megoldás:
+	\begin{center}
+		$q+2q^2+3q^3+\ldots$
+	\end{center}
+		\medskip
+	1. lehetőség:
+	
+	\medskip
+	\begin{tabbing}
+000000000000000000000000000000\=000000000\kill
+		\>$q+$\=$q^2+q^3+\ldots$
+		\\
+			\>\>$q^2+$\=$q^3+\ldots$
+		\\
+		 \>\>\>$q^3+\ldots$
+	\end{tabbing}
+	
+	
+	\medskip
+	2. lehetőség
+	\begin{center}
+		
+	$s_n=q+2q^2+q^3+\ldots+Nq^N$
+	
+	\end{center}
+	Észrevétel: 
+	\begin{center}
+		
+	$qs_n=q^2+2q^3+\ldots+(N-1)q^N+Nq^{N+1}$
+	
+	$S_N-qS_N=q+q^+\ldots+q^N=Nq^{N+1}$
+	
+	\end{center}
+	\medskip
+	\item \textbf{Feladat}:
+	
+	Konvergencia vizsgálat.
+	\begin{enumerate}
+		\item \label{1}$\sum \frac{1}{2n-1}$
+		\item \label{2}$\sum \frac{1}{1+n^2}$
+		\item \label{3}$\sum\frac{1}{\sqrt{n(n+1)}}$
+		\item \label{4}$\sum \frac{1}{\sqrt{n(n^+1)}}$
+	\end{enumerate}
+	
+	\bigskip
+	Összehasonlító kritérium
+	
+	$\exists N \in \N: 0\leq a_{n+1} \leq a_n$
+	\begin{itemize}
+		\item $\sum b_n$ konvergens	 $\Rightarrow \sum a_n$ is komnvergens
+		\item $\sum a_n$ divergens $\Rightarrow \sum b_n$ is divergens.
+	\end{itemize}
+	
+	
+	
+	\medskip
+	\ref{1}. \[\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\ldots\]
+	
+	\medskip
+	Sejtés: divergens.
+	
+	Biz: alsó becslés kell.
+	
+	\begin{center}
+		\[\frac{1}{1}+\frac{1}{3}+\frac{1}{5}+\ldots\]
+	\[\frac{1}{3}\stackrel{\displaystyle>}{<}\frac{1}{4} ; \quad \frac{1}{5}\geqq \frac{1}{6}\]
+	\[1+\frac{1}{3}+\frac{1}{5}+ \ldots \geqq 1+\frac{1}{4}+\frac{1}{6}+\frac{1}{8}\ldots\geqq \frac{1}{2}+\frac{1}{4}+\frac{1}{6}\ldots=\frac{1}{2}\left(1+\frac{1}{2}+\frac{1}{3}+\ldots \right)\]
+	
+	\end{center}
+	\medskip
+	\ref{2}. Sejtéshez: 
+	\[\displaystyle\frac{1}{1+n^2} \sim \displaystyle\frac{1}{n^2} \displaystyle\frac{1}{n^2} \Rightarrow \sum \frac{1}{n^2}\text{ konv. } \]
+	
+	\medskip
+	\textit{Sejtés}: $\displaystyle\sum \frac{1}{1+n^2}$. konv.
+	
+	Bizonyítás: (felső becslés kell!)
+	
+	\[0\leq \frac{1}{1+n^2} \leqq \frac{1}{n^2} \quad \forall n=1,2,\ldots\]
+	
+	és $\sum \frac{1}{n^2}$ konv. $\Rightarrow \sum \frac{1}{n^2}$ konv.
+
+
+\medskip
+	\ref{3}. Sejtéshez:
+	
+	\[ \frac{1}{\sqrt{n(n+1)^2}} \sim \frac{1}{(n+1)^2}=\frac{1}{n+1}; \quad \sum \frac{1}{n} \text{ div} .\]
+	
+	\medskip
+	\textit{Sejtés:} div.
+	
+	\[\frac{1}{\sqrt{n(n+1)}} \geqq \frac{1}{\sqrt{(n+1)(n+1)}}= \frac{1}{n+1} \quad (n=1,2, \ldots)\]
+	
+	\medskip
+	és $\sum \frac{1}{n+1}$ div.  $\Rightarrow$ az eredeti is divergens.
+	
+	\ref{4}. Sejtéshez: \[\frac{1}{\sqrt{n(n^2+1)}} \sim \frac{1}{\sqrt{n\cdot n^2}}=\frac{1}{n^{\frac{3}{2}}}\]
+	
+	$\displaystyle\sum \frac{1}{n^{\frac{3}{2}}}$ konv., ui. $\frac{3}{2}> 1.$
+	\end{enumerate}
+	\bigskip
+	\textbf{Gyök és hányadoskritérium.}
+	
+	\begin{enumerate}
+	\bigskip
+	\item \textbf{Feladat}: $\displaystyle\sum \frac{1}{n!}$
+	
+	\medskip
+	Megoldás:
+	
+	(Hányadoskritérium): \[\frac{\displaystyle\frac{1}{(n+1)!}}{\displaystyle\frac{1}{n!}}=\frac{n!}{(n+1)!}=\frac{1}{n}\rightarrow 0<1 \Rightarrow\text{ a sor konvergens.}\]
+	
+	\medskip 
+	Megj.: $\displaystyle\sumn \frac{1}{n!}=e$
+	
+	\bigskip
+	\item\textbf{Feladat}: $\displaystyle\sum \left(\frac{1}{2}+\frac{1}{n}\right)^n$
+	
+	\medskip
+	Megoldás: (gyk.):  \[\sqrt[n]{(\frac{1}{2}+\frac{1}{n})^n}=\frac{1}{2}+\frac{1}{n}\longrightarrow \frac{1}{2}<1 \Rightarrow\text{ a sor konv.}\]
+	
+	\bigskip
+	
+	\item\textbf{Feladat}: $\displaystyle\sum \frac{2^nn!}{n^n}$
+	
+	\medskip
+	Megoldás: (HK)
+	
+	\[\frac{\displaystyle\frac{2^{n+1}}{(n+1)^{n+1}}}{\displaystyle\frac{2^nn!}{n^n}}=2\cdot(n+1)\cdot\frac{n^n}{(n+1)^{n+1}}=2\cdot\left(\frac{n}{n+1}\right)^n=2\cdot\frac{1}{(\frac{n+1}{n})^n}=2\cdot \frac{1}{(1+\frac{1}{n})^n} \longrightarrow 2e.\] 
+	
+	\bigskip
+	MJ. (GYK)
+	
+	\[\sqrt[n]{\frac{2^nn!}{n^n}}=2\cdot\frac{\sqrt[n]{n!}}{n} \longrightarrow \frac{2}{e}.\]
+	
+		\bigskip
+	\item\textbf{Feladat}: $\displaystyle\sum \frac{n^2}{2^n+3^n}$
+	
+	\medskip
+	Megoldás: (GYK)
+	
+	\[\sqrt[n]{\frac{n^2}{2^n+3^n}}=\frac{\sqrt[n]{n})^2}{\sqrt[n]{2^n+3^n}}= \frac{(\sqrt[n]{n})^2}{\sqrt[n]{3^n\left(\frac{2}{3}\right)^n+1}}=\frac{\sqrt[n]{n}^2}{3\cdot\sqrt[n]{\left(\frac{2}{3}\right)^n+1}} \longrightarrow \frac{1}{3}\]
+	
+	$\Rightarrow $ a sor konvergens.
+	
+	(e)
+	
+	\[\sume (\frac{n}{n+1})^{n^2+n+1}\]
+	
+	Megoldás:
+	(GYK)
+	
+	\[\sqrt[n]{\left(\frac{n}{n+1}\right)^{n^2+n+1}}=\left(\frac{n}{n+1}\right)^{n+1+\frac{1}{n}}=\left(\frac{n}{n+1}\right)^n\cdot\sqrt[n]{\left(\frac{n}{n+1}\right)} \longrightarrow \frac{1}{e},\] így a sor konvergens.
+	
+	
+	
+	\bigskip
+\end{enumerate}
+	\textbf{Paraméteres feladatok}
+	\begin{enumerate}
+	\item \textbf{Feladat}: $x\geqq0$ konv. $\displaystyle\sumn(\frac{\sqrt{x}}{2}-1)^n$ és mi az összeg?
+	
+	Megoldás: geometriai sor, \[q=\displaystyle\frac{\sqrt{x}}{2}-1\text{
+	konv }\Leftrightarrow |q|=|\displaystyle\frac{\sqrt{x}}{2}-1|<1 \Leftrightarrow -1<\frac{\sqrt{x}}{2}-1<1 \Leftrightarrow \ldots x\ldots.\]
+	
+	Az összeg:
+	
+	\[\sumn (\frac{\sqrt{x}}{2}-1)^n=\frac{1}{1-(\frac{\sqrt{x}}{2}-1)}=\ldots\]
+	
+	\bigskip
+	\item \textbf{Feladat}: $? x\in \R$ konv. $\displaystyle\sum \frac{x^{2n}}{1+x^{4n}}$
+	
+	\medskip
+	Megoldás: Legyen $\displaystyle|x|\overset{>}{\underset{<}{=}}1$. \quad Ha $|x|<1$, \quad $\Rightarrow x^{4n}=(x^4)^n \longrightarrow 0.$
+	
+	\[\frac{x^{2n}}{1+x^{4n}}\sim x^{2n}, \quad  \sum x^{2n}\text{ konv.}\]
+	
+	\medskip
+	\textit{Sejtés}: A sor konv ha $|x|<1.$
+	
+	Bizonyítás: 
+	
+	\[0\leq \frac{x^{2n}}{1+x^{4n}}\leq x^{2n}\quad\text{ és }\quad\sum x^{2n}\text{ konv.}\]
+	
+	\medskip Ha $|x|>1:$
+	
+	Sejtéshez: \[\frac{x^{2n}}{1+x^{4n}}\sim  \frac{x^{2n}}{x^{4n}}=\frac{1}{x^{2n}}=(\frac{1}{x^2})^n\]
+	
+	$\left(\text{mivel }\displaystyle\frac{1}{x^2}<1 \right)$
+	
+	\medskip
+	\textit{Sejtés}: konv, ha $|x|>1$.
+	
+	Bizonyítás: \[\frac{x^{2n}}{1+x^{3n}}\leqq\frac{x^{2n}}{x^{4n}}= (\frac{1}{x^2})^n\]
+	
+	Mivel $|x|>1 \Rightarrow\displaystyle \frac{1}{x^2}<1, \quad \sum (\frac{1}{x^2})^n$ konv., az eredeti is konv.
+	
+	\[|x|=1; \quad \sum \frac{x^{2n}}{1+x^{4n}}= \sum\frac{1}{1+1}\text{ div.}\]
+	
+	\bigskip
+	\item \textbf{Feladat}: $? x$-re konv.
+	\begin{center}
+		
+	$\displaystyle\sum\frac{(-1)^n}{2n-1}(\frac{1-x}{1+x})^n$
+	
+	\end{center}
+	\medskip (GYK)-mal. [AF.]
+	
+	Útmutatás: $\left(\text{legyen }\displaystyle\frac{(-1)^n}{2n-1}\left(\frac{1-x}{1+x}\right)^n = a_n\right)$ 
+	\begin{center}
+		
+	$\displaystyle\sqrt[n]{|a_n|}=\left|\frac{1-x}{1+x}\right|\cdot\frac{1}{\sqrt[n]{2n-1}}\longrightarrow \left|\frac{1-x}{1+x}\right|$
+	
+	\end{center}
+	\medskip
+	\[\left|\frac{1-x}{1+x}\right|\overset{>}{\underset{<}{=}}1.\]
+	
+\end{enumerate}
+	
+\end{document}

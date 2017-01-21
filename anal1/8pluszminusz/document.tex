@@ -1,0 +1,129 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[top=30mm]{geometry}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+
+\usepackage[magyar]{babel}
+
+\usepackage{amsmath,amssymb,paralist,floatflt}
+
+\begin{document}
+	\pagestyle{empty}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\a{\textbf{Állítás: }}
+	\def\t{\textbf{Tétel: }}
+	\def\k{\textbf{Következmény: }}
+	\def\d{\textbf{Definíció: }}
+	\def\m{\emph{Megjegyzés: }}
+	\def\p{\textsl{Példa: }}
+	\def\b{\emph{Bizonyítás: }}
+	
+	\begin{center}
+		\textbf{9. heti analízis $+/-$ra}
+	\end{center}
+	
+	\emph{A továbbiakban legyen $s_n$ a sor $n$-edik részletösszege.}
+	
+	\bigskip
+	\begin{compactenum}
+		
+		\item Mit jelent az, hogy a $\sum a_n$ végtelen sor \emph{konvergens}, és hogyan értelmezzük az \emph{összegét}?
+		
+		\emph{Válasz: } A $\sum a_n$ sor konvergens, ha az $(s_n)$ sorozat konvergens (véges a hatérértéke). Ekkor a $\lim(s_n)$ számot a $\sum a_n$ végtelen sor összegének nevezzük és így jelöljük: \[\sum_{n=0}^{+\infty} a_n:=\lim(s_n). \]
+		
+		\bigskip 
+		\item Milyen tételt ismer $q \in \R$ esetén a $\sum_{n=0} q^n $ geometriai sor konvergenciájáról?
+		
+		\emph{Válasz: } A $\displaystyle \sum q^n$ sor $(q \in \R) $ konvergens $\Leftrightarrow |q| <1$ és ekkor 
+		\[\sum_{n=0}^{+\infty} q^n=1+q+q^2+\ldots = \frac{1}{1-q}. \]
+		
+		\bigskip 
+		\item Mi a \emph{teleszkopikus sor} és mi az összege?
+		
+		\emph{Válasz: } A $\sum_{n=1} \frac{1}{n(n+1)}$ sor konvergens, és
+		\[ \sum_{n=1}^{+\infty}\frac{1}{n(n+1)}=1 \]
+		
+		\bigskip 
+		\item Milyen állítást ismer a $\sum\frac{1}{n^\alpha}$ hiperharmonikus sor konvergenciájával kapcsolatban?
+		
+		\emph{Válasz: } 
+		\begin{center}
+			$\displaystyle \sum_{n=1}\frac{1}{n^\alpha} \left\{\begin{gathered}
+			\text{konvergens, ha } \alpha>1 \\
+			\text{divergens, ha } \alpha\leq 1
+			\end{gathered}\right.$
+		\end{center}
+		
+		\bigskip 
+		\item Mondjon \emph{szükséges} feltételt arra nézve, hogy a $\sum a_n$ végtelen sor konvergens legyen.
+		
+		\emph{Válasz: } Ha $\sum a_n$ sor konvergens $\Rightarrow \lim(a_n)=0$.
+		
+		\bigskip 
+		\item Fogalmazza meg a végtelen sorokra vonatkozó \emph{összehasonlító kritériumokat}.
+		
+		\emph{Válasz: } Tegyük fel, hogy $(a_n), (b_n)$ sorozatokra:
+		\[\exists N \in \N, \forall n \in \N, n\ge N : 0\leq a_n \leq b_n.\]
+		
+		Ekkor:
+		\begin{compactenum}
+			\item Majoráns kritérium:
+			
+			Ha $\sum b_n$ konvergens $\Rightarrow \sum a_n$ is konvergens
+			\item Minoráns kritérium:
+			
+			Ha $\sum a_n$ divergens $\Rightarrow \sum b_n$ divergens.
+		\end{compactenum}
+		
+		\bigskip 
+		\item Fogalmazza meg a végtelen sorokra vonatkozó \emph{Cauchy-féle gyökkritériumot}.
+		
+		\emph{Válasz:} Tegyük fel, hogy a $\sum a_n$ sorra $\exists\displaystyle\lim_{n\to +\infty} \sqrt[n]{|a_n|}=:A\in \Ra.$
+		
+		Ekkor:
+		\begin{compactitem}
+			\item $0 \leq A <1$ esetén a $\sum a_n$ sor abszolút konvergens, tehát konvergens is.
+			\item $A>1$ esetén a $\sum a_n$ sor divergens.
+			\item $A=1$ esetén a $\sum a_n$ sor lehet konvergens is és divergens is (a kritérium nem használható).
+		\end{compactitem}
+		
+		\bigskip 
+		\item Fogalmazza meg a végtelen sorokra vonatkozó \emph{D’Alembert-féle hányados-kritériumot}.
+		
+		\emph{Válasz: } Tegyük fel, hogy a $\sum a_n$ sorra $a_n\not=0~~(n\in \N)$:
+		\[ \exists\lim_{n\to +\infty}\frac{|a_{n+1}|}{|a_n|} =: A\in \Ra .\]
+		Ekkor:
+		\begin{compactitem}
+			\item $0 \leq A <1 \Rightarrow \sum a_n$ sor abszolút konvergens, tehát konvergens is.
+			\item $A>1 \Rightarrow \sum a_n$ divergens.
+			\item $A=1 \Rightarrow \sum a_n$ lehet konvergens és divergens is.
+		\end{compactitem}
+		
+		\bigskip 
+		\item Mik a Leibniz-típusú sorok és milyen konvergenciatételt ismer ezekkel kapcsolatban?
+		
+		\emph{Válasz:} Tegyük fel, hogy $ \forall n \in \N : 0 \leq a_{n+1}\leq a_{n}$. Ekkor $\sum_{n=1} (-1)^{n+1} a_n$ Leibniz-típusú sor, és
+		
+		\begin{compactenum}
+			\item Konvergencia: $\sum_{n=1} (-1)^{n+1} a_n$ konvergens $\Leftrightarrow \lim(a_n)=0$.
+			
+			\smallskip
+			\item Hibabecslés: tegyük fel, hogy $\sum_{n=1} (-1)^{n+1} a_n$ konvergens és \\ $A:=\displaystyle \sum_{n=1}^{+\infty} (-1)^{n+1} a_n$.
+			
+			Ekkor:
+			\[|A-s_n|=|A-\displaystyle \sum_{k=1}^{n} (-1)^{k+1} a_k| \leq a_n~~ (\forall n \in \N).\]
+		\end{compactenum}
+	\end{compactenum}
+	
+	
+\end{document}

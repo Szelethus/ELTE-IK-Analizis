@@ -1,0 +1,540 @@
+\documentclass[a4paper,11.5pt]{article}
+
+\usepackage[textwidth=135mm]{geometry}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+
+\usepackage[magyar]{babel}
+
+\usepackage{amsmath,amssymb,paralist,array, marvosym, ellipsis }
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\begin{document}
+
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+
+	%\setlength\parindent{0pt}
+
+	\def\a{\textbf{a}}
+
+	\def\b{\textbf{b}}
+
+	\def\N{\hskip 10 true mm}
+
+	\def\a{\textbf{a}}
+
+	\def\b{\textbf{b}}
+
+	\def\c{\textbf{c}}
+
+	\def\d{\textbf{d}}
+
+	\def\e{\textbf{e}}
+
+	\def\gg{$\gamma$}
+
+	\def\vi{\textbf{i}}
+
+	\def\jj{\textbf{j}}
+
+	\def\kk{\textbf{k}}
+
+	\def\fh{\overrightarrow}
+
+	\def\l{\lambda}
+
+	\def\m{\mu}
+
+	\def\v{\textbf{v}}
+
+	\def\0{\textbf{0}}
+
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{center}
+		\textbf{Analízis 2. zh tételek}
+	\end{center}
+	
+	\noindent A jegyzetet \textsc{Umann Kristóf} készítette \textsc{Bajári Lúcia}, \textsc{Gecse Viktória} és \\ \textsc{Csonka Szilvia} jegyzete alapján. 
+	
+	\begin{enumerate}
+		\item \textbf{A geometriai sor konvergenciája.}
+		
+		A $\sum q^n$ sor $(q \in \R)$ konvergens $\Leftrightarrow |q|<1,$ és ekkor \[\sumn q^n=1+q+q^2+ \ldots = \frac{1}{1-q}.\]
+		
+		\biz 
+		\[ s_n=1+q+q^2+ \ldots + q^n \overset{q \not=1}{=} \frac{1-q^{n+1}}{1-q} \]
+		\[ [a^{n+1}-b^{n+1}=(a-b)(a^n+a^{n-1}b+\ldots+ab^{n-1}+b^n)] \]
+		\[ q=1: \quad s_n=n+1 \]
+		\[(s_n)\quad\text{konv}\quad \Leftrightarrow |q|<1\quad \text{ui.} \quad q^n \rightarrow 0 \Rightarrow s_n \underset{n\rightarrow+\infty}{\longrightarrow}\frac{1}{1-q}.\quad \blacksquare\]
+		
+		\item \textbf{A teleszkópikus sor konvergenciája.}
+		
+		A $\sume \frac{1}{n(n+1)}$ sor konvergens, és \[ \sume \frac{1}{n(n+1)}=1. \]
+		
+		\biz \[s_n=\frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\frac{1}{3\cdot4}+\ldots+\frac{1}{n(n+1)}\]
+		ÖTLET: $\displaystyle \frac{1}{k(k+1)}=\frac{1}{k}-\frac{1}{k+1}$
+		
+		\[ \left(\frac{1}{1}-\frac{1}{2}\right)+ \left( \frac{1}{2}-\frac{1}{3} \right)+ \left(\frac{1}{3}-\frac{1}{4}\right)+\ldots+\left(\frac{1}{n}-\frac{1}{n+1}\right)=1-\frac{1}{n+1} \underset{n\rightarrow+\infty}{\longrightarrow} 1\]
+		
+		\[ \lim(s_n)=1=\sume \frac{1}{n(n+1)}. \quad \blacksquare\]
+
+		\item \textbf{A harmonikus sor divergens.}
+		
+		$\displaystyle \sum \frac{1}{n}$ (harmonikus) sor divergens.
+		
+		\biz $n \in \N, k$-t válasszuk meg így: $2^k<n\leq 2^{k+1}$.
+		\textsl{}
+		TRÜKK: \[\displaystyle s_n=1+\frac{1}{2}+\left( \frac{1}{3}+ \frac{1}{4} \right)+ \left( \frac{1}{5}+ \ldots +\frac{1}{8} \right)+ \left(\frac{1}{9}+\ldots+\frac{1}{16}\right)+ \ldots \] \[ \ldots+\underbrace{\left(\frac{1}{2^k+1}+\frac{1}{2^k+2}+\ldots+\frac{1}{2^k+2^k}\right)}_{\displaystyle\frac{2^k}{2^k+2^k}=\frac{1}{2}}+ \ldots + n\]
+		
+		\[ \Rightarrow s_n \geq \frac{k}{2} \Rightarrow\quad \text{ha } n\rightarrow+\infty \Rightarrow \quad k \rightarrow+\infty \Rightarrow \quad s_n \rightarrow +\infty \]
+		
+		$\Rightarrow (s_n)$ divergens.\quad $\blacksquare$
+		
+		\item \textbf{A végtelen sorokra vonatkozó Cauchy-féle konvergenciakritérium.}
+		
+		\[ \sum a_n \quad \text{sor konvergs } \Leftrightarrow \left\{\begin{gathered}
+		\forall \varepsilon >0,\quad  \exists n_0,  \in \N, \quad\forall m,n\geq n_0\\
+		|a_{n+1}+a_{n+2}+\ldots+a_m|<\varepsilon.
+		\end{gathered} \right.
+		\]
+		\biz A $\sum a_n$ sor konvergens $\Leftrightarrow (s_n)$ konvergens $\underset{\text{sorozatokra}}{\underset{\text{kritérium}}{\overset{\text{Cauchy-féle}}{\Longleftrightarrow}}}$ $(s_n)$ Cauchy-sorozat.
+		\[ \Leftrightarrow \forall\varepsilon>0:\quad \exists n_0\in \N, \quad\forall m>n\geq n_0: \quad |s_m-s_n|= |(a_0+\ldots+a_m)-(a_0+\ldots+a_n)|=\] \[=|a_{n+1}+a_{n+2}+\ldots+a_m|<\varepsilon. \quad\blacksquare \]
+		
+		\item \textbf{Végtelen sorok konvergenciájának szükséges feltétele.}
+		
+		Ha $\sum a_n$ sor konvergens $\Rightarrow \lim(a_n)=0$.
+		
+		\biz $\sum(a_n)$ konvergens $\underset{\text{sorokra}}{\underset{\text{kritérium}}{\overset{\text{Cauchy-féle}}{\Longrightarrow}}} \forall \varepsilon >0: \quad \exists n_0 \in \N, \quad\forall m>n\geq n_0: \quad |a_{n+1}+\ldots+a_m|<\varepsilon.$
+		
+		Legyen $m=n+1 \Rightarrow |a_{n+1}|<\varepsilon. \quad \forall n\geq n_0 \Rightarrow \lim(a_n)=0. \quad\blacksquare$
+		
+		\item\textbf{A nemnegatív tagú sorok konvergenciájára vonatkozó tétel.}
+		
+		$\sum a_n $ nemnegatív tagú sor konvergens $\Leftrightarrow (s_n)$ korlátos sorozat.
+		
+		\biz $\sum a_n $ sor konvergens $\Leftrightarrow (s_n)$ konvergens.
+		
+		De: $(s_n)\nearrow,$ ami konvergens $\Leftrightarrow (s_n)$ korlátos. $\blacksquare$
+		
+		\item \textbf{Végtelen sorokra vonatkozó öszehasonlító kritériumok.}
+		
+		Tegyük fel, hogy $(a_n), (b_n)$ sorozatokra: \quad\[\exists N\in \N \quad \forall n \in \N; \quad n\geq \N: \quad 0\leq a_n \leq b_n.\]
+		
+		Ekkor: 
+		\begin{enumerate}
+			\item Majoráns kritérium:
+			
+			Ha $\sum b_n$ konvergens $\Rightarrow \sum a_n$ is konvergens.
+			
+			\item Minoráns kritérium
+			
+			Ha $\sum a_n$ divergens $\Rightarrow \sum b_n$ divergens.
+		\end{enumerate}
+		
+		\biz 
+		\begin{enumerate}
+			\item $\left.
+			\begin{gathered}
+				s_n^a=a_N+a_{N+1}+\ldots +a_n\\
+				s_n^b=b_N+b_{N+1}+\ldots+b_n
+			\end{gathered}\right\}n\geq N$
+			
+			Ha $\sum b_n$ konvergens $\overset{(s_n^b\nearrow)}{\Longrightarrow}(s_n^b)$ korlátos $\Rightarrow (s_n^a)$ is korlátos, $\nearrow\Rightarrow\displaystyle\sum_{n=N}a_n$ konvergens $\Rightarrow \sum a_n$ is konvergens. \quad$\blacksquare$
+		\end{enumerate}
+		
+		\item \textbf{A Cauchy-féle gyökkritérium.}
+		
+		Tegyük fel, hogy a $\sum a_n$ sorra $\exists\displaystyle\lim_{n\to +\infty} \sqrt[n]{|a_n|}=:A\in \Ra.$
+		
+		Ekkor:
+		\begin{enumerate}
+			\item $0 \leq A <1$ esetén a $\sum a_n$ sor abszolút konvergens, tehát konvergens is.
+			\item $A>1$ esetén a $\sum a_n$ sor divergens.
+			\item $A=1$ esetén a $\sum a_n$ sor lehet konvergens is és divergens is (a kritérium nem használható).
+		\end{enumerate}
+		
+		\biz Tegyük fel, hogy $0\leq A<1$.
+		
+		\[\displaystyle\lim_{n\to +\infty}\sqrt[n]{|a_n|}=A \Rightarrow q\text{-hoz} \quad  \exists n_0 \in \N: \quad\forall n \geq n_0: \quad\underbrace{\sqrt[n]{|a_n|}}_{\geq 0}<q.\]
+		
+		\[ \forall n\geq n_0: \quad|a_n|\leq q^n \overset{\text{majoráns}}{\underset{\text{kritérium}}{\Longrightarrow}} \sum_{n=N}q^n \quad\text{konvergens, mert}\quad q<1 \]
+		
+		$\Rightarrow \sume q^n \quad\text{konvergens} \quad\Rightarrow \sum |a_n| $ konvergens, azaz $\sum a_n$ abszolút konvergens.\\
+		
+		Tegyük fel, hogy $A>1$.
+		
+		\[ \lim(\sqrt[n]{|a_n|})=A \Rightarrow 1<q\text{-hoz}\quad \exists n_0 \in \N: \quad\forall n \geq n_0: \quad\underbrace{\sqrt[n]{|a_n|}}_{\geq 0}>q \]
+		
+		$\Rightarrow |a_n|>q^n \quad (n\geq n_0) \Rightarrow \lim(|a_n|)=+\infty,$ azaz $(a_n)$ nem 0-sorozat. $\overset{\text{szükséges}}{\underset{\text{teltétel}}{\Longrightarrow}} \sum a_n$ divergens.\\
+		
+		Tegyük fel, A=1.
+		
+		$\displaystyle\sum \frac{1}{n} $ harmonikus sor divergens, de $\displaystyle\lim_{n\to+\infty}\sqrt[n]{\frac{1}{n}}=\lim_{n\to+\infty}\frac{1}{\sqrt[n]{n}}=1.$
+		
+		$\displaystyle\sum\frac{1}{n^2}$ konvergens és $\displaystyle\lim_{n\to+\infty}\frac{1}{\sqrt[n]{n}}=\lim_{n\to+\infty}\left(\frac{1}{\sqrt[n]{n}}\right)^2=1.\quad\blacksquare$
+		
+		\item \textbf{A D'Alembert-féle hányados-kritérium.}
+		
+		Tegyük fel, hogy a $\sum a_n$ sorra $a_n\not=0~~(n\in \N)$:
+		\[ \exists\lim_{n\to +\infty}\frac{|a_{n+1}|}{|a_n|} =: A\in \Ra .\]
+		Ekkor:
+		\begin{enumerate}
+			\item $0 \leq A <1 \Rightarrow \sum a_n$ sor abszolút konvergens, tehát konvergens is.
+			\item $A>1 \Rightarrow \sum a_n$ divergens.
+			\item $A=1 \Rightarrow \sum a_n$ lehet konvergens és divergens is.
+		\end{enumerate}
+		
+		\biz Tegyük fel, hogy $0\leq A < 1$.
+		
+		\[\limn \frac{|a_{n+1}|}{|a_n|}=A \Rightarrow q\text{-hoz}\quad\exists n_0 \in \N, \quad \forall n\geq n_0: \quad \frac{|a_{n+1}|}{|a_n|}<q.\]
+		
+		Legyen $n>n_0$:\quad\[|a_{n+1}|<q\cdot|a_n|\overset{\frac{|a_{n}|}{|a_{n-1}|}<q}{\leq} q^2|a_{n+1}\leq \ldots \leq q^{n+1-n_0}|a_{n_0}|=\]\[ =\overbrace{|a_{n_0}|\cdot q^{1-n_0}}^{=:c}q^n=c\cdot q^n \Rightarrow |a_{n+1}\leq c\cdot q^n \quad(\forall n \geq n_0).\]
+		
+		Mivel: $0<q<1, \displaystyle\sum_{n=n_0}q^n$ konvergens $\overset{\text{majoráns}}{\underset{\text{kritérium}}{\Longrightarrow}}\sum |a_n|$ konvergens, azaz $\sum a_n$ abszolút konvergens.\\
+		
+		Tegyük fel, hogy A>1.
+		
+		\[\limn \frac{|a_{n+1}|}{|a_n|}=A \Rightarrow q\text{-hoz}\quad\exists n_0 \in \N, \quad \forall n\geq n_0: \quad \frac{|a_{n+1}|}{|a_n|}>q.\]
+		
+		\[n>n_0:\quad|a_{n+1}|<q\cdot|a_n|\leq q^2|a_{n+1}|\leq \ldots \leq q^{n+1-n_0}|a_{n_0}|\]
+		
+		$ \overset{q>1}{\Longrightarrow}\lim(|a_{n+1}|)=+\infty,$ azaz $(a_n)$ nem 0-sorozat $\Rightarrow \sum a_n$ divergens.\\
+		
+		Tegyük fel, hogy $A=1$.
+		
+		\[ \sum\frac{1}{n}\quad \text{divergens, de }\quad \lim\left(\frac{\frac{1}{n+1}}{\frac{1}{n}}\right)=\lim\left(\frac{n}{n+1}\right)=\lim\left(\frac{1}{1+\frac{1}{n}}\right)=1 \]
+		
+		\[ \sum\frac{1}{n^2}\quad \text{konvergens, de }\quad \limn\left(\frac{\frac{1}{n+1}}{\frac{1}{n}}\right)^2=\limn\left(\frac{1}{1+\frac{1}{n}}\right)^2=1. \quad\blacksquare \]
+		
+		\item \textbf{Leibniz-típusú sorok konvergenciája.}
+		
+		Tegyük fel, hogy $ \forall n \in \N : 0 \leq a_{n+1}\leq a_{n}$. Ekkor $\sum_{n=1} (-1)^{n+1} a_n$ Leibniz-típusú sor, és
+		
+		\begin{enumerate}
+			\item Konvergencia: $\displaystyle\sum_{n=1} (-1)^{n+1} a_n$ konvergens $\Leftrightarrow \lim(a_n)=0$.
+			
+			\smallskip
+			\item Hibabecslés: tegyük fel, hogy $\displaystyle\sum_{n=1} (-1)^{n+1} a_n$ konvergens és \\ $A:=\displaystyle \sum_{n=1}^{+\infty} (-1)^{n+1} a_n$.
+			
+			Ekkor:
+			\[|A-s_n|=\left|A-\displaystyle \sum_{k=1}^{n} (-1)^{k+1} a_k\right| \leq a_n~~ (\forall n \in \N).\]
+		\end{enumerate}
+		
+		\biz 
+		\begin{enumerate}
+			\item (konvergencia)
+			\begin{enumerate}
+				\item $\Rightarrow:$
+				\[ \sum (-1)^{n+1}a_n\quad \text{ konvergens } \quad\overset{\text{szükséges}}{\underset{\text{feltétel}}{\Longrightarrow}}\quad\lim((-1)^{n+1}a_n)=0 \Rightarrow \lim(a_n)=0 \]
+				\item $\Leftarrow:$
+				
+				Igazolnunk kell: $\sum1(-1)^{n+1}a_n=a_1-a_2+a_3-\ldots$ konvergens.
+				\[ s_n=\sum_{k=1}^n(-1)^{k+1}a_k=a_1-a_2+a_3-\ldots\pm a_n \]
+				
+				Igazoljuk 
+				\begin{enumerate}
+					\item $(s_{2n+1})\searrow$
+					\[ s_1=a_1\geq s_1-\underbrace{(a_2-a_3)}_{\geq 0}=a_1-a_2+a_3=s_3 \]
+					\[ \geq s_3-(a_4-a_5)=a_1-a_2+a_3-a_4+a_5=s_5\geq s_5\geq s_7 \geq\ldots\geq s_{2n+1} \]
+					\item $(s_{2n})\nearrow$
+					\[ s_2=a_1-a_2\leq s_2+\underbrace{(a_3-a_4)}_{\geq 0}=a_1-a_2+a_3-a_4=s_4\leq s_6\leq\ldots\leq s_{2n} \]
+				\end{enumerate}
+				$(s_{2n})$ és $(s_{2n+1})$ korlátosak is, ui.: \[s_2\leq s_{2n}=s_{2n-1}-a_{2n}\leq s_{2n-1} \leq s_1 \overset{\text{monoton}}{\underset{\text{korlátos}}{\Longrightarrow}} \quad\text{konvergens:}\quad
+				\begin{gathered}
+					\exists \alpha:=\lim(s_{2n})\\				
+					\exists \beta:=\lim(s_{2n+1})
+				\end{gathered} \]
+				\[ \begin{matrix}
+					s_{2n}&=&s_{2n-1}&-&a_{2n}& (n\in \N)\\
+					\downarrow&&\downarrow&&\downarrow&\\
+					\alpha&&\beta&&0&
+				\end{matrix} \]\\
+				\[\Rightarrow \alpha=\beta=\lim(s_n) \Rightarrow\sum(-1)^{n+1}a_n \quad\text{konvergens.}\quad A:=\sume (-1)^{n+1}a_n=\infty \]
+			\end{enumerate}
+			\item (hibabecslés)
+			\[ |s_{2n}-A|\leq s_{2n+1}-s_{2n}=a_{2n+1}\leq a_{2n} \]
+			\[ |s_{2n+1}-A|\leq s_{2n+1}-s_{2n}=a_{2n+1} \]
+			$\Rightarrow \forall n\in \N: \quad |A-s_n|\leq a_n. \quad \blacksquare$
+		\end{enumerate}
+		
+		\item \textbf{Számok tizedestört alakban való eloállítása.}
+		
+		Ha $\alpha\in[0;1]$, akkor $\displaystyle\exists (a_n):\quad \N\to\{0,1,2,\ldots,9\}: \quad \alpha:\sume \frac{a_n}{10^n}$
+		
+		\biz
+		\begin{enumerate}[1. lépés:]
+			\item $[0;1]$-at 10 egyenlo részre osztjuk
+			
+			\[\Rightarrow\quad \exists a_1\in\{0,1,2,\ldots,9\}:\quad \alpha \in I_1=\left[\frac{a_1}{10};\frac{a_1+1}{10}\right]\]
+			
+			\item $I_1$-et 10 egyenlo részre osztjuk
+			\[\Rightarrow\exists a_2\in\{0,1,2,\ldots,9\}:\quad \alpha \in I_2=\left[\frac{a_1}{10}+\frac{a_2}{10^2};\frac{a_1}{10}+\frac{a_2+1}{10^2}\right]\]
+			\begin{center}
+				$\vdots$
+			\end{center}
+			
+			\item[$n-1$. lépés:] Felosztjuk $I_{n-1}$-et 10 egyenlo részre \quad $\Rightarrow \quad \exists a_n\in\{0,1,\ldots,9\}.$
+			
+			\[\alpha\in I_n=\left[\frac{a_1}{10}+\frac{a_2}{10^2}+\ldots+\frac{a_n}{10^n};\frac{a_1}{10}+\frac{a_2}{10^2}+\ldots+\frac{a_n}{10^n}\right],\]
+			azaz
+			\[\underbrace{\frac{a_1}{10}+\frac{a_2}{10^2}+\ldots+\frac{a_n}{10^n}}_{s_n}\leq \alpha \leq \underbrace{\frac{a_1}{10}+\frac{a_2}{10^2}+\ldots+\frac{a_n}{10^n}}_{s_n}+\frac{1}{10^n}\]
+			\[s_n\leq\alpha\leq s_n+\frac{1}{10^n}\quad \forall n=1,2,\ldots\]
+			\[\Rightarrow|\alpha-s_n|\leq\frac{1}{10^n}\to0\quad \Rightarrow\quad \lim(s_n)=\alpha=\sume \frac{a_n}{10^n}\quad \blacksquare\]
+		\end{enumerate}
+		
+		\item\textbf{Abszolút konvergens sorok átrendezése.}
+		
+		Ha a $\sum a_n$ sor abszolút konvegens, és $(p_n): \N \to \N$ tetszoleges bijekció, akkor a $\sum a_{p_n}$ abszolút konvergens, és $\sumn a_n=\sumn a_{p_n}$
+		
+		\biz Legyen $(p_n):\N\to\N$ tetszoleges permutáció.
+		\[s_n=\sum_{k=0}^na_k,\quad\sigma_n:=\sum_{k=0}^na_{p_k}\]
+		\begin{enumerate}
+			\item $s_g$:\quad  a $\displaystyle\sum a_{p_n}$ sor abszolút konvergens (tehát konvergens is)
+			
+			A $\displaystyle\sum_{k=0}^n|a_{p_k}|, n\in \N)$ sorozat $\nearrow$ és felülrol korlátos, mert 
+			\[\sum_{k=0}^n|a_{p_k}|=|a_{p_0}|+\ldots+|a_{p_n}|\leq\sum_{k=0}^{+\infty}|a_k|=K\overset{a_k \text{ abszolút}}{\underset{\text{konvergens}}{<}}+\infty\quad \forall n \in \N\]
+			$\Rightarrow\displaystyle\sum|a_{p_k|}$ abszolút konvergens.
+			
+			\item $s_g:\quad  \displaystyle\sumn a_n=\sumn a_{p_k}$.
+			
+			Legyen $A=\sumn a_n$, azaz $s_n\to A$.
+			
+			Legyen $\varepsilon>0$ tetszoleges rögzített. mivel $\displaystyle\sum|a_n|$ konvergens $\overset{\text{Cauchy}}{\underset{\text{kritérium}}{\Longrightarrow}}$
+			\[\varepsilon>0\text{-hoz}\quad \exists N\in \N,\quad \forall n\geq N:\quad |a_N|+|a_{N+1}|+\ldots+|a_m|<\varepsilon.\]
+		\end{enumerate}
+		Tekintsük $(a_n)$ elso $N+1$ tagját.
+		
+		Ekkor \[\exists N_1\in\N\quad \forall n\geq N_1\text{-re}\quad \sigma_n-s_n=\underbrace{(a_{p_0}+\ldots+a_{p_n})-(a_0+a_1+\ldots+a_n)}_{a_0;a_1;\ldots;a_N\text{-ek kiesnek, ha $N_1$ elég nagy}}=\]
+		\[\sum_{k>N}^n\pm a_k \quad \Rightarrow\quad |\sigma_n-s_n|\leq\sum_{k>N}^n|a_k|<\varepsilon\quad \forall n\geq N_1\quad \Rightarrow\]
+		\[\sigma_n\narrow s_n\to 0\]
+		De:\[ \sigma_n=\sigma_n-s_n+s_n\narrow0+A\Rightarrow \sigma_n\to A,\quad  \text{azaz}\quad \sumn a_{p_n}=A\quad \blacksquare \]
+		
+		\item \textbf{Abszolút konvergens sorok szorzására vonatkozó Cauchy-tétel.}
+		
+		Ha a $\sum a_n$ és $\sum b_n$ sorok mindegyike abszolút konvergens, akkor 
+		\begin{enumerate}
+			\item a téglénysorozat $(\sum t_n)$ is abszolút konvergens,
+			\item a $\sum c_n$ Cauchy-szorzat is abszolút konvergens,
+			\item az összes $a_ib_j (i,j=0,1,\ldots)$ szotzatokból tetszés szerinti sorrendben és csoportosítással képzett $\sumn d_n$ sor is abszolút konvergens és $\sume d_n=\sumn t_n=\sumn c_n=\left(\sumn a_n\right)\cdot\left(\sumn b_n\right).$
+		\end{enumerate}
+		
+		\biz \textit{c)} 
+		\[ A_N:=\sum_{n=0}^N|a_n|\rightarrow A;\quad B_N:=\sum_{n=1}^N|b_n|\rightarrow B \]
+		Tekintsük a $\sum d_n$ sort, ahol $\sum a_ib_j$. 
+		
+		Legyen $I$ a maximális $i$ index $d_0,\ldots d_N$-ben, és $J$ a maximális $j$ index $d_0,\ldots d_N$-ben.
+		\[ \sum_{n=0}^N|d_n|\leq \left(\sum_{n=0}^I|a_n|\right)\left(\sum_{n=0}^J|b_n|\right)\leq A\cdot B \quad(\forall N\in \N) \]
+		
+		$\Rightarrow \sum|d_n| \text{\quad konvergens, azaz}\quad \sum d_n \quad\text{abszolút konvergens.}$
+		
+		Tehát $\sum t_n; \quad\sum c_n$ \quad is abszolút konvergens.
+		
+		Azonban: $\sumn t_n=\left(\sumn a_n\right)\left(\sumn b_n\right)$
+		
+		Viszont $\sum t_n$ \quad abszolút konvergens\quad$\Rightarrow$\quad tetszoleges módon átrendezheto és csoportosítható az összes megváltoztatása nélkül.
+		
+		$\sum d_n, \sum c_n$ is megkapható $\sum t_n$-bol alkalmas átrendezéssel, csoportosítással. \quad$\blacksquare$
+		
+		\item \textbf{Hatványsorok konvergenciahalmazára vonatkozó, a konvergencia sugarát meghatározó tétel.}
+		
+		Tetszoleges $\sumn \alpha_n(x-a)^n \quad (x\in\R)$ h.s. konvergencia halmazára (KH) a következo három eset egyike teljesül:
+		\begin{enumerate}
+			\item $\exists! q<R<+\infty: $ \quad a h.s. $\left\{\begin{gathered}
+				\forall x:\quad |x-a|<R\text{\quad abszolút konvergens}\\
+				\forall x:\quad |x-a|>R\text{\quad divergens}
+			\end{gathered}\right.$
+			\item a h.s. csak az $x=a$-ban konvergens $(R:=0)$
+			\item a h.s. $\forall x \in \R$ esetén konvergens. $(R:=+\infty)$
+		\end{enumerate}
+		($R: $ a h.s. konvergencia sugara)
+		
+		\biz Felteheto $a=0$, azaz $\sumn \alpha_nx^n \quad (x\in\R)$, mert ha $a\not=0:$
+		
+		$ \Rightarrow y:=x-a$-val $\sumn \alpha_ny^n$
+		
+		\begin{itemize}[~~~~~~~~~]
+			\item \textbf{Segédtétel:} Tegyük fel, hogy $\sum\alpha_nx^n$ h.s. konvergens egy $x_0\not=0$ pontban. Ekkor $\forall |x|<|x_0|$ esetén $\sum\alpha_nx^n$ abszolút konvergens.
+			
+			\biz $\sum\alpha_nx_0^n$ konvergens $\overset{\text{a konvergencia}}{\underset{\text{feltétel}}{\underset{\text{szükséges}}{\Longrightarrow}}}\lim(\alpha_nx^n_0)=0$ 
+			
+			$\Rightarrow(\sum\alpha_nx^n_0)$ korlátos, azaz $\exists M>0:\quad |\sum\alpha_nx^n_0|\leq M<+\infty (\forall n\in\N)$
+			
+			Legyen $|x|<|x_0|$.
+			
+			\[ \left|\sum\alpha_nx^n\right|=\left|\sum\alpha_nx^n_0\right|\cdot\left|\frac{x}{x_0}\right|^n\leq M\cdot\left|\frac{x}{x_0}\right|^n \quad (\forall n \in \N) \]
+			
+			Mivel $|x|<|x_0|\Rightarrow\left|\displaystyle\frac{x}{x_0}\right|<1$ és $\displaystyle\sum M\cdot \left|\frac{x}{x_0}\right|^n$ geometriai sor konvergens $\overset{\text{majoráns}}{\underset{\text{kritérium}}{\Longrightarrow}}\displaystyle\sum|\alpha_nx^n|$ konvergens, azaz 
+			
+			\[ \sum\alpha_nx^n\quad \text{abszolút konvergens.}\quad \blacksquare \]
+		\end{itemize}
+		Tekintsük a $\sum\alpha_nx^n$ h.s.-t. \[ \text{Ez}\quad  x=0\text{-ban konvergens }  \quad \Rightarrow 0 \in KH(\sum\alpha_nx^n) \Rightarrow \exists \sup KH(\sum\alpha_nx^n):=R\in\Ra\]\[\quad\text{ sot, }\quad R>0.\]
+		
+		A következo esetek lehetnek:
+		\begin{enumerate}
+			\item $0<R<+\infty:$
+			\begin{itemize}
+				\item Legyen $|x|<R \overset{\text{sup.}}{\underset{\text{defíciója}}{\Longrightarrow}} \exists x_0: |x|<x_0\leq R$\quad  és\quad $ \sum\alpha_nx^n_0$ \quad konvergens $\overset{\text{Segéd-}}{\underset{\text{tétel}}{\Longrightarrow}} \sum\alpha_nx^n$ abszolút konvergens.\\
+				
+				\item Legyen $|x|>R \Rightarrow \exists x_0:\quad  R<x_0<|x|:\quad \sum\alpha_nx^n$\quad divergens\quad $\overset{\text{Segéd-}}{\underset{\text{tétel}}{\Longrightarrow}} \sum \alpha_nx^n$ \quad divergens.\\
+				
+				\item Egyetlen ilyen tulajdonságú $R$ létezik (indirekt)
+			\end{itemize}
+			\item $R=0:$
+			
+			$ \displaystyle\sum\alpha_nx^n$ \quad konvergens $x=0$-ban. De $\forall |x|>0$ helyen divergens, ui.: \quad $|x|>0$ rögzített \quad $\Rightarrow\quad \exists x_0: \quad 0<x_0<|x| \quad$ és\quad $\displaystyle\sum\alpha_nx^n_0$\quad divergens $\Rightarrow \alpha_nx^n$ is divergens.
+			
+			\item $R=+\infty$:
+			
+			Ekkor $\sum\alpha_nx^n$ sor $\forall x \in \R$ esetén konvergens. ui.:
+			
+			\[ x\in \R \quad \text{tetszoleges}\quad \Rightarrow \exists x_0: \quad |x|<|x_0|\quad \text{és}\quad \sum\alpha_nx^n_0 \quad \text{konvergens}\Rightarrow\]\[ \Rightarrow\sum\alpha_nx^n\quad \text{abszolút konvergens.} \quad \blacksquare\]
+		\end{enumerate}
+		
+		\item \textbf{Cauchy-Hadamard tétel.}
+		
+		Tegyük fel, hogy a $\sumn \alpha_n(x-a)^n$ hatványsor, és tegyük fel hogy
+		
+		 $\displaystyle\exists\lim_{n\to+\infty}\left(\sqrt[n]{|\alpha_n|}\right)=:A\in\Ra$.
+		 
+		 Legyen:
+		 
+		 \[ R:=\left\{
+		 \begin{gathered}
+			 \frac{1}{A}, \quad \text{ha}\quad q<A<+\infty\\
+			 0, \quad \text{ha}\quad A=+\infty\\
+			 +\infty \quad \text{ha}\quad A=0
+		 \end{gathered}\right., \]
+		 a h.s. konvergencia sugara.
+		 
+		 Ekkor:
+		\begin{enumerate}
+			\item Ha $ 0<R<+\infty:\quad$ a h.s.
+			$\left\{\begin{gathered}
+				\quad\forall x: \quad |x-a|<R \quad \text{abszolút konvergens,}\\
+				\quad\forall x: \quad |x-a|>R \quad \text{divergens,}
+			\end{gathered}\right. $
+			\item Ha $R:=0$, a h.s. csak az $x=a$-ban konvergens,
+			\item Ha $R:=+\infty$, a h.s. $\forall x \in \R$\quad esetén konvervens.
+		\end{enumerate}
+		
+		\biz Alkalmazzuk a $\sum\alpha_n(x-a)^n$ sorra a gyökkritériumot:
+		\begin{enumerate}
+			\item $0<A<+\infty$:
+			\[\lim_{n\to+\infty}\sqrt[n]{|\alpha_n(x-a)^n|}=|x-a|\cdot\lim\sqrt[n]{|\alpha_n|}
+			\left\{\begin{gathered}
+				<1\quad \text{abszolút konvergens}\\
+				>1\quad \text{divergens}
+			\end{gathered}\right.\]
+			\item $A=+\infty$:
+			
+			$ x=a$-ban konvergens. $x\not=a \Rightarrow |x-a|\cdot A=+\infty>1 \Rightarrow x$-ben a sor divergens.
+			\item $A=0 \Rightarrow \forall x\in\R:\quad |x-a|\cdot A=0<1$ abszolút konvergens.\quad $\blacksquare$
+			
+		\end{enumerate}
+		
+		\item \textbf{Függvények határértékének egyértelmusége.}
+		
+		A határérték egyértelmu.
+		
+		\biz: Tegyük fel, hogy $\displaystyle\lim_af=A\in\Ra, \quad \lim_af=B\in \Ra$ \quad és\quad  $A\not=B$
+		
+		\[\Rightarrow\left\{\begin{gathered}
+			\forall \varepsilon>0, \quad \exists\sigma_1>0; \quad \forall x \in K_{\sigma_1}(a)\backslash\{a\}\cap \mathcal{D}_f:\quad f(x)\in K_{\varepsilon}(A)\\
+			\forall \varepsilon>0, \quad \exists\sigma_1>0; \quad \forall x \in K_{\sigma_2}(a)\backslash\{a\}\cap \mathcal{D}_f:\quad f(x)\in K_{\varepsilon}(B)
+		\end{gathered}\right.
+		 \]
+		$\displaystyle A\not=B\quad \Rightarrow\quad \exists\varepsilon>0:\quad K_\varepsilon(A)\cap K_\varepsilon(B)=\emptyset. \left(\text{pl. }A,B \in \R \quad \varepsilon<\displaystyle\frac{|A-B|}{2}\right)$
+		
+		Tekintsünk egy ilyen $\varepsilon$-t és legyen $\sigma:=min\{\sigma_1,\sigma_2\}.$
+		
+		$\Rightarrow \forall x \in K_\sigma(a)\backslash\{a\}\cap\mathcal{D}_f:\quad f(y)\in K_\varepsilon(A)\cap K_\varepsilon(B)=\emptyset$\quad  {\LARGE\Lightning}\quad $\blacksquare$
+		
+		\item \textbf{A határértékre vonatkozó átviteli elv.}
+		\[f\in\R\rightarrow\R, \quad a\in\mathcal{D}_f'. Ekkor \lim_af=A\in\Ra\quad \Leftrightarrow^{(*)}\quad \forall(x_n):\quad \N\to\mathcal{D}_f\backslash\{a\},\]
+		amire
+		\[\lim_{n\to+\infty}=a;\quad \lim_{n\to+\infty}f(x_n)=A\]
+		
+		\biz $\Rightarrow:$
+		
+		Tegyük fel, hogy $\lim_af=A\in\Ra\quad \Rightarrow$
+		\[ \forall \varepsilon>0,\quad \exists \sigma>0,\quad \forall x \in \mathcal{D}_f\cap(K_\sigma(a)\backslash\{a\}:\quad f(y)\in K_\varepsilon(A) \]
+		Legyen $\displaystyle(x_n):\quad \N\to\mathcal{D}_f\backslash\{a\},\quad  \lim_{n\to+\infty}x_n=a$ tetszoleges sorozat.
+		\[\varepsilon>0 \quad \text{tetszoleges,}\quad \sigma>0:\quad \exists n_0\in\N,\quad \forall n\geq n_0:\quad x_n\in K_\sigma(a),\]
+		azaz \[\forall\varepsilon>0,\quad  \exists n_0\in\N,\quad \forall n\geq n_0: f(x_n)\in K_\varepsilon(A)\quad \Rightarrow\quad \lim_{n\to+\infty}f(x_n)=A.\]
+		$\Leftarrow:$
+		
+		Tegyük fel, hogy (*) (jobb oldal) teljesül, de $\lim_af\not=A$.
+		\[ \exists \varepsilon>0,\quad \forall \sigma>0,\quad \exists x \in \mathcal{D}_f\cap(K_\sigma(a)\backslash\{a\}:\quad f(y)\not\in K_\varepsilon(A) \]
+		Legyen
+		\[\sigma=\frac{1}{n}\quad (n=1,2,\ldots):\quad \exists x_n\in\mathcal{D}_f\cap(K_{\frac{1}{n}}(a)\backslash\{a\}):\quad f(x_n)\not\in K_\varepsilon(A)\]
+		\[\Rightarrow\quad x_n\in K_{\frac{1}{n}}(a)\quad (n=1,2,\ldots)\quad \Rightarrow\quad x_n\underset{n\to+\infty}{\longrightarrow} a\]
+		\[f(x_n)\not\in K_\varepsilon(A)\quad \Rightarrow\quad \lim_{n\to+\infty}f(x_n)\not=A  \quad \text{{\LARGE\Lightning}}\quad \blacksquare\]
+		
+	\end{enumerate}
+	
+\end{document}

@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+
+\usepackage[magyar]{babel}
+
+\usepackage{amsmath,amssymb,paralist,floatflt}
+
+\begin{document}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+    \def\Ra{\overline{\mathbb{R}}~~}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\a{\textbf{Állítás: }}
+	\def\t{\textbf{Tétel: }}
+	\def\k{\textbf{Következmény: }}
+	\def\d{\textbf{Definíció: }}
+	\def\m{\emph{Megjegyzés: }}
+	\def\p{\textsl{Példa: }}
+	\def\b{\emph{Bizonyítás: }}
+
+	\begin{center}
+		\textbf{8. heti analízis $+/-$ra}
+		
+		Ez a kidolgozás Gecse Viktória jegyzete alapján készült.
+	\end{center}
+	
+	\begin{compactenum}
+		
+    \item\noindent Milyen állítást ismer monoton sorozatok határértékéről?\\
+     \emph{Válasz: } Minden monoton sorozatnak van hatérértéke.
+     
+    \begin{enumerate}
+      \item\begin{enumerate}
+          \item Ha $(a_n) \nearrow$ és felülről korlátos $\Rightarrow (a_n)$ konvergens és\\ $\lim(a_n)=\sup\{a_n~|~n \in \N \}$.
+          \item Ha $(a_n) \searrow$ és alulról korlátos $\Rightarrow (a_n)$ konvergens és\\ $\lim(a_n)=\inf\{a_n~|~n \in \N \}$.
+      \end{enumerate}
+      \item  \begin{enumerate}
+      	\item Ha $(a_n) \nearrow$ és felülről nem korlátos $\Rightarrow  \lim(a_n)=+\infty$.
+      	\item Ha $(a_n) \searrow$ és alulról nem korlátos $\Rightarrow \lim(a_n)=-\infty$.
+      \end{enumerate}
+    \end{enumerate}
+    
+    \bigskip
+    \item\noindent Hogyan szól a Bolzano-Weierstrass-féle kiválasztási tétel?\\
+    \emph{Válasz: } $\forall$ korlátos sorozatnak van konvergens részsorozata.
+    
+    \bigskip
+    \item\noindent Mit állít a Cauchy-féle konvergenciakritérium?\\
+	 \emph{Válasz:} $(a_n)$ konvergens $\Leftrightarrow (a_n)$ Cauchy-sorozat. 
+    
+    \bigskip
+    \item\noindent Legyen $q \in \R$. Mit tud mondani a $(q^n)$ sorozatról határérték szempontjából?\\
+     \emph{Válasz:} 
+     
+     {\centering
+    $\lim(q^n)=\left\{\begin{gathered}
+	=0, \text{ ha } |q|<1\\
+	=1, \text{ ha } q=1\\
+    =+\infty \text{ ha } q>1\\
+    \nexists \text{ h.é.}, \text{ ha } q\leq -1
+	\end{gathered}\right.$
+	\par}.
+    
+    \bigskip
+    \item\noindent Milyen állítást ismer az $\displaystyle\Bigl(\frac{a^n}{n!}\Bigr)$ sorozat konvergenciájával kapcsolatosan, ahol $a$ valós paraméter?\\
+	\emph{Válasz: } $\forall a \in \R$ és $(n\in \N$) : \quad $\displaystyle \Bigl(\frac{a^n}{n!}\Bigr)$ \quad konvergens és $\displaystyle \quad \lim\Bigl(\frac{a^n}{n!}\Bigr)=0$.
+    
+    \bigskip
+    \item\noindent Milyen állítást ismer monotonitás és korlátosság szempontjából az
+    \[a_n:=\left(1+\frac{1}{n}\right)^n \quad (n=1, 2, \ldots)\]
+    sorozatról?
+
+    \emph{Válasz: } $(a_n) \uparrow$\quad és \quad $\forall n \in \N: \quad 2\leq a_n < 4$.
+
+    \bigskip
+    \item\noindent Milyen állítást ismer az $\sqrt[n]{n!}$ sorozat határértékével kapcsolatosan?\\
+    \emph{Válasz: } ha $n \in \N$:
+    $\underset{n\rightarrow+\infty}{\lim}(\sqrt[n]{n!})=+\infty$.
+	
+    \bigskip
+    \item\noindent Fogalmazza meg pozitív valós szám $m$-edik gyökének a létezésére vonatkozó
+    tételt.\\
+    \emph{Válasz: } Legyen $m=2,3,\ldots$ rögzített.
+    \begin{enumerate}
+    	\item $ \forall A>0$-hoz $\exists! \alpha>0: \quad \alpha^m=A.$
+    	\item Ha $a_0$ tetszőleges pozitív szám: \[ \quad a_{n+1}:=\frac{1}{m}\left(\frac{A}{a_n^{m-1}}+(m-1)a_n\right) (n=0,1,2\ldots) \] sorozat konvergens és $\lim(a_n)=\alpha$.
+    \end{enumerate}
+	\end{compactenum}
+    
+\end{document}
