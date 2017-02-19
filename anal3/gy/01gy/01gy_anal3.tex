@@ -1,50 +1,123 @@
-\documentclass[a4paper,11.5pt,table]{article}
+\documentclass[a4paper,11.5pt]{article}
 \usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
 \usepackage[normalem]{ulem}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb, paralist, tikz, multirow}
-\usetikzlibrary{arrows, positioning}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+%\usepackage{marvosym}
 
-\usepackage{listings}
-\lstdefinestyle{customc}{
-	belowcaptionskip=1\baselineskip,
-	breaklines=true,
-	frame=L,
-	language=C++,
-	showstringspaces=false,
-	basicstyle=\ttfamily,
-	%identifierstyle=\color{blue},
-	keywordstyle=\bfseries\color{green!40!black},
-	stringstyle=\color{orange},
-	emph = {std, A, B, BDIT, Base, BaseOne, BaseTwo, C, CharT, Circle, Compr, ConstIterator, Cont, D, Deltoid, Derived, Derived2, DerivedLast, DerivedOne, DerivedTwo, Fact, Fiu, Foo, Greater, Hallgato, IT, InputIt, Iterator, Kor, Lany, Less, LessByX, LinAlgVector, List, Matrix, Negyszog, Negyzet, RAIT, Rombusz, S, Sielo, Sikidom, StringLength, T, T1, T2, Templ, U, Val, X, Y, Z, bad_cast, bidirectional_iterator_tag, const_iterator, deque, forward_iterator_tag, input_iterator_tag, iostream, istream, iterator, iterator_category, line_editor, list, map, multimap, multiset, ostream, pair, random_access_iterator_tag, set, string, strlen, strlenWrong, value_type, vector}, 
-	emphstyle = \color{blue},
-	tabsize = 4
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
 }
-
-\lstdefinestyle{customasm}{
-	belowcaptionskip=1\baselineskip,
-	frame=L,
-	language=[x86masm]Assembler,
-	basicstyle=\ttfamily,
-	commentstyle=\itshape\color{purple!40!black},
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
 }
-
-\lstset{
-	escapechar=@,
-	style=customc,
-	literate =  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-	{ö}{{\"o}}1 {ü}{{\"u}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-	{€}{{\euro}}1 {£}{{\pounds}}1	
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
 }
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
 
 \usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
 
 \begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{center}
 		{\LARGE\textbf{Analízis 3. A szakirány}}
 		\smallskip
@@ -55,5 +128,179 @@
 		1. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\section{Bevezető}
+	\begin{compactitem}
+		\item emial: filipp@numanal.inf.elte.hu
+		\item szoba: 2-316A
+		\item Telefonszám: 06-70-332-01-41
+		\item Cím: \url{numanal/~filipp}, analízis 3, azon belül A.
+		\item várható majd kötelezően beadandó integrálszámítás
+		\item 8:30 kezdés
+		\item 7. héten első zh, 13. hét második zh
+		\item egy csütörtök el fog maradni, de pótolva lesz
+	\end{compactitem}
+	Ami a honlapon található:
+	\begin{compactitem}
+		\item Gyakorlati anyag
+		\item Gyemidovics tankönyv (III. fejezet) (és ennek eredményei külön fájlban)
+		\item Bolyai sorozat (integrálszámítás és többváltozós analízis)
+		\item Ajánlottak mint Szili analízis feladat gyűjteménye és integráltáblázata.
+		\item Károlyi Katalin
+	\end{compactitem}
+	\section{Integrálszámítás}
+	(első 6 hét anyaga)
+	\subsection{Bevezető}
+	\begin{revision}
+		(Primitív függvény)\quad Legyen $\emptyset\not=I\subset\R$ nyílt intervallum, és $f:I\to\R$ fv. Ha 
+		\[\exists F:I\to\R, \quad F\in D\quad  \text{és}\quad  F'(x)=f(x) \quad (\forall x\in I),\]
+		akkor azt mondjuk hogy $F$ az $f$ egy primitív függvénye.
+	\end{revision}
+	Nem minden függvény rendelkezik primitív függvénnyel, pl.: $sign(x)$, mert az 1/2-et nem veszi fel sehol.
+	\begin{note}
+	$f(x)=x^2,\quad x\in I:=\R;\quad \Rightarrow\quad F(x)=\frac{1}{3}x^3\quad (x\in\R)$, mert $\left(\frac{1}{3}x^3\right)'=\frac{1}{3}3x^2=x^2$.
 	
+	Ezek is primitív függvényei $f$-nek $(x\in\R)$:
+	\[ F_1(x):=\frac{1}{3}x^3+1,\quad  F_{34}(x):=\frac{1}{3}x^3+34 \]
+	Általánoságban
+	\[ F(x):=\frac{1}{3}x^3+c\quad (c, x\in\R) \]
+	\end{note}
+	Két primitív függvény konstansban térhet csak el. Ez alapján megállapítható, hogy ha létezik primitív függvény, végtelen sok lehet belőlük.
+	\begin{note}
+		Ha van $f$-nek primitív függvénye, akkor
+		\[  \int f(x)\,dx:=\{F:I\to\R~|~F\in D \text{\quad és\quad } F'=f \} =F(x) + c \]
+		az $f$ primitív függvényeinek a halmaza, vagy az $f$ határozatlan integrálja
+	\end{note}
+	Mindig meg kell adnunk az $I$ intervallumot.
+	
+	Néha az is kérdés lehet, egy függvény melyik pontban tűnik el, azaz nem mindig a 0ra vagyunk kíváncsiak.
+	\begin{task}
+		Adjuk meg azt az $F$-et, melyre $F(1)=2$
+	\end{task}
+	%TODO ábra 1
+	\begin{revision}
+		$f:$idő$\to$távolság
+		
+		Ilyenkor mit jelent $f'$? az a sebesség, míg $f''$ a gyorsulás. Ott gyakran vannak olyan feltételek, hogy a kezdősebesség legyen 2 ($f(1)=2$)
+		
+		Ehhez a fenti feladatot példaképp véve $\frac{1}{3}^3+c=2$ egyenletet kell megoldani $\quad \Rightarrow\quad c=\frac{5}{3}$.
+	\end{revision}
+	Tehát:
+	\[ F(x)=\frac{x^3}{3}+\frac{5}{3} \]
+	\begin{task}$(x\in\R$)
+		\[\int \cos x\,dx=\sin x+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[ (\arccos\tan x)' =\frac{1}{1+x^2}\quad \Rightarrow\quad \int\frac{1}{1+x^2}\,dx=\arctan x + c\quad (x,c\in \R) \]
+	\end{task}
+	\begin{task} $x\in(-1,1)$
+		\[ \int\frac{1}{\sqrt{1-x^2}}\,dx=\arc\sin x + c \quad (c\in \R) \]
+	\end{task}
+	\subsection{Alapintegrálok és ezekre vezethető típusok}
+	Szokás úgy is hívni hogy antiderivált, mert az annak az ellentettje.
+	\begin{task}$(x\in\R)$
+		\[\int(6x^3-2x+1)\,dx\]
+	\end{task}
+	\begin{note}
+		Mi az a $dx$? EMlékezzünk vissza mi az a határozott integrál: nagyon kis területekre osztottunk fel egy intervalumot, és így közelítettük a területet.
+	\end{note}
+	Emlékezzünk vissza a műveleti tételekre. Az integrál lineáris, így a konstansot ki lehet emelni
+	\[ 6\cdot\int x^3\,dx-2\cdot\int x\,dx+\int1\,dx=6\cdot\frac{x^4}{4}-2\cdot\frac{x^2}{2}+x+c\quad (c\in\R) \]
+	\begin{theorem}
+		Általános integrálfüggvény:
+		\[ \int x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (x>0, c,\alpha\in\R) \]
+		HA $\alpha\not=-1$
+	\end{theorem}
+	\begin{task}$x>0$. Bár $\R\setminus\{0\}$ is jó válasz, de az nem intervallum.
+		\[ \int\frac{1}{x}\,dx=\ln x+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}($x\in(-\infty,0)=:I$
+		\[ \int\frac{1}{x}\,dx=\ln(-x)+c\quad (c\in\R),\quad \text{ui.}\quad (\ln(-x))'=\frac{1}{-x}(-x)'=-\frac{1}{x}\cdot(-1)=\frac{1}{x} \]
+		Logaritmus nem megoldás, mert az argumentumának pozitívnak kell lennie. ($-x$ pozitív itt)
+	\end{task}
+	\begin{note}
+		az előző két feladat összefoglalható úgy, hogy 
+		\[ \int\frac{1}{x}\,dx=\ln|x|+x\quad (c\in\R, x\in(-\infty,0)\quad \text{vagy}\quad (0,+\infty) \]
+	\end{note}
+	\begin{task}$x>0$
+		\[ \int\sqrt{x\sqrt{x\sqrt{x}}}\,dx=\int x^\frac{1}{2}\cdot x^\frac{1}{4}\cdot x^\frac{1}{8}\, dx=\int x^{\frac{1}{2}+\frac{1}{4}+\frac{1}{8}}\,dx=\int x^{\frac{7}{8}}\,dx=\frac{x^{\frac{7}{8}+1}}{\frac{7}{8}+1}+c=\frac{8}{15}\cdot\sqrt[8]{x^{15}}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{note}
+		Ha szorzat van csinálj öszeget, ha összeg van cisnálj szorzatot
+	\end{note}
+	\begin{task}
+		\[ \int\frac{(x+1)^2}{\sqrt{x}}\,dx=\int\frac{x^2+2x+1}{x^\frac{1}{2}}\,dx=\int\frac{x^2}{x^{\frac{1}{2}}}\,dx+2\int\frac{x}{x^\frac{1}{2}}\,dx+\int\frac{1}{x^\frac{1}{2}}\,dx=\int x^\frac{3}{2}\,dx+2\int x^\frac{1}{2}\,dx+\int x^{-\frac{1}{2}}\,dx= \]
+		\[=\frac{x^{\frac{3}{2}+1}}{\frac{3}{2}+1}+2\frac{x^{\frac{1}{2}+1}}{\frac{1}{2}+1}x+\frac{x^{-\frac{1}{2}+1}}{-\frac{1}{2}+1}+c\quad (c\in\R) =\frac{2}{5}\cdot\sqrt{x^5}+\frac{4}{3}\sqrt{x^3}+2\sqrt{x}+c \]
+	\end{task}
+	\begin{center}
+		\textit{,,Integrálni úgy kell hogy nézed, nézed, nézed, és aztán rájössz.''}
+		
+		/Filipp/
+	\end{center}
+	\begin{note}
+		A fenti módszer hívjuk az összegre bontás módszerének.
+	\end{note}
+	\begin{task}$(x\in(-1,1))$
+		\[ \int\left(2x+(1-x^2)^{-\frac{1}{2}}\right)\,dx=2\int x\,dx+\int\frac{1}{\sqrt{1-x^2}}\,dx=2\frac{x^2}{2}+\arc\sin x+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		$x\in\R$
+		\[ \int\frac{x^2}{x^2+1}\,dx=\int \frac{x^2+1-1}{x^2+1}\,dx=\int1\,dx-\int\frac{1}{x^2+1}\,dx=x-\arc\tg x+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$
+		\[ \int \tg^2 x\,dx=\int\frac{\sin^2 x}{\cos^2x}\,dx=\int\frac{1-\cos^2x}{\cos^2x}\,dx=\int\frac{1}{\cos^2x}\,dx-\int1\,dx=\tg x-x+c\quad (c\in\R) \]
+	\end{task}
+	\subsection{Lineáris helyettesítés szabálya}
+	\begin{task}$x\in\R$
+		\[ \int\cos(2x)\,dx=\sin(2x)+c= \]
+		Ellenőrizzünk:
+		\[ (\sin(2x))'=\cos(2x)\cdot2 \]
+		Azaz korrigálnunk kell, le kell még osztani 2-vel.
+		\[ =\frac{\sin(2x)}{2}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{revision}
+		\[ \cos x\,dx=\sin x+c \]
+	\end{revision}
+	\begin{task}$x\in\R$
+		\[ \int\cos(2-3x)\,dx=\frac{\sin(2-3x)}{-3}+c \]
+	\end{task}
+	Általában, a lineáris helyettesítés szabálya:
+	\begin{enumerate}
+		\item Felteszem, hogy $\exists F:\quad \int f(x)\,dx=F(x)+c$
+		\item $\int f(ax+b)\,dx=\frac{F(ax+b)}{a}+c\quad (\forall a,b\in\R, a\not=0)$
+		\item Csak ha lineáris!
+	\end{enumerate}
+	\begin{task}$x\in\R$
+		\[ \int e^{5x+4}\,dx=\frac{e^{5x+4}}{5}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[ \int\frac{1}{\sqrt{1-3x^2}}\,dx=\quad \left(|x|<\frac{1}{3}\right) \quad =\int\frac{1}{\sqrt{1-(\sqrt{3}x)^2}}\,dx=\frac{\arc\sin(\sqrt{3}x)}{\sqrt{3}}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[ \int\frac{2}{3+2x^2}\,dx=\frac{2}{3}\int\frac{1}{1+\frac{2}{3}x^2}\,dx=\frac{2}{3}\int\frac{1}{1+\left(\sqrt{\frac{2}{3}}x\right)^2}\,dx=\frac{2}{3}\frac{\arc\tg\left(\sqrt{\frac{2}{3}}x\right)}{\sqrt{\frac{2}{3}}}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[\sin^2x\,dx=\int\frac{1-\cos2x}{2}\,dx=\frac{1}{2}\left(\int1\,dx-\int\cos2x\,dx=\frac{1}{2}x-\frac{1}{2}\cdot\frac{\sin(2x)}{2}+c\quad (c\in\R)\right) \]
+	\end{task}
+	\begin{note}
+		\[ \begin{cases}
+		\sin^2x+cos^2x=1\\
+		\cos^2x-\sin^2x=\cos2x
+		\end{cases} \]
+		\begin{center}
+			$+\quad \Rightarrow\quad $\fbox{$\cos^2 x=\frac{1+\cos2x}{2}$}\quad \fbox{$\sin^2x=\frac{1-\cos2x}{2}$}
+			
+			$-\quad \Rightarrow\quad $ LINEARIZÁLÓ FORMULÁK
+		\end{center}
+	\end{note}
+	\begin{task} $x\in(-\pi,\pi)$
+		\[\int\frac{1}{1+\cos x}\,dx=\text{(félszögre térés)}=\int\frac{1}{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}+\cos^2\frac{x}{2}-\sin^2\frac{x}{2}}\,dx=\frac{1}{2}\cdot\int\frac{1}{\cos^2\frac{x}{2}}\,dx=\frac{1}{2}\frac{\tg \frac{x}{2}}{\frac{1}{2}}+c\quad (c\in\R) \]
+	\end{task}
+	\textbf{Házi feladat:}
+	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$
+		\[ \int\frac{\cos^2x-2}{1+\cos2x}\,dx=? \]
+	\end{task}
+	Továbbá 50 db. beadandó I. és II. típusból (honlapon, 1628. feladattól 1673)
+	\begin{revision}
+		$\cos2x=\cos^2x-\sin^2x$
+	\end{revision}
 \end{document}
