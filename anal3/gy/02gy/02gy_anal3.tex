@@ -1,0 +1,258 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis 3. A szakirány}}
+		\smallskip
+		
+		{\Large Gyakorlati jegyzet}
+		
+		\smallskip
+		2. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	
+	\section{Lineáris helyettesítés (folyt.)}
+	\begin{task}
+		\[ \int\frac{f'(x)}{f(x)}\,dx=\ln |f(x)|+c \quad (c\in\R, \quad x\in I)\]
+	\end{task}
+	\begin{task}$(x\in\R)$
+		\[ \int\frac{x}{x^2+8}\,dx\quad \overset{f(x):=x^2+8}{\underset{f'(x)=2x}{=}}\quad\frac{1}{2}\int\frac{2x}{x^2+8}\,dx=\frac{1}{2}\int\frac{(x^2+8)'}{x^2+8}\,dx=\frac{1}{2}\ln(x^2+8)+c\quad (c\in\R)  \]
+	\end{task}
+	\begin{task}Ha $x\in(1;+\infty)$:
+		\[ \int\frac{1}{x\ln x}\,dx= \int\frac{1}{x}\cdot\frac{1}{\ln x}\,dx\quad \overset{f(x):=\ln x}{\underset{f'(x)=\frac{1}{x}}{=}}\quad \int\frac{(\ln x)'}{\ln x}\,dx=\ln|\ln x|+c=\ln(ln(x))+x\quad (c\in\R) \]
+		Ha $x\in(0,1)$:
+		\[ \int\frac{(\ln x)'}{\ln x}\,dx=\ln(-\ln x)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}$x\in(-\frac{\pi}{2},\frac{\pi}{2})$:
+		\[ \int\tg x\,dx=\int\frac{\sin x}{\cos x}\,dx\quad \overset{f(x):=\cos x}{\underset{f'(x)=-\sin x}{=}}\quad -\int\frac{(\cos x)'}{\cos x}\,dx=-\ln|\cos x|+c=-\ln(\cos x)+c\quad (c\in\R) \]
+	\end{task}
+	\section{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
+	\begin{task} $(\alpha\in\R\setminus\{-1\})\quad (x\in I)$
+		\[ \int f'(x)\cdot f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c\quad (c\in\R) \]
+		\[ \int x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad \quad \int f'(x)f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1} \]
+	\end{task}
+	\begin{task}
+		$(x\in\R)$
+		\[ \int x^2(3x^3+4)^{2017}\,dx\quad \overset{\alpha:=2017}{\underset{f(x):=3x^3+4}{\underset{f'(x)=9x^2}{=}}}\quad \frac{1}{9}\int 9x^2(3x^3+4)^{2017}\,dx=\frac{1}{9}\int(3x^3+4)'(3x^3+4)\,dx=\]
+		\[=\frac{1}{9}\frac{(3x^3+4)^{2018}}{2018}+c\quad (c\in\R) \]
+		\begin{note}
+			Itt kapóra jött az  $x^2$. Ha nem így lenne, akkor 2017re kéne hatványozni, szétszedni binomiális tétellel, stb.
+		\end{note}
+	\end{task}
+	\begin{task}$(x\in\R)$
+		\[\int e^x (1-e^x)^{300}\,dx\quad \overset{\alpha=300}{\underset{f(x:=1-e^x)}{\underset{f'(x)=-e^x}{=}}}\quad -\int(1-e^x)'\cdot(1-e^x)^{300}\,dx=-\frac{(1-e^x)^{301}}{301}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		$x\in(0,\frac{\pi}{2})$
+		\[ \int\frac{\cos2x}{\sqrt{\sin x+\cos x}}\,dx = \int \frac{\cos^2 x-\sin^2 x}{\sqrt{\cos x+\sin x}}\,dx=\int\frac{(\cos x-\sin x)(\cos x+\sin x)}{\sqrt{\cos x+\sin x}}\,dx=\]
+		\[=\int(\cos x-\sin x)(\cos x-\sin x)^{\frac{1}{2}}\,dx\quad \overset{\alpha:=\frac{1}{2}}{\underset{f(x):=\cos x+\sin x}{\underset{f'(x)=-\sin x+\cos y}{=}}}\quad \int(\sin x+\cos x)'(\sin x+\cos x)^{\frac{1}{2}}\,dx=\]
+		\[=\frac{(\sin x + \cos x)^{\frac{3}{2}}}{\frac{3}{2}}+c\quad (c\in\R) \]
+		\begin{note}
+			Ez már ZH szintű feladat.
+		\end{note}
+	\end{task}
+	\bigskip
+	
+	\begin{center}
+		\textit{,,Én is szívesen négyzetre emelném a fizetésemet''}
+		\smallskip
+		
+		/Filipp Zoltán István/
+	\end{center}
+	\bigskip
+	\subsection{$n,m\in\Z:\quad \int\sin^n x\cos^mx\,dx$\quad \text{(feladat altípus)}\quad}
+	\begin{task}$x\in\R$
+		\[ \int \sin^3x\cdot^5x\,dx=\int\sin x\cdot\sin^2x\cdot\cos^5x\,dx=-\int(\cos x)'\cdot(1-\cos^2 x)\cos^5x\,dx=\]
+		\[=-\int(\cos x)'\cos^5c\,dx+\int(\cos x)'\cos^7x\,dx=-\frac{\cos^6x}{6}+\frac{\cos^8}{8}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{note}
+		Ha $n$ vagy $m$ páratlan, akkor örülünk, és vesszük a kisebbik páratlan hatványt.
+		
+		Leválasztunk belőle 1-et és ez lesz a másiknak a deriváltja.
+	\end{note}
+	\begin{task}$x\in\R$
+		\[ \int\cos^3x\,dx=\int\cos x\cdot\cos^2x\,dx=\int(\sin x)'\cdot(1-\sin^2x)\,dx=\int(\sin x)'\,dx-\int(\sin x)'(\sin x)^2\,dx=\]
+		\[=\sin x-\frac{\sin^3x}{3}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}Házi feladat. Tipp: Linearizálás ;)
+		\[ \int(\sin^5x\cos^{10}x\,dx)\quad (x\in\R) \]
+	\end{task}
+	\begin{task}$x\in\R$
+		\[ \int\sin^2x\cos^4x\,dx=\int(1-\cos^2x)\cos^4 x\,dx=\int\cos^4 x\,dx-\underbrace{\int\cos^6x\,dx}_{\text{HF}}=\]
+		\[\cos^4\,dx=\int\int\left(\frac{1+\cos^2x}{2}\right)^2\,dx=\frac{1}{4}\int(1+2\cos2x+\cos^22x)\,dx=\frac{1}{4}x+\frac{1}{2}\frac{\sin2x}{2}+\frac{1}{4}\int\cos^2(2x)\,dx=\]
+		\[\frac{x}{4}+\frac{\sin2x}{4}+\frac{1}{4}\int\frac{1}+\cos4x{2}\,dx=\frac{x}{4}+\frac{\sin2x}{4}+\frac{x}{8}+\frac{1}{8}\frac{\sin4x}{4}+c\quad (c\in\R) \]
+		\begin{center}
+			\fbox{$\displaystyle \cos^2=\frac{1+\cos2x}{2}$}\\
+			\fbox{$\displaystyle \sin^2=\frac{1-\cos2x}{2}$}
+		\end{center}
+	\end{task}
+	\begin{task}$x\in(0,\pi)$
+		\[\int\frac{1}{\sin x}\,dx=\quad (\text{félszögre térés})\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{=}\quad \int\frac{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}}{2\sin\frac{x}{2}\cos\frac{x}{2}}\,dx=\frac{1}{2}\int\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\,dx+\frac{1}{2}\int\frac{\cos\frac{x}{2}}{\sin\frac{x}{2}}\,dx=\]
+		\[=-\int\frac{(\cos\frac{x}{2})'}{\cos\frac{x}{2}}=\ln\left(\sin\frac{x}{2}\right)-\ln\left(\cos\frac{x}{2}\right)+c=\ln\left(\tg\frac{x}{2}\right)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		Házi feladat
+		\[ \int\frac{\sin^2x}{\cos^4x}\,dx\quad (x\in(0,\frac{\pi}{1})) \]
+		\[ \int\sin^4x\cos^4x\,dx (x\in\R) \]
+	\end{task}
+	\section{Helyettesítés szabálya}
+	\begin{revision}
+		Tegyük fel, hogy $\emptyset\not=\int f(x)\,dx=F(x)+c\quad (c\in\R, x\in I)$, és tegyük fel, hogy\\ $g:J\to I, \quad g\in D.$ Ekkor
+		\[ \int f(g(x))\cdot g'(x)\,dx=F(g(x))+c\quad (c\in\R) \]
+		Ugyanis
+		\[ (F(g))'=F'(g(x))\cdot g'(x)=f(g(x))\cdot g'(x)\checkmark \]
+	\end{revision}
+	\begin{task}$x\in\R$
+		\[ \int x\cos(x^2)\,dx\quad \overset{g'(x):=2x}{\overset{g(x):=x^2}{\underset{f(x):=\cos x}{=}}}\quad \frac{1}{2}\int 2x\cos(x^2)\,dx=\frac{1}{2}\int(x^2)'\cdot\cos(x^2)\,dx=\frac{1}{2}\sin(x^2)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{note}
+		Rövid jelölés: 
+		\[ \int x\cos(x^2)\,dx\quad \overset{x^2:=t\in(0;+\infty)}{\underset{(x^2)'\,dx=(t)'\,dt}{\underset{2\text{\fbox{$x\,dx$}}=1\,dt}{=}}}\quad\int\frac{1}{2}\cdot\cos t\,dt\big|_{t=x^2}=\frac{1}{2}\sin t +c\big|_{t=x^2}=\frac{1}{2}\sin(x^2)+c  \]
+	\end{note}
+	\begin{task}$x\in(0,\frac{\pi}{2})$
+		\[ \int\frac{1+\tg^2x}{q+\tg x}\,dx \]
+		Legyen $\tg x=:t\in(0;+\infty)\quad \Leftrightarrow \quad x=\arc\tg t\quad \Rightarrow\quad (x)'\,dx=(\arc\tg t)'\,dt$
+		\[ dx:=\frac{1}{1+t^2}\,dt \]
+		\[ \Rightarrow\quad \int\frac{1+t^2}{1+t}\cdot\frac{1}{1+t^2}\,dt=\int\frac{1}{1+t}\,dt=\int\frac{(t+1)'}{t+1}\,dt=\ln(t+1)+c\quad (c\in\R) \]
+		Visszírva
+		\[ \int\frac{1+\tg^2 x}{1+\tg x}\,dx=\ln(1+\tg x)+c\quad (c\in\R) \]
+		Vagy:
+		\[ 1+\tg^2 x=1+\frac{\sin^2x}{\cos^2x}=\frac{1}{\cos^2x};\quad \Rightarrow\quad \int\frac{1}{\cos^2x}\cdot\frac{1}{1+\tg x}\,dx=\int\frac{(1+\tg x)'}{1+\tg x}\,dx=\ln(1+\tg x)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}$x\in\R$
+		\[ \int\frac{e^{2x}}{1+e^x}\,dx \]
+		Legyen \[e^x=:t\in(0,+\infty)\quad \Rightarrow\quad x=\ln t\Rightarrow\quad (x)'\,dx=(\ln t)'\,dt\quad \text{\fbox{$\displaystyle dx=\frac{1}{t}\,dt$}} \]
+		Az ,,új integrál'':\quad $\displaystyle \int\frac{t^2}{1+t}\cdot\frac{1}{t}\,dt=\int\frac{1}{1+t}\,dt$
+		\[ =\int\frac{t}{1+t}\,dt\int\frac{t+1-1}{t+1}\,dt=\int\left(1-\frac{1}{1+t}\right)\,dt=t-\ln(1+t)+c \]
+		,,Vissza'':
+		\[ \int\frac{e^x}{1+e^x}\,dx=e^x-\ln(1+e^x)+c\quad (c\in\R) \]
+	\end{task}
+	HF: 30 darab feladattípus, $\int\frac{f'}{f}$,\quad  $\int f'f^\alpha$, \quad $\int(\sin^4x\cos^4x),\quad \int f\circ g\cdot g'=...$.
+	\begin{center}
+		\textit{,,Tanár úr, használhatok már jelölést? mert a $g(t)$-t annyira nem szeretem''}
+		\smallskip
+		
+		/Tóth Péter/
+	\end{center}
+	\begin{note}
+		Mindig a nagyobb hatvánnyal rendelkező változóhoz érdemes új változót rendelhni
+	\end{note}
+\end{document}
