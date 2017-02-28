@@ -114,6 +114,7 @@
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
 	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
 	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
 	\newtheorem{task}[theorem]{Feladat} % same for example numbers
 	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
@@ -137,17 +138,17 @@
 		\[ \int\frac{x}{x^2+8}\,dx\quad \overset{f(x):=x^2+8}{\underset{f'(x)=2x}{=}}\quad\frac{1}{2}\int\frac{2x}{x^2+8}\,dx=\frac{1}{2}\int\frac{(x^2+8)'}{x^2+8}\,dx=\frac{1}{2}\ln(x^2+8)+c\quad (c\in\R)  \]
 	\end{task}
 	\begin{task}Ha $x\in(1;+\infty)$:
-		\[ \int\frac{1}{x\ln x}\,dx= \int\frac{1}{x}\cdot\frac{1}{\ln x}\,dx\quad \overset{f(x):=\ln x}{\underset{f'(x)=\frac{1}{x}}{=}}\quad \int\frac{(\ln x)'}{\ln x}\,dx=\ln|\ln x|+c=\ln(ln(x))+x\quad (c\in\R) \]
+		\[ \int\frac{1}{x\ln x}\,dx= \int\frac{1}{x}\cdot\frac{1}{\ln x}\,dx\quad \overset{f(x):=\ln x}{\underset{f'(x)=\frac{1}{x}}{=}}\quad \int\frac{(\ln x)'}{\ln x}\,dx=\ln|\ln x|+c=\ln(\ln(x))+c\quad (c\in\R) \]
 		Ha $x\in(0,1)$:
 		\[ \int\frac{(\ln x)'}{\ln x}\,dx=\ln(-\ln x)+c\quad (c\in\R) \]
 	\end{task}
-	\begin{task}$x\in(-\frac{\pi}{2},\frac{\pi}{2})$:
+	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$:
 		\[ \int\tg x\,dx=\int\frac{\sin x}{\cos x}\,dx\quad \overset{f(x):=\cos x}{\underset{f'(x)=-\sin x}{=}}\quad -\int\frac{(\cos x)'}{\cos x}\,dx=-\ln|\cos x|+c=-\ln(\cos x)+c\quad (c\in\R) \]
 	\end{task}
 	\section{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
 	\begin{task} $(\alpha\in\R\setminus\{-1\})\quad (x\in I)$
 		\[ \int f'(x)\cdot f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c\quad (c\in\R) \]
-		\[ \int x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad \quad \int f'(x)f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1} \]
+		\[ \int 1\cdot x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (c\in\R)\quad \longrightarrow\quad \int f'(x)f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c \quad (c\in\R) \]
 	\end{task}
 	\begin{task}
 		$(x\in\R)$
@@ -158,12 +159,12 @@
 		\end{note}
 	\end{task}
 	\begin{task}$(x\in\R)$
-		\[\int e^x (1-e^x)^{300}\,dx\quad \overset{\alpha=300}{\underset{f(x:=1-e^x)}{\underset{f'(x)=-e^x}{=}}}\quad -\int(1-e^x)'\cdot(1-e^x)^{300}\,dx=-\frac{(1-e^x)^{301}}{301}+c\quad (c\in\R) \]
+		\[\int e^x (1-e^x)^{300}\,dx\quad \overset{\alpha=300}{\underset{f(x):=1-e^x}{\underset{f'(x)=-e^x}{=}}}\quad -\int(1-e^x)'\cdot(1-e^x)^{300}\,dx=-\frac{(1-e^x)^{301}}{301}+c\quad (c\in\R) \]
 	\end{task}
 	\begin{task}
-		$x\in(0,\frac{\pi}{2})$
+		$x\in\left(0,\frac{\pi}{2}\right)$
 		\[ \int\frac{\cos2x}{\sqrt{\sin x+\cos x}}\,dx = \int \frac{\cos^2 x-\sin^2 x}{\sqrt{\cos x+\sin x}}\,dx=\int\frac{(\cos x-\sin x)(\cos x+\sin x)}{\sqrt{\cos x+\sin x}}\,dx=\]
-		\[=\int(\cos x-\sin x)(\cos x-\sin x)^{\frac{1}{2}}\,dx\quad \overset{\alpha:=\frac{1}{2}}{\underset{f(x):=\cos x+\sin x}{\underset{f'(x)=-\sin x+\cos y}{=}}}\quad \int(\sin x+\cos x)'(\sin x+\cos x)^{\frac{1}{2}}\,dx=\]
+		\[=\int(\cos x-\sin x)(\cos x+\sin x)^{\frac{1}{2}}\,dx\quad \overset{\alpha:=\frac{1}{2}}{\underset{f(x):=\cos x+\sin x}{\underset{f'(x)=-\sin x+\cos y}{=}}}\quad \int(\sin x+\cos x)'(\sin x+\cos x)^{\frac{1}{2}}\,dx=\]
 		\[=\frac{(\sin x + \cos x)^{\frac{3}{2}}}{\frac{3}{2}}+c\quad (c\in\R) \]
 		\begin{note}
 			Ez már ZH szintű feladat.
@@ -179,58 +180,88 @@
 	\end{center}
 	\bigskip
 	\subsection{$n,m\in\Z:\quad \int\sin^n x\cos^mx\,dx$\quad \text{(feladat altípus)}\quad}
+	\begin{note}
+		Ez a megoldási módszer fő gondolatmenetét a $\sin$ és a $\cos$ függvények közötti egyszerű váltás adja, pl.:\, $(\cos x)'=-\sin x$ \,és\, $(\sin x)'=\cos x$, \,valamint \,$1=\sin^2x + \cos^2x$.
+	\end{note}
 	\begin{task}$x\in\R$
-		\[ \int \sin^3x\cdot^5x\,dx=\int\sin x\cdot\sin^2x\cdot\cos^5x\,dx=-\int(\cos x)'\cdot(1-\cos^2 x)\cos^5x\,dx=\]
-		\[=-\int(\cos x)'\cos^5c\,dx+\int(\cos x)'\cos^7x\,dx=-\frac{\cos^6x}{6}+\frac{\cos^8}{8}+c\quad (c\in\R) \]
+		\[ \int \sin^3x\cdot\cos^5x\,dx=\int\sin x\cdot\sin^2x\cdot\cos^5x\,dx=-\int(\cos x)'\cdot\overbrace{(1-\cos^2 x)}^{\sin^2x}\cdot\cos^5x\,dx=\]
+		\[=-\int(\cos x)'\cos^5x\,dx+\int(\cos x)'\cos^7x\,dx=-\frac{\cos^6x}{6}+\frac{\cos^8}{8}+c\quad (c\in\R) \]
 	\end{task}
 	\begin{note}
-		Ha $n$ vagy $m$ páratlan, akkor örülünk, és vesszük a kisebbik páratlan hatványt.
+		Ha $n$ vagy $m$ páratlan, akkor örülünk, és 
+		\begin{enumerate}
+			\item Vesszük a kisebbik páratlan hatvánnyal rendelkező tagot (pl.: $\sin^5\cos^7x$ esetében $\sin^5x$),
+			\item Leválasztunk belőle 1-et (pl.: $\sin^5x = \sin x\cdot\sin^4 x)$,
+			\item Ez lesz a nagyobb hatvánnyal rendelkező tag deriváltja (pl.: $(\cos x)'\sin^4 x$).
+		\end{enumerate}
 		
-		Leválasztunk belőle 1-et és ez lesz a másiknak a deriváltja.
 	\end{note}
 	\begin{task}$x\in\R$
 		\[ \int\cos^3x\,dx=\int\cos x\cdot\cos^2x\,dx=\int(\sin x)'\cdot(1-\sin^2x)\,dx=\int(\sin x)'\,dx-\int(\sin x)'(\sin x)^2\,dx=\]
 		\[=\sin x-\frac{\sin^3x}{3}+c\quad (c\in\R) \]
 	\end{task}
-	\begin{task}Házi feladat. Tipp: Linearizálás ;)
-		\[ \int(\sin^5x\cos^{10}x\,dx)\quad (x\in\R) \]
-	\end{task}
+	\begin{exercise} Tipp: Linearizálás 
+		\[ \int(\sin^5x\cos^{10}x)\,dx\quad (x\in\R) \]
+		\textit{Megoldás: (nem órán hangzott el)}
+		\[ \int(\sin^5x\cos^{10}x)\,dx=\int(\sin x\cdot\sin^4\cdot\cos^{10}x)\,dx=-\int((\cos x)'(1-\cos^2x)^2\cos^{10}x)\,dx=\]
+		\[=-\int(\cos x)'\cos^{10}x\,dx+\int(\cos x)'\cos^{12}x\,dx=-\frac{\cos^{11}x}{11}+\frac{\cos^{13}x}{13}+c\quad (c\in\R) \]
+	\end{exercise}
 	\begin{task}$x\in\R$
 		\[ \int\sin^2x\cos^4x\,dx=\int(1-\cos^2x)\cos^4 x\,dx=\int\cos^4 x\,dx-\underbrace{\int\cos^6x\,dx}_{\text{HF}}=\]
-		\[\cos^4\,dx=\int\int\left(\frac{1+\cos^2x}{2}\right)^2\,dx=\frac{1}{4}\int(1+2\cos2x+\cos^22x)\,dx=\frac{1}{4}x+\frac{1}{2}\frac{\sin2x}{2}+\frac{1}{4}\int\cos^2(2x)\,dx=\]
-		\[\frac{x}{4}+\frac{\sin2x}{4}+\frac{1}{4}\int\frac{1}+\cos4x{2}\,dx=\frac{x}{4}+\frac{\sin2x}{4}+\frac{x}{8}+\frac{1}{8}\frac{\sin4x}{4}+c\quad (c\in\R) \]
+		\[\int\cos^4x\,dx=\int\left(\frac{1+\cos2x}{2}\right)^2\,dx=\frac{1}{4}\int(1+2\cos2x+\cos^22x)\,dx=\frac{1}{4}\left(x+\sin2x+\int\cos^2(2x)\right)\,dx=\]
+		\[=\frac{x}{4}+\frac{\sin2x}{4}+\frac{1}{4}\int\frac{1+\cos4x}{2}\,dx=\frac{x}{4}+\frac{\sin2x}{4}+\frac{x}{8}+\frac{1}{8}\cdot\frac{\sin4x}{4}+c\quad (c\in\R) \]
 		\begin{center}
 			\fbox{$\displaystyle \cos^2=\frac{1+\cos2x}{2}$}\\
 			\fbox{$\displaystyle \sin^2=\frac{1-\cos2x}{2}$}
 		\end{center}
 	\end{task}
+	\begin{exercise}
+		\def\fracHeight{\vphantom{\frac{3^2}{2}}}
+		\[\int\cos^6x\,dx=\int\left(\frac{1+\cos2x}{2}\right)^3\,dx=\frac{1}{8}\int(1+3\cos2x+3\cos^22x+\cos^32x)\,dx=\]
+		\[= \frac{1}{8}\left(\overbrace{x\fracHeight}^{\int1\,dx}+\overbrace{\frac{3}{2}\sin2x\fracHeight}^{\int3\cos2x\,dx}+ \overbrace{3\left(\frac{x}{2}+\frac{\sin4x}{8}\right)\fracHeight}^{\int3\cos^22x\,dx}+ \overbrace{\sin2x-\frac{\sin^32x}{3}}^{\int\cos^32x\,dx}\right)+c\quad (c\in\R)  \]
+		A számoláshoz a gyakorlat korábbi eredményeit is felhasználtam.
+	\end{exercise}
 	\begin{task}$x\in(0,\pi)$
-		\[\int\frac{1}{\sin x}\,dx=\quad (\text{félszögre térés})\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{=}\quad \int\frac{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}}{2\sin\frac{x}{2}\cos\frac{x}{2}}\,dx=\frac{1}{2}\int\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\,dx+\frac{1}{2}\int\frac{\cos\frac{x}{2}}{\sin\frac{x}{2}}\,dx=\]
-		\[=-\int\frac{(\cos\frac{x}{2})'}{\cos\frac{x}{2}}=\ln\left(\sin\frac{x}{2}\right)-\ln\left(\cos\frac{x}{2}\right)+c=\ln\left(\tg\frac{x}{2}\right)+c\quad (c\in\R) \]
+		\[\int\frac{1}{\sin x}\,dx\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{\underset{\text{félszögre térés}}{=}}\quad \int\frac{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}}{2\sin\frac{x}{2}\cos\frac{x}{2}}\,dx=\frac{1}{2}\int\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\,dx+\frac{1}{2}\int\frac{\cos\frac{x}{2}}{\sin\frac{x}{2}}\,dx=\]
+		\[=\int\frac{(\sin\frac{x}{2})'}{\sin\frac{x}{2}}-\int\frac{(\cos\frac{x}{2})'}{\cos\frac{x}{2}}=\ln\left(\sin\frac{x}{2}\right)-\ln\left(\cos\frac{x}{2}\right)+c=\ln\left(\tg\frac{x}{2}\right)+c\quad (c\in\R) \]
 	\end{task}
-	\begin{task}
-		Házi feladat
-		\[ \int\frac{\sin^2x}{\cos^4x}\,dx\quad (x\in(0,\frac{\pi}{1})) \]
-		\[ \int\sin^4x\cos^4x\,dx (x\in\R) \]
-	\end{task}
+	\begin{exercise}
+		\[ \int\frac{\sin^2x}{\cos^4x}\,dx\quad \left(x\in\left(0,\frac{\pi}{2}\right)\right) \]
+		\textit{Megoldás:}
+		\[ \int\frac{\sin^2x}{\cos^4x}\,dx=\int\frac{1}{\cos^2x}\cdot\tg^2x\,dx= \int(\tg x)'\tg^2x\,dx=\frac{\tg^3x}{3}+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise}
+		\[ \int\sin^4x\cos^4x\,dx \quad (x\in\R) \]
+		\textit{Megoldás:}
+		\[ \int\sin^4x\cos^4x\,dx=\int(1-\cos^2x)^2\cos^4x\,dx=\int(1-2\cos^2x+\cos^4x)\cos^4x\,dx=\int(\cos^4x-2\cos^6x+\cos^8x)\,dx=\]
+		\[ =\overbrace{\int\cos^4x\,dx}^{\text{ismert}}-\overbrace{\int2\cos^6x\,dx}^{\text{ismert}}+\int\cos^8x\,dx \]
+		Határozzuk meg az ismeretlen tagot:
+		\[ \int\cos^8x\,dx=\int\left(\frac{1+\cos2x}{2}\right)^4\,dx=\frac{1}{16}\int(1+2\cos2x+\cos^22x)^2\,dx=\]
+		\[=\frac{1}{16}\int\left(1+4\cos^22x+\cos^42x+4\cos2x+4\cos^32x+2\cos^22x\right)\,dx=\]
+		\[=\frac{1}{16}\int\left(1+4\cos2x+6\cos^22x+4\cos^32x+\cos^42x\right)\,dx=\]
+		\def\fracHeight{\vphantom{\frac{3^2}{2}}}
+		\[= \frac{1}{16}\left(\overbrace{x\fracHeight}^{\int1\,dx}+\overbrace{\frac{4}{2}\sin2x\fracHeight}^{\int4\cos2x\,dx}+ \overbrace{6\left(\frac{x}{2}+\frac{\sin4x}{8}\right)\fracHeight}^{\int6\cos^22x\,dx}+ \overbrace{4\left(\sin2x-\frac{\sin^32x}{3}\right)}^{\int4\cos^32x\,dx}+\overbrace{\frac{2x}{4}+\frac{\sin4x}{4}+\frac{2x}{8}+\frac{\sin8x}{32}\fracHeight}^{\int\cos^42x\,dx}\right)+c\quad (c\in\R)  \]
+		Alternatív (még nem teljes) megoldás:
+		\[=\int\left(\frac{1}{2}2\sin x\cos x\right)^4\,dx=\frac{1}{16}\int\left(2\sin x\cos x\right)\,dx=\frac{1}{16}\int\sin^42x\,dx= \]
+	\end{exercise}
 	\section{Helyettesítés szabálya}
 	\begin{revision}
 		Tegyük fel, hogy $\emptyset\not=\int f(x)\,dx=F(x)+c\quad (c\in\R, x\in I)$, és tegyük fel, hogy\\ $g:J\to I, \quad g\in D.$ Ekkor
 		\[ \int f(g(x))\cdot g'(x)\,dx=F(g(x))+c\quad (c\in\R) \]
 		Ugyanis
-		\[ (F(g))'=F'(g(x))\cdot g'(x)=f(g(x))\cdot g'(x)\checkmark \]
+		\[ (F(g(x)))'=F'(g(x))\cdot g'(x)=f(g(x))\cdot g'(x)\checkmark \]
 	\end{revision}
 	\begin{task}$x\in\R$
 		\[ \int x\cos(x^2)\,dx\quad \overset{g'(x):=2x}{\overset{g(x):=x^2}{\underset{f(x):=\cos x}{=}}}\quad \frac{1}{2}\int 2x\cos(x^2)\,dx=\frac{1}{2}\int(x^2)'\cdot\cos(x^2)\,dx=\frac{1}{2}\sin(x^2)+c\quad (c\in\R) \]
 	\end{task}
 	\begin{note}
 		Rövid jelölés: 
-		\[ \int x\cos(x^2)\,dx\quad \overset{x^2:=t\in(0;+\infty)}{\underset{(x^2)'\,dx=(t)'\,dt}{\underset{2\text{\fbox{$x\,dx$}}=1\,dt}{=}}}\quad\int\frac{1}{2}\cdot\cos t\,dt\big|_{t=x^2}=\frac{1}{2}\sin t +c\big|_{t=x^2}=\frac{1}{2}\sin(x^2)+c  \]
+		\[ \int x\cos(x^2)\,dx\quad \overset{x^2=:t\,\in\,(0;+\infty)}{\underset{(x^2)'\,dx=(t)'\,dt}{\underset{2x\,dx=1\,dt}{=}}}\quad\int\frac{1}{2}\cdot\cos t\,dt\big|_{t=x^2}=\frac{1}{2}\sin t +c\big|_{t=x^2}=\frac{1}{2}\sin(x^2)+c  \]
 	\end{note}
 	\begin{task}$x\in(0,\frac{\pi}{2})$
-		\[ \int\frac{1+\tg^2x}{q+\tg x}\,dx \]
-		Legyen $\tg x=:t\in(0;+\infty)\quad \Leftrightarrow \quad x=\arc\tg t\quad \Rightarrow\quad (x)'\,dx=(\arc\tg t)'\,dt$
-		\[ dx:=\frac{1}{1+t^2}\,dt \]
+		\[ \int\frac{1+\tg^2x}{1+\tg x}\,dx \]
+		Legyen  \quad $\tg x=:t\in(0;+\infty).$ \quad Ez alapján $\quad  x=\arc\tg t\quad \Rightarrow\quad (x)'\,dx=(\arc\tg t)'\,dt$
+		\[ \text{\fbox{$\displaystyle dx=\frac{1}{1+t^2}\,dt$}} \quad \left(\text{ui.:\quad }(\arc\tg t)'=\frac{1}{1+t^2}.\right)\]
 		\[ \Rightarrow\quad \int\frac{1+t^2}{1+t}\cdot\frac{1}{1+t^2}\,dt=\int\frac{1}{1+t}\,dt=\int\frac{(t+1)'}{t+1}\,dt=\ln(t+1)+c\quad (c\in\R) \]
 		Visszírva
 		\[ \int\frac{1+\tg^2 x}{1+\tg x}\,dx=\ln(1+\tg x)+c\quad (c\in\R) \]
@@ -239,20 +270,23 @@
 	\end{task}
 	\begin{task}$x\in\R$
 		\[ \int\frac{e^{2x}}{1+e^x}\,dx \]
-		Legyen \[e^x=:t\in(0,+\infty)\quad \Rightarrow\quad x=\ln t\Rightarrow\quad (x)'\,dx=(\ln t)'\,dt\quad \text{\fbox{$\displaystyle dx=\frac{1}{t}\,dt$}} \]
-		Az ,,új integrál'':\quad $\displaystyle \int\frac{t^2}{1+t}\cdot\frac{1}{t}\,dt=\int\frac{1}{1+t}\,dt$
-		\[ =\int\frac{t}{1+t}\,dt\int\frac{t+1-1}{t+1}\,dt=\int\left(1-\frac{1}{1+t}\right)\,dt=t-\ln(1+t)+c \]
+		Legyen \[e^x=:t\in(0,+\infty)\quad \Rightarrow\quad x=\ln t\quad \Rightarrow\quad (x)'\,dx=(\ln t)'\,dt\quad \text{\fbox{$\displaystyle dx=\frac{1}{t}\,dt$}} \]
+		Az ,,új integrál'':\quad \[\displaystyle \int\frac{t^2}{1+t}\cdot\frac{1}{t}\,dt=\int\frac{t}{1+t}\,dt\int\frac{t+1-1}{t+1}\,dt=\int\left(1-\frac{1}{1+t}\right)\,dt=t-\ln(1+t)+c \]
 		,,Vissza'':
 		\[ \int\frac{e^x}{1+e^x}\,dx=e^x-\ln(1+e^x)+c\quad (c\in\R) \]
 	\end{task}
 	HF: 30 darab feladattípus, $\int\frac{f'}{f}$,\quad  $\int f'f^\alpha$, \quad $\int(\sin^4x\cos^4x),\quad \int f\circ g\cdot g'=...$.
 	\begin{center}
-		\textit{,,Tanár úr, használhatok már jelölést? mert a $g(t)$-t annyira nem szeretem''}
+		\bigskip
+		
+		\textit{,,Tanár úr, használhatok más jelölést? A $g(t)$-t annyira nem szeretem.''}
 		\smallskip
 		
 		/Tóth Péter/
+		\bigskip
+		
 	\end{center}
 	\begin{note}
-		Mindig a nagyobb hatvánnyal rendelkező változóhoz érdemes új változót rendelhni
+		Mindig a nagyobb hatvánnyal rendelkező változóhoz érdemes új változót rendelni.
 	\end{note}
 \end{document}
