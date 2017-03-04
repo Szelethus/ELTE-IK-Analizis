@@ -66,6 +66,7 @@
 \DeclareMathOperator{\Th}{th}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\ar}{ar}
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
 \DeclareMathOperator{\arcctg}{arc ctg}
@@ -266,13 +267,21 @@
 		\[=x\cdot\sqrt{1-x^2}+\int\frac{x^2+1-1}{\sqrt{1-x^2}}\,dx=x\cdot\sqrt{1-x^2}+\int\frac{1}{\sqrt{1-x^2}}\,dx-\int\frac{1-x^2}{\sqrt{1-x^2}}\,dx=\]
 		\[=x\cdot\sqrt{1-x^2}+\arc\sin x-\int\sqrt{1-x^2}\,dx\quad \Rightarrow \]
 		Ismét egyenletet kaptunk.
-		\[ \int\sqrt{1-x^2}\,dx=\frac{1}{2} \cdot x\cdot\sqrt{1-x^2}+\frac{1}{2}\arc\sin x+c\quad (x\in\R) \]
+		\[ \int\sqrt{1-x^2}\,dx=\frac{1}{2} \cdot x\cdot\sqrt{1-x^2}+\frac{1}{2}\arc\sin x+c\quad (c\in\R) \]
 	\end{task}
 	\begin{exercise}$x\in\R$
 		\[ \int\sqrt{x^2+1}\,dx \]
+		\textit{Megoldás:}
+		\[ \int(x)'\sqrt{x^2+1}\,dx=x\cdot\sqrt{x^2+1}-\int x\cdot\frac{1}{2}\cdot\frac{2x}{\sqrt{x^2+1}}\,dx=x\cdot\sqrt{x^2+1}-\int\frac{x^2+1-1}{\sqrt{x^2+1}}\,dx=\]
+		\[=x\cdot\sqrt{x^2+1}-\int\sqrt{x^2+1}-\frac{1}{\sqrt{x^2+1}}\,dx=x\cdot\sqrt{x^2+1}-\ar\sh x - \int\sqrt{x^2+1}\,dx \]
+		Ez alapján az egyenlet:
+		\[ \int\sqrt{x^2+1}=\frac{1}{2}\left(x\cdot\sqrt{x^2+1}-\ar\sh x \right)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x\in\R$
 		\[ \int x\arc\tg x\,dx \]
+		\textit{Megoldás:}
+		\[ \int \left(\frac{x^2}{2}\right)'\arc\tg x\,dx=\frac{x^2}{2}\arc\tg x-\int\frac{x^2}{2}\cdot\frac{1}{1+x^2}\,dx=\frac{x^2}{2}\arc\tg x-\frac{1}{2}\int\frac{x^2+1-1}{1+x^2}\,dx= \]
+		\[ =\frac{x^2}{2}\arc\tg x-\frac{1}{2}\int 1-\frac{1}{1+x^2}\,dx=\frac{x^2}{2}\arc\tg x-\frac{1}{2}\cdot x+\frac{1}{2}\cdot\arc\tg x+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		$x\in\R$
@@ -297,7 +306,7 @@
 		Szükségünk lesz számos új változóra. Legyen:
 		\[ f(x):=\sqrt{1-x^2} \]
 		\[ g(t) := \sin t := x,\quad g^{-1}(t) = \arc\sin t,\quad g'(t) = \cos t \]
-		Ez alapján $t\in\left(-\frac{\pi}{2},\frac{\pi}{2} \right)$. Visszatérve:
+		$g^{-1}$ létezik, hisz $g$ bijektív. Ezek alapján $t\in\left(-\frac{\pi}{2},\frac{\pi}{2} \right)$. Visszatérve:
 		%\[\overset{t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{\overset{x=\sin t=:g(t)}{\underset{g:\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{\underset{\text{bijekció}\checkmark}{\underset{f(x):=\sqrt{1-x^2}}{\underset{g'(t)=\cos t}{\underset{g^{-1}(x)=\arc\sin x}{=}}}}}}}\]
 		\[\int\sqrt{1-\sin^2t}\cdot\cos t\,dt\big|_{t=\arc\sin x}=\int\sqrt{\cos^2t}\cos t\,dt\big|_{t=\arc\sin x} \]
 		Az új integrál:
