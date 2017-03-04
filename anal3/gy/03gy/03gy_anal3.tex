@@ -1,0 +1,319 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis 3. A szakirány}}
+		\smallskip
+		
+		{\Large Gyakorlati jegyzet}
+		
+		\smallskip
+		3. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\section{Parciális integrálás}
+	\begin{revision}
+		\[ (f\cdot g)'=f'\cdot g + f\cdot g'\quad \Rightarrow\quad \int(f\cdot g)'=\int f'\cdot g + \int f\cdot g'\quad \Rightarrow\quad f\cdot g=\int f'\cdot g + \int f\cdot g'\]
+		\begin{center}	
+			\fbox{$\displaystyle \int f'\cdot g=f\cdot g - \int f\cdot g'$}
+		\end{center}
+		Ezt hívjuk a parciális integrálás tételének.
+	\end{revision}
+	\begin{task}$x\in\R$
+		\[ \int \overbrace{x\vphantom{e^2}}^{g}\overbrace{e^{2x}}^{f'}\,dx\quad \underset{g'(x):=1}{\overset{f':=e^{2x}}{\overset{g:=x}{\underset{f(x):=\frac{e^{2x}}{2}}{=}}}}
+		\quad \overbrace{x\cdot\frac{e^{2x}}{2}}^{f\cdot g}-\overbrace{\int\frac{e^{2x}}{2}\cdot1\,dx}^{\int f\cdot g'}=\frac{1}{2}\cdot xe^{2x}-\frac{1}{2}\int e^{2x}\,dx=\frac{1}{2}xe^{2x}-\frac{1}{2}\frac{e^{2x}}{2}+c\quad (c\in\R) \]
+	\end{task}
+	\bigskip
+	
+	\begin{center}
+		\textit{,,Cuppantsuk ki a konstans tagot!''}
+		\smallskip
+		
+		/Filipp/
+	\end{center}
+	\bigskip
+	
+	\begin{note}
+		Rövid jelölés: ($f$ és $g$ nem lesz jelölve többet)
+		\[ \int xe^{2x}\,dx\quad \overset{\text{p.i.}}{=}\int x\cdot\left( \frac{e^{2x}}{2}\right)'=x\cdot\frac{e^{2x}}{2}-\int(x)'\cdot\frac{e^{2x}}{2}\,dx=\ldots \]
+		Jelölje ,,p.i.'' a parciális integrálást.
+	\end{note}
+	\begin{center}
+		\textit{,,Fogd a deviválást stukkert. Amelyik szemed nyitod azt deriválod, amelyik csukott, az hagyod. Aztán egyik szem lecsuk, másik kinyit.''}
+		
+		\smallskip
+		/Filipp/
+	\end{center}
+	\begin{note}
+		Ez a módszer hatásos lehet, de nem minden esetben. Ha nem jól osztjuk a szerepeket (nem a megfelelő függvényt választjuk $f$-nek vagy $g$-nek), lehet hogy egyáltalán nem jutunk előrébb. E példában ha a két függvényt fordítva választjuk meg, nem jutottunk volna előrébb semmivel.
+	\end{note}
+	\begin{task}$x\in\R$
+		\[ \int \overbrace{x^2}^{g}\overbrace{\sin(3x)}^{f'}\,dx \quad \overset{\text{p.i.}}{=}\quad  \int x^2\left(-\frac{\cos3x}{3}\right)'\,dx=-x^2\cdot\frac{\cos3x}{3}-\int\left(x^2\right)'\cdot\left(-\frac{\cos3x}{3}\right)\,dx=\]
+		\[=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\cdot\int \overbrace{x}^{g}\overbrace{\cos3x}^{f'}\,dx=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\int x\cdot\left( \frac{\sin3x}{x}\right)'\,dx\quad \overset{\text{p.i.}}{=} \]
+		\[  \left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\left(x\cdot\frac{\sin3x}{3}-\int(x)'\cdot\frac{\sin3x}{3}\,dx\right)=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{9}\cdot x\sin3x-\frac{2}{9}\cdot\int\sin3x\,dx=\]
+		\[=\left(-\frac{1}{3}\right) \cdot x^2\cos3x+\frac{2}{9}\cdot
+		x\sin3x+\frac{2}{9}\cdot\frac{\cos3x}{3} + c\quad (c\in\R) \]
+		Itt egyértelműen érdemesebb volt $\sin$-t választani.
+	\end{task}
+	\begin{note}
+		Célszerű mindig részletesen kiírni a számolásokat, mert ha valamit elrontunk, részpontot se kapunk ZH-ban.
+	\end{note}
+	\begin{note}
+		Ez a módszer nagyon jól működik hasonló típusoknál:
+		\[ \int P(x)\cdot
+		\left.\begin{cases}
+			\sin(\alpha x+\beta)\\
+			\cos(\alpha x+\beta)\\
+			e^{\alpha x+\beta}\\
+			\sh(\alpha x+\beta)\\
+			\ch(\alpha x+\beta)\\
+		\end{cases}\right\}\,dx \]
+		Ahol $P(x)$ egy valós polinom.
+	\end{note}
+	\begin{exercise}$x\in\R$
+		\[ \int(x^2+2x)\cdot\cos x\,dx \]
+		\textit{Megoldás:}
+		\[ \int(x^2+2x)\cdot(\sin x)'\,dx = \sin x \cdot(x^2+2x)-\int\sin x\cdot(2x + 2)\,dx= \sin x \cdot(x^2+2x)-\int(-\cos x)'\cdot(2x + 2)\,dx= \]
+		\[ =\sin x\cdot(x^2+2x)-\left((-\cos x)(2x+2)-\int-\cos x\cdot2\,dx\right)=\sin x\cdot(x^2+2x)+\cos x(2x+2)-2\sin x + c=\quad (c\in\R) \]
+		\[ =\sin x\left(x^2+2x -2 \right)+2\cos x(x+1) + c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise}$x\in\R$
+		\[ \int(3x+8)\cdot e^{2x-1}\,dx\]
+		\textit{Megoldás:}
+		\[\int(3x+8)\left(\frac{e^{2x-1}}{2}\right)'\,dx=(3x+8)\cdot\frac{e^{2x-1}}{2}-\int3\frac{e^{2x-1}}{2}\,dx=(3x+8)\frac{e^{2x-1}}{2}-\frac{3}{2}\cdot\int e^{2x-1}\,dx= \]
+		\[ =(3x+8)\frac{e^{2x-1}}{2}-\frac{3}{2}\cdot\frac{e^{2x-1}}{2}+c=\frac{e^{2x-1}}{2}\left((3x+8)-\frac{3}{2}\right)+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise}$x\in\R$
+		\[ \int x\cdot\sin(1-x)\,dx \]
+		\textit{Megoldás:}
+		\[ -\int x\sin(x-1)\,dx=-\int x\cdot(-\cos(x-1))'\,dx=x\cdot(\cos(x-1))+\int-\cos(x-1)\,dx=\]
+		\[=x\cos(x-1)-\sin(x-1)+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise}$x\in\R$
+		\[ \int x\cdot\ch(5x)\,dx \]
+		\textit{Megoldás:}
+		\[ \int x\cdot\left(\frac{\sh(5x)}{5}\right)'\,dx=x\cdot\frac{\sh(5x)}{5}-\int\frac{\sh(5x)}{5}\,dx=x\cdot\frac{\sh(5x)}{5}-\frac{\ch(5x)}{25}+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise}$x\in\R$
+		\[ \int(x^2+x-3)\sh(8x)\,dx \]
+		\textit{Megoldás:}
+		\[ \int(x^2+x-3)\left(\frac{\ch(8x)}{8}\right)'\,dx=(x^2+x-3)\left(\frac{\ch(8x)}{8}\right)-\int(2x+1)\frac{\ch(8x)}{8}\,dx=\]
+		\[=(x^2+x-3)\left(\frac{\ch(8x)}{8}\right)-\int(2x+1)\left(\frac{\sh(8x)}{64}\right)'\,dx=\]
+		\[=(x^2+x-3)\left(\frac{\ch(8x)}{8}\right)-\left((2x+1)\left(\frac{\sh(8x)}{64}\right)-\int2\cdot\frac{\sh(8x)}{64}\,dx\right)=\]
+		\[=(x^2+x-3)\left(\frac{\ch(8x)}{8}\right)-(2x+1)\left(\frac{\sh(8x)}{64}\right)+2\left(\frac{\ch(8x)}{512}\right)+c= \]
+		\[ =\left(\frac{32\cdot\ch(8x)}{256}\right)(x^2+x-3)+\frac{\ch(8x)}{256}-\left(\frac{\sh(8x)}{64}\right)(2x+1)+c\quad (c\in\R) \]
+		\[ =\left(\frac{\ch(8x)}{256}\right)(32x^2+32x-95)-\left(\frac{\sh(8x)}{64}\right)(2x+1)+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{exercise} $x\in\R$\quad (javallott a linearizálás)
+		\[ \int x\cdot\cos^2x\,dx \]
+		\textit{Megoldás:}
+		\[ \int x\cdot\frac{1+\cos2x}{2}\,dx=\frac{1}{2}\int x\cdot\left(x+\frac{\sin(2x)}{2}\right)'\,dx=\frac{1}{2}\left(x\cdot\left(x+\frac{\sin(2x)}{2}\right)-\int x+\frac{\sin(2x)}{2}\,dx\right)= \]
+		\[ =\frac{1}{2}\left(x^2+\frac{x\sin(2x)}{2}-\frac{x^2}{2}+\frac{\cos(2x)}{4}\right)+c\quad (c\in\R) \]
+	\end{exercise}
+	\begin{task}
+		Olyan típusú integrálokat veszünk most, melyek tartalmaznak inverz függvényeket is. Legyen $x>0$ és:
+		\[ \int \ln x\,dx=\int1\cdot\ln x\,dx=\int (x)'\ln x\,dx\quad \overset{\text{p.i.}}{=}\quad x\cdot\ln x-\int x\cdot(\ln x)'\,dx=\]
+		\[=x\cdot\ln x-\int x\frac{1}{x}\,dx=x\ln x-x+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[ \int \arc\sin x\,dx=\int 1\cdot\arc\sin x\,dx\quad \overset{\text{p.i.}}{=}\quad x\arc\sin x-\int x(\arc\sin x)'\,dx=x\arc\sin x-\text{\fbox{$\displaystyle \int x\cdot\frac{1}{\sqrt{1-x^2}}$}}\,dx= \]
+		\[= x\arc\sin x-\int\underbrace{(-2x)(1-x^2)^{\frac{1}{2}}}_{f'\cdot f^\alpha}\,dx=c\arc\sin x+\frac{1}{2}\int(1-x^2)'(1-x^2)^{\frac{1}{2}}\,dx=\]
+		\[=x\arc\sin x+\frac{1}{2}\frac{(1-x^2)^{\frac{1}{2}}}{\frac{1}{2}}+c=x\arc\sin x+\sqrt{1-x^2}+c \]
+	\end{task}
+	\begin{task}
+		\[ \int\arc\tg(3x)\,dx=\int(x)'\arc\tg(3x)\,dx =x \arc\tg3x-\int x\cdot\frac{1}{1+9x^2}\cdot3\,dx=x\arc\tg3x-3\cdot\int\underbrace{\frac{x}{1+9x^2}}_{\frac{f'}{f}}\,dx=\]
+		\[\quad \overset{(1+9x^2)'=18x}{=}\quad x\arc\tg3x-\frac{3}{18}\int\frac{(1+9x^2)'}{1+9x^2}\,dx=x\arc\tg3x-\frac{1}{6}\ln(1+9x^2)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}$x>-1$
+		\[ \int x\ln(x+1)\,dx=\int \left(\frac{x^2}{2}\right)'\cdot\ln(x+1)\,dx\quad \overset{\text{p.i.}}{=}\quad \frac{x^2}{2}\ln(x+1)-\int\frac{x^2}{2}\cdot\frac{1}{x+1}\,dx\]
+		\[=\frac{x^2}{2}\ln(x+1)-\frac{1}{2}\underbrace{\int\frac{x^2}{x+1}\,dx}=\]
+		Határozzuk meg a kiemelt részt.
+		\[\frac{x^2}{x+1}=\frac{x^2-1+1}{x+1}=\frac{(x-1)(x+1)+1}{x+1}=x-1+\frac{1}{x+1}\]
+		\[  \Updownarrow\]
+		\[ \int\left(x-1+\frac{1}{x+1}\right)\,dx=\frac{x^2}{2}-x+\ln(x+1)+c \quad (c\in\R)\]
+		Visszatérve:
+		\[ =\frac{x^2}{2}\cdot\ln(x+1)-\frac{x^2}{4}+\frac{x}{2}-\frac{1}{2}\ln(x+1)+c\quad (c\in\R) \]
+		Azért célszerű ehhez hasonló példákban a polinomot választani $f'$-nak, mert így eltűnik a logaritmus.
+	\end{task}
+	\subsection{Parciális integrálás + egyenlet}
+	\begin{task}$x\in\R$
+		\[ \int e^x\sin x\,dx\quad \overset{\text{p.i.}}{=}\quad e^x\sin x-\int (e^x)'\cdot\cos x\,dx=e^x\sin x-\left(e^x\cos x-\int e^x(-\sin x)\,dx\right)=\]
+		\[=e^x\sin x-e^x\cos x-\int e^x\sin x\,dx \]
+		Kaptunk egy egyenletet az ismeretlen integrálra. Rendezzük át, fejezzük ki, és oldjuk meg.
+		\[ 2\int e^x\sin x\,dx=e^x\cdot(\sin x-\cos x)\quad \Leftrightarrow\quad \int e^x\sin x\,dx=\frac{1}{2}\cdot e^x(\sin x-\cos x)+c\quad (c\in\R) \]
+		Mindig ugyanazt kell kiválasztani, ha parciálisan intergálunk!
+	\end{task}
+	\begin{task}$x\in(-1,1)$
+		\[ \int\sqrt{1-x^2}\,dx=\int1\cdot\sqrt{1-x^2}\,dx=x\cdot\sqrt{1-x^2}-\int x\cdot\frac{1}{2\sqrt{1-x^2}}(-2x)\,dx=x\cdot\sqrt{1-x^2}+\text{\fbox{$\displaystyle \int\frac{x^2}{\sqrt{1-x^2}}\,dx$}}= \]
+		\[=x\cdot\sqrt{1-x^2}+\int\frac{x^2+1-1}{\sqrt{1-x^2}}\,dx=x\cdot\sqrt{1-x^2}+\int\frac{1}{\sqrt{1-x^2}}\,dx-\int\frac{1-x^2}{\sqrt{1-x^2}}\,dx=\]
+		\[=x\cdot\sqrt{1-x^2}+\arc\sin x-\int\sqrt{1-x^2}\,dx\quad \Rightarrow \]
+		Ismét egyenletet kaptunk.
+		\[ \int\sqrt{1-x^2}\,dx=\frac{1}{2} \cdot x\cdot\sqrt{1-x^2}+\frac{1}{2}\arc\sin x+c\quad (x\in\R) \]
+	\end{task}
+	\begin{exercise}$x\in\R$
+		\[ \int\sqrt{x^2+1}\,dx \]
+	\end{exercise}
+	\begin{exercise}$x\in\R$
+		\[ \int x\arc\tg x\,dx \]
+	\end{exercise}
+	\begin{exercise}
+		$x\in\R$
+		\[ \int x\arc\sin x\,dx \]
+	\end{exercise}
+	\begin{exercise}
+		$x\in\R$
+		\[ \int\ln(1+x^2)\,dx \]
+	\end{exercise}
+	\begin{exercise}
+		\[ \int \sh x\cos x\,dx \]
+	\end{exercise}
+	\begin{exercise}
+		\[ \int e^x\cos^2x,dx \]
+	\end{exercise}
+	\section{Integrálás helyettesítéssel}
+	\begin{revision}
+		\[ \int f(x)\,dx\quad \overset{x:=g(t)}{=}\quad \int f(g(t))\cdot g'(t)\,dt\big|_{t=g^{-1}(x)} \]
+	\end{revision}
+	\begin{task}$x\in(-1,1)$
+		\[\int\sqrt{1-x^2}\,dx \quad\]
+		Szükségünk lesz számos új változóra. Legyen:
+		\[ f(x):=\sqrt{1-x^2} \]
+		\[ g(t) := \sin t := x,\quad g^{-1}(t) = \arc\sin t,\quad g'(t) = \cos t \]
+		Ez alapján $t\in\left(-\frac{\pi}{2},\frac{\pi}{2} \right)$. Visszatérve:
+		%\[\overset{t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{\overset{x=\sin t=:g(t)}{\underset{g:\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{\underset{\text{bijekció}\checkmark}{\underset{f(x):=\sqrt{1-x^2}}{\underset{g'(t)=\cos t}{\underset{g^{-1}(x)=\arc\sin x}{=}}}}}}}\]
+		\[\int\sqrt{1-\sin^2t}\cdot\cos t\,dt\big|_{t=\arc\sin x}=\int\sqrt{\cos^2t}\cos t\,dt\big|_{t=\arc\sin x} \]
+		Az új integrál:
+		\[ \int|\cos t|\cdot\cos t\,dt\quad \overset{t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{=}\quad \int\cos^2t\,dt=\int\frac{1+\cos2t}{2}\,dt=\frac{t}{2}+\frac{\sin2t}{4}+c \overset{!}{=} \frac{t}{2}+\frac{2\cdot\sin t\cdot\sqrt{1-\sin^2t}}{4}+c \]
+		Visszahelyettesítve:
+		\[ \int\sqrt{1-x^2}\,dx=\frac{\arc\sin x}{2}+\frac{1}{2}x\sqrt{1-x^2}+c\quad (c\in\R) \] 
+	\end{task}
+	
+	\begin{exercise}A következő feladatokat az $x=:\sin t$ helyettesítéssel javallott megoldani. Legyen $x\in(0,1)$, és:
+		\[ \int\frac{1}{x\cdot\sqrt{t1-x^2}}\,dx \]
+	\end{exercise}
+	\begin{note}
+		Rövid jelölés:
+		\[ \int\sqrt{1-x^2}\,dx\quad \overset{x=\sin t}{\underset{(x)'\,dx=(\sin t)'\,dt}{\underset{dx=\cos t\,dt}{=}}}\int\sqrt{1-\sin^2 t}\cos t\,dt\big|_{t=\arc\sin x} \]
+	\end{note}
+	\begin{exercise}
+		30 integrálfeladat, 15 parciálisan, 15 helyettesítéssel (első és második szabállyal ez utóbbit vegyesen)
+	\end{exercise}
+\end{document}
