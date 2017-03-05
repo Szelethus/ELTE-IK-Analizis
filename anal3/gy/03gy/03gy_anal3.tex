@@ -142,7 +142,6 @@
 		\[ \int \overbrace{x\vphantom{e^2}}^{g}\overbrace{e^{2x}}^{f'}\,dx\quad \underset{g'(x):=1}{\overset{f':=e^{2x}}{\overset{g:=x}{\underset{f(x):=\frac{e^{2x}}{2}}{=}}}}
 		\quad \overbrace{x\cdot\frac{e^{2x}}{2}}^{f\cdot g}-\overbrace{\int\frac{e^{2x}}{2}\cdot1\,dx}^{\int f\cdot g'}=\frac{1}{2}\cdot xe^{2x}-\frac{1}{2}\int e^{2x}\,dx=\frac{1}{2}xe^{2x}-\frac{1}{2}\frac{e^{2x}}{2}+c\quad (c\in\R) \]
 	\end{task}
-	\bigskip
 	
 	\begin{center}
 		\textit{,,Cuppantsuk ki a konstans tagot!''}
@@ -150,7 +149,6 @@
 		
 		/Filipp/
 	\end{center}
-	\bigskip
 	
 	\begin{note}
 		Rövid jelölés: ($f$ és $g$ nem lesz jelölve többet)
@@ -158,7 +156,7 @@
 		Jelölje ,,p.i.'' a parciális integrálást.
 	\end{note}
 	\begin{center}
-		\textit{,,Fogd a deviválást stukkert. Amelyik szemed nyitod azt deriválod, amelyik csukott, az hagyod. Aztán egyik szem lecsuk, másik kinyit.''}
+		\textit{,,Fogd a deriválás kukkert. Amelyik szemed nyitott az adott formulán azt deriválod, amelyiken csukott, az hagyod. Aztán egyik szem lecsuk, másik kinyit.''}
 		
 		\smallskip
 		/Filipp/
@@ -286,16 +284,39 @@
 	\begin{exercise}
 		$x\in\R$
 		\[ \int x\arc\sin x\,dx \]
+		\textit{Megoldás:}
+		\[ \int\left(\frac{x^2}{2}\right)'\arc\sin x\,dx=\frac{x^2}{2}\arc\sin x-\int\frac{x^2}{2}\cdot\frac{1}{\sqrt{1-x^2}}\,dx=\frac{x^2}{2}\arc\sin x + \frac{1}{2}\int\frac{-x^2+1-1}{\sqrt{1-x^2}}\,dx= \]
+		\[ =\frac{x^2}{2}\arc\sin x+ \frac{1}{2}\int\sqrt{1-x^2}-\frac{1}{\sqrt{1-x^2}}\,dx=\frac{x^2}{2}\arc\sin x-\frac{1}{2}\arc\sin x+\frac{1}{2}\int\sqrt{1-x^2}\,dx=\]
+		Határozzuk meg $\int\sqrt{1-x^2}\,dx$-et.
+		\[ \int\sqrt{1-x^2}\,dx=\int (1-x^2)^{\frac{1}{2}}\,dx=\frac{2}{3}(1-x^2)^{\frac{3}{2}}\cdot 2x + c\quad (c\in\R) \]
+		Visszatérve:
+		\[ =\arc\sin x\left(\frac{x^2-1}{2}\right)+\frac{2}{3}(1-x^2)^{\frac{3}{2}}\cdot x + c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		$x\in\R$
-		\[ \int\ln(1+x^2)\,dx \]
+		\[ \int\ln(1+x^2)\,dx=\int(x)'\ln(1+x^2)\,dx=x\ln(1+x^2)-\int x\cdot\frac{1}{1+x^2}\cdot 2x\,dx=x\ln(1+x^2)-2\int\frac{x^2-1+1}{1+x^2}\,dx= \]
+		\[ x\ln(1+x^2)-2\int1-\frac{1}{1+x^2}\,dx=x\ln(1+x^2)-2x+2\arc\tg x + c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int \sh x\cos x\,dx \]
+		\textit{Megoldás:}
+		\[ \int(\ch x)'\cos x\,dx=\ch x\cos x-\int\ch x(-\sin x)\,dx=\ch x\cos x +\int(\sh x)'\sin x\,dx=\]
+		\[=\ch x\cos x+\left(\sh x\sin x-\int\sh x\cos x\,dx\right)\]
+		
+		\[\int \sh x\cos x\,dx=\frac{1}{2}\left(\ch x\cos x-\sh x\sin x\right) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int e^x\cos^2x,dx \]
+		\textit{Megoldás:}
+		\[ \int (e^x)'\cos^2x\,dx=e^x\cos^2x-\int e^x2\cos x(-\sin x)\,dx=e^x\cos^2x+\int e^x(2\cos x\sin x)\,dx=\]
+		\[=e^x\cos^2x+\int (e^x)'\sin2x\,dx=e^x\cos^2x+e^x\sin2x-\int e^x\cdot2\cdot\cos2x\,dx=\]
+		\[ =e^x\cos^2x+e^x\sin2x-4\cdot\int e^x\frac{\cos2x}{2}\,dx= \]
+		Határozzuk meg $\int e^x\frac{\cos2x}{2}$-t.
+		\[\int e^x\frac{\cos2x+1-1}{2}\,dx=\int e^x\left(\cos^2x-\frac{1}{2}\right)\,dx=\int e^x\cos^2x\,dx-\frac{1}{2}\int e^x\,dx=\int e^x\cos^2x\,dx-\frac{1}{2}\cdot e^x  \]
+		Visszatérve:
+		\[ =e^x\cos^2x+e^x\sin2x+2\cdot e^x-4\cdot\int e^x\cos^2x\,dx \]
+		Így az egyenlet:
+		\[ \int e^x\cos^2x\,dx=\frac{1}{5}\left(e^x\cos^2x+e^x\sin2x+2\cdot e^x \right)+c=\frac{e^x(\cos^2x+\sin2x+2)}{5}+c\quad (c\in\R) \]
 	\end{exercise}
 	\section{Integrálás helyettesítéssel}
 	\begin{revision}
@@ -316,7 +337,9 @@
 	\end{task}
 	
 	\begin{exercise}A következő feladatokat az $x=:\sin t$ helyettesítéssel javallott megoldani. Legyen $x\in(0,1)$, és:
-		\[ \int\frac{1}{x\cdot\sqrt{t1-x^2}}\,dx \]
+		\[ \int\frac{1}{x\cdot\sqrt{1-x^2}}\,dx \]
+		\textit{Megoldás:}
+		\[ \int(\ln x)'\frac{1}{1-x^2}\,dx= \]
 	\end{exercise}
 	\begin{note}
 		Rövid jelölés:
