@@ -333,13 +333,22 @@
 		Az új integrál:
 		\[ \int|\cos t|\cdot\cos t\,dt\quad \overset{t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right)}{=}\quad \int\cos^2t\,dt=\int\frac{1+\cos2t}{2}\,dt=\frac{t}{2}+\frac{\sin2t}{4}+c \overset{!}{=} \frac{t}{2}+\frac{2\cdot\sin t\cdot\sqrt{1-\sin^2t}}{4}+c \]
 		Visszahelyettesítve:
-		\[ \int\sqrt{1-x^2}\,dx=\frac{\arc\sin x}{2}+\frac{1}{2}x\sqrt{1-x^2}+c\quad (c\in\R) \] 
+		\[ \int\sqrt{1-x^2}\,dx=\frac{\arc\sin x}{2}+\frac{x\sqrt{1-x^2}}{2}+c\quad (c\in\R) \] 
 	\end{task}
 	
-	\begin{exercise}A következő feladatokat az $x=:\sin t$ helyettesítéssel javallott megoldani. Legyen $x\in(0,1)$, és:
+	\begin{exercise}A következő feladatot az $x=:\sin t$ helyettesítéssel javallott megoldani. 
+		
+		Legyen $x\in(0,1)$, és:
 		\[ \int\frac{1}{x\cdot\sqrt{1-x^2}}\,dx \]
-		\textit{Megoldás:}
-		\[ \int(\ln x)'\frac{1}{1-x^2}\,dx= \]
+		\textit{Megoldás:} Legyen
+		\[ f(x):=\frac{1}{x\cdot\sqrt{1-x^2}} \]
+		\[ g(t) := \sin t := x,\quad g^{-1}(t) = \arc\sin t,\quad g'(t) = \cos t \]
+		$g^{-1}$ létezik, hisz $g$ bijektív. Ezek alapján $t\in\left(0,\frac{\pi}{2} \right)$. Visszatérve:
+		
+		\[ \int\frac{1}{\sin t\cdot\sqrt{1-\sin^2t}}\cos t\,dt=\int\frac{\cos t}{\sin t|\cos t|}\,dt\quad \overset{t\in\left(0;\frac{\pi}{2}\right)}{=}\quad\int\frac{1}{\sin t}\,dt=\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{\underset{\text{félszögre térés}}{=}}\quad \int\frac{\sin^2\frac{t}{2}+\cos^2\frac{t}{2}}{2\sin\frac{t}{2}\cos\frac{t}{2}}\,dt=\]
+		\[\frac{1}{2}\int\frac{\sin\frac{t}{2}}{\cos\frac{t}{2}}\,dt+\frac{1}{2}\int\frac{\cos\frac{t}{2}}{\sin\frac{t}{2}}\,dt==\int\frac{(\sin\frac{t}{2})'}{\sin\frac{t}{2}}\,dt-\int\frac{(\cos\frac{t}{2})'}{\cos\frac{t}{2}}\,dt=\ln\left(\sin\frac{t}{2}\right)-\ln\left(\cos\frac{t}{2}\right)+c=\ln\left(\tg\frac{t}{2}\right)+c\quad (c\in\R) \]
+		Helyettesítsük vissza:
+		\[\int\frac{1}{x\cdot\sqrt{1-x^2}}\,dx=\ln\left(\tg\left(\frac{\arc\sin x}{2}\right)\right)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{note}
 		Rövid jelölés:
