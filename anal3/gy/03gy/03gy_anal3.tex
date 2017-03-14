@@ -294,8 +294,10 @@
 	\end{exercise}
 	\begin{exercise}
 		$x\in\R$
-		\[ \int\ln(1+x^2)\,dx=\int(x)'\ln(1+x^2)\,dx=x\ln(1+x^2)-\int x\cdot\frac{1}{1+x^2}\cdot 2x\,dx=x\ln(1+x^2)-2\int\frac{x^2-1+1}{1+x^2}\,dx= \]
-		\[ x\ln(1+x^2)-2\int1-\frac{1}{1+x^2}\,dx=x\ln(1+x^2)-2x+2\arc\tg x + c\quad (c\in\R) \]
+		\[ \int\ln(1+x^2)\,dx\]
+		\textit{Megoldás:}
+		\[\int(x)'\ln(1+x^2)\,dx=x\ln(1+x^2)-\int x\cdot\frac{1}{1+x^2}\cdot 2x\,dx=x\ln(1+x^2)-2\int\frac{x^2-1+1}{1+x^2}\,dx= \]
+		\[ =x\ln(1+x^2)-2\int1-\frac{1}{1+x^2}\,dx=x\ln(1+x^2)-2x+2\arc\tg x + c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int \sh x\cos x\,dx \]
@@ -306,7 +308,7 @@
 		\[\int \sh x\cos x\,dx=\frac{1}{2}\left(\ch x\cos x-\sh x\sin x\right) \]
 	\end{exercise}
 	\begin{exercise}
-		\[ \int e^x\cos^2x,dx \]
+		\[ \int e^x\cos^2x\,dx \]
 		\textit{Megoldás:}
 		\[ \int (e^x)'\cos^2x\,dx=e^x\cos^2x-\int e^x2\cos x(-\sin x)\,dx=e^x\cos^2x+\int e^x(2\cos x\sin x)\,dx=\]
 		\[=e^x\cos^2x+\int (e^x)'\sin2x\,dx=e^x\cos^2x+e^x\sin2x-\int e^x\cdot2\cdot\cos2x\,dx=\]
@@ -346,7 +348,7 @@
 		$g^{-1}$ létezik, hisz $g$ bijektív. Ezek alapján $t\in\left(0,\frac{\pi}{2} \right)$. Visszatérve:
 		
 		\[ \int\frac{1}{\sin t\cdot\sqrt{1-\sin^2t}}\cos t\,dt=\int\frac{\cos t}{\sin t|\cos t|}\,dt\quad \overset{t\in\left(0;\frac{\pi}{2}\right)}{=}\quad\int\frac{1}{\sin t}\,dt=\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{\underset{\text{félszögre térés}}{=}}\quad \int\frac{\sin^2\frac{t}{2}+\cos^2\frac{t}{2}}{2\sin\frac{t}{2}\cos\frac{t}{2}}\,dt=\]
-		\[\frac{1}{2}\int\frac{\sin\frac{t}{2}}{\cos\frac{t}{2}}\,dt+\frac{1}{2}\int\frac{\cos\frac{t}{2}}{\sin\frac{t}{2}}\,dt==\int\frac{(\sin\frac{t}{2})'}{\sin\frac{t}{2}}\,dt-\int\frac{(\cos\frac{t}{2})'}{\cos\frac{t}{2}}\,dt=\ln\left(\sin\frac{t}{2}\right)-\ln\left(\cos\frac{t}{2}\right)+c=\ln\left(\tg\frac{t}{2}\right)+c\quad (c\in\R) \]
+		\[\frac{1}{2}\int\frac{\sin\frac{t}{2}}{\cos\frac{t}{2}}\,dt+\frac{1}{2}\int\frac{\cos\frac{t}{2}}{\sin\frac{t}{2}}\,dt=\int\frac{(\sin\frac{t}{2})'}{\sin\frac{t}{2}}\,dt-\int\frac{(\cos\frac{t}{2})'}{\cos\frac{t}{2}}\,dt=\ln\left(\sin\frac{t}{2}\right)-\ln\left(\cos\frac{t}{2}\right)+c=\ln\left(\tg\frac{t}{2}\right)+c\quad (c\in\R) \]
 		Helyettesítsük vissza:
 		\[\int\frac{1}{x\cdot\sqrt{1-x^2}}\,dx=\ln\left(\tg\left(\frac{\arc\sin x}{2}\right)\right)+c\quad (c\in\R) \]
 	\end{exercise}

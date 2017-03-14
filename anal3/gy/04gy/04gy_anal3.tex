@@ -1,0 +1,323 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis 3. A szakirány}}
+		\smallskip
+		
+		{\Large Gyakorlati jegyzet}
+		
+		\smallskip
+		4. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\section{Információk}
+	\begin{enumerate}
+		\item Első zh.: március 31 péntek 18:00, Kitaibel Pál terem (0-823)
+		\item Első zh-hoz konzultáció március 29 18:00-19:30
+	\end{enumerate}
+	\section{Feladatok}
+	\begin{task}
+		\[ \int\sqrt{1+x^2}\,dx  \]
+		Vezessünk be új változót.
+		\[ g(t) := \sh t := x,\quad  t\in\R \]
+		\[ (x)'\,dx=(\sh t)'\,dt\quad \Rightarrow\quad dx=\ch t\,dt \]
+		\[ t = \arsh x \]
+		Visszatérve:
+		\[ \int\sqrt{1+\sh t}\ch t\,dt=\int\sqrt{\ch^2t}\cdot\ch t\,dt=\int|\overbrace{\ch x}^{\text{poz.}}|\cdot\ch t\,dt=\int\ch^2 t\,dt=\int\left(\frac{e^t+e^{-t}}{2}\right)^2\,dt=\]
+		\[= \int\left(\frac{e^{2t}+2e^te^{-t}+e^{-2t}}{4}\right)= \int\left(\frac{\frac{e^{2t}+e^{-2t}}{2}+1}{2}\right)\,dt=\int\frac{\ch(2t)+1}{2}\,dt=\frac{t}{2}+\frac{1}{4}\cdot\sh(2t)+c=\]
+		Bár az integráljelek eltűntek, ha ezen a ponton helyettesítenénk vissza, túl ,,ronda'' alakot kapnánk, így érdemes továbbalakítani.
+		\[=\frac{t}{2}+\frac{1}{4}\cdot\frac{e^{2t}-e^{-2t}}{2}+c=\frac{t}{2}+\frac{1}{4}\cdot\frac{(e^{t})^2-(e^{-t})^2}{2}+c=\frac{t}{2}+\frac{1}{2}\cdot\frac{e^t-e^{-t}}{2}\cdot\frac{e^t+e^{-t}}{2}= \frac{t}{2}+\frac{1}{2}\sh t\ch t +c=\]
+		\[=\frac{t}{2}+\frac{1}{2}\sh t\cdot\sqrt{1+\sh^2t}+c \]
+		\[ \Rightarrow\int\sqrt{1+x^2}\,dx=\frac{\arsh}{2}+\frac{1}{2}\cdot x\cdot \sqrt{1+x^2}+c \]
+	\end{task}
+	\begin{revision}\
+		
+		\begin{center}
+			\text{\fbox{$\displaystyle \ch x=\frac{e^x-e^{-x}}{2}$}}
+			\quad \text{\fbox{$\displaystyle \sh x=\frac{e^x-e^{-x}}{2}$}}
+			\quad \text{\fbox{$\displaystyle \ch^2x-\sh^2x=1$}}
+		\end{center}
+		A $\ch$ grafikonját szokás \textit{láncgörbének} hívni, mert mert ha egy lánc két végét fogjuk, akkor mindig egy $\ch$ függvényt vesz fel az alakja.
+		
+		Az inverzekre is megállapítható pár azonosság:
+		\begin{center}
+			\text{\fbox{$\displaystyle \sh^{-1}x=\arsh x=\ln(x+\sqrt{x^2+1})$}}
+			\quad \text{\fbox{$\displaystyle \ch^{-1}(x)=?$}}
+		\end{center}
+		Valamint a $\sin$ és $\cos$ függvényekhez hasonló azonosságok is megállapíthatóak.
+		\begin{center}
+			\text{\fbox{$\displaystyle \ch^2 x=\frac{1+\ch2x}{2}$}}
+			\quad \text{\fbox{$\displaystyle \sh(2x)=2\sh x\ch x$}}
+		\end{center}
+	\end{revision}
+	\begin{note}
+		Ezeket levezettük, így egyből felhasználhatóak, nem kell zh-ban őket levezetni.
+	\end{note}
+	\begin{exercise}
+		\[ \int\sqrt{x^2-1} \]
+		\begin{enumerate}
+			\item $x<-1,\quad x=-\ch t \quad (t<0)$
+			\item $x>1,\quad x=\ch t \quad (t>0)$
+		\end{enumerate}
+	\end{exercise}
+	\begin{note}
+		$\int\sqrt{ax^2+bx+c}\,dx$ típusoknál teljes négyzetté alakítás után lineáris helyettesítés javallott az alábbiak egyikébe:
+		\begin{enumerate}
+			\item $\sqrt{1+x^2}\,dx$
+			\item $\int\sqrt{1-x^2}\,dx$
+			\item $\int\sqrt{x^2-1}\,dx$
+		\end{enumerate}
+	\end{note}
+	\begin{exercise}
+		Fejezzük be a következő feladatot:
+		\[ \int\sqrt{4-9x^2-6x}\,dx%\quad x\in\left(-\frac{1}{3}-\frac{\sqrt{5}}{3};\ -\frac{1}{3}+\frac{\sqrt{5}}{3}\right) 
+		\]
+		Alakítsuk át a gyök alatt található kifejezést.
+		\[ 4-9x^2-6x=4-(9x^2+6x)=4-((3x+1)^2-1)=5-(3x+1)^2=5\cdot\left(1-\frac{(3x+1)^2}{5}\right)=5\cdot\left(1-\left(\frac{3x+1}{\sqrt{5}}\right)^2\right)\]
+		Visszahelyettesítve:
+		\[\Rightarrow\quad \sqrt{5}\cdot\int\sqrt{1-\left(\frac{3x+1}{\sqrt{5}}\right)^2}\,dx \]
+		Javallott az $\displaystyle g(t):=\sin t:=\frac{3x+1}{\sqrt{5}}=$ helyettesítés, mellyel
+		\[ \left(\frac{3x+1}{\sqrt{5}}\right)'=(\sin t)'\quad  \Leftrightarrow\quad \frac{3}{\sqrt{5}}\,dx=\cos t\,dt\quad \Leftrightarrow\quad dx=\frac{\sqrt{5}}{3}\cos t\,dt. \]
+		\textit{A feladat befejezése:}	Határozzuk meg $x$-et $t$ függvényében.
+		\[ \sin t=\frac{3x+1}{\sqrt 5}\quad \Leftrightarrow\quad t = \arc\sin\left(\frac{3x+1}{\sqrt{5}}\right) \]
+		
+		A helyettesítéssel kapott ,,új'' integrál:
+		\[ \sqrt{5}\cdot\int\sqrt{1-\sin^2t}\cdot\frac{\sqrt{5}}{3}\cos t\,dt=\frac{5}{3}\cdot\int|\cos t|\cos t\,dt\]
+		Tegyük fel, hogy $\cos t$ nemnegatív.
+		\[ \frac{5}{3}\cdot\int\cos^2 t\,dt=\frac{5}{3}\cdot\int\frac{\cos2t+1}{2}\,dt=\frac{5}{3}\cdot\left(\frac{t}{2}+\frac{\sin2t}{4}\right)+c=\frac{5}{3}\cdot\left(\frac{t}{2}+\frac{2\sin t\cos t}{4}\right)+c= \]
+		\[ =\frac{5}{3}\cdot\left(\frac{t}{2}+\frac{\sin t\cdot\sqrt{(1-\sin^2t)}}{2}\right)+c \quad (c\in\R)\]
+		Visszahelyettesítve:
+		\[ \int\sqrt{4-9x^2-6x}\,dx=\frac{5}{3}\cdot\left(\frac{\arc\sin\left(\frac{3x+1}{\sqrt 5}\right)}{2}+\frac{\frac{3x+1}{\sqrt{5}}\cdot\sqrt{1-\left(\frac{3x+1}{\sqrt{5}}\right)^2}}{2}\right)+c=\]
+		\[ =\frac{5\cdot\arc\sin\left(\frac{3x+1}{\sqrt 5}\right)+\sqrt{5}\cdot(3x+1)\cdot\sqrt{1-\left(\frac{3x+1}{\sqrt{5}}\right)^2}}{6}+c=\frac{5\cdot\arc\sin\left(\frac{3x+1}{\sqrt 5}\right)+(3x+1)\cdot\sqrt{5-(3x+1)^2}}{6}+c \]
+		Ahol $c\in\R$.
+	\end{exercise}
+	\section{Racionális törtfüggvények integrálása}
+	\subsection{Elemi törtek integrálása}
+	Ebben a fejezetben minden példa 1-1 altípusra mutat rá.
+	\begin{example}
+		$(a,b,x\in\R,\quad a\not=0;\quad 1\leq n\in\N)$
+		\[ \int\frac{1}{(ax+b)^n}\,dx=? \]
+	\end{example}
+	\begin{task}
+		\[ \int\frac{1}{(2x+1)^7}\,dx=\frac{1}{2}\cdot\int(2x+1)'\cdot(2x+1)^{-7}\,dx=\frac{1}{2}\cdot\frac{(2x+1)^{-6}}{-6}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{task}
+		\[ \int\frac{1}{(3x-5)}\,dx=\frac{1}{3}\cdot\int\frac{(3x-5)'}{3x-5}\,dx=\frac{1}{3}\ln|\overbrace{3x-5}^{x>\frac{5}{3}}|+c=\frac{1}{3}\ln(3x+5)+x\quad (c\in\R) \]
+	\end{task}
+	\begin{example}$(a,b,c,d,e,f,x\in\R,\quad a\not=0)$
+		\[ \int\frac{ex+f}{ax^2+bx+c}\,dx \]
+		A megoldási módszer változhat a diszkrimináns paritásától függően.
+	\end{example}
+	\begin{task}$x\in(-4;2)$
+		\[ \int\frac{3x+1}{x^2+2x-8}\,dx= \]
+		Első lépés, nevezőt alakítsuk szorzattá, kihasználván azt, hogy a diszkriminánsa pozitív.
+		\[ ax^2+bx+c=(x-x_1)(x-x_2)\quad \Leftrightarrow\quad x^2+2x-8=(x-2)(x+4) \]
+		\[ f(x):=\frac{3x+1}{(x-2)(x+4)}=\frac{A}{x-2}+\frac{B}{x+4} \]
+		Végezzük el a parciális törtre bontást.
+		\[ (x-2)(x+4)\quad \Leftrightarrow\quad 3x+1=A(x+4)+B(x-2)\quad \Leftrightarrow\quad 3x+1=(A+B)x+4A-2B \]
+		Mindkét oldal $x$-nek polinomja ezért egyenlőség pontosan akkor teljesül ha a megfelelő fokszámú tafok együtthatói megegyeznek. (A módszer neve: ,,egyenlő együtthatók módszere'')
+		\begin{align*}
+			x^1\quad  \text{együtthatói:}& \quad 3=A+B\\
+			x^0\quad  \text{együtthatói:}& \quad 1=4A-2B
+		\end{align*}
+		Ez alapján:
+		\[ A=\frac{7}{6}\quad \text{és}\quad B=\frac{11}{6} \]
+		\[ \Rightarrow\int f(x)\,dx=\int\left(\frac{7}{6}\cdot\frac{1}{x-2}+\frac{11}{6}\cdot\frac{1}{x+4}\right)\,dx=\frac{7}{6}\int\frac{1}{x-2}\,dx+\frac{11}{6}\cdot\int\frac{1}{x+4}\,dx=\frac{7}{6}\ln|x-2|+\frac{11}{6}\ln|x+4|+c=\]
+		\[\overset{x\in(-4;2)}{=}\quad \frac{7}{6}\cdot\ln(-x+2)+\frac{11}{6}\ln(x+4)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{center}
+		\textit{,,[\dots]tegyük fel hogy parciális törtfelbontó vagy''}
+		
+		\smallskip
+		/Filipp/
+	\end{center}
+	\begin{task}$x\in\R$
+		\[\int\frac{3x+1}{x^2-x+1}\,dx= \]
+		Mivel a nevező diszkriminánsa negatív, nem léteznek valós gyökei, és az előző feladatban látott megoldási módszer nem működik.
+		
+		Határozzuk meg a nevező deriváltját.
+		\[ (x^2-x+1)'=2x-1 \]
+		Visszatérve:
+		\[ =\frac{3}{2}\cdot\int\frac{2x+\frac{2}{3}}{x^2-x+1}\,dx=\frac{3}{2}\cdot\int\frac{2x-1+\frac{2}{3}+1}{x^2-x+1}\,dx=\frac{3}{2}\cdot\int\frac{2x-1}{x^2-x+1}\,dx+\frac{3}{2}\cdot\frac{5}{3}\cdot\overbrace{\int\frac{1}{x^2-x+1}\,dx}^{=:I(x)}= \] 
+		\[ =\frac{3}{2}\ln(\overbrace{x^2-x+1}^{\substack{\text{nincs valós gyök,}\\\text{ poz. a főegyüttható,}\\\text{ így biztosan poz.}}})+\frac{5}{2}I(x) \]
+		Ahol:
+		\[ I(x)=\int\frac{1}{x^2-x+1}\,dx= \]
+		Próbáljuk átalakítani a nevezőt úgy, hogy egy 
+		\begin{center}
+			\textit{,,$\arc\tg$-re éhes alakra hozzuk''}
+			\smallskip
+			
+			/Filipp/
+		\end{center}
+		a törtet.
+		\[ x^2-x+1=\left(x-\frac{1}{2}\right)^2-\frac{1}{4}+1=\left(x-\frac{1}{2}\right)^2+\frac{3}{4}= \frac{3}{4}\cdot\left[1+\left(x-\frac{1}{2}\right)^2\right]=\frac{3}{4}\left[1+\frac{(2x-1)^2}{3}\right]=\]
+		\[=\frac{3}{4}\cdot\left[1+\left(\frac{2x-1}{\sqrt{3}}\right)^2\right] \]
+		Visszatérve:
+		\[ =\frac{4}{3}\int\frac{1}{1+\left(\frac{2x-1}{\sqrt{3}}\right)^2}\,dx=\frac{4}{3} \cdot\frac{\arctg\frac{2x-1}{\sqrt{3}}}{\frac{2}{\sqrt{3}}}+c \]
+		Visszaírva az eredeti integrálba:
+		\[ \frac{3}{2}\cdot\ln(x^2-x+1)+\frac{5}{2}\cdot\frac{4}{3}\cdot\frac{\sqrt{3}}{2}\cdot\arc\tg\frac{2x-1}{\sqrt{3}}+c\quad (c\in\R) \]
+	\end{task}
+	\begin{note}
+		Ezt a típust $\frac{f'}{f}$ + $\arc\tg$-re visszavezetésnek hívjuk
+	\end{note}
+	\begin{task}$x>-1$
+		\[ \int\frac{x^4+3x^3+x^2+1}{x^3+1}\,dx= \]
+		Ha a számláló foka nagyobb mint a nevezőé, polinom osztást szokás alkalmazni első lépésben, azaz
+		\[ \int\frac{P(x)}{Q(x)}\,dx\quad \text{ha}\quad \deg P\geq\deg Q\quad \Rightarrow\quad \text{polinomosztás} \]
+		$(x^4+3x^3+x^2+1):(x^3+1)=x+3$ és a maradék $x^2-x-2$
+		\[ \int\left(x+3+\underbrace{\frac{x^2-x-2}{x^3+1}}_{\text{valódi tört}}\right)\,dx=\frac{x^2}{2}+3x+J(x)= \]
+		ahol $J(x)=\int\frac{x^2-x-2}{x^3+1}\,dx$.
+		\[ =\int\frac{x^2-x-2}{(x+1)\underbrace{(x^2-x+1)}_{D<0!}}\,dx=\int\left(\frac{A}{x+1}+\frac{Bx+C}{x^2-x+1}\right)\,dx= \]
+		Végezzük el a törte bontást:
+		\[ x^2-x-2=A(x^2-x+1)+(Bx+C)(x+1) \]
+		\[ x^2-x-2=(A+B)x^2+(-A+B+C)x+A+C \]
+		\begin{align*}
+			x^2 \quad \text{együtthatója:}&\hspace{7.8mm} 1=A+B\\
+			x^1 \quad \text{együtthatója:}& \quad -1=-A+B+C\\
+			x^0 \quad \text{együtthatója:}&\quad  -2=A+C\\
+		\end{align*}
+		
+		Megállítható hogy $A=0,\quad B=1,\quad C=-2$.
+		\[=\int\frac{x-2}{x^2-x+1}\,dx=\frac{1}{2}\cdot\int\frac{2x-1-3}{x^2-x+1}\,dx=\frac{1}{2}\cdot\int\frac{2x-1}{x^2-x+1}\,dx-\frac{3}{2}\cdot\overbrace{\int\frac{1}{x^2-x+1}\,dx}^{=:I(x)}= \frac{1}{2}\ln(x^2-x+1)-\frac{3}{2}I(x) \]
+		ld. előző példa a befejezésért.
+	\end{task}
+	\begin{exercise}$x>1$
+		\[\int\frac{x^4+3x^3-x^2+8}{x^3-1}\,dx  \] 
+	\end{exercise}
+	\begin{task}$x>3$
+		\[ \int\frac{2x-1}{(x+2)(x-3)^2}\,dx=\int\left(\frac{A}{x+2}+\frac{B}{x-3}+\frac{C}{(x-3)^2}\right)\,dx \]
+		\[ \Rightarrow\quad 2x-1=A(x-3)^2+B(x+2)(x-3)+C(x+2) \]
+		HF: Megoldás egyenlő együtthatókkal.
+		
+		A következő megoldási módszert ,,értékadás''-nak hívjuk.
+		\[ x=3\quad \Rightarrow\quad 5=5C\quad \Rightarrow \quad C=1 \]
+		\[ x=-2\quad \Rightarrow\quad -5=25A\quad \Rightarrow\quad A=-\frac{1}{5} \]
+		\[ x=4\quad \Rightarrow\quad 7=-\frac{1}{5}+6B+6\quad \Rightarrow\quad B=\frac{1}{5} \]
+		\[ \Rightarrow\quad -\frac{1}{5}\int\frac{1}{x+2}\,dx+\frac{1}{5}\int\frac{1}{x-3}\,dx+\int\frac{1}{(x-3)^2}\,dx=-\frac{1}{5}\ln(x+2)+\frac{1}{5}\ln(x-3)-\frac{1}{x-3}+c= \]
+		\[ = \frac{1}{5}\ln\frac{x-3}{x+2}-\frac{1}{x-9}+c\quad (c\in\R) \]
+	\end{task}
+	Házi feladat: 10 db. racionális tört integrál. 1866-tól. Egy típust nem csináltunk,amikor egy másodfokú polinomnak nincs mgoldása, és az magasabb fokon van.
+\end{document}
