@@ -1,0 +1,342 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis 3. A szakirány}}
+		\smallskip
+		
+		{\Large Gyakorlati jegyzet}
+		
+		\smallskip
+		5. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\section{Információk}
+	Konzultáció lesz ZH előtt március 29-én szerdán, 18:00-19:30 között a 2-712 teremben.
+	\section{Parciális törtekre bontás (folytatás)}
+	Egy darab elemi törttípus maradt meg, amit nem vettünk.
+	\begin{example}$(x\in\R)$
+		\[ \int\frac{1}{(ax^2+bx+c)^n}\,dx \]
+		Ahol a diszkrimináns negatív, és $2\leq n\in\N$. Ezeket hogyan számolhatnánk?
+		\[ I_n(x):=\int\frac{1}{(1+x^2)^n}\,dx \]
+		Vezessük ezt le.
+		\[ n=1\quad \Rightarrow\quad I_1(x)=\arc\tg x+c\quad (c\in\R) \]
+		Rekurzióval:
+		\[ I_{n-1}(x)=\int(x)'\cdot(1+x^2)^{-n+1}\,dx\quad \overset{\text{p.i.}}{=}\quad x\cdot\frac{1}{(1+x^2)^{n-1}}-\int x\cdot(-n+1)\cdot(1+x^2)^{-n}\cdot2x\,dx \]
+		\[ \Rightarrow\quad I_{n-1}(x)=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\int\frac{x^2}{(1+x^2)^n}\,dx=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\int\frac{x^2+1-1}{(1+x^2)^n}\,dx= \]
+		\[ \Rightarrow\quad I_{n-1}(x)=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\cdot I_{n-1}(x)-2(n-1)\cdot I_n(x) \]
+		\[ \Rightarrow\quad I_n(x)=\frac{1}{2(n-1)}\cdot\frac{x}{(1+x^2)^{n-1}}+\frac{2n-3}{2(n-1)}\cdot I_{n-1}(x) \]
+		Ezzel kaptunk egy rekurzív integrál sorozatot, mellyel magasabb hatványokat is könynen számolhatunk.
+	\end{example}
+	\begin{note}
+		SPeciális esetben, ha $n=2$:
+		\[ I_2(x)=\int\frac{1}{(1+x^2)^2}\,dx=\frac{1}{2}\cdot\frac{x}{1+x^2}+\frac{1}{2}\arc\tg x+c\quad (c\in\R) \]
+	\end{note}
+	\begin{exercise}
+		\[ \int\frac{1}{(1+x^2)^3}\,dx \]
+	\end{exercise}
+	\begin{note}
+		Nem érdemes a formulát megjegyezni, érdemesebb a négyzetet megjegyezni, és levezetni belőle a köböt levezetni.
+	\end{note}
+	\begin{note}
+		Várhatóan négyzeten lesz minden, köb nem várható ZH-ban.
+	\end{note}
+	\begin{exercise}
+		\[ \int\frac{3x+1}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int\frac{2x+\frac{2}{3}}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int\frac{2x+4+\frac{2}{3}-4}{(x^2+4x+5)^2}\,dx=\]
+		\[=\frac{3}{2}\int\frac{2x+4}{(x^2+4x+5)^2}\,dx+\frac{3}{2}\int\frac{\frac{2}{3}-4}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int(x^2+4x+5)'(x^2+4x+5)^{-2}\,dx-\frac{3}{2}\cdot\frac{10}{3}\cdot\overbrace{\int\frac{1}{(x^2+4x+5)^2}\,dx}^{=J(x)}=\]
+		\[=\frac{3}{2}\frac{x^2+4x+5}{-1}-5\cdot J(x), \]
+		Határozzuk meg $J(x)$-et.
+		\[J(x)=\int\frac{1}{(1+(x+2)^2)^2}\,dx\quad \overset{x+2=t}{\underset{dx=dt}{=}}\quad \int\frac{1}{(1+t^2)^2}\,dt\]
+		Fejezzük be.
+	\end{exercise}
+	\begin{note}
+		\[ \int\frac{1}{(1+x^2)^n}\,dx= \]
+		Vezessünk be egy jelölést.
+		\[ \tg t:=x,\quad t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right) \]
+		\[ dx=\frac{1}{\cos^2t}dt,\quad t=\arc\tg x \]
+		Visszatérve:
+		\[ =\int\frac{1}{\frac{1}{\cos^{2n}t}}\cdot\frac{1}{\cos^2t}\,dt=\int\cos^{2n-2}t\,dt \]
+	\end{note}
+	\begin{exercise}
+		Rekurzió levezetése.
+	\end{exercise}
+	\begin{note}
+		\[ 1+\tg^2=\frac{1}{\cos^2t} \]
+	\end{note}
+	Hogyna bontjuk fel parciálisan a következő törteket?
+	\begin{task}
+		\[ \frac{x+1}{(x+3)^2(x^2+1)^2}=\frac{A}{x+3}+\frac{B}{(x+3)^2}+\frac{Cx+B}{x^2+1}+\frac{Ex+F}{(x^2+1)^2} \]
+		Minden másodfokú tagnam amelynek nincs gyöke, oda elsőfokú számláló kell.
+	\end{task}
+	\begin{exercise}
+		\[ \frac{3x^2+1}{x^2(x^2+x+1)}=\frac{A}{x}+\frac{B}{x^2}+\frac{Cx+D}{x^2+x+1} \]
+		Házi feladat az integráljának kiszámolása.
+	\end{exercise}
+	\begin{exercise}
+		\[ \frac{1}{x^4-1}=\frac{1}{(x^2-1)(x^2+1)}=\frac{1}{(x-1)(x+1)(x^2+1)}=\frac{A}{x-1}+\frac{B}{x+1}+\frac{Cx+D}{x^2+1} \]
+	\end{exercise}
+	\begin{exercise}$(x\in\R)$
+		\[ \int\frac{1}{x^4+1}\,dx \]
+	\end{exercise}
+	\begin{exercise}$(x\in\R)$
+		\[ \int\frac{x}{1+x^4}\,dx \]
+	\end{exercise}
+	\subsection{Racionális törtre vezethető helyettesítések}
+	\begin{example}
+		\[ \int R(e^x)\,dx \]
+		Ahol $R$ egy racionális törtfüggvény.
+		Megoldási módszer ezen típusokhoz az alábbi új változó bevezetés:
+		\[ t:=e^x,\quad t>0,\quad x=\ln t,\quad dx=\frac{1}{t}\,dt \]
+	\end{example}
+	\begin{exercise}$(x>1)$
+		\[ \int\frac{1}{e^{2x}-4}\,dx \]
+		Használjunk egy behelyettesítést.
+		\[ t:=e^{2x},\quad t>0 \]
+		\[ x=\frac{1}{2}\ln t,\quad dx=\frac{1}{2t}\,dt \]
+		Visszatérve:
+		\[ \int\frac{1}{e^{2x}-4}\,dx=\int\frac{1}{t-4}\frac{1}{2t}\,dt=\int\frac{A}{t}+\frac{B}{t-4}\,dt \]
+		Fejezzük be.
+	\end{exercise}
+	\begin{note}
+		Megállapítható, hogy $e^x=t$ helyettesítéssel 3 törtre kéne bontani.
+	\end{note}
+	\begin{task}$x\in\R$
+		\[ \int\frac{e^{3x}}{e^x+2}\,dx \]
+		Használjuk a fenti behelyettesítést.
+		\[ t:=e^x,\quad t>0,\quad x=\ln t,\quad dx=\frac{1}{t}\,dt \]
+		Visszatérve:
+		\[ \int\frac{e^{3x}}{e^x+2}\,dx=\int\frac{t^3}{t+2}\frac{1}{t}\,dt=\int\frac{t^2}{t+2}\,dt= \]
+		Végezzünk el egy polinomosztást: \quad $t^2 : (t+2)=(t-2)(t+2)+4$.
+		\[ =\int t-2+\frac{4}{t+2}\,dt=\frac{t^2}{2}-2t+4\cdot\ln(t+2)+c\quad (c\in\R) \]
+		Így az eredeti integrál:
+		\[ \int\frac{e^{3x}}{e^x+2}\,dx=\frac{e^{2x}}{2}-2e^x+4\cdot\ln(e^x+2)+c\quad (c\in\R) \]
+	\end{task}
+	\begin{exercise}$x\in\R$
+		\[ \int\frac{e^x+4}{e^{2x}+4e^x+3}\,dx \]
+		Helyettesítsünk be.
+		\[ e^x=t\quad dx=\frac{1}{t}\,dt \]
+		Visszatérve:
+		\[ \int\frac{e^x+4}{e^{2x}+4e^x+3}\,dx=\int\frac{t+4}{t^2+4t+3}\cdot\frac{1}{t}\,dt \]
+		Fejezzük be a feladatot.
+	\end{exercise}
+	\begin{note}
+		Ezen típusokból egy tuti elő fog fordulni egy a zh-ban.
+	\end{note}
+	\begin{example}
+		\[ \int R\left(x;\sqrt[n]{\frac{a^x+b}{cx+d}}\right)\,dx= \]
+		Módszer:
+		\[ \sqrt[n]{\frac{ax+b}{cx+d}}=:t \]
+	\end{example}
+	\begin{task}$x>\frac{3}{2}$
+		\[ \int x\cdot\sqrt{5{x}-3}\,dx \]
+		Vezessünk be egy új változót:
+		\[ t:=\sqrt{5x-3},\quad x=\frac{t^2+3}{5},\quad dx=\frac{2t}{5}\,dt \]
+		Visszatérve:
+		\[ \int x\sqrt{5x-3}=\int\frac{t^2+3}{5}\cdot t\cdot\frac{2t}{5}\,dt=\frac{2}{25}\cdot\int(t^4+3t^2)\,dt=\frac{2}{25}\cdot\frac{t^5}{5}+\frac{2}{25}t^3+c \]
+		Eredeti integrál:
+		\[ \frac{2}{125}(\sqrt{5x-3})^5+\frac{2}{25}(\sqrt{5x-3})^3+c\quad (c\in\R) \]
+	\end{task}
+	\begin{exercise}$x\in(3;+\infty)$
+		\[ \int\sqrt{\frac{x-3}{x-1}}\,dx \]
+		Új változó:
+		\[ t:=\sqrt{\frac{x-3}{x-1}},\quad t>0,\quad x=\frac{t^2-3}{t^2-1} \]
+		\[ dx=\frac{2t(t^2-1)-(t^3-3)2t}{(t^2-1)^2}\,dt=\frac{4t}{(t^2-1)^2}\,dt \]
+		Visszatérve:
+		\[ \int t\cdot\frac{4t}{(t^2-1)^2}\,dt=4\cdot\int\frac{t^2}{(t-1)^2(t+1)^2}\,dt=4\cdot\int\left(\frac{A}{t-1}+\frac{B}{(t-1)^2}+\frac{C}{t+1}+\frac{D}{(t+1)^2}\right)\,dx \]
+		Fejezzük be.
+	\end{exercise}
+	\begin{exercise}
+		\[ \int\frac{1}{\sqrt{x}+\sqrt[3]{x}}\,dx \]
+		Vezessünk be egy új változót (itt érdemes a legkisebb közös többszöröst venni a gyököknél):
+		\[ \sqrt[6]{x}=t,\quad x=t^6,\quad dx=6t^5\,dt \]
+		Visszatérve:
+		\[ \int\frac{1}{t^3+t^2}6t^5\,dt=6\int\frac{t^3}{t+1}\,dt \]
+		Fejezzük be.
+	\end{exercise}
+	\begin{exercise}$x>\frac{3}{2}$
+		\[ \int\frac{1}{x}\sqrt{\frac{2x-3}{x}}\,dx \]
+	\end{exercise}
+	\begin{exercise}
+		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx \]
+	\end{exercise}
+	\begin{exercise}$x<1$
+		\[ \int\frac{x}{1+\sqrt{1-x}} \]
+	\end{exercise}
+	\begin{example}
+		\[ R\left(\sin x,\cos x\right)\,dt \]
+	\end{example}
+	\begin{exercise}$x\in\left(1,\pi\right)$
+		\[ \int\frac{1+\sin x}{1-\cos x}\,dx \]
+		A következő módszer mindenhol használható, de néha nem célszerű. Vezessünk be egy új helyettesítést:
+		\[  \tg \left(\frac{x}{2}\right)=t \]
+		\[ \sin x=2\sin\frac{x}{2}\cos\frac{x}{2}=2\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\cdot\cos^2\frac{x}{2}\quad \overset{1+\tg^2\alpha=\frac{1}{\cos^2\alpha}}{\underset{\cos\alpha=\frac{1}{1+\tg^2\alpha}}{=}}\quad \frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^2\frac{x}{2}}\quad \Rightarrow \]
+		\begin{center}
+			\fbox{$\displaystyle \sin x=\frac{2t}{1+t^2} $}
+			\fbox{$\displaystyle \cos x=\frac{1-t^2}{1+t^2} $}
+			
+			(levezetésük hf)
+		\end{center}
+		\[ \Rightarrow dx=\frac{2}{1+t^2\,dt}\quad (x=2\arc\tg t) \]
+		VIsszatérve:
+		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=\int\frac{1+\frac{2t}{1+t^2}}{1-\frac{1-t^2}{1+t^2}}\,dt \]
+		Ahol 
+		\[\int\frac{t^2+1+2t}{1+t^2-1+t^2}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2t+1}{t^2(t^2+1)}\,dt=\frac{A}{t}+\frac{B}{t^2}+\frac{Ct+D}{t^2+1}  \] 
+		Fejezzük be.
+	\end{exercise}
+	\begin{note}
+		Ezt a módzsert $\tg\left(\frac{x}{2}\right)$ módszernek hívjuk.
+	\end{note}
+	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
+		\[ \int\frac{\cos x}{\cos x+2\sin x} \]
+		\[ \int\frac{1}{1+2\tg x}\,dx \]
+		Második módszer, ha csak $\tg$-re átírható:
+		\[ \tg x=t\quad \Rightarrow\quad x=\arc\tg t \]
+		\[ dx=\frac{1}{1+t^2}\,dt \]
+		Visszatérve:
+		\[ =\int\frac{1}{1+2t}\cdot\frac{1}{1+t^2}\,dt \]
+		A megoldás házi feladat, valamint ugyanennek a feladatnak az 1. módszerrel való megoldása is.
+	\end{exercise}
+	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
+		\[ \int\frac{\sin x}{2\cos^2x+3\cos x} \]
+		Harmadik módszer:
+		\[ \cos x=t\quad \Rightarrow\quad -\sin x\,dt=dt \]
+		Visszatérve
+		\[ -\int\frac{1}{2t^2+3t}\,dt= \]
+	\end{exercise}
+	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
+		\[ \int\frac{\cos x}{\cos^2x+\sin^3x-1}\,dx \]
+		Negyedik módszer:
+		\[ \int\frac{\cos x\,dx}{\sin^3x-\sin^2x}= \]
+		\[ \sin x=t\quad \Rightarrow\quad \cos\,dx=dt \]
+		Visszatérve:
+		\[ \int\frac{dt}{t^3-t^2}=\int\frac{1}{t^2(t-1)}\,dt=\frac{A}{t}+\frac{B}{t^2}+\frac{C}{t-1} \]
+		Fejezzük be.
+	\end{exercise}
+	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
+		\[ \int\frac{\sin x+\cos x}{1-\sin2x} \]
+		Tipp: $f'\cdot f^\alpha$
+	\end{exercise}
+	Ezzel befejeztük a határozatlan integrált. HF: 10 darab beadandó házi feladat: 3 db. exponenciális helyettesítéssel, 3 darab gyökös, 4 darab trigonometrikus.
+\end{document}
