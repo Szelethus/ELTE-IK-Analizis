@@ -264,7 +264,7 @@
 		\[ t:=\sqrt{\frac{x-3}{x-1}},\quad t>0,\quad x=\frac{t^2-3}{t^2-1} \]
 		\[ dx=\frac{2t(t^2-1)-(t^3-3)2t}{(t^2-1)^2}\,dt=\frac{4t}{(t^2-1)^2}\,dt \]
 		Visszatérve:
-		\[ \int t\cdot\frac{4t}{(t^2-1)^2}\,dt=4\cdot\int\frac{t^2}{(t-1)^2(t+1)^2}\,dt=4\cdot\int\left(\frac{A}{t-1}+\frac{B}{(t-1)^2}+\frac{C}{t+1}+\frac{D}{(t+1)^2}\right)\,dx \]
+		\[ \int t\cdot\frac{4t}{(t^2-1)^2}\,dt=4\cdot\int\frac{t^2}{(t-1)^2(t+1)^2}\,dt=4\cdot\int\left(\frac{A}{t-1}+\frac{B}{(t-1)^2}+\frac{C}{t+1}+\frac{D}{(t+1)^2}\right)\,dt \]
 		Fejezzük be.
 	\end{exercise}
 	\begin{exercise}
@@ -272,7 +272,7 @@
 		Vezessünk be egy új változót (itt érdemes a legkisebb közös többszöröst venni a gyököknél):
 		\[ \sqrt[6]{x}=t,\quad x=t^6,\quad dx=6t^5\,dt \]
 		Visszatérve:
-		\[ \int\frac{1}{t^3+t^2}6t^5\,dt=6\int\frac{t^3}{t+1}\,dt \]
+		\[ \int\frac{1}{t^3+t^2}\cdot6t^5\,dt=6\int\frac{t^3}{t+1}\,dt \]
 		Fejezzük be.
 	\end{exercise}
 	\begin{exercise}$x>\frac{3}{2}$
@@ -286,52 +286,56 @@
 	\end{exercise}
 	\begin{example}
 		\[ R\left(\sin x,\cos x\right)\,dt \]
+		Racionális törtfüggvények $\sin, \cos$ függvényekkel.
 	\end{example}
 	\begin{exercise}$x\in\left(1,\pi\right)$
 		\[ \int\frac{1+\sin x}{1-\cos x}\,dx \]
 		A következő módszer mindenhol használható, de néha nem célszerű. Vezessünk be egy új helyettesítést:
-		\[  \tg \left(\frac{x}{2}\right)=t \]
-		\[ \sin x=2\sin\frac{x}{2}\cos\frac{x}{2}=2\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\cdot\cos^2\frac{x}{2}\quad \overset{1+\tg^2\alpha=\frac{1}{\cos^2\alpha}}{\underset{\cos\alpha=\frac{1}{1+\tg^2\alpha}}{=}}\quad \frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^2\frac{x}{2}}\quad \Rightarrow \]
-		\begin{center}
-			\fbox{$\displaystyle \sin x=\frac{2t}{1+t^2} $}
-			\fbox{$\displaystyle \cos x=\frac{1-t^2}{1+t^2} $}
-			
-			(levezetésük hf)
-		\end{center}
-		\[ \Rightarrow dx=\frac{2}{1+t^2\,dt}\quad (x=2\arc\tg t) \]
-		VIsszatérve:
-		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=\int\frac{1+\frac{2t}{1+t^2}}{1-\frac{1-t^2}{1+t^2}}\,dt \]
-		Ahol 
-		\[\int\frac{t^2+1+2t}{1+t^2-1+t^2}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2t+1}{t^2(t^2+1)}\,dt=\frac{A}{t}+\frac{B}{t^2}+\frac{Ct+D}{t^2+1}  \] 
+		\[  t:=\tg \left(\frac{x}{2}\right) \]
+		\[ \sin x=2\cdot\sin\frac{x}{2}\cdot\cos\frac{x}{2}=2\cdot\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\cdot\cos^2\frac{x}{2}=2\cdot\tg\frac{x}{2}\cdot\cos^2\frac{x}{2}\quad \overset{1+\tg^2\alpha=\frac{1}{\cos^2\alpha}}{\underset{\cos^2\alpha=\frac{1}{1+\tg^2\alpha}}{=}}\quad \frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^2\frac{x}{2}} \]
+		Ez alapján könnyen megállapítható hogy
+		\[ \sin x=\frac{2t}{1+t^2}. \]
+		Határozzuk meg a behelyettesítéshez szükséges utolsó információkat is.
+		\[ x=2\arc\tg t,\quad dx=\frac{2}{1+t^2}\,dt \]
+		Visszatérve:
+		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=\int\frac{1+\frac{2t}{1+t^2}}{1-\frac{1-t^2}{1+t^2}}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2+1+2t}{1+t^2-1+t^2}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2t+1}{t^2(t^2+1)}\,dt=\]
+		\[=\int\left(\frac{A}{t}+\frac{B}{t^2}+\frac{Ct+D}{t^2+1}\right)\,dt  \] 
 		Fejezzük be.
 	\end{exercise}
 	\begin{note}
-		Ezt a módzsert $\tg\left(\frac{x}{2}\right)$ módszernek hívjuk.
+		Ezt a módszert $\tg\left(\frac{x}{2}\right)$ módszernek hívjuk.
 	\end{note}
+	\begin{exercise}
+		$\cos$-ra is megállapítható egy hasonló formula, ha $t:=\tg\left(\frac{x}{2}\right)$.
+		\[\cos x=\frac{1-t^2}{1+t^2} \]
+		Ennek levezetése házi feladat.
+	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
-		\[ \int\frac{\cos x}{\cos x+2\sin x} \]
-		\[ \int\frac{1}{1+2\tg x}\,dx \]
+		\[ \int\frac{\cos x}{\cos x+2\sin x}\]
+		Osszuk le a nevezőt és a számlálót is $\cos x$-el.
+		\[ \int\frac{1}{1+2\tg x}\,dx= \]
 		Második módszer, ha csak $\tg$-re átírható:
-		\[ \tg x=t\quad \Rightarrow\quad x=\arc\tg t \]
-		\[ dx=\frac{1}{1+t^2}\,dt \]
+		\[ t:=\tg x,\quad x=\arc\tg t,\quad dx=\frac{1}{1+t^2}\,dt \]
 		Visszatérve:
 		\[ =\int\frac{1}{1+2t}\cdot\frac{1}{1+t^2}\,dt \]
 		A megoldás házi feladat, valamint ugyanennek a feladatnak az 1. módszerrel való megoldása is.
 	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
-		\[ \int\frac{\sin x}{2\cos^2x+3\cos x} \]
+		\[ \int\frac{\sin x}{2\cos^2x+3\cos x}= \]
 		Harmadik módszer:
-		\[ \cos x=t\quad \Rightarrow\quad -\sin x\,dt=dt \]
+		\[ t:=\cos x,\quad -\sin x\,dx=dt \] %WHAT?
 		Visszatérve
-		\[ -\int\frac{1}{2t^2+3t}\,dt= \]
+		\[ =-\int\frac{1}{2t^2+3t}\,dt \]
+		Fejezzük be.
 	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
 		\[ \int\frac{\cos x}{\cos^2x+\sin^3x-1}\,dx \]
 		Negyedik módszer:
-		\[ \int\frac{\cos x\,dx}{\sin^3x-\sin^2x}= \]
-		\[ \sin x=t\quad \Rightarrow\quad \cos\,dx=dt \]
+		\[ \int\frac{\cos x}{\sin^3x-\sin^2x}\,dx= \]
+		Vezessünk be új változót.
+		\[ t:=\sin x\quad \Rightarrow\quad \cos x\,dx=dt \]
 		Visszatérve:
-		\[ \int\frac{dt}{t^3-t^2}=\int\frac{1}{t^2(t-1)}\,dt=\frac{A}{t}+\frac{B}{t^2}+\frac{C}{t-1} \]
+		\[ \int\frac{dt}{t^3-t^2}=\int\frac{1}{t^2(t-1)}\,dt=\int\left(\frac{A}{t}+\frac{B}{t^2}+\frac{C}{t-1}\right)\,dt \] %WHAT?
 		Fejezzük be.
 	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
