@@ -139,39 +139,47 @@
 	Egy darab elemi törttípus maradt meg, amit nem vettünk.
 	\begin{example}$(x\in\R)$
 		\[ \int\frac{1}{(ax^2+bx+c)^n}\,dx \]
-		Ahol a diszkrimináns negatív, és $2\leq n\in\N$. Ezeket hogyan számolhatnánk?
-		\[ I_n(x):=\int\frac{1}{(1+x^2)^n}\,dx \]
-		Vezessük ezt le.
-		\[ n=1\quad \Rightarrow\quad I_1(x)=\arc\tg x+c\quad (c\in\R) \]
-		Rekurzióval:
-		\[ I_{n-1}(x)=\int(x)'\cdot(1+x^2)^{-n+1}\,dx\quad \overset{\text{p.i.}}{=}\quad x\cdot\frac{1}{(1+x^2)^{n-1}}-\int x\cdot(-n+1)\cdot(1+x^2)^{-n}\cdot2x\,dx \]
+		Ahol a diszkrimináns negatív, és $2\leq n\in\N$. Ezeket hogyan számolhatnánk? Ha egy alkalmas helyettesítéssel egy ilyen alakra tudjuk hozni:
+		\[ I_n(x):=\int\frac{1}{(1+x^2)^n}\,dx, \]
+		akkor meg tudunk adni $n$-re egy rekurziót, mellyel meg tudjuk határozni ezeket az integrálokat is. Vezessük ezt le. $n=1$-re:
+		\[I_1(x)=\arc\tg x+c\quad (c\in\R) \]
+		Határozzuk meg az $n.$ elemet.
+		\[ I_{n-1}(x)=\int(x)'\cdot(1+x^2)^{-n+1}\,dx\quad \overset{\text{p.i.}}{=}\quad x\cdot\frac{1}{(1+x^2)^{n-1}}-\int \left(x\cdot(-n+1)\cdot(1+x^2)^{-n}\cdot2x\right)\,dx \]
 		\[ \Rightarrow\quad I_{n-1}(x)=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\int\frac{x^2}{(1+x^2)^n}\,dx=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\int\frac{x^2+1-1}{(1+x^2)^n}\,dx= \]
 		\[ \Rightarrow\quad I_{n-1}(x)=\frac{x}{(1+x^2)^{n-1}}+2(n-1)\cdot I_{n-1}(x)-2(n-1)\cdot I_n(x) \]
 		\[ \Rightarrow\quad I_n(x)=\frac{1}{2(n-1)}\cdot\frac{x}{(1+x^2)^{n-1}}+\frac{2n-3}{2(n-1)}\cdot I_{n-1}(x) \]
-		Ezzel kaptunk egy rekurzív integrál sorozatot, mellyel magasabb hatványokat is könynen számolhatunk.
+		Ezzel kaptunk egy rekurzív integrál sorozatot, mellyel magasabb hatványokat is könnyen számolhatunk.
 	\end{example}
 	\begin{note}
-		SPeciális esetben, ha $n=2$:
+		Speciális esetben, ha $n=2$:
 		\[ I_2(x)=\int\frac{1}{(1+x^2)^2}\,dx=\frac{1}{2}\cdot\frac{x}{1+x^2}+\frac{1}{2}\arc\tg x+c\quad (c\in\R) \]
 	\end{note}
 	\begin{exercise}
-		\[ \int\frac{1}{(1+x^2)^3}\,dx \]
+		\[ I_3(x)=\int\frac{1}{(1+x^2)^3}\,dx \]
+		\textit{Levezetés:}
+		\[ I_3(x)=\frac{1}{4}\cdot\frac{x}{(1+x^2)^2}+\frac{3}{4}\cdot I_2(x) =\frac{1}{4}\cdot\frac{x}{(1+x^2)^2}+\frac{3}{4}\cdot \left(\frac{1}{2}\cdot\frac{x}{1+x^2}+\frac{1}{2}\arc\tg x\right)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{note}
-		Nem érdemes a formulát megjegyezni, érdemesebb a négyzetet megjegyezni, és levezetni belőle a köböt levezetni.
+		Nem érdemes a formulát megjegyezni, érdemesebb a négyzetre vonatkozót észben tartani, és abból a köbösre vonatkozót levezetni.
 	\end{note}
 	\begin{note}
-		Várhatóan négyzeten lesz minden, köb nem várható ZH-ban.
+		Várhatóan minden feladat legfeljebb a második hatványra vonatkozó alakot fogja számon kérni.
 	\end{note}
 	\begin{exercise}
 		\[ \int\frac{3x+1}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int\frac{2x+\frac{2}{3}}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int\frac{2x+4+\frac{2}{3}-4}{(x^2+4x+5)^2}\,dx=\]
 		\[=\frac{3}{2}\int\frac{2x+4}{(x^2+4x+5)^2}\,dx+\frac{3}{2}\int\frac{\frac{2}{3}-4}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\int(x^2+4x+5)'(x^2+4x+5)^{-2}\,dx-\frac{3}{2}\cdot\frac{10}{3}\cdot\overbrace{\int\frac{1}{(x^2+4x+5)^2}\,dx}^{=J(x)}=\]
-		\[=\frac{3}{2}\frac{x^2+4x+5}{-1}-5\cdot J(x), \]
+		\[=\frac{3}{2}\cdot\frac{x^2+4x+5}{-1}-5\cdot J(x), \]
 		Határozzuk meg $J(x)$-et.
 		\[J(x)=\int\frac{1}{(1+(x+2)^2)^2}\,dx\quad \overset{x+2=t}{\underset{dx=dt}{=}}\quad \int\frac{1}{(1+t^2)^2}\,dt\]
-		Fejezzük be.
+		\textit{A feladat befejezése:}
+		\[ J(x) = \int\frac{1}{(1+t^2)^2}=\frac{1}{2}\cdot\frac{t}{1+t^2}+\frac{1}{2}\arc\tg t+c\quad (c\in\R) \]
+		Visszahelyettesítve:
+		\[\int\frac{3x+1}{(x^2+4x+5)^2}\,dx=\frac{3}{2}\cdot\frac{x^2+4x+5}{-1}-5\cdot\left(\frac{1}{2}\cdot\frac{x+2}{1+(x+2)^2}+\frac{1}{2}\arc\tg (x+2)\right)+c = \]
+		\[ =-\frac{3(x^2+4x+5)}{2}-\frac{5(x+2)}{2+2(x+2)^2}-\frac{5}{2}\arc\tg(x+2) + c=\]
+		\[=\frac{5\arc\tg(x+2)-3(x^2+4x+5)}{2}-\frac{5x+10}{2x^2+8x+10} + c \quad (c\in\R)\]
 	\end{exercise}
 	\begin{note}
+		Egy másfajta rekurzió is megállapítható, a korábbihoz hasonlóan.
 		\[ \int\frac{1}{(1+x^2)^n}\,dx= \]
 		Vezessünk be egy jelölést.
 		\[ \tg t:=x,\quad t\in\left(-\frac{\pi}{2};\frac{\pi}{2}\right) \]
@@ -185,17 +193,54 @@
 	\begin{note}
 		\[ 1+\tg^2=\frac{1}{\cos^2t} \]
 	\end{note}
-	Hogyna bontjuk fel parciálisan a következő törteket?
+	\begin{note}
+		A parciális törtekre bontás algoritmusa szerint a törtekre bontás után minden olyan nevezőhöz, melynek nincs valós gyöke, egy elsőfokú számlálót kell meghatároznunk.
+	\end{note}
 	\begin{task}
 		\[ \frac{x+1}{(x+3)^2(x^2+1)^2}=\frac{A}{x+3}+\frac{B}{(x+3)^2}+\frac{Cx+B}{x^2+1}+\frac{Ex+F}{(x^2+1)^2} \]
-		Minden másodfokú tagnak amelynek nincs gyöke, oda elsőfokú számláló kell.
 	\end{task}
 	\begin{exercise}
 		\[ \frac{3x^2+1}{x^2(x^2+x+1)}=\frac{A}{x}+\frac{B}{x^2}+\frac{Cx+D}{x^2+x+1} \]
-		Házi feladat az integráljának kiszámolása.
+		\textit{A tört integráljának meghatározása:}
+		\[ \int\frac{3x^2+1}{x^2(x^2+x+1)}\,dx=\int \left(\frac{A}{x}+\frac{B}{x^2}+\frac{Cx+D}{x^2+x+1}\right)\,dx= \]
+		Határozzuk meg $A,B,C,D\in\R$-t \texttt{egyenlő együtthatók} módszerével.
+		\begin{align*}
+			3x^2+1 \quad &=\quad  A\cdot x(x^2+x+1)+B\cdot(x^2+x+1)+(Cx+D)\cdot x^2=\\
+						 &=\quad  Ax^3+Ax^2+Ax+Bx^2+Bx+B+Cx^3+Dx^2=\\
+						 &=\quad  (A+C)x^3+(A+B+D)x^2+(A+B)x+B
+		\end{align*}
+		Ez alapján rendere $A = -1, \quad B = 1, \quad C = 1, \quad D = 3$.
+		\[ =\int \left(-\frac{1}{x}+\frac{1}{x^2}+\frac{x+3}{x^2+x+1}\right)\,dx=-\ln|x|-\frac{1}{x}+I(x), \]
+		ahol $I(x)=\int\frac{x+3}{x^2+x+1}\,dx$.
+		\[ I(x)=\int\frac{x+3}{x^2+x+1}\,dx=\frac{1}{2}\cdot\int\frac{2x+1+5}{x^2+x+1}\,dx=\frac{1}{2}\cdot\int\frac{(x^2+x+1)'}{x^2+x+1}\,dx+\frac{5}{2}\cdot\int\frac{1}{x^2+x+1}\,dx= \]
+		Hozzuk az utolsó törtet egy \textit{,,$\arc\tg$-re éhes''} alakra.
+		\[ x^2+x+1=\left(x+\frac{1}{2}\right)^2+\frac{3}{4}=\frac{3}{4}\cdot\left[1+\frac{4\left(x+\frac{1}{2}\right)^2}{3}\right]=\frac{3}{4}\cdot\left[1+\left(\frac{2x+1}{\sqrt{3}}\right)^2\right] \]
+		Visszatérve:
+		\[=\frac{1}{2}\cdot\ln|x^2+x+1|+\frac{5}{2}\cdot\frac{4}{3}\cdot\int\frac{1}{1+\left(\frac{2x+1}{\sqrt{3}}\right)^2}\,dx=\frac{1}{2}\cdot\ln|x^2+x+1|+\frac{10}{3}\cdot\frac{\arc\tg\left(\frac{2x+1}{\sqrt{3}}\right)}{\frac{2}{\sqrt{3}}}+c=\]
+		\[=\frac{1}{2}\cdot\ln|x^2+x+1|+\frac{5\cdot\arc\tg\left(\frac{2x+1}{\sqrt{3}}\right)}{\sqrt{3}}+c\quad (c\in\R) \]
+		Az eredeti integrál így:
+		\[ \int\frac{3x^2+1}{x^2(x^2+x+1)}\,dx=-\ln|x|-\frac{1}{x}+\frac{1}{2}\cdot\ln|x^2+x+1|+\frac{5\cdot\arc\tg\left(\frac{2x+1}{\sqrt{3}}\right)}{\sqrt{3}}+c=\]
+		\[= \frac{1}{2}\cdot\left(\ln\frac{|x^2+x+1|}{|x|^2}\right)-\frac{1}{x}+\frac{5\cdot\arc\tg\left(\frac{2x+1}{\sqrt{3}}\right)}{\sqrt{3}}+c \quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \frac{1}{x^4-1}=\frac{1}{(x^2-1)(x^2+1)}=\frac{1}{(x-1)(x+1)(x^2+1)}=\frac{A}{x-1}+\frac{B}{x+1}+\frac{Cx+D}{x^2+1} \]
+		\textit{A fenti tört integráltja:}
+		\[\int\frac{1}{(x-1)(x+1)(x^2+1)}\,dx=\int\left(\frac{A}{x-1}+\frac{B}{x+1}+\frac{Cx+D}{x^2+1}\right)\,dx= \]
+		Határozzuk meg $A,B,C,D\in\R$-t \textit{egyenlő együtthatók} és \textit{értékadás} módszerek keverékével.
+		\[ 1=A(x+1)(x^2+1)+B(x-1)(x^2+1)+(Cx+D)\overbrace{(x-1)(x+1)}^{x^2-1} \]
+		$A$ és $B$ kényelmesen meghatározható \textit{értékadás}sal.
+		\begin{align*}
+			x=-1\quad \Rightarrow&\quad 1=B\cdot(-2)\cdot2\quad \Rightarrow\quad B=-\frac{1}{4}\\
+			x=1\quad \Rightarrow&\quad 	1=A\cdot 2\cdot 2\quad \Rightarrow\quad A=\frac{1}{4}		
+		\end{align*}
+		A kényelmetlen számolások elkerülése végett $C$-t és $D$-t \textit{egyenlő együtthatók} segítségével határozzuk meg.
+		\begin{align*}
+			1\quad &=\quad A(x+1)(x^2+1)+B(x-1)(x^2+1)+(Cx+D)(x^2-1)\\
+				   &=\quad Ax^3+Ax^2+Ax+A+Bx^3-Bx^2+Bx-B+Cx^3-Cx+Dx^2-D\\
+				   &=\quad (A+B+C)x^3+(A-B+D)x^2+(A+B-C)x+A-B-D
+		\end{align*}
+		Kiolvasható, hogy $0=A-B+D$, amiből következik $D=-\frac{1}{2}$, valamint $0=A+B-C$-ből következik $C=0$. Térjünk vissza:
+		\[ =\frac{1}{4}\cdot\int\frac{1}{x-1}\,dx-\frac{1}{4}\cdot\int\frac{1}{x+1}\,dx-\frac{1}{2}\int\frac{1}{x^2+1}\,dx=\frac{1}{4}\ln|x-1|-\frac{1}{4}\ln|x+1|-\frac{1}{2}\arc\tg(x)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$(x\in\R)$
 		\[ \int\frac{1}{x^4+1}\,dx \]
