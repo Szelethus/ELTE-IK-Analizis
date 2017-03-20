@@ -203,7 +203,7 @@
 		\[ \frac{3x^2+1}{x^2(x^2+x+1)}=\frac{A}{x}+\frac{B}{x^2}+\frac{Cx+D}{x^2+x+1} \]
 		\textit{A tört integráljának meghatározása:}
 		\[ \int\frac{3x^2+1}{x^2(x^2+x+1)}\,dx=\int \left(\frac{A}{x}+\frac{B}{x^2}+\frac{Cx+D}{x^2+x+1}\right)\,dx= \]
-		Határozzuk meg $A,B,C,D\in\R$-t \texttt{egyenlő együtthatók} módszerével.
+		Határozzuk meg $A,B,C,D\in\R$-t \textit{egyenlő együtthatók} módszerével.
 		\begin{align*}
 			3x^2+1 \quad &=\quad  A\cdot x(x^2+x+1)+B\cdot(x^2+x+1)+(Cx+D)\cdot x^2=\\
 						 &=\quad  Ax^3+Ax^2+Ax+Bx^2+Bx+B+Cx^3+Dx^2=\\
@@ -243,7 +243,49 @@
 		\[ =\frac{1}{4}\cdot\int\frac{1}{x-1}\,dx-\frac{1}{4}\cdot\int\frac{1}{x+1}\,dx-\frac{1}{2}\int\frac{1}{x^2+1}\,dx=\frac{1}{4}\ln|x-1|-\frac{1}{4}\ln|x+1|-\frac{1}{2}\arc\tg(x)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$(x\in\R)$
-		\[ \int\frac{1}{x^4+1}\,dx \]
+		\[ \int\frac{1}{1+x^4}\,dx \]
+		\textit{Megoldás:} 
+		\[ \int\frac{1}{(1+x^2)^2-2x^2}\,dx=\int\frac{1}{(x^2+\sqrt{2}x+1)(x^2-\sqrt{2}x+1) }\,dx=\int\left(\frac{Ax+B}{x^2+\sqrt{2}x+1}+\frac{Cx+D}{x^2-\sqrt{2}x+1}\right)\,dx= \]
+		Határozzuk meg $A,B\in\R$-t \textit{behelyettesítés} módszerével.
+		\begin{align*}
+			1 \quad =&\quad (Ax+B)(x^2-\sqrt{2}x+1)+(Cx+D)(x^2+\sqrt{2}x+1)=\\
+					=&\quad Ax^3+Bx^2-A\cdot\sqrt{2}x^2-B\cdot\sqrt{2}x+Ax+B+\\
+					&\quad +Cx^3+Dx^2+C\cdot\sqrt{2}x^2+D\cdot\sqrt{2}x+Cx+D=\\ 
+					=&\quad (A+C)x^3+(B-A\cdot\sqrt{2}+D+C\cdot\sqrt{2})x^2+\\
+					&\quad +(A-B\cdot\sqrt{2}+C+D\cdot\sqrt{2})x+B+D
+ 		\end{align*}
+ 		Azaz, az átláthatóság kedvéért:
+ 		\begin{align*}
+	 		x^3 \quad \text{együtthatója:}&\quad  0=A+C\\
+	 		x^2 \quad \text{együtthatója:}&\quad  0=B-A\cdot\sqrt{2}+D+C\cdot\sqrt{2}\\
+	 		x^1 \quad \text{együtthatója:}&\quad  0=A-B\cdot\sqrt{2}+C+D\cdot\sqrt{2}\\
+	 		x^0 \quad \text{együtthatója:}&\quad  1=B+D\\
+ 		\end{align*}
+ 		Ezekből meghatározható rendre hogy $A=\frac{1}{2\sqrt{2}},\quad B=\frac{1}{2},\quad C=-\frac{1}{2\sqrt{2}},\quad D=\frac{1}{2}$.
+ 		\[=\int\left(\frac{\frac{1}{2\sqrt{2}}\cdot x+\frac{1}{2}}{x^2+\sqrt{2}x+1}+\frac{-\frac{1}{2\sqrt{2}}\cdot x+\frac{1}{2}}{x^2-\sqrt{2}x+1}\right)\,dx=\frac{1}{2\sqrt{2}}\cdot\overbrace{\int\frac{x+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx}^{=:I(x)}-\frac{1}{2\sqrt{2}}\cdot\overbrace{\int\frac{x-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx}^{=:J(x)}= \]
+ 		Egyesével haladván, határozzuk meg $I(x)$-et.
+ 		\[ I(x)=\int\frac{x+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx=\frac{1}{2}\cdot\int\frac{2x+2\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx=\frac{1}{2}\cdot\int\frac{(x^2+\sqrt{2}x+1)'+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx=\]
+ 		\[=\frac{1}{2}\cdot\ln|\overbrace{x^2+\sqrt{2}x+1}^{>0}|+\frac{\sqrt{2}}{2}\cdot\int\frac{1}{x^2+\sqrt{2}x+1}\,dx= \]
+ 		Hozzuk a nevezőt egy \textit{,,$\arc\tg$-re éhes alakra''}:
+ 		\[ x^2+\sqrt{2}x+1=\left(x+\frac{\sqrt{2}}{2}\right)^2+1-\frac{2}{4}=\frac{1}{2}\cdot\left[1+2\left(x+\frac{\sqrt{2}}{2}\right)^2\right]=\frac{1}{2}\cdot\left[1+\left(\sqrt{2}x+1\right)^2\right] \]
+ 		Visszatérve:
+ 		\[ =\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x+1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\sqrt{2}\cdot\sqrt{2}\cdot\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
+ 		\[ I(x)=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
+ 		Határozzuk meg $J(x)$-et.
+ 		\[ J(x)=\int\frac{x-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx=\frac{1}{2}\cdot\ln|\overbrace{x^2-\sqrt{2}x+1}^{>0}|-\frac{\sqrt{2}}{2}\cdot\int\frac{1}{x^2-\sqrt{2}x+1}\,dx=\]
+ 		Hozzuk a nevezőt egy \textit{,,$\arc\tg$-re éhes alakra''}:
+ 		\[ x^2-\sqrt{2}x+1=\left(x-\frac{\sqrt{2}}{2}\right)^2+1-\frac{2}{4}=\frac{1}{2}\cdot\left[1+2\left(x-\frac{\sqrt{2}}{2}\right)^2\right]=\frac{1}{2}\cdot\left[1+\left(\sqrt{2}x-1\right)^2\right] \]
+ 		Visszatérve:
+ 		\[=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x-1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
+ 		\[ J(x)=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
+ 		Rakjuk össze az eddigi eredményeinket:
+ 		\[ \int\frac{1}{1+x^4}\,dx =\]
+ 		\[=\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)\right)-\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)\right)+c= \]
+ 		\[=\frac{\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)-\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-2\cdot\arc\tg(\sqrt{2}x-1)}{2\sqrt{2}}+c\quad (c\in\R) \]
+% 		
+% 		\[ =\frac{1}{2\sqrt{2}}\cdot I(x)-\frac{1}{2\sqrt{2}}\cdot\int\frac{x+\sqrt{2}-\sqrt{2}-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx=\]
+% 		\[ =\frac{1}{2\sqrt{2}}\cdot I(x)-\frac{1}{2\sqrt{2}}\cdot\left(\int\frac{x+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx-\int\frac{2\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx\right)=\]
+% 		\[ =\frac{1}{2\sqrt{2}}\cdot I(x)-\frac{1}{2\sqrt{2}}\cdot I(x)+\frac{1}{2\sqrt{2}}\cdot\int\frac{2\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx= \int\frac{1}{x^2+\sqrt{2}x+1}\,dx \]
 	\end{exercise}
 	\begin{exercise}$(x\in\R)$
 		\[ \int\frac{x}{1+x^4}\,dx \]
