@@ -246,7 +246,7 @@
 		\[ \int\frac{1}{1+x^4}\,dx \]
 		\textit{Megoldás:} 
 		\[ \int\frac{1}{(1+x^2)^2-2x^2}\,dx=\int\frac{1}{(x^2+\sqrt{2}x+1)(x^2-\sqrt{2}x+1) }\,dx=\int\left(\frac{Ax+B}{x^2+\sqrt{2}x+1}+\frac{Cx+D}{x^2-\sqrt{2}x+1}\right)\,dx= \]
-		Határozzuk meg $A,B\in\R$-t \textit{behelyettesítés} módszerével.
+		Határozzuk meg $A,B,C,D\in\R$-t \textit{egyenlő együtthatók} módszerével.
 		\begin{align*}
 			1 \quad =&\quad (Ax+B)(x^2-\sqrt{2}x+1)+(Cx+D)(x^2+\sqrt{2}x+1)=\\
 					=&\quad Ax^3+Bx^2-A\cdot\sqrt{2}x^2-B\cdot\sqrt{2}x+Ax+B+\\
@@ -259,7 +259,7 @@
 	 		x^3 \quad \text{együtthatója:}&\quad  0=A+C\\
 	 		x^2 \quad \text{együtthatója:}&\quad  0=B-A\cdot\sqrt{2}+D+C\cdot\sqrt{2}\\
 	 		x^1 \quad \text{együtthatója:}&\quad  0=A-B\cdot\sqrt{2}+C+D\cdot\sqrt{2}\\
-	 		x^0 \quad \text{együtthatója:}&\quad  1=B+D\\
+	 		x^0 \quad \text{együtthatója:}&\quad  1=B+D
  		\end{align*}
  		Ezekből meghatározható rendre hogy $A=\frac{1}{2\sqrt{2}},\quad B=\frac{1}{2},\quad C=-\frac{1}{2\sqrt{2}},\quad D=\frac{1}{2}$.
  		\[=\int\left(\frac{\frac{1}{2\sqrt{2}}\cdot x+\frac{1}{2}}{x^2+\sqrt{2}x+1}+\frac{-\frac{1}{2\sqrt{2}}\cdot x+\frac{1}{2}}{x^2-\sqrt{2}x+1}\right)\,dx=\frac{1}{2\sqrt{2}}\cdot\overbrace{\int\frac{x+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx}^{=:I(x)}-\frac{1}{2\sqrt{2}}\cdot\overbrace{\int\frac{x-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx}^{=:J(x)}= \]
@@ -269,19 +269,19 @@
  		Hozzuk a nevezőt egy \textit{,,$\arc\tg$-re éhes alakra''}:
  		\[ x^2+\sqrt{2}x+1=\left(x+\frac{\sqrt{2}}{2}\right)^2+1-\frac{2}{4}=\frac{1}{2}\cdot\left[1+2\left(x+\frac{\sqrt{2}}{2}\right)^2\right]=\frac{1}{2}\cdot\left[1+\left(\sqrt{2}x+1\right)^2\right] \]
  		Visszatérve:
- 		\[ =\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x+1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\sqrt{2}\cdot\sqrt{2}\cdot\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
- 		\[ I(x)=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
+ 		\[ =\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x+1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\frac{\sqrt{2}}{\sqrt{2}}\cdot\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
+ 		\[ I(x)=\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\arc\tg(\sqrt{2}x+1)+c\quad (c\in\R) \]
  		Határozzuk meg $J(x)$-et.
  		\[ J(x)=\int\frac{x-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx=\frac{1}{2}\cdot\ln|\overbrace{x^2-\sqrt{2}x+1}^{>0}|-\frac{\sqrt{2}}{2}\cdot\int\frac{1}{x^2-\sqrt{2}x+1}\,dx=\]
  		Hozzuk a nevezőt egy \textit{,,$\arc\tg$-re éhes alakra''}:
  		\[ x^2-\sqrt{2}x+1=\left(x-\frac{\sqrt{2}}{2}\right)^2+1-\frac{2}{4}=\frac{1}{2}\cdot\left[1+2\left(x-\frac{\sqrt{2}}{2}\right)^2\right]=\frac{1}{2}\cdot\left[1+\left(\sqrt{2}x-1\right)^2\right] \]
  		Visszatérve:
- 		\[=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x-1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
- 		\[ J(x)=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
+ 		\[=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-\sqrt{2}\cdot\int\frac{1}{1+\left(\sqrt{2}x-1\right)^2}\,dx=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
+ 		\[ J(x)=\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+\arc\tg(\sqrt{2}x-1)+c\quad (c\in\R) \]
  		Rakjuk össze az eddigi eredményeinket:
  		\[ \int\frac{1}{1+x^4}\,dx =\]
- 		\[=\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)\right)-\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x-1)\right)+c= \]
- 		\[=\frac{\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+2\cdot\arc\tg(\sqrt{2}x+1)-\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-2\cdot\arc\tg(\sqrt{2}x-1)}{2\sqrt{2}}+c\quad (c\in\R) \]
+ 		\[=\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\arc\tg(\sqrt{2}x+1)\right)-\frac{1}{2\sqrt{2}}\cdot\left(\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)+\arc\tg(\sqrt{2}x-1)\right)+c= \]
+ 		\[=\frac{\frac{1}{2}\cdot\ln(x^2+\sqrt{2}x+1)+\arc\tg(\sqrt{2}x+1)-\frac{1}{2}\cdot\ln(x^2-\sqrt{2}x+1)-\arc\tg(\sqrt{2}x-1)}{2\sqrt{2}}+c\quad (c\in\R) \]
 % 		
 % 		\[ =\frac{1}{2\sqrt{2}}\cdot I(x)-\frac{1}{2\sqrt{2}}\cdot\int\frac{x+\sqrt{2}-\sqrt{2}-\sqrt{2}}{x^2-\sqrt{2}x+1}\,dx=\]
 % 		\[ =\frac{1}{2\sqrt{2}}\cdot I(x)-\frac{1}{2\sqrt{2}}\cdot\left(\int\frac{x+\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx-\int\frac{2\sqrt{2}}{x^2+\sqrt{2}x+1}\,dx\right)=\]
@@ -289,6 +289,12 @@
 	\end{exercise}
 	\begin{exercise}$(x\in\R)$
 		\[ \int\frac{x}{1+x^4}\,dx \]
+		\textit{Megoldás:} 
+		\[ \R_0^+\ni t:=x^2,\quad x=\sqrt{t},\quad dx=\frac{1}{2\sqrt{t}}\,dt \]
+		Helyettesítsünk be:
+		\[ \int\frac{x}{1+x^4}\,dx=\int\frac{\sqrt{t}}{1+t^2}\cdot\frac{1}{2\sqrt{t}}\,dt=\int\frac{1}{2(1+t^2)}\,dt=\frac{1}{2}\cdot\int\frac{1}{1+t^2}\,dt=\frac{1}{2}\cdot\arc\tg(t)+c\quad (c\in\R) \]
+		Az eredeti integrál így:
+		\[ \int\frac{x}{1+x^4}\,dx=\frac{1}{2}\cdot\arc\tg(x^2)+c\quad (c\in\R) \]
 	\end{exercise}
 	\subsection{Racionális törtre vezethető helyettesítések}
 	\begin{example}
@@ -303,8 +309,13 @@
 		\[ t:=e^{2x},\quad t>0 \]
 		\[ x=\frac{1}{2}\ln t,\quad dx=\frac{1}{2t}\,dt \]
 		Visszatérve:
-		\[ \int\frac{1}{e^{2x}-4}\,dx=\int\frac{1}{t-4}\frac{1}{2t}\,dt=\int\frac{A}{t}+\frac{B}{t-4}\,dt \]
-		Fejezzük be.
+		\[ \int\frac{1}{e^{2x}-4}\,dx=\int\frac{1}{t-4}\cdot\frac{1}{2t}\,dt=\frac{1}{2}\cdot\int\frac{A}{t}+\frac{B}{t-4}\,dt \]
+		\textit{A feladat befejezése:} Határozzuk meg $A,B\in\R$-t.
+		\[ 1=A(t-4)+Bt\quad \Leftrightarrow\quad 1=(A+B)t-4A \]
+		Ez alapján $A=-\frac{1}{4},\quad B=\frac{1}{4}$.
+		\[ \frac{1}{8}\cdot\int\frac{1}{t-4}\,dt-\frac{1}{8}\cdot\int\frac{1}{t}\,dt=\frac{1}{4}\cdot\ln|t-4|-\frac{1}{4}\cdot\ln|t|+c\quad (c\in\R) \]
+		Az eredeti integrál:
+		\[ \int\frac{1}{e^{2x}-4}\,dx=\frac{1}{8}\cdot\ln|e^{2x}-4|-\frac{1}{8}\cdot\ln|e^{2x}|+c=\frac{1}{8}\cdot\ln|e^{2x}-4|-\frac{1}{4}\cdot x+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{note}
 		Megállapítható, hogy $e^x=t$ helyettesítéssel 3 törtre kéne bontani.
@@ -326,7 +337,20 @@
 		\[ e^x=t\quad dx=\frac{1}{t}\,dt \]
 		Visszatérve:
 		\[ \int\frac{e^x+4}{e^{2x}+4e^x+3}\,dx=\int\frac{t+4}{t^2+4t+3}\cdot\frac{1}{t}\,dt \]
-		Fejezzük be a feladatot.
+		\textit{A feladat befejezése:} Megállapítható, hogy $t^2+4t+3$ diszkriminánsa nemnegatív.
+		\[ \int\frac{t+4}{t^2+4t+3}\cdot\frac{1}{t}\,dt=\int\frac{t+4}{(t+3)(t+1)\cdot t}\,dt=\int\left(\frac{A}{t+3}+\frac{B}{t+1}+\frac{C}{t}\right)\,dt= \]
+		Határozzuk meg $A,B,C\in\R$-t \textit{értékadás} segítségével.
+		\[ t+4=A(t+1) t+B(t+3) t+C(t+3)(t+1) \]
+		\vspace{-7mm}
+		\begin{align*}
+			x=0\quad \Rightarrow&\quad 4=3C\quad \Rightarrow\quad C=\frac{4}{3}\\
+			x=-1\quad \Rightarrow&\quad 3=-2B\quad \Rightarrow\quad B=-\frac{3}{2}\\
+			x=-3\quad \Rightarrow&\quad 1=6A\quad \Rightarrow\quad A=\frac{1}{6}
+		\end{align*}
+		Ezalapján:
+		\[ =\frac{1}{6}\cdot\int\frac{1}{t+3}\,dx-\frac{3}{2}\cdot\int\frac{1}{t+1}\,dx+\frac{4}{3}\cdot\int\frac{1}{t}\,dt=\frac{\ln|t+3|}{6}-\frac{3\cdot\ln|t+1|}{2}+\frac{4\cdot\ln|t|}{3}+c\quad (c\in\R) \]
+		Határozzuk meg az eredeti integrált:
+		\[ \int\frac{e^x+4}{e^{2x}+4e^x+3}\,dx=\frac{\ln|e^x+3|}{6}-\frac{3\cdot\ln|e^x+1|}{2}+\frac{4x}{3}+c \]
 	\end{exercise}
 	\begin{note}
 		Ezen típusokból egy tuti elő fog fordulni egy a zh-ban.
@@ -349,24 +373,69 @@
 		\[ \int\sqrt{\frac{x-3}{x-1}}\,dx \]
 		Új változó:
 		\[ t:=\sqrt{\frac{x-3}{x-1}},\quad t>0,\quad x=\frac{t^2-3}{t^2-1} \]
-		\[ dx=\frac{2t(t^2-1)-(t^3-3)2t}{(t^2-1)^2}\,dt=\frac{4t}{(t^2-1)^2}\,dt \]
+		\[ dx=\frac{2t\cdot(t^2-1)-(t^2-3)\cdot2t}{(t^2-1)^2}\,dt=\frac{4t}{(t^2-1)^2}\,dt \]
 		Visszatérve:
 		\[ \int t\cdot\frac{4t}{(t^2-1)^2}\,dt=4\cdot\int\frac{t^2}{(t-1)^2(t+1)^2}\,dt=4\cdot\int\left(\frac{A}{t-1}+\frac{B}{(t-1)^2}+\frac{C}{t+1}+\frac{D}{(t+1)^2}\right)\,dt \]
-		Fejezzük be.
+		\textit{Megoldás:} Határozzuk meg $A,B,C,D\in\R$-t.
+		\[ t^2=A(t-1)(t+1)^2+B(t+1)^2+C(t+1)(t-1)^2+D(t-1)^2= \]
+		\textit{Értékadással} 2 darab konstanst könnyen meghatározhatunk.
+		\begin{align*}
+			x=1\quad \Rightarrow&\quad 1=4B\quad \Rightarrow\quad B=\frac{1}{4}\\
+			x=-1\quad \Rightarrow&\quad 1=4D\quad \Rightarrow\quad D=\frac{1}{4}
+		\end{align*}
+		A kellemetlen számolások elkerülése végett, $A$-t és $C$-t \textit{egyenlő együtthatókkal} adjuk meg.
+		\begin{align*}
+		t^2\quad &=\quad A(t-1)(t+1)^2+\frac{1}{4}(t+1)^2+C(t+1)(t-1)^2+\frac{1}{4}(t-1)^2=\\
+				 &=\quad A(t^2-1)(t+1)+\frac{1}{4}(t+1)^2+C(t^2-1)(t-1)+\frac{1}{4}(t-1)^2=\\
+				 &=\quad At^3+At^2-At-A+\frac{1}{4}(t^2+2t+1)+Ct^3-Ct^2-Ct+C+\frac{1}{4}(t^2-2t+1)=\\
+				 &=\quad (A+C)t^3+\left(A-C+\frac{1}{4}+\frac{1}{4}\right)t^2+\left(-A-C+\frac{1}{2}-\frac{1}{2}\right)t+C-A+\frac{1}{4}+\frac{1}{4}=\\
+				 &=\quad (A+C)t^3+\left(A-C+\frac{1}{2}\right)t^2+(-A-C)t+C-A+\frac{1}{2}
+		\end{align*}
+		Azaz, az átláthatóság kedvéért:
+		\begin{align*}
+			t^3 \quad \text{együtthatója:}&\quad  0=A+C\\
+			t^2 \quad \text{együtthatója:}&\quad  1=\left(A-C+\frac{1}{2}\right)\\
+			t^1 \quad \text{együtthatója:}&\quad  0=-A-C\\
+			t^0 \quad \text{együtthatója:}&\quad  0=C-A+\frac{1}{2}
+		\end{align*}
+		Ez alapján $A=\frac{1}{4}$ és $C=-\frac{1}{4}$. A fenti hosszadalmas számolás ellenére nagyon kellemes integrált kapunk:
+		\[=4\cdot\frac{1}{4}\int\frac{1}{t-1}\,dt+4\cdot\frac{1}{4}\int\frac{1}{(t-1)^2}\,dt-4\cdot\frac{1}{4}\cdot\int\frac{1}{t+1}\,dt+4\cdot\frac{1}{4}\cdot\int\frac{1}{(t+1)^2}\,dt=\]
+		\[=\int\frac{1}{t-1}\,dt+\int\frac{1}{(t-1)^2}\,dt-\int\frac{1}{t+1}\,dt+\int\frac{1}{(t+1)^2}\,dt=\ln|t-1|-\frac{1}{t-1}-\ln|t+1|-\frac{1}{t+1}+c\quad (c\in\R) \]
+		Az eredeti integrál így:
+		\[ \int\sqrt{\frac{x-3}{x-1}}\,dx=\ln\left|\sqrt{\frac{x-3}{x-1}}-1\right|-\frac{1}{\sqrt{\frac{x-3}{x-1}}-1}-\ln\left|\sqrt{\frac{x-3}{x-1}}+1\right|-\frac{1}{\sqrt{\frac{x-3}{x-1}}+1}+c= \]
+		\[=\ln\left(\sqrt{\frac{x-3}{x-1}}-1\right)-\frac{1}{\sqrt{\frac{x-3}{x-1}}-1}-\ln\left(\sqrt{\frac{x-3}{x-1}}+1\right)-\frac{1}{\sqrt{\frac{x-3}{x-1}}+1}+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int\frac{1}{\sqrt{x}+\sqrt[3]{x}}\,dx \]
 		Vezessünk be egy új változót (itt érdemes a legkisebb közös többszöröst venni a gyököknél):
 		\[ \sqrt[6]{x}=t,\quad x=t^6,\quad dx=6t^5\,dt \]
 		Visszatérve:
-		\[ \int\frac{1}{t^3+t^2}\cdot6t^5\,dt=6\int\frac{t^3}{t+1}\,dt \]
-		Fejezzük be.
+		\[ \int\frac{1}{t^3+t^2}\cdot6t^5\,dt=6\cdot\int\frac{t^3}{t+1}\,dt= \]
+		\textit{A feladat befejezése:} Polinom osztás segítségével csökkentsük a a számlálóban lévő ismeretlen kitevőjét.
+		\[ t^3=(t+1)(t^2-t+1)+1 \]
+		Ez alapján:
+		\[ =\int\left(t^2-t+1-\frac{1}{t+1}\right)\,dx=\frac{t^3}{3}-\frac{t^2}{2}+t-\ln|t+1|+c\quad (c\in\R) \]
+		Így az eredeti integrál:
+		\[ \int\frac{1}{\sqrt{x}+\sqrt[3]{x}}\,dx=\frac{\sqrt[6]{x}^3}{3}-\frac{\sqrt[6]{x}^2}{2}+\sqrt[6]{x}-\ln|\sqrt[6]{x}+1|+c=\frac{\sqrt{x}}{3}-\frac{\sqrt[3]{x}}{2}+\sqrt[6]{x}-\ln|\sqrt[6]{x}+1|+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x>\frac{3}{2}$
 		\[ \int\frac{1}{x}\sqrt{\frac{2x-3}{x}}\,dx \]
+%		\textit{Megoldás:}
+%		\[ t:=\sqrt{\frac{2x-3}{x}},\quad x=\frac{3}{2-t^2},\quad dx=\frac{6t}{(2-t^2)^2}\,dt \]
+%		Helyettesítsünk be.
+%		\[ \int\frac{2-t^2}{3}\cdot t\cdot\frac{6}{(2-t^2)^2}\,dt=\int\frac{2t}{2-t^2}\,dt=-\int\frac{(2-t^2)'}{2-t^2}\,dt=-\ln|2-t^2|+c\quad (c\in\R) \]
+%		Az eredeti integrál:
+%		\[ \int\frac{1}{x}\sqrt{\frac{2x-3}{x}}\,dx=-\ln\left|2-\left(\sqrt{\frac{2x-3}{x}}\right)^2\right|+c=-\ln\left|2-\frac{2x-3}{x}\right|+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx \]
+		\textit{Megoldás:} Vezessünk be egy új változót.
+		\[ t:=\sqrt{\frac{1+x}{1-x}},\quad x=\frac{t^2-1}{t^2+1},\quad dx=\frac{4t}{\left(t^2+1\right)^2}\,dt \]
+		Helyettesítsünk be:
+		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx=\int t\cdot\frac{4t}{(t^2+1)^2}\,dt=4\cdot\int\frac{t^2}{(t^2+1)^2}\,dt=4\cdot\int\frac{t^2+1-1}{(t^2+1)^2}\,dt=4\cdot\left(\int\frac{1}{t^2+1}-\frac{1}{(t^2+1)^2}\,dt\right)= \]
+		\[ =4\arc\tg t-4\cdot\int\frac{1}{(t^2+1)^2}\,dt=4\arc\tg t-4\cdot\left( \frac{1}{2}\cdot\frac{t}{1+t^2}+\frac{1}{2}\arc\tg x\right)+c =4\arc\tg t-2\cdot\frac{t}{1+t^2}+2\arc\tg x+c= \]
+		\[ =6\arc\tg t-2\cdot\frac{t}{1+t^2}+c \]
+		
 	\end{exercise}
 	\begin{exercise}$x<1$
 		\[ \int\frac{x}{1+\sqrt{1-x}} \]
