@@ -420,12 +420,12 @@
 	\end{exercise}
 	\begin{exercise}$x>\frac{3}{2}$
 		\[ \int\frac{1}{x}\sqrt{\frac{2x-3}{x}}\,dx \]
-%		\textit{Megoldás:}
-%		\[ t:=\sqrt{\frac{2x-3}{x}},\quad x=\frac{3}{2-t^2},\quad dx=\frac{6t}{(2-t^2)^2}\,dt \]
-%		Helyettesítsünk be.
-%		\[ \int\frac{2-t^2}{3}\cdot t\cdot\frac{6}{(2-t^2)^2}\,dt=\int\frac{2t}{2-t^2}\,dt=-\int\frac{(2-t^2)'}{2-t^2}\,dt=-\ln|2-t^2|+c\quad (c\in\R) \]
-%		Az eredeti integrál:
-%		\[ \int\frac{1}{x}\sqrt{\frac{2x-3}{x}}\,dx=-\ln\left|2-\left(\sqrt{\frac{2x-3}{x}}\right)^2\right|+c=-\ln\left|2-\frac{2x-3}{x}\right|+c\quad (c\in\R) \]
+		\textit{Megoldás:}
+		\[ t:=\sqrt{\frac{2x-3}{x}},\quad x=\frac{3}{2-t^2},\quad dx=\frac{6t}{(2-t^2)^2}\,dt \]
+		Helyettesítsünk be.
+		\[ \int\frac{2-t^2}{3}\cdot t\cdot\frac{6t}{(2-t^2)^2}\,dt=-\int\frac{2t^2}{t^2-2}\,dt=\]
+		Végezzünk el egy polinomosztást.
+		\[  \]
 	\end{exercise}
 	\begin{exercise}
 		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx \]
@@ -433,12 +433,21 @@
 		\[ t:=\sqrt{\frac{1+x}{1-x}},\quad x=\frac{t^2-1}{t^2+1},\quad dx=\frac{4t}{\left(t^2+1\right)^2}\,dt \]
 		Helyettesítsünk be:
 		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx=\int t\cdot\frac{4t}{(t^2+1)^2}\,dt=4\cdot\int\frac{t^2}{(t^2+1)^2}\,dt=4\cdot\int\frac{t^2+1-1}{(t^2+1)^2}\,dt=4\cdot\left(\int\frac{1}{t^2+1}-\frac{1}{(t^2+1)^2}\,dt\right)= \]
-		\[ =4\arc\tg t-4\cdot\int\frac{1}{(t^2+1)^2}\,dt=4\arc\tg t-4\cdot\left( \frac{1}{2}\cdot\frac{t}{1+t^2}+\frac{1}{2}\arc\tg x\right)+c =4\arc\tg t-2\cdot\frac{t}{1+t^2}+2\arc\tg x+c= \]
-		\[ =6\arc\tg t-2\cdot\frac{t}{1+t^2}+c \]
-		
+		\[ =4\arc\tg t-4\cdot\int\frac{1}{(t^2+1)^2}\,dt=4\arc\tg t-4\cdot\left( \frac{1}{2}\cdot\frac{t}{1+t^2}+\frac{1}{2}\arc\tg x\right)+c =4\arc\tg t-2\cdot\frac{t}{1+t^2}-2\arc\tg x+c= \]
+		\[ =2\arc\tg t-2\cdot\frac{t}{1+t^2}+c\quad (c\in\R) \]
+		Helyettesítsünk vissza:
+		\[ \int\sqrt{\frac{1+x}{1-x}}\,dx=2\arc\tg \sqrt{\frac{1+x}{1-x}}-2\cdot\frac{\sqrt{\frac{1+x}{1-x}}}{1+\left(\sqrt{\frac{1+x}{1-x}}	\right)^2}+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x<1$
-		\[ \int\frac{x}{1+\sqrt{1-x}} \]
+		\[ \int\frac{x}{1+\sqrt{1-x}}\,dx \]
+		\textit{Megoldás:} Vezessünk be egy új változót.
+		\[ \R_0^+\ni t:=\sqrt{1-x},\quad x=1-t^2,\quad dx=-2t\,dt \]
+		Helyettesítsünk be.
+		\[ \int\frac{x}{1+\sqrt{1-x}}\,dx=\int\frac{1-t^2}{1+t}\cdot\left(-2t\right)\,dt=-2\cdot\int\frac{(1-t)(1+t)t}{1+t}\,dt=-2\cdot\int (1-t)t\,dt=\int 2t^2-2t\,dt= \]
+		\[ =\frac{2t^3}{3}-t^2+c\quad (c\in\R) \]
+		Az eredeti integrál így:
+		\[ \int\frac{x}{1+\sqrt{1-x}}\,dx=\frac{2(\sqrt{1-x})^3}{3}-(1-x)+c_1=\frac{2(\sqrt{1-x})^3}{3}+x+c\quad  (c_1,c\in\R) \]
+		Megállapítható, hogy mivel $(-1)$ is konstans, összevonható $c_1$-el, a fenti példában pl. a $c:=c_1-1$ választással.
 	\end{exercise}
 	\begin{example}
 		\[ R\left(\sin x,\cos x\right)\,dt \]
@@ -450,22 +459,37 @@
 		\[  t:=\tg \left(\frac{x}{2}\right) \]
 		\[ \sin x=2\cdot\sin\frac{x}{2}\cdot\cos\frac{x}{2}=2\cdot\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\cdot\cos^2\frac{x}{2}=2\cdot\tg\frac{x}{2}\cdot\cos^2\frac{x}{2}\quad \overset{1+\tg^2\alpha=\frac{1}{\cos^2\alpha}}{\underset{\cos^2\alpha=\frac{1}{1+\tg^2\alpha}}{=}}\quad \frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^2\frac{x}{2}} \]
 		Ez alapján könnyen megállapítható hogy
-		\[ \sin x=\frac{2t}{1+t^2}. \]
+		\[ \sin x=\frac{2t}{1+t^2}.  \]
+		Hasonlóan, $\cos$-ra is megállapíthatunk hasonlót.
+		\[ \cos x=\cos^2\frac{x}{2}-\sin^2\frac{x}{2}=\cos^2\frac{x}{2}-1+\cos^2\frac{x}{2}=2\cos^2\frac{x}{2}=\frac{2}{1+\tg^2\frac{x}{2}}-1=\frac{2-1-\tg^2\frac{x}{2}}{1+\tg^2\frac{x}{2}}=\frac{1-\tg^2\frac{x}{2}}{1+\tg^2\frac{x}{2}} \]
+		Azaz
+		\[ \cos x=\frac{1-t^2}{1+t^2} \]
 		Határozzuk meg a behelyettesítéshez szükséges utolsó információkat is.
 		\[ x=2\arc\tg t,\quad dx=\frac{2}{1+t^2}\,dt \]
 		Visszatérve:
-		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=\int\frac{1+\frac{2t}{1+t^2}}{1-\frac{1-t^2}{1+t^2}}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2+1+2t}{1+t^2-1+t^2}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2t+1}{t^2(t^2+1)}\,dt=\]
-		\[=\int\left(\frac{A}{t}+\frac{B}{t^2}+\frac{Ct+D}{t^2+1}\right)\,dt  \] 
-		Fejezzük be.
+		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=\int\frac{1+\frac{2t}{1+t^2}}{1-\frac{1-t^2}{1+t^2}}\cdot\frac{2}{1+t^2}\,dt=\int\frac{\frac{1+t^2+2t}{1+t^2}}{\frac{1+t^2-1+t^2}{1+t^2}}\cdot\frac{2}{1+t^2}\,dt=\int\frac{t^2+1+2t}{1+t^2-1+t^2}\cdot\frac{2}{1+t^2}\,dt=\]
+		\[=\int\frac{t^2+2t+1}{t^2(t^2+1)}\,dt=\int\left(\frac{A}{t}+\frac{B}{t^2}+\frac{Ct+D}{t^2+1}\right)\,dt  \] 
+		\textit{A feladat befejezése:} Határozzuk meg $A,B,C,D\in\R$-t \textit{egyenlő együtthatók} módszerével.
+		\begin{align*}
+			t^2+2t+1\quad &=\quad A(t^2+1)t+B(t^2+1)+(Ct+D)t^2\\
+						  &=\quad At^3+At+Bt^2+B+Ct^3+Dt^2\\
+						  &=\quad (A+C)t^3+(B+D)t^2+At+B
+		\end{align*}
+		Azaz, az átláthatóság kedvéért:
+		\begin{align*}
+			t^3 \quad \text{együtthatója:}&\quad  0=A+C\\
+			t^2 \quad \text{együtthatója:}&\quad  1=B+D\\
+			t^1 \quad \text{együtthatója:}&\quad  2=A\\
+			t^0 \quad \text{együtthatója:}&\quad  1=B
+		\end{align*}
+		Gyorsan megállapítható hogy $A=2,\quad B=1,\quad C=-2,\quad D=0$. Így:
+		\[ =2\cdot\int\frac{1}{t}\,dt+\int\frac{1}{t^2}\,dt-2\cdot\int\frac{t}{t^2+1}\,dt=2\ln t-\frac{1}{t}-\int\frac{(t^2+1)'}{t^2+1}\,dt=2\ln t-\frac{1}{t}-\ln(t^2+1)+c\quad (c\in\R) \]
+		Az eredeti integrál:
+		\[ \int\frac{1+\sin x}{1-\cos x}\,dx=2\ln \tg \left(\frac{x}{2}\right)-\frac{1}{\tg \left(\frac{x}{2}\right)}-\ln(\tg^2\left(\frac{x}{2}\right)+1)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{note}
 		Ezt a módszert $\tg\left(\frac{x}{2}\right)$ módszernek hívjuk.
 	\end{note}
-	\begin{exercise}
-		$\cos$-ra is megállapítható egy hasonló formula, ha $t:=\tg\left(\frac{x}{2}\right)$.
-		\[\cos x=\frac{1-t^2}{1+t^2} \]
-		Ennek levezetése házi feladat.
-	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
 		\[ \int\frac{\cos x}{\cos x+2\sin x}\]
 		Osszuk le a nevezőt és a számlálót is $\cos x$-el.
@@ -475,6 +499,27 @@
 		Visszatérve:
 		\[ =\int\frac{1}{1+2t}\cdot\frac{1}{1+t^2}\,dt \]
 		A megoldás házi feladat, valamint ugyanennek a feladatnak az 1. módszerrel való megoldása is.
+		
+		\textit{Megoldás (2. módszer):} 
+		\[ \int\frac{1}{1+2t}\cdot\frac{1}{1+t^2}\,dt=\int\frac{1}{(1+2t)(1+t^2)}\,dt=\int\left(\frac{A}{1+2t}+\frac{Bt+C}{1+t^2}\right)\,dt= \]
+		\textit{Értékadással} határozzunk meg valamennyi konstanst $A,B,C\in\R$-ből.
+		\[ 1=A(1+t^2)+(Bt+C)(1+2t) \]
+		\[ t=\frac{1}{2}\quad \Rightarrow\quad 1=A\left(1+\frac{1}{4}\right)=A\cdot\frac{5}{4}\quad \Leftrightarrow\quad \frac{4}{5}=A \]
+		\textit{Egyenlő együtthatók} módszerével határozzuk meg a maradékot.
+		\begin{align*}
+			1\quad &=\quad A(1+t^2)+(Bt+C)(1+2t)=\\
+				   &=\quad A+At^2+Bt+2Bt^2+C+2Ct=\\
+				   &=\quad (2B+A)t^2+(B+2C)t+A+C
+		\end{align*}
+		Azaz, az átláthatóság kedvéért:
+		\begin{align*}
+		t^2 \quad \text{együtthatója:}&\quad  0=2B+A\\
+		t^1 \quad \text{együtthatója:}&\quad  0=B+2C\\
+		t^0 \quad \text{együtthatója:}&\quad  1=A+C
+		\end{align*}
+		Az utolsó egyenletből $C=\frac{1}{5}$, a másodikból pedig $B=-\frac{2}{5}$ következik. Visszatérve az integrálthoz:
+		\[ =\frac{4}{5}\cdot\int\frac{1}{1+2t}\,dt+\frac{1}{5}\cdot\int\frac{1-2t}{1+t^2}\,dt=\frac{4}{5}\cdot\int\frac{1}{1+2t}\,dt-\frac{1}{5}\cdot\int\frac{(1+t^2)'-1}{1+t^2}\,dt=\]
+		\[=\frac{4}{5}\cdot\int\frac{1}{1+2t}\,dt-\frac{1}{5}\cdot\int\frac{(1+t^2)'}{1+t^2}\,dt+\frac{1}{5}\cdot\int\frac{1}{1+t^2}\,dt=\frac{2}{5}\ln|1+2t|-\frac{1}{5}\ln|1+t^2|+\frac{1}{5}\arctg(t)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
 		\[ \int\frac{\sin x}{2\cos^2x+3\cos x}= \]
