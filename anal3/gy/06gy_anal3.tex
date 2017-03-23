@@ -1,0 +1,305 @@
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\arcctg}{arc ctg}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+%	\def\definition{\textbf{Definíció:\ }}
+%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
+	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
+	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
+	\newtheorem{task}[theorem]{Feladat} % same for example numbers
+	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Analízis 3. A szakirány}}
+		\smallskip
+		
+		{\Large Gyakorlati jegyzet}
+		
+		\smallskip
+		6. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\section{Információk}
+	Konzultáció: Március 29 szerda 18:00, D2-712
+	\section{Határozott integrál és alkalmazásai}
+	\subsection{Területszámítás}
+	\begin{note}
+		1. kép: pozitív
+		
+		2. kép: negatív
+		
+		3. kép: Hogyan lehet megoldani ezt? Megoldás: eltoljuk a függvényt.
+		\[ T=\int_a^b(f+c)-\int_a^b(g+c)=\int_a^b(f-g) \]
+		4. kép
+		
+		Ahol $f$ a felső, $g$ az alsó függvény.
+		
+		5. kép: 
+		\[ T=\int_a^c(f-g)+\int_c^d(g-f)+\int_d^b(f-g)=\int_a^b|f-g|= \]
+		Ez megállapítható, hogy $f$ és $g$ 1-es metrikája.
+		\[ =\rho_1(f,g),\quad (f,g\in C[a,b]) \]
+		
+		Szimmetriák kihasználása:
+		6. kép: elég a negyed kör területének meghatározása
+		\[ T_{\text{kör}}=4\cdot T_{\text{negyedkör}}=4\cdot\int_0^1\sqrt{1-x^2}\,dx \]
+		Szimmetria kihasználható így is:
+		7. kép:
+		\[ \int_{-a}^{a}f=2\cdot\int_0^af \]
+		Megállapítható és kihasználahtü, hogy $f(x):=x^2$ páros.
+		8. kép:
+		
+		
+	\end{note}
+	\begin{revision}
+		Newton-Leibniz tétel: Ha $f\in\R[a,b]$ és $\int f\not=0$ 
+			\[ \int_a^bf(x)\,dx=F(b)-F(a)=:[F(x)]_a^b\quad (\forall F\in\int f) \]
+	\end{revision}
+	\begin{example}		
+		$\begin{cases}
+			y=x-1\\
+			y^2=2x+6
+		\end{cases}$
+		Mennyi ennek a függvények a területe?
+		\[ \Rightarrow\quad x=\pm\sqrt{2x+6} \]
+		8. ábra
+		\[ x=\frac{y^2-6}{2} \]
+		Metszéspontok:
+		\[ (x-1)^2=2x+6\quad \Leftrightarrow\quad x_1=-1\quad v.\quad x=5 \]
+		Ez alapján a területet kiszámolhatjuk. A zöld területről megállapíthatü hogy szimmetrikus, és ezt ki is használhatjuk.
+		\[ T=2\cdot\int_{-3}^{-1}\sqrt{2x+6}\,dx+\int_{-1}^{5}\left(\sqrt{2x+6}-(x-1)\right)\,dx=2\cdot\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}\right]_{-3}^1+\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}-\frac{x^2}{2}+x\right]_{5}^{-1}=\]
+		\[=\frac{2}{3}\left[4^\frac{3}{2}-0\frac{3}{2}\right]+\frac{16^\frac{3}{2}}{3}-\frac{25}{2}+5-\left(\frac{4^\frac{3}{2}}{3}-\frac{1}{2}-1\right)=18  \]
+	\end{example}
+	\begin{example}
+		$\begin{cases}
+			y=x^3\\
+			x^2+x^2=2\\
+			y=0
+		\end{cases}$ Hatáorzzuk meg az ezen görbék által határolt területet!
+		9. kép:
+		
+		Metszéspontok:
+		\[ x^2+x^6-2=0\quad \Leftrightarrow\quad x^6-1+x^2-1=0\quad \Leftrightarrow\quad (x^2-1)(x^4+x^2+1)=0 \]
+		\[ x^2-1=0\quad \Leftrightarrow\quad x=\pm1 \]
+		SZámoljuk ki  területet. Megállapítható, hogy a számunkra fontos körnegyed egyenlete $y=+\sqrt{2-x^2}$.
+		\[ T=\int_0^1x^3\,dx+\int_1^{\sqrt{2}}\sqrt{2-x^2}\,dx=\left[\frac{x^4}{4}\right]_0^1+I=\frac{1}{4}+I \]
+		Ahol:
+		\[ I=\int_1^{\sqrt{2}}\sqrt{2-x^2}\,dx=\sqrt{2}\cdot\int_1^{\sqrt{2}}\sqrt{1-\left(\frac{x}{\sqrt{2}}\right)^2}\,dx= \]
+		Vezessünk be egy új változót.
+		\[ \sin t=\frac{x}{\sqrt{2}},\]
+		\[\text{Ha}\quad x=1\quad \Rightarrow\quad t=\arc\sin\frac{1}{\sqrt{2}}=\frac{\pi}{4} \]
+		\[\text{Ha}\quad x=\sqrt{2}\quad \Rightarrow\quad t=\arc\sin1=\frac{\pi}{2} \]
+		Visszatérve:
+		\[ \sqrt{2}\cdot\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\sqrt{1-\sin^2t}\cdot\sqrt{2}\cos t\,dt \]
+		Visszahelyettesíteni fölösleges, hisz nem primitív függvényt, hanem egy konkrét számot keresünk.
+		\[ =2\cdot\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}|\cos t|\cdot\cos t\,dt\quad \overset{\frac{\pi}{4}\leq t\leq \frac{\pi}{2}}{=}\quad2\cdot\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}\overbrace{\cos^2t}^{\frac{1+\cos2t}{2}}\,dt=\left[1+\frac{\sin2t}{4}\right]_{\frac{\pi}{4}}^{\frac{\pi}{2}}=\frac{\pi}{2}+\frac{\sin\pi}{2}-\frac{\pi}{4}-\frac{\sin\frac{\pi}{2}}{2}=\frac{\pi}{4}-\frac{1}{2}  \]
+	\end{example}
+	\begin{note}
+		Okkal $I$-vel, és nem $I(x)$-el jelölünk. A határozatlan integrál egy függvény, a határozott csupán egy szám.
+	\end{note}
+	\begin{example}
+		Számítsuk ki a következő minimumot:
+		\[ \min\left\{\int _0^1|x^2-c|\,dx:\quad c\in\R \right\} \]
+		10:
+		
+		Azaz, hogyan kell meghúzni az egyenest úgy, hogy a terület a legkisebb legyen? Világos, hogy 0 és 1 közötti lesz, hisz ezen határokon kívül a terület csak nőne. Összefoglalva, elég $c\in[0,1]$ intervallumot vizsgálnunk, ui. ellentkező esetben 1-1 téglalap területével nő a terület.
+		
+		Metszéspontok:
+		\[ x^2=x\quad \Leftrightarrow\quad x=\pm\sqrt{c}\quad \Rightarrow\quad x=\sqrt{c}\in[0,1] \]
+		Határozzuk meg a területet:
+		\[ T(c)=\int_0^{\sqrt{c}}(c-x^2)\,dx+\int_{\sqrt{c}}^{1}(x^2-c)\,dx=\left[cx-\frac{x^3}{3}\right]_0^{\sqrt{c}}+\left[\frac{x^3}{3}-cx\right]^1_{\sqrt{c}}=c\sqrt{c}-\frac{c\sqrt{c}}{3}+\frac{1}{3}-c-\frac{c\sqrt{c}}{3}+c\sqrt{c}=\]
+		\[=\frac{4}{3}c\sqrt{c}-c+\frac{1}{3}\quad c\in[0,1] \]
+		Kompakt halmazon folytonos függvényt vizsgálunk, és kell hogy legyen maximum vagy minimum. Ez lehet 0 vagy 1, vagy intervallumon belül.
+		
+		Ha $c\in(0,1)\quad \Rightarrow\quad T'(c)=\frac{4}{3}\frac{3}{2}\cdot\sqrt{c}-1=$
+		\[ 2\cdot\sqrt{c}-1=0\quad \Leftrightarrow\quad c=\frac{1}{4}\in(0,1)\checkmark \]
+		\begin{center}		
+			\begin{tabular}{l|c|c|c}
+				$T'(x)$&-&0&+\\
+				\hline
+				$T(x)$&$\frac{1}{3}\searrow$&$\frac{1}{4}$&$\nearrow\frac{2}{3}$
+			\end{tabular}
+		\end{center}
+		\[ T(0)=\frac{1}{3};\quad T(1)=\frac{2}{3};\quad T(\frac{1}{4})=\frac{1}{4} \]
+	\end{example}
+	\begin{note}
+		Mi ez a feladat? $f(x):=x^2, \quad x\in[0,1];\quad g(x):=c;\quad \rho_1(f,g):=\int_0^1|f-g|$
+		\[ \Rightarrow\quad (C[0,1];\rho_1) \quad \text{m. tér};\quad \min\left\{\rho_1(f,g)\ | \ y=c\in\R\right\} \]
+	\end{note}
+	\subsection{Ívhossz számolás}
+	\begin{note}
+		$f\in C^1[a,b]$
+		11. kép
+		\[ l=\int_a^b\sqrt{1+(f'(x))^2}\,dx \]
+	\end{note}
+	\begin{example}
+		\[ f(x):=\frac{2(x-1)^{\frac{3}{2}}}{3};\quad x\in[2,5] \]
+		Megoldás:
+		\[ f'(x)=\frac{2}{3}\cdot\frac{3}{2}\cdot(x-1)^\frac{1}{2}=\sqrt{x-1} \]
+		\[ \Rightarrow\quad l=\int_2^5\sqrt{1+x-1}\,dx=\int_2^5\sqrt{x}\,dx=\left[\frac{x^\frac{3}{2}}{\frac{3}{2}}\right]_2^5=\frac{2}{3}(5\sqrt{5}-2\sqrt{2}) \]
+	\end{example}
+	\begin{exercise}
+		\[ f(x):=\sqrt{x};\quad x\in[1,2] \]
+		Mekkora ívének hossza 1 és 2 között? 12. kép
+		
+		Megoldás:
+		\[ \Rightarrow\quad l=\int_1^2\sqrt{1+\left[(\sqrt{x}')\right]^2}\,dx=\int_1^2\sqrt{1+\left(\frac{1}{2\sqrt{x}}\right)^2}\,dx=\int_1^2\sqrt{1+\frac{1}{4x}}\,dx=\frac{1}{2}\cdot\int_1^2\sqrt{\frac{4x+1}{x}}\,dx= \]
+		Vezessünk be egy új változót:
+		\[ \sqrt{\frac{4x+1}{x}}=t\quad \Rightarrow\quad x=\frac{1}{t^2-4}\quad \Rightarrow\quad dx=-\frac{2t}{(t^2-4)^2}\,dt\]
+		Megállapítható, hogy 
+		\[ x=1\quad \Rightarrow\quad t=\sqrt{5} \]
+		\[ x=2\quad \Rightarrow\quad t=\frac{2}{\sqrt{2}} \]
+		Visszatérve:
+		\[ =\frac{1}{2}\cdot\int_{\sqrt{5}}^{\frac{3}{\sqrt{2}}}t\left(\frac{2t}{(t^2-4)^2}\right)\,dt\quad \overset{\int_a^bf=-\int_b^af}{=}\quad \int_{\frac{3}{\sqrt{2}}}^{\sqrt{5}}\frac{t^2}{(t-2)^2(t+2)^2}\,dt=\int_{\frac{3}{\sqrt{2}}}^{\sqrt{5}}\left(\frac{A}{t-2}+\frac{B}{(t-2)^2}+\frac{C}{t+2}+\frac{D}{(t+2)^2}\right)\]
+		Befejezése hf.
+	\end{exercise}
+	\begin{note}
+		Megállapítható, hogy $x^2$-te visszavezethető a $\sqrt{x}$ függvény.
+		
+		13,14 ábra
+		\[ \Rightarrow\quad l=\int_1^{\sqrt{2}}\sqrt{1+4x^2}\,dx= \]
+		Befejezése házi, javallott a $2x=\sh t$ helyettesítés.
+	\end{note}
+	\subsection{Forgástestek térfogata és felszíne}
+	\begin{revision}
+		Ha a 15. ábrán lévő példát megforgatjuk az $x$ tengely körül, egy testet kapunk, melynek térfogatát számolhatjuk határozott integrállal.
+		\[ V=\pi\int_a^bf^2(x)\,dx\quad (f\in\R[a,b]) \]
+		\[ \mathcal{F}=2\pi\int_a^bf(x)\cdot\sqrt{1+(f'(x))^2}\,dx\quad (f\in C^1[a,b]) \]
+	\end{revision}
+	\begin{example}
+		16. ábra
+		\[ f(x):=\sin x\quad x\in[0,\pi]\quad \Rightarrow\quad V, \mathcal{F}, T \]
+		\[ T=\int_0^\pi\sin x\,dx=\left[-\cos x\right]_0^\pi=1+\cos 0=2 \]
+		\[ V=\pi\int_0^\pi\sin^2x\,dx=\frac{\pi}{2}\cdot\left[x-\frac{\sin2x}{2}\right]_0^\pi=\frac{\pi}{2}\cdot\left[\pi-\frac{\sin2\pi}{2}-0\right]=\frac{\pi^2}{2} \]
+		Folyatatván
+		\[ \mathcal{F}=2\pi\int_0^\pi sin x\cdot\sqrt{ 1+\cos^2x}\,dx= \]
+		vezessünk be egy új változót
+		\[ \cos x=\sh t,\quad -\sin x\,dx=\ch t\,dt \]
+		Visszatérve
+		\[ =2\pi\cdot\int\sqrt{1+\sh^2t}(-\ch t)\,dt \]
+		\[ x=0\quad \Rightarrow\quad 1=\sh t\quad \Rightarrow\quad t=\arsh 1=\ln(\sqrt{2}+1) \]
+		\[ x=\pi\quad \Rightarrow\quad -1=\sh t\quad \Rightarrow\quad t=\arsh (-1)=\ln(\sqrt{2}-1) \]
+		\[ \arsh x=\ln(x+\sqrt{1+x^2}) \]
+		Befejetése hf.
+	\end{example}
+	\begin{exercise}
+		\[ f(x)=2\cdot\sqrt{1-x^2}\quad x\in[-1,1] \]
+		Forgástest $V, \mathcal{F}=?$
+		
+		\[ y^2=2\sqrt{1-x^2}\quad \Rightarrow\quad \frac{y^2}{4}+x^2=1 \]
+		\[ \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 \]
+	\end{exercise}
+\end{document}
