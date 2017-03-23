@@ -549,11 +549,29 @@
 		\[ t:=\sin x,\quad \cos x\,dx=dt \]
 		Visszatérve:
 		\[ \int\frac{dt}{t^3-t^2}=\int\frac{1}{t^2(t-1)}\,dt=\int\left(\frac{A}{t}+\frac{B}{t^2}+\frac{C}{t-1}\right)\,dt \]
-		\textit{Megoldás:}
+		\textit{Megoldás:} Határozzuk meg $A,B,C\in\R$-t \textit{egyenlő együtthatók} módszerével
+		\begin{align*}
+			1\quad &=\quad At(t-1)+B(t-1)+Ct^2\\
+				   &=\quad At^2-At+Bt-B+Ct^2\\
+				   &=\quad (A+C)t^2+(B-A)t-B\\
+		\end{align*}
+		Azaz, az átláthatóság kedvéért:
+		\begin{align*}
+			t^2 \quad \text{együtthatója:}&\quad  0=A+C\\
+			t^1 \quad \text{együtthatója:}&\quad  0=B-A\\
+			t^0 \quad \text{együtthatója:}&\quad  1=-B
+		\end{align*}
+		Ez alapján triviálisan $B=-1$, melyből $A=-1$ és $C=1$ következik. Visszatérve:
+		\[ =-\int\frac{1}{t}\,dt-\int\frac{1}{t^2}\,dt+\int\frac{1}{t-1}\,dt=-\ln|t|+\frac{1}{t}+\ln|t-1|+c\quad (c\in\R) \]
+		Így az eredeti integrál:
+		\[ \int\frac{\cos x}{\cos^2x+\sin^3x-1}\,dx=-\ln|\sin x|+\frac{1}{\sin x}+\ln|\sin x-1|+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x\in\left(0,\frac{\pi}{2}\right)$
 		\[ \int\frac{\sin x+\cos x}{1-\sin2x} \]
 		Tipp: $f'\cdot f^\alpha$
+		\textit{Megoldás:}
+		\[ \int\frac{\sin x+\cos x}{1-\sin2x}=\int\frac{\sin x+\cos x}{1-2\sin x\cos x} \]
+		
 	\end{exercise}
 	Ezzel befejeztük a határozatlan integrált. HF: 10 darab beadandó házi feladat: 3 db. exponenciális helyettesítéssel, 3 darab gyökös, 4 darab trigonometrikus.
 \end{document}
