@@ -137,33 +137,50 @@
 	Konzultáció: Március 29 szerda 18:00, D2-712
 	\section{Határozott integrál és alkalmazásai}
 	\subsection{Területszámítás}
-	\begin{note}
-		1. kép: pozitív
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/01.png}
+			\includegraphics[height=3cm]{kepek/02.png}
+			\caption{Rendre: $T=\int_a^bf,\quad f>0$,\quad valamint\quad  $T=\int_a^bf,\quad f<0$}
+		\end{figure}
 		
-		2. kép: negatív
-		
-		3. kép: Hogyan lehet megoldani ezt? Megoldás: eltoljuk a függvényt.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/03.png}
+			\caption{Hogyan lehet megoldani ezt? Megoldás: eltoljuk a függvényt.}
+		\end{figure}
 		\[ T=\int_a^b(f+c)-\int_a^b(g+c)=\int_a^b(f-g) \]
-		4. kép
-		
-		Ahol $f$ a felső, $g$ az alsó függvény.
-		
-		5. kép: 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=2cm]{kepek/04.png}
+			\caption{Ahol $f$ a felső, $g$ az alsó függvény.}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/05.png}
+			\caption{Ahol $f$ a felső, $g$ az alsó függvény.}
+		\end{figure}
 		\[ T=\int_a^c(f-g)+\int_c^d(g-f)+\int_d^b(f-g)=\int_a^b|f-g|= \]
 		Ez megállapítható, hogy $f$ és $g$ 1-es metrikája.
 		\[ =\rho_1(f,g),\quad (f,g\in C[a,b]) \]
 		
 		Szimmetriák kihasználása:
-		6. kép: elég a negyed kör területének meghatározása
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/06.png}
+			\caption{Elég a negyed kör területének meghatározása.}
+		\end{figure}
 		\[ T_{\text{kör}}=4\cdot T_{\text{negyedkör}}=4\cdot\int_0^1\sqrt{1-x^2}\,dx \]
 		Szimmetria kihasználható így is:
-		7. kép:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/07.png}
+			\caption{Elegendő a $[0,a]$ intervallumon a függvény integráltjának kétszeresét meghatározni.}
+		\end{figure}
 		\[ \int_{-a}^{a}f=2\cdot\int_0^af \]
-		Megállapítható és kihasználahtü, hogy $f(x):=x^2$ páros.
-		8. kép:
+		Megállapítható és kihasználható, hogy $f(x):=x^2$ páros.
 		
 		
-	\end{note}
 	\begin{revision}
 		Newton-Leibniz tétel: Ha $f\in\R[a,b]$ és $\int f\not=0$ 
 			\[ \int_a^bf(x)\,dx=F(b)-F(a)=:[F(x)]_a^b\quad (\forall F\in\int f) \]
@@ -175,7 +192,11 @@
 		\end{cases}$
 		Mennyi ennek a függvények a területe?
 		\[ \Rightarrow\quad x=\pm\sqrt{2x+6} \]
-		8. ábra
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/08.png}
+			\caption{}
+		\end{figure}
 		\[ x=\frac{y^2-6}{2} \]
 		Metszéspontok:
 		\[ (x-1)^2=2x+6\quad \Leftrightarrow\quad x_1=-1\quad v.\quad x=5 \]
@@ -188,8 +209,12 @@
 			y=x^3\\
 			x^2+x^2=2\\
 			y=0
-		\end{cases}$ Hatáorzzuk meg az ezen görbék által határolt területet!
-		9. kép:
+		\end{cases}$ Határozzuk meg az ezen görbék által határolt területet!
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/09.png}
+			\caption{}
+		\end{figure}
 		
 		Metszéspontok:
 		\[ x^2+x^6-2=0\quad \Leftrightarrow\quad x^6-1+x^2-1=0\quad \Leftrightarrow\quad (x^2-1)(x^4+x^2+1)=0 \]
@@ -213,7 +238,11 @@
 	\begin{example}
 		Számítsuk ki a következő minimumot:
 		\[ \min\left\{\int _0^1|x^2-c|\,dx:\quad c\in\R \right\} \]
-		10:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/10.png}
+			\caption{}
+		\end{figure}
 		
 		Azaz, hogyan kell meghúzni az egyenest úgy, hogy a terület a legkisebb legyen? Világos, hogy 0 és 1 közötti lesz, hisz ezen határokon kívül a terület csak nőne. Összefoglalva, elég $c\in[0,1]$ intervallumot vizsgálnunk, ui. ellentkező esetben 1-1 téglalap területével nő a terület.
 		
@@ -242,7 +271,11 @@
 	\subsection{Ívhossz számolás}
 	\begin{note}
 		$f\in C^1[a,b]$
-		11. kép
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/11.png}
+			\caption{}
+		\end{figure}
 		\[ l=\int_a^b\sqrt{1+(f'(x))^2}\,dx \]
 	\end{note}
 	\begin{example}
@@ -253,8 +286,12 @@
 	\end{example}
 	\begin{exercise}
 		\[ f(x):=\sqrt{x};\quad x\in[1,2] \]
-		Mekkora ívének hossza 1 és 2 között? 12. kép
-		
+		Mekkora ívének hossza 1 és 2 között?
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/12.png}
+			\caption{}
+		\end{figure}
 		Megoldás:
 		\[ \Rightarrow\quad l=\int_1^2\sqrt{1+\left[(\sqrt{x}')\right]^2}\,dx=\int_1^2\sqrt{1+\left(\frac{1}{2\sqrt{x}}\right)^2}\,dx=\int_1^2\sqrt{1+\frac{1}{4x}}\,dx=\frac{1}{2}\cdot\int_1^2\sqrt{\frac{4x+1}{x}}\,dx= \]
 		Vezessünk be egy új változót:
@@ -269,18 +306,32 @@
 	\begin{note}
 		Megállapítható, hogy $x^2$-te visszavezethető a $\sqrt{x}$ függvény.
 		
-		13,14 ábra
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/13.png}
+			\includegraphics[height=3cm]{kepek/14.png}
+			\caption{}
+		\end{figure}
 		\[ \Rightarrow\quad l=\int_1^{\sqrt{2}}\sqrt{1+4x^2}\,dx= \]
 		Befejezése házi, javallott a $2x=\sh t$ helyettesítés.
 	\end{note}
 	\subsection{Forgástestek térfogata és felszíne}
 	\begin{revision}
-		Ha a 15. ábrán lévő példát megforgatjuk az $x$ tengely körül, egy testet kapunk, melynek térfogatát számolhatjuk határozott integrállal.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/15.png}
+			\caption{}\label{rotation}
+		\end{figure}
+		Ha a \ref{rotation}. ábrán lévő példát megforgatjuk az $x$ tengely körül, egy testet kapunk, melynek térfogatát számolhatjuk határozott integrállal.
 		\[ V=\pi\int_a^bf^2(x)\,dx\quad (f\in\R[a,b]) \]
 		\[ \mathcal{F}=2\pi\int_a^bf(x)\cdot\sqrt{1+(f'(x))^2}\,dx\quad (f\in C^1[a,b]) \]
 	\end{revision}
-	\begin{example}
-		16. ábra
+	\begin{example}\ 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/16.png}
+			\caption{}
+		\end{figure}
 		\[ f(x):=\sin x\quad x\in[0,\pi]\quad \Rightarrow\quad V, \mathcal{F}, T \]
 		\[ T=\int_0^\pi\sin x\,dx=\left[-\cos x\right]_0^\pi=1+\cos 0=2 \]
 		\[ V=\pi\int_0^\pi\sin^2x\,dx=\frac{\pi}{2}\cdot\left[x-\frac{\sin2x}{2}\right]_0^\pi=\frac{\pi}{2}\cdot\left[\pi-\frac{\sin2\pi}{2}-0\right]=\frac{\pi^2}{2} \]
