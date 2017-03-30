@@ -4,8 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
 %\usepackage{marvosym}
 
 \makeatletter
@@ -66,6 +69,10 @@
 \DeclareMathOperator{\Th}{th}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
 \DeclareMathOperator{\arcctg}{arc ctg}
@@ -103,13 +110,13 @@
 	\def\biz{\emph{Bizonyítás:\ }}
 	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
 	\def\limn{\displaystyle\lim_{n\to +\infty}}
-%	\def\definition{\textbf{Definíció:\ }}
-%	\def\theorem{\textbf{Tétel:\ }}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
 	%\def\note{\emph{Megjegyzés:\ }}
 	%\def\example{\textbf{Példa:\ }} 
 	
 	\theoremstyle{definition}
-	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	\newtheorem{theorem}{Tétel}[subsubsection] % reset theorem numbering for each chapter
 	
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
@@ -129,8 +136,9 @@
 		2. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	\bigskip
 	
-	\section{Lineáris helyettesítés (folyt.)}
+	%\subsection{Lineáris helyettesítés (folyt.)}
 	\begin{task}
 		\[ \int\frac{f'(x)}{f(x)}\,dx=\ln |f(x)|+c \quad (c\in\R, \quad x\in I)\]
 	\end{task}
@@ -145,7 +153,7 @@
 	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$:
 		\[ \int\tg x\,dx=\int\frac{\sin x}{\cos x}\,dx\quad \overset{f(x):=\cos x}{\underset{f'(x)=-\sin x}{=}}\quad -\int\frac{(\cos x)'}{\cos x}\,dx=-\ln|\cos x|+c=-\ln(\cos x)+c\quad (c\in\R) \]
 	\end{task}
-	\section{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
+	\subsection{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
 	\begin{task} $(\alpha\in\R\setminus\{-1\})\quad (x\in I)$
 		\[ \int f'(x)\cdot f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c\quad (c\in\R) \]
 		\[ \int 1\cdot x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (c\in\R)\quad \longrightarrow\quad \int f'(x)f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c \quad (c\in\R) \]
@@ -176,7 +184,7 @@
 			/Filipp Zoltán István/
 		\end{center}
 	\end{task}
-	\subsection{$n,m\in\Z:\quad \int\sin^n x\cos^mx\,dx$\quad \text{(feladat altípus)}\quad}
+	\subsubsection{$n,m\in\Z:\quad \int\sin^n x\cos^mx\,dx$\quad \text{(feladat altípus)}\quad}
 	\begin{note}
 		Ez a megoldási módszer fő gondolatmenetét a $\sin$ és a $\cos$ függvények közötti egyszerű váltás adja, pl.:\, $(\cos x)'=-\sin x$ \,és\, $(\sin x)'=\cos x$, \,valamint \,$1=\sin^2x + \cos^2x$.
 	\end{note}
@@ -241,7 +249,7 @@
 		Alternatív (még nem teljes) megoldás:
 		\[=\int\left(\frac{1}{2}2\sin x\cos x\right)^4\,dx=\frac{1}{16}\int\left(2\sin x\cos x\right)\,dx=\frac{1}{16}\int\sin^42x\,dx= \]
 	\end{exercise}
-	\section{Helyettesítés szabálya}
+	\subsubsection{Helyettesítés szabálya}
 	\begin{revision}
 		Tegyük fel, hogy $\emptyset\not=\int f(x)\,dx=F(x)+c\quad (c\in\R, x\in I)$, és tegyük fel, hogy\\ $g:J\to I, \quad g\in D.$ Ekkor
 		\[ \int f(g(x))\cdot g'(x)\,dx=F(g(x))+c\quad (c\in\R) \]

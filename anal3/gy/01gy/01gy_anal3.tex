@@ -4,8 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
 %\usepackage{marvosym}
 
 \makeatletter
@@ -66,6 +69,10 @@
 \DeclareMathOperator{\Th}{th}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
 \DeclareMathOperator{\arcctg}{arc ctg}
@@ -103,17 +110,18 @@
 	\def\biz{\emph{Bizonyítás:\ }}
 	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
 	\def\limn{\displaystyle\lim_{n\to +\infty}}
-%	\def\definition{\textbf{Definíció:\ }}
-%	\def\theorem{\textbf{Tétel:\ }}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
 	%\def\note{\emph{Megjegyzés:\ }}
 	%\def\example{\textbf{Példa:\ }} 
 	
 	\theoremstyle{definition}
-	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	\newtheorem{theorem}{Tétel}[subsubsection] % reset theorem numbering for each chapter
 	
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
 	\newtheorem{example}[theorem]{Példa} % same for example numbers
+	\newtheorem{exercise}[theorem]{Házi feladat} % same for example numbers
 	\newtheorem{note}[theorem]{Megjegyzés} % same for example numbers
 	\newtheorem{task}[theorem]{Feladat} % same for example numbers
 	\newtheorem{revision}[theorem]{Emlékeztető} % same for example numbers
@@ -128,7 +136,7 @@
 		1. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
-	\section{Bevezető}
+	\section{Információk a gyakorlattal kapcsolatban}
 	\begin{compactitem}
 		\item emial: filipp@numanal.inf.elte.hu
 		\item szoba: 2-316A

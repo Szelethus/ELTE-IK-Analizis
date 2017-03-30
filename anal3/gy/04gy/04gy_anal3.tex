@@ -4,8 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
 %\usepackage{marvosym}
 
 \makeatletter
@@ -107,13 +110,13 @@
 	\def\biz{\emph{Bizonyítás:\ }}
 	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
 	\def\limn{\displaystyle\lim_{n\to +\infty}}
-%	\def\definition{\textbf{Definíció:\ }}
-%	\def\theorem{\textbf{Tétel:\ }}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
 	%\def\note{\emph{Megjegyzés:\ }}
 	%\def\example{\textbf{Példa:\ }} 
 	
 	\theoremstyle{definition}
-	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	\newtheorem{theorem}{Tétel}[subsubsection] % reset theorem numbering for each chapter
 	
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
@@ -133,12 +136,9 @@
 		4. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
-	\section{Információk}
-	\begin{enumerate}
-		\item Első zh.: március 31 péntek 18:00, Kitaibel Pál terem (0-823)
-		\item Első zh-hoz konzultáció március 29 18:00-19:30
-	\end{enumerate}
-	\section{Feladatok}
+	%\section{}
+	\bigskip
+	
 	\begin{task}
 		\[ \int\sqrt{1+x^2}\,dx  \]
 		Vezessünk be új változót.
@@ -227,8 +227,8 @@
 		\[ =\frac{5\cdot\arc\sin\left(\frac{3x+1}{\sqrt 5}\right)+\sqrt{5}\cdot(3x+1)\cdot\sqrt{1-\left(\frac{3x+1}{\sqrt{5}}\right)^2}}{6}+c=\frac{5\cdot\arc\sin\left(\frac{3x+1}{\sqrt 5}\right)+(3x+1)\cdot\sqrt{5-(3x+1)^2}}{6}+c \]
 		Ahol $c\in\R$.
 	\end{exercise}
-	\section{Racionális törtfüggvények integrálása}
-	\subsection{Elemi törtek integrálása}
+	\subsection{Racionális törtfüggvények integrálása}
+	\subsubsection{Elemi törtek integrálása}
 	Ebben a fejezetben minden példa 1-1 altípusra mutat rá.
 	\begin{example}
 		$(a,b,x\in\R,\quad a\not=0;\quad 1\leq n\in\N)$

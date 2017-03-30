@@ -4,8 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
 %\usepackage{marvosym}
 
 \makeatletter
@@ -107,13 +110,13 @@
 	\def\biz{\emph{Bizonyítás:\ }}
 	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
 	\def\limn{\displaystyle\lim_{n\to +\infty}}
-%	\def\definition{\textbf{Definíció:\ }}
-%	\def\theorem{\textbf{Tétel:\ }}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
 	%\def\note{\emph{Megjegyzés:\ }}
 	%\def\example{\textbf{Példa:\ }} 
 	
 	\theoremstyle{definition}
-	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	\newtheorem{theorem}{Tétel}[subsubsection] % reset theorem numbering for each chapter
 	
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
@@ -133,9 +136,9 @@
 		5. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
-	\section{Információk}
-	Konzultáció lesz ZH előtt március 29-én szerdán, 18:00-19:30 között a 2-712 teremben.
-	\section{Parciális törtekre bontás (folytatás)}
+	%\section{}
+	\bigskip
+	
 	Egy darab elemi törttípus maradt meg, amit nem vettünk.
 	\begin{example}$(x\in\R)$
 		\[ \int\frac{1}{(ax^2+bx+c)^n}\,dx \]
@@ -296,7 +299,7 @@
 		Az eredeti integrál így:
 		\[ \int\frac{x}{1+x^4}\,dx=\frac{1}{2}\cdot\arc\tg(x^2)+c\quad (c\in\R) \]
 	\end{exercise}
-	\subsection{Racionális törtre vezethető helyettesítések}
+	\subsubsection{Racionális törtre vezethető helyettesítések}
 	\begin{example}
 		\[ \int R(e^x)\,dx \]
 		Ahol $R$ egy racionális törtfüggvény.

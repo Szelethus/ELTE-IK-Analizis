@@ -4,8 +4,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
-\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
 %\usepackage{marvosym}
 
 \makeatletter
@@ -66,7 +69,10 @@
 \DeclareMathOperator{\Th}{th}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
-\DeclareMathOperator{\ar}{ar}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
 \DeclareMathOperator{\arcctg}{arc ctg}
@@ -104,13 +110,13 @@
 	\def\biz{\emph{Bizonyítás:\ }}
 	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
 	\def\limn{\displaystyle\lim_{n\to +\infty}}
-%	\def\definition{\textbf{Definíció:\ }}
-%	\def\theorem{\textbf{Tétel:\ }}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
 	%\def\note{\emph{Megjegyzés:\ }}
 	%\def\example{\textbf{Példa:\ }} 
 	
 	\theoremstyle{definition}
-	\newtheorem{theorem}{Tétel}[subsection] % reset theorem numbering for each chapter
+	\newtheorem{theorem}{Tétel}[subsubsection] % reset theorem numbering for each chapter
 	
 	\theoremstyle{definition}
 	\newtheorem{definition}[theorem]{Definíció} % definition numbers are dependent on theorem numbers
@@ -130,7 +136,7 @@
 		3. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
-	\section{Parciális integrálás}
+	\subsection{Parciális integrálás}
 	\begin{revision}
 		\[ (f\cdot g)'=f'\cdot g + f\cdot g'\quad \Rightarrow\quad \int(f\cdot g)'=\int f'\cdot g + \int f\cdot g'\quad \Rightarrow\quad f\cdot g=\int f'\cdot g + \int f\cdot g'\]
 		\begin{center}	
@@ -252,7 +258,7 @@
 		\[ =\frac{x^2}{2}\cdot\ln(x+1)-\frac{x^2}{4}+\frac{x}{2}-\frac{1}{2}\ln(x+1)+c\quad (c\in\R) \]
 		Azért célszerű ehhez hasonló példákban a polinomot választani $f'$-nak, mert így eltűnik a logaritmus.
 	\end{task}
-	\subsection{Parciális integrálás + egyenlet}
+	\subsubsection{Parciális integrálás + egyenlet}
 	\begin{task}$x\in\R$
 		\[ \int e^x\sin x\,dx\quad \overset{\text{p.i.}}{=}\quad e^x\sin x-\int (e^x)'\cdot\cos x\,dx=e^x\sin x-\left(e^x\cos x-\int e^x(-\sin x)\,dx\right)=\]
 		\[=e^x\sin x-e^x\cos x-\int e^x\sin x\,dx \]
@@ -271,9 +277,9 @@
 		\[ \int\sqrt{x^2+1}\,dx \]
 		\textit{Megoldás:}
 		\[ \int(x)'\sqrt{x^2+1}\,dx=x\cdot\sqrt{x^2+1}-\int x\cdot\frac{1}{2}\cdot\frac{2x}{\sqrt{x^2+1}}\,dx=x\cdot\sqrt{x^2+1}-\int\frac{x^2+1-1}{\sqrt{x^2+1}}\,dx=\]
-		\[=x\cdot\sqrt{x^2+1}-\int\sqrt{x^2+1}-\frac{1}{\sqrt{x^2+1}}\,dx=x\cdot\sqrt{x^2+1}-\ar\sh x - \int\sqrt{x^2+1}\,dx \]
+		\[=x\cdot\sqrt{x^2+1}-\int\sqrt{x^2+1}-\frac{1}{\sqrt{x^2+1}}\,dx=x\cdot\sqrt{x^2+1}-\arsh x - \int\sqrt{x^2+1}\,dx \]
 		Ez alapján az egyenlet:
-		\[ \int\sqrt{x^2+1}=\frac{1}{2}\left(x\cdot\sqrt{x^2+1}-\ar\sh x \right)+c\quad (c\in\R) \]
+		\[ \int\sqrt{x^2+1}=\frac{1}{2}\left(x\cdot\sqrt{x^2+1}-\arsh x \right)+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}$x\in\R$
 		\[ \int x\arc\tg x\,dx \]
@@ -320,7 +326,7 @@
 		Így az egyenlet:
 		\[ \int e^x\cos^2x\,dx=\frac{1}{5}\left(e^x\cos^2x+e^x\sin2x+2\cdot e^x \right)+c=\frac{e^x(\cos^2x+\sin2x+2)}{5}+c\quad (c\in\R) \]
 	\end{exercise}
-	\section{Integrálás helyettesítéssel}
+	\subsection{Integrálás helyettesítéssel}
 	\begin{revision}
 		\[ \int f(x)\,dx\quad \overset{x:=g(t)}{=}\quad \int f(g(t))\cdot g'(t)\,dt\big|_{t=g^{-1}(x)} \]
 	\end{revision}
