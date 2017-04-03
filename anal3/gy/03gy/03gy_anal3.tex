@@ -172,7 +172,7 @@
 	\end{note}
 	\begin{task}$x\in\R$
 		\[ \int \overbrace{x^2}^{g}\overbrace{\sin(3x)}^{f'}\,dx \quad \overset{\text{p.i.}}{=}\quad  \int x^2\left(-\frac{\cos3x}{3}\right)'\,dx=-x^2\cdot\frac{\cos3x}{3}-\int\left(x^2\right)'\cdot\left(-\frac{\cos3x}{3}\right)\,dx=\]
-		\[=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\cdot\int \overbrace{x}^{g}\overbrace{\cos3x}^{f'}\,dx=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\int x\cdot\left( \frac{\sin3x}{x}\right)'\,dx\quad \overset{\text{p.i.}}{=} \]
+		\[=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\cdot\int \overbrace{x}^{g}\overbrace{\cos3x}^{f'}\,dx=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\int x\cdot\left( \frac{\sin3x}{3}\right)'\,dx\quad \overset{\text{p.i.}}{=} \]
 		\[  \left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{3}\left(x\cdot\frac{\sin3x}{3}-\int(x)'\cdot\frac{\sin3x}{3}\,dx\right)=\left(-\frac{1}{3}\right)\cdot x^2\cos3x+\frac{2}{9}\cdot x\sin3x-\frac{2}{9}\cdot\int\sin3x\,dx=\]
 		\[=\left(-\frac{1}{3}\right) \cdot x^2\cos3x+\frac{2}{9}\cdot
 		x\sin3x+\frac{2}{9}\cdot\frac{\cos3x}{3} + c\quad (c\in\R) \]
@@ -240,8 +240,8 @@
 	\end{task}
 	\begin{task}
 		\[ \int \arc\sin x\,dx=\int 1\cdot\arc\sin x\,dx\quad \overset{\text{p.i.}}{=}\quad x\arc\sin x-\int x(\arc\sin x)'\,dx=x\arc\sin x-\text{\fbox{$\displaystyle \int x\cdot\frac{1}{\sqrt{1-x^2}}$}}\,dx= \]
-		\[= x\arc\sin x-\int\underbrace{(-2x)(1-x^2)^{\frac{1}{2}}}_{f'\cdot f^\alpha}\,dx=c\arc\sin x+\frac{1}{2}\int(1-x^2)'(1-x^2)^{\frac{1}{2}}\,dx=\]
-		\[=x\arc\sin x+\frac{1}{2}\frac{(1-x^2)^{\frac{1}{2}}}{\frac{1}{2}}+c=x\arc\sin x+\sqrt{1-x^2}+c \]
+		\[= x\arc\sin x+\frac{1}{2}\cdot\int\underbrace{(-2x)(1-x^2)^{-\frac{1}{2}}}_{f'\cdot f^\alpha}\,dx=x\arc\sin x+\frac{1}{2}\int(1-x^2)'(1-x^2)^{-\frac{1}{2}}\,dx=\]
+		\[=x\arc\sin x+\frac{1}{2}\cdot\frac{(1-x^2)^{\frac{1}{2}}}{\frac{1}{2}}+c=x\arc\sin x+\sqrt{1-x^2}+c \]
 	\end{task}
 	\begin{task}
 		\[ \int\arc\tg(3x)\,dx=\int(x)'\arc\tg(3x)\,dx =x \arc\tg3x-\int x\cdot\frac{1}{1+9x^2}\cdot3\,dx=x\arc\tg3x-3\cdot\int\underbrace{\frac{x}{1+9x^2}}_{\frac{f'}{f}}\,dx=\]
@@ -293,10 +293,10 @@
 		\textit{Megoldás:}
 		\[ \int\left(\frac{x^2}{2}\right)'\arc\sin x\,dx=\frac{x^2}{2}\arc\sin x-\int\frac{x^2}{2}\cdot\frac{1}{\sqrt{1-x^2}}\,dx=\frac{x^2}{2}\arc\sin x + \frac{1}{2}\int\frac{-x^2+1-1}{\sqrt{1-x^2}}\,dx= \]
 		\[ =\frac{x^2}{2}\arc\sin x+ \frac{1}{2}\int\sqrt{1-x^2}-\frac{1}{\sqrt{1-x^2}}\,dx=\frac{x^2}{2}\arc\sin x-\frac{1}{2}\arc\sin x+\frac{1}{2}\int\sqrt{1-x^2}\,dx=\]
-		Határozzuk meg $\int\sqrt{1-x^2}\,dx$-et.
-		\[ \int\sqrt{1-x^2}\,dx=\int (1-x^2)^{\frac{1}{2}}\,dx=\frac{2}{3}(1-x^2)^{\frac{3}{2}}\cdot 2x + c\quad (c\in\R) \]
+		Határozzuk meg $\int\sqrt{1-x^2}\,dx$-et. Ezt már korábban meghatároztuk, azonban később meglátjuk, hogy parciális integrálás segítségével is számolható (ld. \ref{sqrt(1-x^2)}. feladat).
+		\[ \int\sqrt{1-x^2}\,dx=\frac{\arcsin\left(x\right)+x\sqrt{1-x^2}}{2}+c\quad (c\in\R) \]
 		Visszatérve:
-		\[ =\arc\sin x\left(\frac{x^2-1}{2}\right)+\frac{2}{3}(1-x^2)^{\frac{3}{2}}\cdot x + c\quad (c\in\R) \]
+		\[ =\arc\sin x\cdot\left(\frac{x^2-1}{2}\right)+\frac{\arcsin\left(x\right)+x\sqrt{1-x^2}}{4}+c=\frac{\left(2x^2-1\right)\arcsin\left(x\right)+x\sqrt{1-x^2}}{4}+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{exercise}
 		$x\in\R$
@@ -330,7 +330,7 @@
 	\begin{revision}
 		\[ \int f(x)\,dx\quad \overset{x:=g(t)}{=}\quad \int f(g(t))\cdot g'(t)\,dt\big|_{t=g^{-1}(x)} \]
 	\end{revision}
-	\begin{task}$x\in(-1,1)$
+	\begin{task}$x\in(-1,1)$ \label{sqrt(1-x^2)}
 		\[\int\sqrt{1-x^2}\,dx \quad\]
 		Szükségünk lesz számos új változóra. Legyen:
 		\[ f(x):=\sqrt{1-x^2} \]

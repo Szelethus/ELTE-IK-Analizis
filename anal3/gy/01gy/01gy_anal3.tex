@@ -69,6 +69,7 @@
 \DeclareMathOperator{\Th}{th}
 \DeclareMathOperator{\sh}{sh}
 \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\arsh}{arsh}
 \DeclareMathOperator{\arch}{arch}
 \DeclareMathOperator{\arth}{arth}
@@ -157,14 +158,13 @@
 		\item Károlyi Katalin
 	\end{compactitem}
 	\section{Integrálszámítás}
-	(első 6 hét anyaga)
 	\subsection{Bevezető}
 	\begin{revision}
 		(Primitív függvény)\quad Legyen $\emptyset\not=I\subset\R$ nyílt intervallum, és $f:I\to\R$ fv. Ha 
 		\[\exists F:I\to\R, \quad F\in D\quad  \text{és}\quad  F'(x)=f(x) \quad (\forall x\in I),\]
 		akkor azt mondjuk hogy $F$ az $f$ egy primitív függvénye.
 	\end{revision}
-	Nem minden függvény rendelkezik primitív függvénnyel, pl.: $sign(x)$, mert az 1/2-et nem veszi fel sehol.
+	Nem minden függvény rendelkezik primitív függvénnyel, pl.: $\sign(x)$, mert az 1/2-et nem veszi fel sehol.
 	\begin{note}
 	$f(x)=x^2,\quad x\in I:=\R;\quad \Rightarrow\quad F(x)=\frac{1}{3}x^3\quad (x\in\R)$, mert $\left(\frac{1}{3}x^3\right)'=\frac{1}{3}3x^2=x^2$.
 	
@@ -209,32 +209,27 @@
 	\begin{task}$(x\in\R)$
 		\[\int(6x^3-2x+1)\,dx\]
 	\end{task}
-	\begin{note}
-		Mi az a $dx$? EMlékezzünk vissza mi az a határozott integrál: nagyon kis területekre osztottunk fel egy intervalumot, és így közelítettük a területet.
-	\end{note}
-	Emlékezzünk vissza a műveleti tételekre. Az integrál lineáris, így a konstansot ki lehet emelni
+	Emlékezzünk vissza a műveleti tételekre. Az integrál lineáris, így az integráltat integráltak összegére bonthatjuk és a konstansokat is ki tudjuk \textit{,,cuppantani''}:
 	\[ 6\cdot\int x^3\,dx-2\cdot\int x\,dx+\int1\,dx=6\cdot\frac{x^4}{4}-2\cdot\frac{x^2}{2}+x+c\quad (c\in\R) \]
 	\begin{theorem}
 		Általános integrálfüggvény:
-		\[ \int x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (x>0, c,\alpha\in\R) \]
-		HA $\alpha\not=-1$
+		\[ \int x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (x>0,\quad  c,\alpha\in\R) \]
+		Ha $\alpha\not=-1$.
 	\end{theorem}
-	\begin{task}$x>0$. Bár $\R\setminus\{0\}$ is jó válasz, de az nem intervallum.
+	\begin{task}Határozzuk meg az $f(x):=\frac{1}{x}$ integráltját. Ezt esetekre kell bontani (szétválasztani az értelmezési tartományt intervallumokra), legyen az első $x>0$. Bár $\R\setminus\{0\}$ is jó választás értelmezési tartománynak, de az nem intervallum.
 		\[ \int\frac{1}{x}\,dx=\ln x+c\quad (c\in\R) \]
-	\end{task}
-	\begin{task}($x\in(-\infty,0)=:I$
+		Második eset $x\in(-\infty,0)=:I$:
 		\[ \int\frac{1}{x}\,dx=\ln(-x)+c\quad (c\in\R),\quad \text{ui.}\quad (\ln(-x))'=\frac{1}{-x}(-x)'=-\frac{1}{x}\cdot(-1)=\frac{1}{x} \]
-		Logaritmus nem megoldás, mert az argumentumának pozitívnak kell lennie. ($-x$ pozitív itt)
 	\end{task}
 	\begin{note}
 		az előző két feladat összefoglalható úgy, hogy 
-		\[ \int\frac{1}{x}\,dx=\ln|x|+x\quad (c\in\R, x\in(-\infty,0)\quad \text{vagy}\quad (0,+\infty) \]
+		\[ \int\frac{1}{x}\,dx=\ln|x|+c\quad (c\in\R, x\in(-\infty,0)\quad \text{vagy}\quad (0,+\infty) \]
 	\end{note}
 	\begin{task}$x>0$
 		\[ \int\sqrt{x\sqrt{x\sqrt{x}}}\,dx=\int x^\frac{1}{2}\cdot x^\frac{1}{4}\cdot x^\frac{1}{8}\, dx=\int x^{\frac{1}{2}+\frac{1}{4}+\frac{1}{8}}\,dx=\int x^{\frac{7}{8}}\,dx=\frac{x^{\frac{7}{8}+1}}{\frac{7}{8}+1}+c=\frac{8}{15}\cdot\sqrt[8]{x^{15}}+c\quad (c\in\R) \]
 	\end{task}
 	\begin{note}
-		Ha szorzat van csinálj öszeget, ha összeg van cisnálj szorzatot
+		Ha szorzat van csinálj összeget, ha összeg van cisnálj szorzatot
 	\end{note}
 	\begin{task}
 		\[ \int\frac{(x+1)^2}{\sqrt{x}}\,dx=\int\frac{x^2+2x+1}{x^\frac{1}{2}}\,dx=\int\frac{x^2}{x^{\frac{1}{2}}}\,dx+2\int\frac{x}{x^\frac{1}{2}}\,dx+\int\frac{1}{x^\frac{1}{2}}\,dx=\int x^\frac{3}{2}\,dx+2\int x^\frac{1}{2}\,dx+\int x^{-\frac{1}{2}}\,dx= \]
@@ -288,28 +283,23 @@
 		\[ \int\frac{2}{3+2x^2}\,dx=\frac{2}{3}\int\frac{1}{1+\frac{2}{3}x^2}\,dx=\frac{2}{3}\int\frac{1}{1+\left(\sqrt{\frac{2}{3}}x\right)^2}\,dx=\frac{2}{3}\frac{\arc\tg\left(\sqrt{\frac{2}{3}}x\right)}{\sqrt{\frac{2}{3}}}+c\quad (c\in\R) \]
 	\end{task}
 	\begin{task}
-		\[\int\sin^2x\,dx=\int\frac{1-\cos2x}{2}\,dx=\frac{1}{2}\left(\int1\,dx-\int\cos2x\,dx=\frac{1}{2}x-\frac{1}{2}\cdot\frac{\sin(2x)}{2}+c\quad (c\in\R)\right) \]
+		\[\int\sin^2x\,dx=\int\frac{1-\cos2x}{2}\,dx=\frac{1}{2}\left(\int1\,dx-\int\cos2x\,dx\right)=\frac{1}{2}x-\frac{1}{2}\cdot\frac{\sin(2x)}{2}+c\quad (c\in\R) \]
 	\end{task}
 	\begin{note}
 		\[ \begin{cases}
-		\sin^2x+cos^2x=1\\
-		\cos^2x-\sin^2x=\cos2x
+			\sin^2x+cos^2x=1\\
+			\cos^2x-\sin^2x=\cos2x\\
+			2\cos x\sin x=\sin2x
 		\end{cases} \]
+		A következő két összefüggést \textit{linearizálható formulák}nak nevezzük.
 		\begin{center}
-			$+\quad \Rightarrow\quad $\fbox{$\cos^2 x=\frac{1+\cos2x}{2}$}\quad \fbox{$\sin^2x=\frac{1-\cos2x}{2}$}
-			
-			$-\quad \Rightarrow\quad $ LINEARIZÁLÓ FORMULÁK
+			\fbox{$\cos^2 x=\frac{1+\cos2x}{2}$}\quad \fbox{$\sin^2x=\frac{1-\cos2x}{2}$}
 		\end{center}
 	\end{note}
 	\begin{task} $x\in(-\pi,\pi)$
 		\[\int\frac{1}{1+\cos x}\,dx=\text{(félszögre térés)}=\int\frac{1}{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}+\cos^2\frac{x}{2}-\sin^2\frac{x}{2}}\,dx=\frac{1}{2}\cdot\int\frac{1}{\cos^2\frac{x}{2}}\,dx=\frac{1}{2}\frac{\tg \frac{x}{2}}{\frac{1}{2}}+c\quad (c\in\R) \]
 	\end{task}
-	\textbf{Házi feladat:}
-	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$
+	\begin{exercise}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$
 		\[ \int\frac{\cos^2x-2}{1+\cos2x}\,dx=? \]
-	\end{task}
-	Továbbá 50 db. beadandó I. és II. típusból (honlapon, 1628. feladattól 1673)
-	\begin{revision}
-		$\cos2x=\cos^2x-\sin^2x$
-	\end{revision}
+	\end{exercise}
 \end{document}

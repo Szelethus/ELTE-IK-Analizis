@@ -202,9 +202,12 @@
 			\caption{}
 		\end{figure}
 		Most már megállapítható a függvények metszéspontjai:
-		\[ (x-1)^2=2x+6\quad \Leftrightarrow\quad x_1=-1\quad v.\quad x=5 \]
+		\[ (x-1)^2=2x+6\quad \Leftrightarrow\quad x_1=-1\quad \text{és\quad } x_2=5 \]
+		Valamint megállapítható, hogy az $y=\pm\sqrt{2x-6}$ függvények a $-3$ pontban metszik az $x$ tengelyt.
+		\smallskip
+		
 		Ez alapján a területet kiszámolhatjuk. A zöld területről megállapítható hogy szimmetrikus, és ezt ki is használhatjuk.
-		\[ T=2\cdot\int_{-3}^{-1}\sqrt{2x+6}\,dx+\int_{-1}^{5}\left(\sqrt{2x+6}-(x-1)\right)\,dx=2\cdot\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}\right]_{-3}^1+\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}-\frac{x^2}{2}+x\right]_{5}^{-1}=\]
+		\[ T=2\cdot\int_{-3}^{-1}\sqrt{2x+6}\,dx+\int_{-1}^{5}\left(\sqrt{2x+6}-(x-1)\right)\,dx=2\cdot\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}\right]_{-3}^{-1}+\left[\frac{(2x+6)^{\frac{3}{2}}}{\frac{3}{2}\cdot2}-\frac{x^2}{2}+x\right]^{5}_{-1}=\]
 		\[=\frac{2}{3}\left[4^\frac{3}{2}-0\frac{3}{2}\right]+\frac{16^\frac{3}{2}}{3}-\frac{25}{2}+5-\left(\frac{4^\frac{3}{2}}{3}-\frac{1}{2}-1\right)=18  \]
 	\end{example}
 	\begin{example}Határozzuk meg az ezen görbék által határolt területet!
@@ -391,4 +394,44 @@
 		\[ y^2=2\sqrt{1-x^2}\quad \Rightarrow\quad \frac{y^2}{4}+x^2=1 \]
 		\[ \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 \]
 	\end{exercise}
+	\subsection{Összefoglaló}
+	\subsubsection{$\sin, \ \cos$ azonosságok ($\forall x\in\R$)}
+	\begin{align*}
+		\sin^2x+\cos^2x&=1\\
+		\cos^2x-\sin^2x&=\cos2x\\
+		2\cos x\sin x&=\sin2x\\
+		\frac{1+\cos2x}{2}&=\cos^2 x\\
+		\frac{1-\cos2x}{2}&=\sin^2x
+	\end{align*}
+	A következő helyettesítéssel:
+	\[  t:=\tg \left(\frac{x}{2}\right) \]
+	Könnyen megállapítható hogy
+	\[ \sin x=\frac{2t}{1+t^2}\quad \text{és}\quad  \cos x=\frac{1-t^2}{1+t^2} \]
+	\subsubsection{$\sh, \ \ch$ azonosságok ($\forall x\in\R$)}
+	\begin{align*}
+		\frac{e^x+e^{-x}}{2}&=\ch x\\
+		\frac{e^x-e^{-x}}{2}&=\sh x\\
+		\ch^2x-\sh^2x&=1\\
+		\frac{1+\ch2x}{2}&=\ch^2 x\\
+		2\sh x\ch x&=\sh(2x)
+	\end{align*}
+	\subsubsection{$\ln$ azonosságok ($\forall a,b\in\R^+$)}
+	\begin{align*}
+		\ln(a^2)&=2\ln a\\
+		\ln(a)-\ln(b)&=\ln\left(\frac{a}{b}\right)\\
+		\ln(a)+\ln(b)&=\ln(a\cdot b)
+	\end{align*}
+	\subsubsection{Integrálazonosságok}
+	Legyen $f\in\R\to\R$, $F$ legyen $f$ primitív függvénye. Legyen továbbá $f\in D$.
+	\[ \int\frac{f'(x)}{f(x)}\,dx=\ln|f(x)|+c\quad (x,c\in\R) \]
+	\[ \int f'(x)\cdot f^\alpha(x)\,dx=\frac{f^{\alpha+1}}{\alpha+1}+c\quad (x,c\in\R) \]
+	Racionális törtfüggvény nevezőjében másodfokú irreducibilis polinom $n$-edik hatványához tartozó rekurzív formula:
+	\[ I_n(x):=\int\frac{1}{(1+x^2)^n}\,dx=\frac{1}{2(n-1)}\cdot\frac{x}{(1+x^2)^{n-1}}+\frac{2n-3}{2(n-1)}\cdot I_{n-1}(x) \]
+	Speciális esetben, ha $n=2$:
+	\[ I_2(x):=\int\frac{1}{(1+x^2)^2}\,dx=\frac{1}{2}\cdot\frac{x}{1+x^2}+\frac{1}{2}\arc\tg x+c\quad (c\in\R) \]
+	\subsubsection{Határozott integrál}
+	A terület ($T$), térfogat ($x$ tengely körüli forgatáskor keletkező forgástest, $V$), és felület ($\mathcal{F}$) meghatározása $a,b\in\R$ intervallumon:
+	\[ T=\int_a^bf(x)\,dx\quad (f\in\R[a,b]) \]
+	\[ V=\pi\int_a^bf^2(x)\,dx\quad (f\in\R[a,b]) \]
+	\[ \mathcal{F}=2\pi\int_a^bf(x)\cdot\sqrt{1+(f'(x))^2}\,dx\quad (f\in C^1[a,b]) \]
 \end{document}

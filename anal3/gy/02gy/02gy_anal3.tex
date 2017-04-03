@@ -138,7 +138,7 @@
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
 	\bigskip
 	
-	%\subsection{Lineáris helyettesítés (folyt.)}
+	\subsubsection{$\int\frac{f'}{f}\,dx$ típusú feladatok}
 	\begin{task}
 		\[ \int\frac{f'(x)}{f(x)}\,dx=\ln |f(x)|+c \quad (c\in\R, \quad x\in I)\]
 	\end{task}
@@ -153,7 +153,7 @@
 	\begin{task}$x\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)$:
 		\[ \int\tg x\,dx=\int\frac{\sin x}{\cos x}\,dx\quad \overset{f(x):=\cos x}{\underset{f'(x)=-\sin x}{=}}\quad -\int\frac{(\cos x)'}{\cos x}\,dx=-\ln|\cos x|+c=-\ln(\cos x)+c\quad (c\in\R) \]
 	\end{task}
-	\subsection{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
+	\subsubsection{$\int f'(x)\cdot f^\alpha(x)\,dx$ típusú feladatok}
 	\begin{task} $(\alpha\in\R\setminus\{-1\})\quad (x\in I)$
 		\[ \int f'(x)\cdot f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c\quad (c\in\R) \]
 		\[ \int 1\cdot x^\alpha\,dx=\frac{x^{\alpha+1}}{\alpha+1}+c\quad (c\in\R)\quad \longrightarrow\quad \int f'(x)f^\alpha(x)\,dx=\frac{f^{\alpha+1}(x)}{\alpha+1}+c \quad (c\in\R) \]
@@ -207,9 +207,10 @@
 	\end{task}
 	\begin{exercise} Tipp: Linearizálás 
 		\[ \int(\sin^5x\cos^{10}x)\,dx\quad (x\in\R) \]
-		\textit{Megoldás: (nem órán hangzott el)}
-		\[ \int(\sin^5x\cos^{10}x)\,dx=\int(\sin x\cdot\sin^4x\cdot\cos^{10}x)\,dx=-\int((\cos x)'(1-\cos^2x)^2\cos^{10}x)\,dx=\]
-		\[=-\int(\cos x)'\cos^{10}x\,dx+\int(\cos x)'\cos^{12}x\,dx=-\frac{\cos^{11}x}{11}+\frac{\cos^{13}x}{13}+c\quad (c\in\R) \]
+		\textit{Megoldás:}
+		\[ \int(\sin^5x\cos^{10}x)\,dx=\int(\sin x\cdot\sin^4x\cdot\cos^{10}x)\,dx=-\int\left((\cos x)'(1-\cos^2x)^2\cos^{10}x\right)\,dx=\]
+		\[=-\int(\cos x)'(\cos^4x-2\cos^2x+1)\cos^{10}x\,dx=-\int(\cos x)'\cos^{14}x\,dx+2\cdot\int(\cos x)'\cos^{12}x\,dx-\int(\cos x)'\cos^{10}x\,dx= \]
+		\[ -\frac{\cos^{15}x}{15}+2\cdot\frac{\cos^{13}x}{13}-\frac{\cos^{11}x}{11}+c\quad (c\in\R) \]
 	\end{exercise}
 	\begin{task}$x\in\R$
 		\[ \int\sin^2x\cos^4x\,dx=\int(1-\cos^2x)\cos^4 x\,dx=\int\cos^4 x\,dx-\underbrace{\int\cos^6x\,dx}_{\text{HF}}=\]
@@ -228,7 +229,7 @@
 	\end{exercise}
 	\begin{task}$x\in(0,\pi)$
 		\[\int\frac{1}{\sin x}\,dx\quad \overset{\sin2\alpha=2\sin\alpha\cos\alpha}{\underset{\text{félszögre térés}}{=}}\quad \int\frac{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}}{2\sin\frac{x}{2}\cos\frac{x}{2}}\,dx=\frac{1}{2}\int\frac{\sin\frac{x}{2}}{\cos\frac{x}{2}}\,dx+\frac{1}{2}\int\frac{\cos\frac{x}{2}}{\sin\frac{x}{2}}\,dx=\]
-		\[=\int\frac{(\sin\frac{x}{2})'}{\sin\frac{x}{2}}-\int\frac{(\cos\frac{x}{2})'}{\cos\frac{x}{2}}=\ln\left(\sin\frac{x}{2}\right)-\ln\left(\cos\frac{x}{2}\right)+c=\ln\left(\tg\frac{x}{2}\right)+c\quad (c\in\R) \]
+		\[=-\int\frac{(\cos\frac{x}{2})'}{\cos\frac{x}{2}}\,dx+\int\frac{(\sin\frac{x}{2})'}{\sin\frac{x}{2}}\,dx=-\ln\left(\cos\frac{x}{2}\right)+\ln\left(\sin\frac{x}{2}\right)+c=\ln\left(\tg\frac{x}{2}\right)+c\quad (c\in\R) \]
 	\end{task}
 	\begin{exercise}
 		\[ \int\frac{\sin^2x}{\cos^4x}\,dx\quad \left(x\in\left(0,\frac{\pi}{2}\right)\right) \]
@@ -246,10 +247,8 @@
 		\[=\frac{1}{16}\int\left(1+4\cos2x+6\cos^22x+4\cos^32x+\cos^42x\right)\,dx=\]
 		\def\fracHeight{\vphantom{\frac{3^2}{2}}}
 		\[= \frac{1}{16}\left(\overbrace{x\fracHeight}^{\int1\,dx}+\overbrace{\frac{4}{2}\sin2x\fracHeight}^{\int4\cos2x\,dx}+ \overbrace{6\left(\frac{x}{2}+\frac{\sin4x}{8}\right)\fracHeight}^{\int6\cos^22x\,dx}+ \overbrace{4\left(\sin2x-\frac{\sin^32x}{3}\right)}^{\int4\cos^32x\,dx}+\overbrace{\frac{2x}{4}+\frac{\sin4x}{4}+\frac{2x}{8}+\frac{\sin8x}{32}\fracHeight}^{\int\cos^42x\,dx}\right)+c\quad (c\in\R)  \]
-		Alternatív (még nem teljes) megoldás:
-		\[=\int\left(\frac{1}{2}2\sin x\cos x\right)^4\,dx=\frac{1}{16}\int\left(2\sin x\cos x\right)\,dx=\frac{1}{16}\int\sin^42x\,dx= \]
 	\end{exercise}
-	\subsubsection{Helyettesítés szabálya}
+	\subsection{Helyettesítés szabálya}
 	\begin{revision}
 		Tegyük fel, hogy $\emptyset\not=\int f(x)\,dx=F(x)+c\quad (c\in\R, x\in I)$, és tegyük fel, hogy\\ $g:J\to I, \quad g\in D.$ Ekkor
 		\[ \int f(g(x))\cdot g'(x)\,dx=F(g(x))+c\quad (c\in\R) \]
