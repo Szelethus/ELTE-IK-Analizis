@@ -76,6 +76,7 @@
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
 \DeclareMathOperator{\arcctg}{arc ctg}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \begin{document}
 	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
@@ -133,7 +134,7 @@
 		{\Large Gyakorlati jegyzet}
 		
 		\smallskip
-		6. óra.
+		7. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
 	\section{Többáváltozós függvények analízise}
@@ -159,12 +160,21 @@
 		\[ z=1\quad \Leftrightarrow\quad x^2+y^2=1\quad \Leftrightarrow\quad \text{körvonal} \]
 		\[ z=2\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{2})^2\quad \Leftrightarrow\quad \text{$\sqrt{2}$ sugarú körvonal} \]
 		\[ 0<z\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{2})^2 \]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/01.png}
+			\caption{}
+		\end{figure}
 		Függőleges metszetek (bizonyos irányok mentén)
 		\[ y=0\quad \Leftrightarrow\quad \text{,,$x$ tengely''}\quad \Rightarrow\quad z=x^2=f(x,0)\quad (x\in\R) \]
 		\[ x=0\quad \Leftrightarrow\quad \text{,,$y$ tengely''}\quad \Rightarrow\quad z=x^2=f(x,0)\quad (x\in\R) \]
 		\[ y=x\quad \text{mentén}\quad \Rightarrow\quad x=f(x,x)=2x^2\quad (y\in\R) \]
 		Ezt a felületet \textit{forgás-paraboloid}nak hívjuk.
-		%TODO 01, 02
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/02.png}
+			\caption{}
+		\end{figure}
 	\end{task}
 	\begin{note}
 		Megállapítható, hogy illeszthető $z=0$-ban érintősík 
@@ -175,21 +185,34 @@
 		\[ z=0\quad \Leftrightarrow\quad \sqrt{x^2+y^2}=0\quad \Leftrightarrow\quad (x,y)=(0,0) \]
 		\[ z=1\quad \Leftrightarrow\quad \sqrt{x^2+y^2}=1\quad \Leftrightarrow\quad x^2+y^2=1^2 \]
 		\[ z=2\quad \Leftrightarrow\quad \sqrt{x^2+y^2}=2\quad \Leftrightarrow\quad x^2+y^2=2^2 \]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/03.png}
+			\caption{}
+		\end{figure}
 		Függőleges metszetek:
 		\[ y=0\quad \Rightarrow\quad z=\sqrt{x^2}=|x|=f(x,0)\quad (x\in\R) \]
 		\[ x=0\quad \Rightarrow\quad z=\sqrt{y^2}=|y|=f(0,y)\quad (y\in\R) \]
 		Ez a már jól ismert \textit{kúp}.
-		%TODO 03, 04
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/04.png}
+			\caption{}
+		\end{figure}
 	\end{task}
 	\begin{note}
 		Megálapítható, hogy $z=0$-ra nem tudunk érintősíkot illeszteni.
 	\end{note}
 	\begin{task}Keresük a legbővebb halmazt, ahol ez függvényként értelmezhető
-		\[ f(x,y):=\sqrt{1-x^2-y^2}=z,\quad ((x,y)\in\mathcal{D_f}=?) \]
+		\[ f(x,y):=\sqrt{1-x^2-y^2}=z,\quad ((x,y)\in\mathcal{D}_f=?) \]
 		Világos, mikor értelmezhető.
-		\[ \mathcal{D}_f=\left\{(x,y)\in\R^2~|~\sqrt{x^2+y^2}\leq 1 \right\}=\left\{ (x,y)\in\R^2~|~||(x,y)-(0,0)||_2\leq 1 \right\} \]
+		\[ \mathcal{D}_f=\left\{(x,y)\in\R^2~|~\sqrt{x^2+y^2}\leq 1 \right\}=\left\{ (x,y)\in\R^2~|~\norm{(x,y)-(0,0)}_2\leq 1 \right\} \]
 		Szóban mondhatni ezek azok a pontok, melyek az origótól 1 távolságra vannak
-		%TODO 05, \mathcal{D_f}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/05.png}
+			\caption{}
+		\end{figure}
 		Megállapítható, hogy 1 és $-1$-en kívül nincsenek függvényértékek.
 		\smallskip
 		
@@ -200,7 +223,11 @@
 		Függőleges
 		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)\quad x\in[-1,1] \]
 		\[ x=0\quad \text{mentén}\quad \Rightarrow z=\sqrt{1-y^2}\quad y\in[-1,1] \]
-		%TODO 06
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/06.png}
+			\caption{}
+		\end{figure}
 	\end{task}
 	\begin{exercise}
 		\[ z:=f(x,y):=e^{-x^2-y^2}\quad (x,y)\in\R^2 \]
@@ -280,6 +307,11 @@
 		\begin{enumerate}
 			\item \[ \exists\lim_{x\to0}\left(\lim_{y\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)=\lim_{x\to0}\left(\frac{1}{x^2}\right)=\lim_{x\to0}(0)=0 \]
 			\item \[ \exists\lim_{y\to0}\left(\lim_{x\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)= \]
+			\begin{figure}[H]
+				\centering
+				\includegraphics[height=3cm]{kepek/07.png}
+				\caption{}
+			\end{figure}
 			%TODO hiányos 07
 		\end{enumerate}
 	\end{task}
