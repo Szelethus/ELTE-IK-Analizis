@@ -138,10 +138,7 @@
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
 	\section{Többáváltozós függvények analízise}
-	\subsection{Személtetés}
-	\begin{example}
-		Szemléltetés ($\R^2\to\R$, vagy másnével kétváltozós valós függvények)
-	\end{example}
+	\subsection{Személtetés $\R^2\to\R$ esetre}
 	\begin{note}
 		Példa lehet alkalmazására pl. egy sík terület adott pontjához annak hőmérsékletének hozzárendelése.
 	\end{note}
@@ -150,25 +147,29 @@
 	\end{note}
 	\begin{task}
 		\[ f(x,y):=x^2+y^2\quad ((x,y)\in\R^2)\quad \Leftrightarrow\quad z=y^2+y^2 \]
-		Az ilyen függvényeket úgy fogjuk tudni megoldani, hogy a függvény képéből kimetszünk egy gürbét, melynek segítségével már vizsgálható ez a rész egyváltozós analízissel.
+		Az ilyen függvényeket úgy fogjuk tudni megoldani, hogy a függvény képéből kimetszünk egy görbét, melynek segítségével már vizsgálható az az adott rész egyváltozós analízissel.
 		
 		\medskip
 		Megállapítható, hogy $\forall (x,y)\in\R^2:\quad z>0$.
 		\smallskip
 		Szintvonalak: (vagy vízszintes metszetek)
-		\[ z=0\quad \Leftrightarrow\quad x^2+y^2=0\quad \Leftrightarrow\quad (x,y)=(0,0) \]
-		\[ z=1\quad \Leftrightarrow\quad x^2+y^2=1\quad \Leftrightarrow\quad \text{körvonal} \]
-		\[ z=2\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{2})^2\quad \Leftrightarrow\quad \text{$\sqrt{2}$ sugarú körvonal} \]
-		\[ 0<z\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{2})^2 \]
+		\begin{align*}
+			z=0&\quad \Leftrightarrow\quad x^2+y^2=0\quad \Leftrightarrow\quad (x,y)=(0,0) \\
+			z=1&\quad \Leftrightarrow\quad x^2+y^2=1\quad \Leftrightarrow\quad \text{1 sugarú körvonal} \\
+			z=2&\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{2})^2\quad \Leftrightarrow\quad \text{$\sqrt{2}$ sugarú körvonal} \\
+			0<z&\quad \Leftrightarrow\quad x^2+y^2=(\sqrt{z})^2\quad \Leftrightarrow\quad \sqrt{z}\text{ sugarú körvonal} 
+		\end{align*}
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=3cm]{kepek/01.png}
 			\caption{}
 		\end{figure}
 		Függőleges metszetek (bizonyos irányok mentén)
-		\[ y=0\quad \Leftrightarrow\quad \text{,,$x$ tengely''}\quad \Rightarrow\quad z=x^2=f(x,0)\quad (x\in\R) \]
-		\[ x=0\quad \Leftrightarrow\quad \text{,,$y$ tengely''}\quad \Rightarrow\quad z=x^2=f(x,0)\quad (x\in\R) \]
-		\[ y=x\quad \text{mentén}\quad \Rightarrow\quad x=f(x,x)=2x^2\quad (y\in\R) \]
+		\begin{align*}
+			y=0&\quad \Leftrightarrow\quad \text{,,$x$ tengely''}\quad \Rightarrow\quad z=x^2=f(x,0)\quad (x\in\R) \\
+			x=0&\quad \Leftrightarrow\quad \text{,,$y$ tengely''}\quad \Rightarrow\quad z=y^2=f(0,y)\quad (x\in\R) \\
+			y=x&\quad \text{mentén}\quad \Rightarrow\quad x=f(x,x)=2x^2\quad (y\in\R) 
+		\end{align*}
 		Ezt a felületet \textit{forgás-paraboloid}nak hívjuk.
 		\begin{figure}[H]
 			\centering
@@ -177,7 +178,7 @@
 		\end{figure}
 	\end{task}
 	\begin{note}
-		Megállapítható, hogy illeszthető $z=0$-ban érintősík 
+		Megállapítható, hogy illeszthető $z=0$-ban érintősík.
 	\end{note}
 	\begin{task}
 		\[ z:=f(x,y):=(\sqrt{x^2+y^2})\quad ((x,y)\in\R^2, z\geq 0) \]
@@ -217,9 +218,11 @@
 		\smallskip
 		
 		Síkvonalak:
-		\[ x=0\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \]
-		\[ x=1\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=1\quad \Leftrightarrow\quad x^2+y^2=0\quad \Leftarrow\quad (x,y)=(0,0) \]
-		\[ x=\frac{1}{2}\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2\]
+		\begin{align*}
+			x=0&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \\
+			x=1&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=1\quad \Leftrightarrow\quad x^2+y^2=0\quad \Rightarrow\quad (x,y)=(0,0) \\
+			x=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2
+		\end{align*}
 		Függőleges
 		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)\quad x\in[-1,1] \]
 		\[ x=0\quad \text{mentén}\quad \Rightarrow z=\sqrt{1-y^2}\quad y\in[-1,1] \]
@@ -239,7 +242,7 @@
 			\item Gyemidovics
 			\item Bolyai sorozat (többváltozós függvények analízise)
 			\item Szili László
-			\item Kórolyi Katalin -> honlap
+			\item Kórolyi Katalin $\rightarrow$ honlap
 		\end{enumerate}
 	\end{note}
 	\subsection{Határérték számítása}
@@ -251,24 +254,25 @@
 		\end{enumerate}
 	\end{revision}
 	\begin{task} $(x,y)\in\R^2,\quad x^2+y^2\not=0$
-		\[ \lim_{(x,y)\to\underbrace{(1,2)}_{a}}\left(\frac{x^2+xy}{x+y^2}\right)=\frac{1^2+1\cdot2}{1+2^2}/\frac{3}{5} \]
+		\[ \lim_{(x,y)\to\underbrace{(1,2)}_{a}}\left(\frac{x^2+xy}{x+y^2}\right)=\frac{1^2+1\cdot2}{1+2^2}=\frac{3}{5} \]
 	\end{task}
 	Miért tehetjük meg azt, hogy itt többváltoznál is simán beírhatjuk az értékeket?
 	\begin{task}
-		\[ \lim_{(x,y)\to(6,3)}x\cdot y\cos(x-2y)=18\cdot\cos0=18 \]
+		\[ \lim_{(x,y)\to(6,3)}x\cdot y\cdot\cos(x-2y)=18\cdot\cos0=18 \]
 		Ugyanis: ld. átviteli elv. Tekintsünk egy vektorsorozatot, melyre
 		\[ \underbrace{(x,y)}_{\not=(6,3)}\to(6,3)\quad (n\to\infty)\quad \Leftrightarrow\quad  \]
 		Ez akkor és csak akkor konvergens, ha komponensenként konvergál.
 		\[\begin{cases}
 			\lim(x_n)=6\\
 			\lim(y_n)=3
-		\end{cases} \Rightarrow\quad \exists\lim(x_n,y_n)=6\cdot3=18 \]
+		\end{cases} \Rightarrow\quad \exists\lim(x_n,y_n)\quad \text{és}\quad \lim(x_n,y_n)=6\cdot3\cdot1=18 \]
+		Válasszunk meg egy valós sorozatot. Szerencsés, ha ez 0-hoz tart. %TODO sure?
 		\[ u_n:=x_n-2y_n\to 6-2\cdot3=0\quad (n\to\infty) \]
 		Legyen 
 		\[ g(t):=\cos t\quad (t\in\R)\quad (g\in\R\to\R) \]
 		Hatványsorozatok összege folytonos, így alkalmazható az átviteli elv
-		\[ g\in C\quad \Rightarrow\quad \exists\lim_{n\to\infty}\cos(x_n-2y_n)=1 \]
-%TODO		Ahol kihasználtuk, hogy $\u_n\to0\quad \Rightarrow\quad \cos(u_n)\to\cos 0=1\quad (n\to\infty)$
+		\[ g\in C\quad \Rightarrow\quad \exists\lim_{n\to\infty}\cos(x_n-2y_n)\quad \text{és}\quad \lim_{n\to\infty}\cos(x_n-2y_n)=1 \]
+		Ahol kihasználtuk, hogy $u_n\to0\quad \Rightarrow\quad \cos(u_n)\to\cos 0=1\quad (n\to\infty)$
 	\end{task}
 	\begin{task}
 		\[ \lim_{(x,y)\to(0,0)}\frac{x^2+y^2}{\sqrt{x^2+y^2+1}-1}\quad \overset{\frac{0}{0}}{=}\quad \lim_{(x,y)\to(0,0)}\frac{(x^2+y^2)(\sqrt{x^2+y^2+1}+1)}{x^2+y^2+1-1}=\sqrt{1}+1=2 \]
@@ -295,7 +299,7 @@
 		Legyen újra
 		\[ \left(\frac{1}{n},0\right)=\frac{0}{\left(\frac{1}{n}\right)^2}=0\to0 \]
 		Azaz a határérték csak 0 lehet, más nem, ha létezik.
-		\[ \left(0,\frac{1}{n}\right)\to(0,0)\quad (n\to\infty)\quad és f\left(0,\frac{1}{n}\right)=\frac{0}{\left(\frac{1}{n}\right)^2}=0\to 0\quad (n\to\infty) \]
+		\[ \left(0,\frac{1}{n}\right)\to(0,0)\quad (n\to\infty)\quad \text{és}\quad  f\left(0,\frac{1}{n}\right)=\frac{0}{\left(\frac{1}{n}\right)^2}=0\to 0\quad (n\to\infty) \]
 		De:
 %		\[ \left(\frac{1}{n},\frac{1}{n}\right) \to(0,0) (n\to\infty)\quad \text{és}\quad f\left(\frac{1}{n},\frac{1}{n}\right)=\frac{\left(\frac{1}{n}\right)^n}{left(\frac{1}{n}\right)^n+\left(\frac{1}{n}-\frac{1}{n}\right)^2}=1 \]
 	\end{task}
