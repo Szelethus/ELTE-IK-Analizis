@@ -208,7 +208,7 @@
 		\[ f(x,y):=\sqrt{1-x^2-y^2}=z,\quad ((x,y)\in\mathcal{D}_f=?) \]
 		Világos, mikor értelmezhető.
 		\[ \mathcal{D}_f=\left\{(x,y)\in\R^2~|~\sqrt{x^2+y^2}\leq 1 \right\}=\left\{ (x,y)\in\R^2~|~\norm{(x,y)-(0,0)}_2\leq 1 \right\} \]
-		Szóban mondhatni ezek azok a pontok, melyek az origótól 1 távolságra vannak
+		Ezek azok a pontok, melyek az origótól 1 távolságra vannak.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=3cm]{kepek/05.png}
@@ -219,13 +219,13 @@
 		
 		Síkvonalak:
 		\begin{align*}
-			x=0&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \\
+			x=0&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \quad \text{(ábrán fekete körvonal)}\\
 			x=1&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=1\quad \Leftrightarrow\quad x^2+y^2=0\quad \Rightarrow\quad (x,y)=(0,0) \\
-			x=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2
+			x=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2 \quad \text{(ábrán zöld körvonal)}
 		\end{align*}
 		Függőleges
-		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)\quad x\in[-1,1] \]
-		\[ x=0\quad \text{mentén}\quad \Rightarrow z=\sqrt{1-y^2}\quad y\in[-1,1] \]
+		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)=\sqrt{1-x^2}\quad x\in[-1,1]\quad \text{ábrán piros félkörvonal} \]
+		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad  z=f(0,y)=\sqrt{1-y^2}\quad y\in[-1,1]\quad \text{ábrán kék félkörvonal} \]
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=3cm]{kepek/06.png}
@@ -246,7 +246,7 @@
 		\end{enumerate}
 	\end{note}
 	\subsection{Határérték számítása}
-	\begin{revision}
+	\begin{revision} (határérték definíciója és átviteli elv)
 		\begin{enumerate}
 			\item $f\in\R^n\to\R^m;\quad 1\leq n,m\in\N;\quad a\in\mathcal{D}_f',\quad A\in\R^m$:
 			\[ \lim_{x\to a}f(x)=\lim_af=A\quad \overset{\text{def.}}{\Longleftrightarrow}\quad \forall\varepsilon>0\quad \exists\delta>0\quad \forall x\in\mathcal{D}_f\setminus\{a\}:\quad 0<||x-a||_{\R^n}<\delta\quad ||f(x)-A||_{\R^m}<\varepsilon \]
