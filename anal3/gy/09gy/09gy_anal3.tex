@@ -137,7 +137,8 @@
 		\smallskip
 		9. óra.
 	\end{center}
-	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán.\\ (2017. április 20.
+	\includegraphics[height=3cm]{kepek/420.jpg}) %TODO 420!!!
 	\subsection{Irány menti és parciális derivált}
 	\begin{revision}
 		\begin{enumerate} 
@@ -153,14 +154,22 @@
 			\item $\delta_{e}f(1,1)=?$
 			\item Milyen $e$ mentén lesz $\delta_{e}f(1,1)$ min ill. max?
 		\end{enumerate}
-		%TODO 01 $l(t)=a+te, t\in\R
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/07.png}
+			\caption{$l(t)=a+te,\quad  t\in\R$}
+		\end{figure}
 		\textit{Megoldás:} $a:=(1,1), e=\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right)\in\R^2$
 		\[ \Rightarrow\quad \norm{e}_2=\sqrt{\frac{1}{4}+\frac{3}{4}}=2\checkmark \]
 		\[ \Rightarrow \quad F(t)=f(a+te)=f((1,1)+t\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right))=f\left(1+\frac{t}{2};1+\frac{t\sqrt{3}}{2}\right)=\left(1+\frac{t}{2}\right)^2-\left(1+\frac{t}{2}\right)\left(1+\frac{t\sqrt{3}}{2}\right)+\left(1+\frac{t\sqrt{3}}{2}\right)^2\]
 		\[\quad \Rightarrow\quad F\in D\quad \text{és} \]
 		\[ F'(t)=2\cdot\left(1+\frac{t}{2}\right)\cdot\frac{1}{2}-\frac{1}{2}\left(1+\frac{t\sqrt{3}}{2}\right)-\left(1+\frac{t}{2}\right)\frac{\sqrt{}}{2}+2\left(1+\frac{t\sqrt{3}}{2}\right)\cdot\frac{\sqrt{3}}{2}\quad (t\in\R) \]
 		\[\Rightarrow\quad \text{(def)}\quad \delta_ef(1,1)=F'(0)=2\cdot\frac{1}{2}-\frac{1}{2}-\frac{\sqrt{3}}{2}+2\cdot\frac{\sqrt{3}}{2}=\frac{1}{2}+\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2}\in\R \]
-		%TODO 02
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/02.png}
+			\caption{}
+		\end{figure}
 		
 	\end{task}
 	\begin{note}
@@ -183,8 +192,16 @@
 			\item Legyen $e:=(\cos\alpha; \sin\alpha)\quad \alpha\in[0;2\pi]$
 			\[ \Rightarrow\quad \exists\delta_ef(1,1)=\langle f'(1,1);e\rangle\quad \overset{\norm{e}_2}{=}\quad \langle(1,1);(\cos\alpha,\sin\alpha)\rangle=\sin\alpha+\cos\alpha=:g(\alpha)\quad \Rightarrow \]
 			$g'(\alpha)=\cos\alpha-\sin\alpha=0\quad \Leftrightarrow\quad \tg\alpha=0$
-			%TODO 03
-			%TODO 04 $e_\min= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_\max= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right),\quad 
+			\begin{figure}[H]
+				\centering
+				\includegraphics[height=3cm]{kepek/03.png}
+				\caption{}
+			\end{figure}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[height=3cm]{kepek/04.png}
+				\caption{$e_{\min}= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_{\max}= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right)$}
+			\end{figure}
 			Véletlen, higy a max grádiens irányú? hf.
 		\end{enumerate}
 	\end{note}
@@ -194,9 +211,17 @@
 			1\quad (x,y)\in A\cup B\cup C\\
 			0\quad \text{különben}
 		\end{cases} \]
-		%TODO 05
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/05.png}
+			\caption{}
+		\end{figure}
 		$e$ fix.
-		%TODO 06
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/06.png}
+			\caption{}
+		\end{figure}
 		\[ \Rightarrow\quad \exists\delta_ef(0,0)=0\quad (\forall e\in\R^2,\quad \norm{e}=1) \]
 		De:
 		\[ f\notin C\{(0,0)\} \quad \text{ui.}\quad \nexists\lim_{(0,0)}f\quad \Rightarrow\quad f\notin D(0,0) \]
