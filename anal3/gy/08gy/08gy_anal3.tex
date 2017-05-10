@@ -272,14 +272,14 @@
 			\textit{Ellenőrzés:}
 			\begin{revision}
 				Ha $f\in\R^n\to\R$ típus\quad $(m=1)$\quad és\quad $f\in D\{a\}\quad \Rightarrow$
-				\[ f'(a)=\grad f(a)=(\delta_1 f(a),\delta_2 f(a),\dots,\delta_nf(a)) \]
+				\[ f'(a)=\grad f(a)=(\partial_1 f(a),\partial_2 f(a),\dots,\partial_nf(a)) \]
 				Most: $((x,y)\in\R^2)$
-				\[ \delta_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
-				\[ \delta_2f(\underbrace{x}_{\text{fix}},\underbrace{y}_{\text{változó}})=3x-2y  \]
-				$\Rightarrow\quad \exists\delta_1 f,\delta_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok
+				\[ \partial_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
+				\[ \partial_2f(\underbrace{x}_{\text{fix}},\underbrace{y}_{\text{változó}})=3x-2y  \]
+				$\Rightarrow\quad \exists\partial_1 f,\partial_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok
 				
 				$\overset{\text{tétel}}{\Rightarrow}\quad f\in D(\R^2)$ és 
-				\[ f'(x,y)=\grad f(x,y)=(\delta_1 f(x,y), \delta_2f(x,y)) \]
+				\[ f'(x,y)=\grad f(x,y)=(\partial_1 f(x,y), \partial_2f(x,y)) \]
 				Most:
 				\[ f'(x,y)=(4x+3y,3x-2y)\quad (\forall(x,y)\in\R^2) \]
 				Spec:
@@ -356,9 +356,9 @@
 				\grad f_2(x,y)\\
 				\grad f_3(x,y)
 			\end{bmatrix} =\begin{bmatrix}
-				\delta_1 f_1(x,y)&\delta_2 f_1(x,y)\\
-				\delta_1 f_2(x,y)&\delta_2 f_2(x,y)\\
-				\delta_1 f_3(x,y)&\delta_2 f_3(x,y)
+				\partial_1 f_1(x,y)&\partial_2 f_1(x,y)\\
+				\partial_1 f_2(x,y)&\partial_2 f_2(x,y)\\
+				\partial_1 f_3(x,y)&\partial_2 f_3(x,y)
 			\end{bmatrix}=\begin{bmatrix}
 				3x^2+y&y\\
 				1&-2y\\

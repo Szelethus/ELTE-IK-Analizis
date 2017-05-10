@@ -249,7 +249,7 @@
 	\begin{revision} (határérték definíciója és átviteli elv)
 		\begin{enumerate}
 			\item $f\in\R^n\to\R^m;\quad 1\leq n,m\in\N;\quad a\in\mathcal{D}_f',\quad A\in\R^m$:
-			\[ \lim_{x\to a}f(x)=\lim_af=A\quad \overset{\text{def.}}{\Longleftrightarrow}\quad \forall\varepsilon>0\quad \exists\delta>0\quad \forall x\in\mathcal{D}_f\setminus\{a\}:\quad 0<||x-a||_{\R^n}<\delta\quad ||f(x)-A||_{\R^m}<\varepsilon \]
+			\[ \lim_{x\to a}f(x)=\lim_af=A\quad \overset{\text{def.}}{\Longleftrightarrow}\quad \forall\varepsilon>0\quad \exists\partial>0\quad \forall x\in\mathcal{D}_f\setminus\{a\}:\quad 0<||x-a||_{\R^n}<\partial\quad ||f(x)-A||_{\R^m}<\varepsilon \]
 			\item (átviteli elv)\[ \forall (x_k):\N\to\R^n\setminus\{a\}\quad \text{és}\quad \lim_{k\to\infty}(x_k)=a:\quad \lim_{k\to\infty}f(x_k)=A \]
 		\end{enumerate}
 	\end{revision}
@@ -333,12 +333,12 @@
 		Sejtés: $\lim_{(0,0)}f=0$. (lévén nem tudtuk cáfolni)
 		
 		Definíció alapján:
-		\[ \forall\varepsilon>0\quad \exists\delta>0\quad \forall(x,y)\in\mathcal{D}_f=\R^2\setminus\{(0,0)\}:\quad 0<||(x,y)-(0,0)||_{\R^2}<\delta\quad |f(x,y)-0|<\varepsilon \]
+		\[ \forall\varepsilon>0\quad \exists\partial>0\quad \forall(x,y)\in\mathcal{D}_f=\R^2\setminus\{(0,0)\}:\quad 0<||(x,y)-(0,0)||_{\R^2}<\partial\quad |f(x,y)-0|<\varepsilon \]
 		Legyen $\varepsilon>0$ fix; és $|f(x,y)-0|=\left|\frac{xy}{\sqrt{x^2+y^2}}\right|=\frac{|xy|}{\sqrt{x^2+y^2}}$
 		
 		Mi a cél? $||f(x,y)-0||\leq K||(x,y)-(0,0)||_{\R{^2}}$
 		\[ \underset{|xy|=\sqrt{x^2y^2}\leq\frac{x^2+y^2}{2}}{\leq}\quad\frac{x^2+y^2}{2\sqrt{x^2+y^2}}=\frac{1}{2}\sqrt{x^2+y^2}=\frac{1}{2}||(x,y)-(0,0)||_2<\varepsilon  \]
 		\[ \Leftrightarrow||(x,y)-(0,0)||_2<2\varepsilon \]
-		Legyen $\delta:=2\varepsilon$ jó.
+		Legyen $\partial:=2\varepsilon$ jó.
 	\end{task}
 \end{document}
