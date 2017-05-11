@@ -138,25 +138,42 @@
 		12. óra.
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán. (\today)
-	\subsection{Folytatás}
+	%\subsection{Folytatás}
 	\begin{task}
 		%TODO feladatfolytatás
 		\[ f(x,y)=x^4+y^4-x^2-2xy-y^2 \]
 		Megállapítottuk korábban, hogy a $(0,0)$ ponthoz kellett külön vizsgálat, lévén za általunk kapott mátrix negatív szemidefinit volt.
 		\[ f(0,0)=0 \]
-		%TODO 41 Ha (0,0) loklis minimum, akkor be kéne látunk, hogy a (0,0) körüli környezetben, melyben mindenki pozitív. Ha maximum, a környezetben negatívnak kell lennie. Ha egyik sem, akkor kell negatív és pozitív érték is.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/41.png}
+			\caption{Ha (0,0) lokális minimum, akkor be kéne látunk, hogy a (0,0) körüli környezetben, melyben minden érték pozitív. Ha maximum, a környezetben negatívnak kell lennie. Ha egyik sem, akkor kell negatív és pozitív érték is.}
+		\end{figure}
 		\[  y=0\quad \text{mentén}\quad f(x,0)=x^4-x^2=x^2(x^2-1) \]
-		%TODO 42 Ez alapján látszik, hogy a 0 körüli környezetnek mindig lesz olyan része, mely negatív értékeket vesz fel.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/42.png}
+			\caption{Ez alapján látszik, hogy a 0 körüli környezetnek mindig lesz olyan része, mely negatív értékeket vesz fel.}
+		\end{figure}
 		Próbáljunk keresni egy olyan részt ebben az 1 sugarú körben, melyben pozitív értékeket is felvesz a függvény.
 		\[ f(x,y)=x^4+y^4-(x+y)^2 \]
 		Ezt elérhetjük úgy, hogy a fenti képletből lenullázzuk a a $(x+y)^2$ tagot.
 		\[ y=-x\quad \text{mentén}\quad f(x,-x)=2x^4>0\quad \forall x\in\R\setminus\{0\} \]
-		%TODO 43
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/43.png}
+			\caption{}
+		\end{figure}
 		Ezzel beláttuk, hogy a (0,0) pont minden környezetében találhatunk negatív és pozitív értékeket is, azaz
 		
 		Legyen $x_\delta:=\frac{\min\{1,\delta\}}{2}$
 		\[ \forall\delta>0\quad \text{és}\quad k_\delta(0,0):\quad \overbrace{f(x_\delta,0)}^{>0}<f(0,0)=0<f\left(\frac{\delta}{2},-\frac{\delta}{2}\right)=2\cdot\frac{\delta^4}{16}=\frac{\delta^4}{8} \]
-		%TODO 44
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/44.png}
+			\caption{}
+		\end{figure}
 		$\Rightarrow \quad (0,0)$ nem lokélis szélső érték hely.
 	\end{task}
 	\begin{task}
@@ -205,14 +222,22 @@
 		\end{cases} \]
 		$\Rightarrow\quad \forall\delta>0$ és $k_\delta(0,0)$ környezetben:
 		\[ f\left(-\frac{\delta}{2},0\right)<f(0,0)=0<f\left(\frac{\delta}{2},0\right)\quad \Rightarrow\quad \text{(0,0) nem lokális szélső érték hely.} \]
-		%TODO 45
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/45.png}
+			\caption{}
+		\end{figure}
 	\end{task}
 	\subsection{Abszolút szélső érték keresés}
 	\begin{task}
 		\[ f(x,y):=y(2y-3)\quad ((x,y)\in A) \]
 		$A$: Az $>=x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
-		%TODO 46 $A$ halmaz, 47 így nézkez ki, egyenlőre cska egy fiktív ábra
-		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/46.png}\quad \quad \quad 
+			\includegraphics[height=4cm]{kepek/47.png}
+			\caption{$A$ halmaz, így nézkez ki, egyenlőre csak egy fiktív ábra}
+		\end{figure}
 		Erre a problémakörre egy tételünk is van: $f\in C(A)$ és $A\subset\R^2$ korlátos és zárt halmaz ($\Leftrightarrow A$ kompakt): $\exists\min\mathcal{R}_f, \max\mathcal{R}_f$.
 		
 		Bontsuk szép az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
@@ -227,7 +252,11 @@
 		\medskip
 		
 		Most vizsgáljuk a határpontokat, melyek azon pontok, melyeknek létezik olyan környezete, melyben belső és külső pont is található.
-		%TODO 48 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/48.png}
+			\caption{}
+		\end{figure}
 		
 		$B:=\{(x,0)\in\R^2\ |\ 0\leq x\leq 2 \}$, vizsgáljuk az $f\big|_B$ függvényt!
 		\[ g(x):=f(x,0)=0\quad x\in[0,2]\quad \Rightarrow\quad (x,0)\quad (x\in[0,2]) \]
@@ -262,7 +291,11 @@
 		Legyen
 		\[ (x,y)\in A:=\{ (x,y)\in\R^2\ | \ -1\leq x\quad \text{és}\quad x-1\leq y\leq 4 \} \]
 		Az ábráról könnyen leolvasható, hogy $x\leq 5$.
-		%TODO Az $A$ halmaz
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/49.png}
+			\caption{Az $A$ halmaz}
+		\end{figure}
 		
 		$f\in C(A)$ és $A$ kompakt (korlátos és zárt)\quad $\Rightarrow\quad \exists\min\mathcal{R}_f, \max\mathcal{R}_f$.
 		
@@ -276,7 +309,11 @@
 		Így (2,0) nem lehet abszolút szélső érték, (0,0)-t pedig később kell vizsgálnunk.
 		
 		Most dolgozzunk  határokkal:
-		%TODO 50
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/50.png}
+			\caption{}
+		\end{figure}
 		
 		
 		$B:=\{ (-1,y)\in\R\ | \ -2\leq y\leq 4 \}$
@@ -310,7 +347,11 @@
 		\end{align*}
 		
 		Vessük össze:
-		%TODO 51
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/51.png}
+			\caption{}
+		\end{figure}
 		\begin{align*}
 			f(0,0)&=0\\
 			f(-1,-2)&=-8\\
