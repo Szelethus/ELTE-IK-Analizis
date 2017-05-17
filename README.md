@@ -22,3 +22,4 @@ A hallgatóság az alábbi linkeken fér hozzá a kidolgozásokhoz:
 #### ZH/Vizsga kidolgozások
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/1zh/1zh_anal3.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/2zh/2zh_anal3.pdf
