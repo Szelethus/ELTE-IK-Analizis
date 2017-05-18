@@ -1737,8 +1737,8 @@
 			x=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2 \quad \text{(ábrán zöld körvonal)}
 		\end{align*}
 		Függőleges
-		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)=\sqrt{1-x^2}\quad x\in[-1,1]\quad \text{ábrán piros félkörvonal} \]
-		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad  z=f(0,y)=\sqrt{1-y^2}\quad y\in[-1,1]\quad \text{ábrán kék félkörvonal} \]
+		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)=\sqrt{1-x^2}\quad x\in[-1,1]\quad \text{ábrán kék félkörvonal} \]
+		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad  z=f(0,y)=\sqrt{1-y^2}\quad y\in[-1,1]\quad \text{ábrán piros félkörvonal} \]
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=3cm]{../2zh/kepek/23.png}
@@ -1822,8 +1822,8 @@
 	\begin{exercise}
 		Bizonyítsuk be, hogy
 		\begin{enumerate}
-			\item \[ \exists\lim_{x\to0}\left(\lim_{y\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)=\lim_{x\to0}\left(\frac{1}{x^2}\right)=\lim_{x\to0}(0)=0 \]
-			\item \[ \exists\lim_{y\to0}\left(\lim_{x\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)= \]
+			\item \[ \exists\lim_{x\to0}\left(\lim_{y\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)=\lim_{x\to0}\left(\frac{0}{x}\right)=\lim_{x\to0}(0)=0 \]
+			\item \[ \exists\lim_{y\to0}\left(\lim_{x\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)=\lim_{y\to0}\left(-\frac{0}{y^2}\right)=0 \]
 %			\begin{figure}[H]
 %				\centering
 %				\includegraphics[height=3cm]{kepek/24.png}
@@ -1856,15 +1856,15 @@
 	\subsection{Folytonosság}
 	\begin{example}
 		\[ f(x,y):=\begin{cases}
-		\frac{xy}{x^2+y^2};\quad (x,y)\in\R^2\setminus\{ (0,0) \}\\
-		0,,\quad (x,y)=(0,0)
+			\frac{xy}{x^2+y^2},\quad (x,y)\in\R^2\setminus\{ (0,0) \}\\
+			0,\quad (x,y)=(0,0)
 		\end{cases} \]
 		Vizsgáljuk az $f$ folytonosságát!
 		
 		\textit{Megoldás:}
 		\begin{enumerate}
-			\item $\forall y_0\in\R\Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
-			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R)\quad \Rightarrow\quad g\in C(\R)$
+			\item $\forall y_0\in\R\quad \Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
+			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  g\in C(\R))$
 			\item $f\notin C\{(0,0)\}$
 		\end{enumerate}
 		\begin{figure}[H]
@@ -1877,8 +1877,8 @@
 		\begin{enumerate}
 			\item Ha $y_0=0$:
 			\[ g(x)=\begin{cases}
-			\frac{x\cdot0}{x^2+0^2}=\frac{0}{x^2}=0\quad x\not=0\\
-			0,\quad (x,0)=(0,0)\quad \Leftrightarrow\quad x=0
+				\frac{x\cdot0}{x^2+0^2}=\frac{0}{x^2}=0\quad x\not=0\\
+				0,\quad (x,0)=(0,0)\quad \Leftrightarrow\quad x=0
 			\end{cases} \]
 			\[ \Rightarrow\quad g(x)=0\quad (\forall x\in\R) \quad \Rightarrow\quad g\in C(\R) \]
 			Ha $y_0\in\R\setminus\{ 0 \}$:
@@ -1994,7 +1994,7 @@
 		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq \]
 		Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
 		\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=}{\underset{=\max\{|x|,|y|\}}{\leq}}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)^2}_\infty}{\norm{(x,y)}_\infty}=6\cdot0=0 \]
-		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
+		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé, hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
 		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
 		$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=\begin{bmatrix}
 		10&-1
@@ -2091,9 +2091,9 @@
 		\textit{Ellenőrzés:}
 		Ha $f\in D\{(x,y)\}\quad \Rightarrow \quad (\forall (x,y)\in\R^2)$
 		\[ f(x,y)=:\begin{bmatrix}
-			f1(x,y)\\
-			f2(x,y)\\
-			f3(x,y)
+			f_1(x,y)\\
+			f_2(x,y)\\
+			f_3(x,y)
 		\end{bmatrix}\quad \Rightarrow\quad f'(x,y)=\begin{bmatrix}
 			\grad f_1(x,y)\\
 			\grad f_2(x,y)\\
@@ -2141,56 +2141,65 @@
 		Ha nincs külön kijelentve, akkor kettes normával dolgozunk.
 	\end{note}
 	\begin{note}
-		\begin{enumerate}
-			\item Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$
-			\[ \exists\partial_ef(a)=f'(a)\quad e=\langle f'(a),e\rangle \]
-			Most: $\forall (x,y)\in\R^2$
-			\begin{align*}
-				\partial_1f(x,y)=2x-y\\
-				\partial_2f(x,y)=-x+2y	
-			\end{align*}
-			Mivel $\exists\partial_1f, \partial_2f: \R^2\to\R$ és folytonosak:
-			\[ \R^2\text{-en}\quad \Rightarrow\quad f\in D(\R^2) \]
-			SPeciálisan:
-			\[ f'(1,1)=(\partial_1f(1,1);\partial_2f(1,1))=(2\cdot1-1;-1+2\cdot1)=(1,1)=\grad f(1,1)\quad \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle \]
-			\[ =\langle(1,1),\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right)=1\cdot\frac{1}{2}+1\cdot\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2} \]
-			\item Legyen $e:=(\cos\alpha; \sin\alpha)\quad \alpha\in[0;2\pi]$
-			\[ \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle\quad \overset{\norm{e}_2}{=}\quad \langle(1,1);(\cos\alpha,\sin\alpha)\rangle=\sin\alpha+\cos\alpha=:g(\alpha)\quad \Rightarrow \]
-			$g'(\alpha)=\cos\alpha-\sin\alpha=0\quad \Leftrightarrow\quad \tg\alpha=0$
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{../2zh/kepek/32.png}
-				\caption{}
-			\end{figure}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{../2zh/kepek/33.png}
-				\caption{$e_{\min}= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_{\max}= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right)$}
-			\end{figure}
-			Véletlen, higy a max grádiens irányú? hf.
-		\end{enumerate}
+		Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$\[ \exists\partial_ef(a)=f'(a)\cdot e=\langle f'(a),e\rangle \]
 	\end{note}
-	\begin{note}
-		Legyen
-		\[ f(x,y):=\begin{cases}
-			1\quad (x,y)\in A\cup B\cup C\\
-			0\quad \text{különben}
-		\end{cases} \]
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=3cm]{../2zh/kepek/34.png}
-			\caption{}
-		\end{figure}
-		$e$ fix.
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=3cm]{../2zh/kepek/35.png}
-			\caption{}
-		\end{figure}
-		\[ \Rightarrow\quad \exists\partial_ef(0,0)=0\quad (\forall e\in\R^2,\quad \norm{e}=1) \]
-		De:
-		\[ f\notin C\{(0,0)\} \quad \text{ui.}\quad \nexists\lim_{(0,0)}f\quad \Rightarrow\quad f\notin D(0,0) \]
-	\end{note}
+	\textit{Visszatérve:} A megjegyzésben lévő állításhoz lássuk be hogy $f\in D\big(\R^2\big).\quad \forall (x,y)\in\R^2:$
+	\begin{align*}
+		\partial_1f(x,y)&=2x-y\\
+		\partial_2f(x,y)&=-x+2y	
+	\end{align*}
+	Mivel $\exists\partial_1f, \partial_2f: \R^2\to\R$ és folytonosak  $\R^2\text{-en}\quad \Rightarrow\quad f\in D(\R^2).$ Speciálisan:
+	\[ f'(1,1)=(\partial_1f(1,1);\partial_2f(1,1))=(2\cdot1-1;-1+2\cdot1)=(1,1)=\grad f(1,1)\quad \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle \]
+	\[ =\Big\langle(1,1),\left(\frac{1}{2},\ \frac{\sqrt{3}}{2}\right)\Big\rangle=1\cdot\frac{1}{2}+1\cdot\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2} \]
+	
+	\textit{A feladat második részére térve:} Legyen $e:=(\cos\alpha; \sin\alpha)\quad \alpha\in[0;2\pi]$
+	\[ \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle\quad \overset{\norm{e}_2}{=}\quad \langle(1,1);(\cos\alpha,\sin\alpha)\rangle=\sin\alpha+\cos\alpha=:g(\alpha)\quad \Rightarrow \]
+	$g'(\alpha)=\cos\alpha-\sin\alpha=0\quad \Leftrightarrow\quad \cos\alpha=\sin\alpha\quad \Leftrightarrow\quad \tg\alpha=1$, ennek a függvénynek a szélső értékei adják $\min\partial_ef(1,1)$-t és $\max\partial_ef(1,1)$-t.
+	\setlength\extrarowheight{2pt}
+	\begin{figure}[H]
+		\centering
+		$\begin{array}{|c||c|c|c|c|c|c|c|}
+		\hline
+		\alpha&0&&\frac{\pi}{4}&&\frac{5\pi}{4}&&2\pi\\
+		\hline
+		\hline
+		g'(\alpha)&0&\oplus&0&\ominus&0&\oplus&0\\
+		\hline
+		g(\alpha)&1&\nearrow&\sqrt{2}&\searrow&-\sqrt{2}&\nearrow&1\\
+		\hline
+		\end{array}$
+		\caption{A táblázatban $\oplus$ pozitív, $\ominus$ negatív függvényértéket jelöl. Világos, hogy a periódusosság miatt elegendő a $[0,2\pi]$ intervallumot vizsgálni. }
+	\end{figure}
+	Azaz, minimum az $\alpha:=\frac{\pi}{4}$, és a maximum az $\alpha:=\frac{5\pi}{4}$ választással kapható.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=3cm]{../2zh/kepek/33.png}
+		\caption{$e_{\min}= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_{\max}= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right)$}
+	\end{figure}
+	\begin{exercise}	
+		Véletlen, hogy a max grádiens irányú? hf.
+	\end{exercise}
+%	\begin{note}
+%		Legyen
+%		\[ f(x,y):=\begin{cases}
+%			1\quad (x,y)\in A\cup B\cup C\\
+%			0\quad \text{különben}
+%		\end{cases} \]
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[height=3cm]{../2zh/kepek/34.png}
+%			\caption{}
+%		\end{figure}
+%		$e$ fix.
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[height=3cm]{../2zh/kepek/35.png}
+%			\caption{}
+%		\end{figure}
+%		\[ \Rightarrow\quad \exists\partial_ef(0,0)=0\quad (\forall e\in\R^2,\quad \norm{e}=1) \]
+%		De:
+%		\[ f\notin C\{(0,0)\} \quad \text{ui.}\quad \nexists\lim_{(0,0)}f\quad \Rightarrow\quad f\notin D(0,0) \]
+%	\end{note}
 	\begin{center}
 		\textit{,,Itt áll Gizi a Himalája tetején. Azt kérdezzük Gizitől, hogy indulj el, hogy a lehető legmeredekebb pályán menjél?''}
 		
@@ -2198,21 +2207,22 @@
 	\end{center}
 	\begin{task}
 		\[ f(x,y)=e^x\cdot y+x\cos y\quad ((x,y)\in\R^2) \]
-		$a:=(0,1);\quad u:=(1,-\sqrt{3})\quad \Rightarrow\quad \partial_ef(a)=?\quad \text{ahol}\quad e$ az $a$ irányú egységvektor (kettes normával)
+		$a:=(0,1);\quad u:=(1,-\sqrt{3})\quad \Rightarrow\quad \partial_ef(a)=?\quad \text{ahol}\quad e$ az $u$ irányú egységvektor (kettes normával)
 		
 		Egyes normával hf.
 		
 		\textit{Megoldás (2es norma:)} 
 		%TODO 07
 		\[ e:=\frac{u}{\norm{u}_2} \]
-		Ha más normában szmolnánk, ahhol más norma szerint kell ozstnai is.
-		\[ e=\frac{(1,-\sqrt{3})}{\norm{1,-\sqrt{3}}_2}=\frac{(1,-\sqrt{3})}{ \sqrt{1^2+3}}=\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right) \]
+		Ha más normában számolnánk, ahhol más norma szerint kell osztani is.
+		\[ e=\frac{(1,-\sqrt{3})}{\norm{(1,-\sqrt{3})}_2}=\frac{(1,-\sqrt{3})}{ \sqrt{1^2+3}}=\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right) \]
 		\begin{align*}
 			\partial_1f(x,y)=&ye^x+\cos y\\
 			\partial_2f(x,y)=&e^x-x\sin y
 		\end{align*}
 		$((x,y)\in\R^2)$, és $\partial_1f\partial_2f:\R^2\to\R$ folytonosak
-		\[ f\in D(\R^2)\quad \text{spec.}\quad f\in D\{(0,1)\}\quad \text{és}\quad \Rightarrow\quad \exists\partial_ef(0,1)=\langle f'(0,1);e\rangle=\]\[\langle \partial_1f(0,1),\partial_2f(0,1);\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right)\rangle=\frac{1}{2}(1+\cos 1)-\frac{\sqrt{3}}{2}=\frac{1-\sqrt{3}-\cos1}{2} \]
+		\[ f\in D(\R^2)\quad \text{spec.}\quad f\in D\{(0,1)\}\quad \text{és}\quad \Rightarrow\quad \exists\partial_ef(0,1)=\langle f'(0,1),e\rangle=\]
+		\[\Big\langle \partial_1f(0,1),\partial_2f(0,1),\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right)\Big\rangle=\frac{1}{2}(1+\cos 1)-\frac{\sqrt{3}}{2}=\frac{1-\sqrt{3}-\cos1}{2} \]
 	\end{task}
 	\begin{task}$f:\R^2\to\R$ úgy, hogy: \quad ($(x,y)\in\R^2)$
 		\[ \begin{cases}
@@ -2224,7 +2234,7 @@
 		\textit{Megoldás:} 
 		\[f(x,y)=\int x^2y\,dx =y\cdot\int x^2\,dx=y\cdot\frac{x^3}{3}+c(y)\quad \text{ahol}\quad c\in\R\to\R,\quad c\in D \]
 		Illetve:
-		\[ \exists\partial_2f(x,y)=\partial_2\left(y\frac{x^3}{3}+c(y)\right)=\frac{x^3}{3}+x'(y)\quad \overset{\text{feltétel}}{=}\quad 1+\frac{x^3}{3}\quad \Rightarrow\quad c'(y)=1, \quad \text{azaz}\]
+		\[ \exists\partial_2f(x,y)=\partial_2\left(y\frac{x^3}{3}+c'(y)\right)=\frac{x^3}{3}+c'(y)\quad \overset{c\in D}{=}\quad 1+\frac{x^3}{3}\quad \Rightarrow\quad c'(y)=1, \quad \text{azaz}\]
 		\[\quad c(y)=\int1\,dy=y+c, \quad c\in\R \]
 		Mivel most az $x$-es tagok kiesnek, így lesz eredmény. 
 		Így a keresett függvények:
@@ -2234,9 +2244,7 @@
 		Vajon csak $+c$ a derivált vége? A megoldás az hogy nem, bármilyen deriválható egyváltozós függvény mehet oda, mely $y$-tól függ.
 	\end{note}
 	\begin{note}
-		\begin{enumerate}
-			\item Legyen $g(x,y):=(x^2y;1+\frac{x^3}{3})\quad ((x,y)\in\R^2);\quad \Rightarrow\quad f:\R^2\to\R^2;$ azt kaptuk, hogy $\exists f:\R^2\to\R,\quad f\in D (?)$ és $f'(x,y)=(\partial_1f(x,y),\partial_2f(x,y))=g(x,y)$ vagy $f'=g$. EZt mondjuk, hogy $f$ a $g$ primitív függvénye.
-		\end{enumerate}
+		Legyen $g(x,y):=\left(x^2y;1+\frac{x^3}{3}\right)\quad ((x,y)\in\R^2);\quad \Rightarrow\quad f:\R^2\to\R^2;$ azt kaptuk, hogy $\exists f:\R^2\to\R,\quad f\in D (?)$ és $f'(x,y)=(\partial_1f(x,y),\partial_2f(x,y))=g(x,y)$ vagy $f'=g$. Azt mondjuk, hogy $f$ a $g$ primitív függvénye.
 	\end{note}
 	\begin{task}
 		\[ f(x,y):=\sqrt{|xy|}\quad ((x,y)\in\R^2) \]
@@ -2245,14 +2253,15 @@
 			\item $\exists\partial_1f(0,0);\quad \partial_2f(0,0)=?$
 			\item $f\notin D\{(0,0)\}$
 		\end{enumerate}
+		\textit{Megoldás:}
 		\begin{enumerate}
 			\item 
 			\[ \varepsilon>0\quad \text{fix.}\quad |f(x,y)-f(0,0)|=\sqrt{|x,y|}\quad \overset{\text{sz-m}}{\leq}\quad \frac{|x|+|y|}{2}=\frac{1}{2}\cdot\norm{(x,y)-(0,0)}_1<\varepsilon \]
-			Ha $\norm{(x,y)-(0,0)}_1<2\varepsilon\quad \Rightarrow\quad \partial:=2\varepsilon$ jó a definícióhoz\quad $\Rightarrow\quad f\in\C\{(0,0)\}$
+			Ha $\norm{(x,y)-(0,0)}_1<2\varepsilon\quad \Rightarrow\quad \partial:=2\varepsilon$ jó a definícióhoz\quad $\Rightarrow\quad f\in C\{(0,0)\}$
 			\item \[\partial_1f(0,0)=g(0)=\lim_{x\to0}g(y)-g(0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=\lim_{x\to}\left(\frac{\sqrt{|x\cdot0}}{x}\right)=\lim_{x\to0}\frac{0}{x}=\lim_{x\to0}0=0 \]
 			Illetve:
 			\[ \partial_2f(0,0)=\lim_{y\to0}\frac{(0,y)-f(0,0)}{y-0}=\lim_{y\to0}\left(\frac{\sqrt{|0\cdot y|}}{y}\right)=0 \]
-			AZaz, ha $f\in D\{(0,0)\}\quad \Rightarrow\quad f'(0,0)=(\partial_1f(0,0), \partial_2f(0,0))=(0,0)$
+			Azaz, ha $f\in D\{(0,0)\}\quad \Rightarrow\quad f'(0,0)=(\partial_1f(0,0), \partial_2f(0,0))=(0,0)$
 			A def. beli lim:
 			\[ \lim_{(x,y)\to(0,0)}\frac{|f(x,y-f(0,0)-\partial_1f(0,0)-\partial_2f(0,0)}{\norm{x,y}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{\sqrt{|xy|}}{|x|+|y|}\not=0 \]
 			Ugyanis $x=y$ mentén:
@@ -2320,7 +2329,7 @@
 		Lássuk be, hogy $\partial_{12}f(0,0)\not=\partial_{21}f(0,0)$
 		
 		\textit{Megoldás:}
-		\[ \partial_{12}f(0,0)=\partial_1(\partial_2f)(0,0)=\lim_{x\to0}\frac{\partial_2f(x,0)-\partial_2f(0,0)}{x-0}=\lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{f(x,y)-f(x,0)}{y-0}-\lim_{\to0}\frac{f(0,y)-f(0,0)}{y-0}\right]= \]
+		\[ \partial_{12}f(0,0)=\partial_1(\partial_2f)(0,0)=\lim_{x\to0}\frac{\partial_2f(x,0)-\partial_2f(0,0)}{x-0}=\lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{f(x,y)-f(x,0)}{y-0}-\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y-0}\right]= \]
 		\[= \lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{xy\cdot\frac{x^2-y^2}{x^2+y^2}-0}{y}-\lim_{y\to0}\frac{0-0}{y}\right]=\lim_{x\to0}\frac{1}{x}\cdot\lim_{y\to0}\left(x\frac{x^2-y^2}{x^2+y^2}\right)=\lim_{x\to0}\left(\frac{1}{x}\cdot x\cdot\frac{x^2}{x^2}\right)=\lim_{x\to0}(1)=1 \]
 	\end{task}
 	\begin{exercise}
@@ -2334,7 +2343,7 @@
 	\end{revision}
 	\begin{example}
 		\[ f(x,y)=x^2y+xy^2-2xy\quad ((x,y)\in\R^2) \]
-		Adjuk meg azon $a_{nk}$ együtthatókat, melekkel felírható:
+		Adjuk meg azon $a_{nk}$ együtthatókat, melyekkel felírható:
 		\[ f(x,y)=\sum_{n,k=0}^{+\infty}a_{nk}\cdot(x-1)^n(y+1)^k \]
 		(azaz $(x-1)^n(y+1)^n$ lineáris kombinációjaként)
 		\begin{figure}[H]
@@ -2367,12 +2376,12 @@
 			i=(3,0)&\quad \to\quad \frac{\partial_{111}f(3,-1)}{2!0!}(x-1)^3(y+1)^0\\
 			i=(2,1)&\quad \to\quad \frac{\partial_{112}f(1,-1)}{2!1!}(x-1)^2(y+1)^1\\
 			i=(1,2)&\quad \to\quad \frac{\partial_{122}f(1,-1)}{0!2!}(x-1)^1(y+1)^2\\
-			i=(0,3)&\quad \to\quad \frac{\partial_{212}f(1,-1)}{0!2!}(x-1)^1(y+1)^2
+			i=(0,3)&\quad \to\quad \frac{\partial_{222}f(1,-1)}{0!2!}(x-1)^0(y+1)^3
 			%TODO WHAT?
 		\end{align*}
 		Tehát az együtthatók:
 		\begin{align*}
-			\partial_1f(x,y)&=2xy+y^2-2y;\quad \partial_1f(1,-1)=1\\
+			\partial_1f(x,y)&=2xy+y^2-2x;\quad \partial_1f(1,-1)=1\\
 			\partial_2f(x,y)&=x^2+2xy-2y;\quad \partial_2f(1,-1)=-3\\
 			\partial_{11}f(x,y)&=2y;\quad \partial_{11}f(1,-1)=-2\\
 			\partial_{12}f(x,y)&=\partial_1(\partial_2f)(x,y)=2x+2y-2;\quad \partial_{12}f(1,-1)=-2\\
@@ -2394,7 +2403,7 @@
 	\begin{note}
 		Az elsőfokú Taylor polinomra: ($n=2$)
 		\[ T_1f(x,y)=f(a)+\partial_1f(a)(x-a_1)+\partial_2f(a)(x-a_2)=z \]
-		az érinti sík egyenlete $a$-ban
+		az érintő sík egyenlete $a$-ban
 		\[ z=2+(x-1)-3(y+1) \]
 	\end{note}
 	%\subsection{Taylor-polinomok folytatása}
@@ -2416,11 +2425,11 @@
 		\end{align*}
 		Így:
 		\begin{align*}
-			\partial_1f(x,y)=&\ 3\\
-			\partial_2f(x,y)=&\ 6\\
-			\partial_{11}f(x,y)=&\ 6-9=-3\\
-			\partial_{12}f(x,y)=&\ 1\\
-			\partial_{22}f(x,y)=&\ 2
+			\partial_1f(1,3)=&\ 3\\
+			\partial_2f(1,3)=&\ 6\\
+			\partial_{11}f(1,3)=&\ 6-9=-3\\
+			\partial_{12}f(1,3)=&\ 1\\
+			\partial_{22}f(1,3)=&\ 2
 		\end{align*}
 		Ez alapján
 		\[ T_2f(x,y)=10+3(x-1)+6(y-3)-\frac{3}{2}(x-1)^2+(x-1)(y-3)+(y-3)^2 \quad \big((x,y)\in\R^2\big) \]
@@ -2449,10 +2458,10 @@
 		És a Hesse mátrix:
 		\[
 			\begin{bmatrix}
-				\partial_{11}f(a)&\dots&\partial{n1}f(a)\\
-				\partial_{12}f(a)&\dots&\partial{n2}f(a)\\
+				\partial_{11}f(a)&\dots&\partial_{n1}f(a)\\
+				\partial_{12}f(a)&\dots&\partial_{n2}f(a)\\
 				\vdots&&\vdots\\
-				\partial_{1n}f(a)&\dots&\partial{nn}f(a)
+				\partial_{1n}f(a)&\dots&\partial_{nn}f(a)
 			\end{bmatrix} = \left[\partial_{ij}f(a) \right]^n_{i,j=1}
 		\]
 	\end{note}
@@ -2475,10 +2484,10 @@
 			\partial_{22}f(x,y)&=2 
 		\end{align*} 
 		$\forall(x,y)\in\R^2$ spec. $(2,1)$-ben is.
-		\[ \Rightarrow\quad f(x,y)=\begin{bmatrix}
+		\[ \Rightarrow\quad f'(x,y)=\begin{bmatrix}
 			2&1\\
 			1&2
-		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)\begin{bmatrix}
+		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)=\begin{bmatrix}
 			2&1\\
 			1&2
 		\end{bmatrix}\quad \Leftrightarrow\quad \varDelta_1=2>0,\quad \varDelta_2=3>0 \]
@@ -2491,8 +2500,8 @@
 		\end{figure}
 	\end{example}
 	\begin{task}
-		\[ f(x,y)=(1+e^y)\cos x-y\cdot 3^y\quad \big((x,y)\in\R^2 \big) \]
-		Keressük meg a lkális szélső érték(ek)et.
+		\[ f(x,y)=(1+e^y)\cos x-y\cdot e^y\quad \big((x,y)\in\R^2 \big) \]
+		Keressük meg a lokális szélső érték(ek)et.
 		
 		\textit{Megoldás:} Első lépés:
 		\[\left.\begin{gathered}
@@ -2501,7 +2510,7 @@
 		\end{gathered}\right\}  \]
 		Ez alapján
 		\[\begin{cases}
-			\sin x=0\quad \Leftrightarrow\quad X_k=k\pi\quad (k\in\Z)\\
+			\sin x=0\quad \Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
 			\cos x-1-y=0\quad \Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
 		\end{cases}\]
 		Ez alapján a stacionárius helyek: $\big((k\pi; (-1)^k-1)\quad k\in\Z\big)$, azaz
@@ -2520,10 +2529,11 @@
 		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			-(1+e^y)\cos x&-e^y\sin x\\
 			-e^y\sin x&e^y\cos x-2e^y-ye^y
-		\end{bmatrix}\quad \Rightarrow\quad \overbrace{f''(2k\pi,0)}^{k\in\Z}=\begin{bmatrix}
+		\end{bmatrix}\]
+		\[ \Rightarrow\quad \overbrace{f''(2k\pi,0)}^{k\in\Z}=\begin{bmatrix}
 			-2&0\\
 			0&-1
-		\end{bmatrix},\quad \varDelta_1=-2>0, \quad \varDelta_2=2>0 \]
+		\end{bmatrix},\quad \varDelta_1=-2<0, \quad \varDelta_2=2>0 \]
 		Ez a Sylvester tétel szerint $f''(2k\pi,0)$ egy negatív definit mátrix$\quad \Rightarrow\quad \forall k\in\Z \quad (2k\pi,0)$ pontok lokális maximum helyek. Értékük: $(2k\pi,0)=(1+e^0)\cos2k\pi=2$.
 		
 		Illetve:
@@ -2554,10 +2564,11 @@
 			\includegraphics[height=4cm]{../2zh/kepek/40.png}
 			\caption{}
 		\end{figure}
+		\vspace{-9mm}
 		\begin{align*}
-			\partial_{11}f(x,y)=12x^2-2
-			\partial_{12}f(x,y)=-2
-			\partial_{22}f(x,y)=12y^2-2
+			\partial_{11}f(x,y)&=12x^2-2\\
+			\partial_{12}f(x,y)&=-2\\	
+			\partial_{22}f(x,y)&=12y^2-2
 		\end{align*}
 		A Hesse mátrix ez alapján
 		\[ f''(x,y)=\begin{bmatrix}
@@ -2575,8 +2586,8 @@
 		\[ f''(0,0)=\begin{bmatrix}
 			-2&-2\\
 			-2&-2
-		\end{bmatrix}\quad \delta_1=2>0,\quad \delta_2=0 \]
-		Negatív szemidefinit, itt msot nem alkalmazhatjuk a tételt, további vizsgálat kell.
+		\end{bmatrix}\quad \delta_1=-2<0,\quad \delta_2=0 \]
+		Negatív szemidefinit, itt most nem alkalmazhatjuk a tételt, további vizsgálat kell.
 		\begin{center}
 			[gondolatmenet közepe]
 			\smallskip
@@ -2824,7 +2835,7 @@
 	\subsection{Egyenletes folytonosság}
 	\begin{revision}
 		(egyenletes folytonosság $\R^2$-en) Ha $f\in\R^2\to\R$, akkor $f$ egyenletesen folytonos egy $H\subset \mathcal{D}_f$ halmazon ($f\in EC(H))$, ha
-		\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall(x,y);(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|<\varepsilon \]
+		\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|<\varepsilon \]
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/52.png}
@@ -2836,14 +2847,15 @@
 	\end{revision}
 	\begin{task}
 		\[ f(x,y):=2x+3y-5\quad ((x,y)\in\R^2) \]
-		Bizonyítsuk be hogy egyenletesen folytonos!
+		Bizonyítsuk be, hogy egyenletesen folytonos!
 		
+		\smallskip
 		\textit{Megoldás:} Sejtés: $f$ egyenletesen folytonos (értelemszerűen $\mathcal{D}_f=\R^2$-en).
 		
 		Ugyanis:
 		\[ \varepsilon>0\quad \text{fix}\quad |f(x,y)-f(a,b)|=|2x+5y-5-(2a+3b-5)|=|2(x-a)+3(y-b)|\leq \]
 		Cél lenne ezt felülről becsülni $\norm{(x,y)-(a,b)}$ valamilyen konstans szorosával. Ezt nem lehet minden példánál megcsinálni, azonban direkt bizonyításnál gyakran célravezető.
-		\[ \leq2|2x-a|+3|y-b|\overset{*}{\leq} 3|x-a|+3|y-b|=3\norm{x-a,y-b}_1=3\norm{(x,y)-(a,b)}_1<\varepsilon\quad \Leftrightarrow\quad \norm{(x,y)-(a,b)}_1<\frac{\varepsilon}{3}  \]
+		\[ \leq2|x-a|+3|y-b|\overset{*}{\leq} 3|x-a|+3|y-b|=3\norm{x-a,y-b}_1=3\norm{(x,y)-(a,b)}_1<\varepsilon\quad \Leftrightarrow\quad \norm{(x,y)-(a,b)}_1<\frac{\varepsilon}{3}  \]
 		Így:
 		\[ \forall\varepsilon>0,\quad \exists\delta:=\frac{\varepsilon}{3},\quad \forall(x,y),(a,b)\in\R^2 : \norm{(x,y)-(a,b)}<\delta:\quad |f(x,y)-f(a,b)|\leq 3\norm{(x,y)-(a,b)}_1<3\frac{\varepsilon}{3}=\varepsilon  \]
 		A korábban csillaggal jelölt résznél máshogy is becsülhetünk:
@@ -2851,7 +2863,7 @@
 		
 	\end{task}
 	\begin{note}
-		Ha tekintsük a $z=3x+2y-5$ egyenletet, erről megllapítható hogy ez egy \textit{sík} egyenlete, ezt átrendezve megadható egy vektor ($n_s=(2,3,-1)$), melyre merőleges sík lesz az, melynek a fenti egyenlet megfeleltethető.
+		Ha tekintsük a $z=3x+2y-5$ egyenletet, erről megállapítható hogy ez egy \textit{sík} egyenlete, ezt átrendezve megadható egy vektor ($n_s=(2,3,-1)$), melyre merőleges sík lesz az, melynek a fenti egyenlet megfeleltethető.
 	\end{note}
 	\begin{task}
 		\[ f(x,y):=\sin\frac{\pi}{1-x^2-y^2} \quad ((x,y)\in D:=\{ (x,y)\in\R^2 \ | \ x^2+y^2<1 \}) \]
@@ -2867,10 +2879,10 @@
 		\textit{Megoldás:} Ki kéne alakítanunk egy sejtést, hogy vajon folytonos lesz-e ez a függvény. Érezhető, hogy problémás lesz a definíció, ha $(x^2+y^2)$ közelít 1-hez. Ez alapján
 		
 		\textit{Sejtés:} $f\notin EC(H)$, azaz
-		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y)(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
-		Ennek a belátására egy új módszer fogunk alkalmazni. Ezt a módszert azonabn függvnyek egyenletes folytonosságára ne alkalmazzuk!
+		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
+		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságára ne alkalmazzuk!
 		
-		Elég konstruálunk olyan ($x_n,y_n$);$(a_n,b_n):\N\to H$ sorozatot, melyekre
+		Elég konstruálnunk olyan ($x_n,y_n$),$(a_n,b_n):\N\to H$ sorozatot, melyekre
 		\[ \norm{(x_n,y_n)-(a_n,b_n)}_{\R^2}\to0\quad (\text{ha } n\to+\infty)\quad \text{és}\quad |f(x_n,y_n)-f(a_n,b_n)|\geq \varepsilon\quad \text{konstans} \] 
 		\begin{center}
 			\textit{,,Altassuk el az egyik változót!''}
@@ -2878,17 +2890,19 @@
 			/Filipp/
 		\end{center}
 		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad f(x,0)=\sin\frac{\pi}{1-x^2}\quad (x\in(-1,1)) \]
-		Ez ábrázolni se lenne nehéz, lényegében ez az $x$ tengelyen a $(-1,1)$ intervallum.
+		Ezt ábrázolni se lenne nehéz, lényegében ez az $x$ tengelyen a $(-1,1)$ intervallum.
 		
 		Ötlet: adjuk meg az $(x_n),(a_n)$ sorozatokat úgy, hogy:
-		\[ \sin\frac{\pi}{1-x_n^2}=1,\quad \sin\frac{\pi}{1-a_n^2}=0 \]
+		\[ \sin\frac{\pi}{1-x_n^2}=1,\quad \sin\frac{\pi}{1-a_n^2}=0 \] 
+		Ezzel ugyanis el tudnánk érni hogy az abszolút értékük különbsége $\varepsilon=1$ legyen mindig.
+		
 		Most szükségünk lesz egy olyan sorozatra, mely ezeknek meg is felel.
-		\[ \Rightarrow\quad \frac{\pi}{1-x_n^2}=\frac{\pi}{2}+2x\pi \quad \Rightarrow\quad 1-x_n^2=\frac{1}{\frac{1}{2}+2n}\quad \Rightarrow\quad x_n:=\sqrt{1-\frac{1}{\frac{1}{2}+2n}}\quad (1\leq n\in\N)  \]
+		\[ \Rightarrow\quad \frac{\pi}{1-x_n^2}=\frac{\pi}{2}+2n\pi \quad \Rightarrow\quad 1-x_n^2=\overbrace{\frac{1}{\frac{1}{2}+2n}}^{\in(0,1)\subset(-1,1)}\quad \Rightarrow\quad x_n:=\sqrt{1-\frac{1}{\frac{1}{2}+2n}}\quad (1\leq n\in\N)  \]
 		Ezzel sikeresen elértük hogy az $(x_n)$ a (-1,1) intervallum vegyen fel értékeket.
 		\[ \frac{\pi}{1-a_n^2}=2n\pi\quad \Rightarrow\quad \frac{1}{2n}=1-a_n^2\quad \Rightarrow\quad a_n:=\sqrt{1-\frac{1}{2n}}\quad (1\leq n\in\N) \]
 		Ezzel elértük hogy $(x_n),(a_n):\N\to(-1,1)\checkmark$. Ekkor:
-		\[ \norm{(x_n,1)-(a_n,0)}_1=\norm{(x_n-a_n,0)}_1=|x_n-a_n|=\]
-		\[=\left|\sqrt{1-\frac{1}{\frac{1}{2}+2n}}-\sqrt{1-\frac{1}{2n}}\right|\to|\sqrt{1}-\sqrt{1}|=0\checkmark\quad (\text{ha } n\to+\infty )\quad \text{és}\quad |f(x_n,0)-f(a_n,0)|=1=:\varepsilon \]
+		\[ \norm{(x_n,0)-(a_n,0)}_1=\norm{(x_n-a_n,0)}_1=|x_n-a_n|=\]
+		\[=\left|\sqrt{1-\frac{1}{\frac{1}{2}+2n}}-\sqrt{1-\frac{1}{2n}}\right|\to|\sqrt{1}-\sqrt{1}|=0\checkmark\quad (\text{ha } n\to+\infty )\quad \text{és}\quad |f(x_n,0)-f(a_n,0)|=1-0=:\varepsilon \]
 		Összefoglalva:
 		\[ \exists\varepsilon:=1\quad \forall\delta>0\quad \exists1\leq n_0\in\N\quad \text{és}\quad (x_{n_0},0)(a_{n_0},0)\in \mathcal{D}:\quad \norm{(x_{n_0})-(a_{n_0},0)}_1<\delta\]
 		\[ |f(x_{n_0},0)-f(a_{n_0},0)|=1 \geq\varepsilon=1\quad \Rightarrow\quad f\notin EC(\mathcal{D}) \]
@@ -2913,7 +2927,7 @@
 		Ekkor:
 		\[ y_n^2+1=\frac{\pi}{2}+2n\pi,\quad y_n:=\sqrt{\frac{\pi}{2}-1+2n\pi}\to+\infty\quad (\text{ha }n\to\infty) \]
 		Valamint
-		\[ b_n+1=2n\pi\Rightarrow\quad b_n:=\sqrt{2n\pi-1},\quad (1\leq n\in\N) \]
+		\[ b_n^2+1=2n\pi\Rightarrow\quad b_n:=\sqrt{2n\pi-1}\to+\infty,\quad (\text{ha } n\to\infty)\quad (1\leq n\in\N) \]
 		Tehát:
 		\[ \norm{(0,y_n)-(0,b_n)}_1=\left|\sqrt{\frac{\pi}{2}-1+2n\pi}-\sqrt{2n\pi-1}\right|=\frac{\frac{\pi}{2}}{\sqrt{\frac{\pi}{2}-1+2n\pi}+\sqrt{2n\pi-1}}\to0\quad (\text{ha }n\to+\infty) \]
 		\[ |f(0,y_n)-f(0,b_n)|=|1-0|=1 \]
@@ -2922,22 +2936,23 @@
 		$\Rightarrow\quad f\notin EC(\R^2)$.
 	\end{task}
 	\begin{note}
-		\[ f(x,y)=\sin\frac{\pi}{1-x^2-y^2};\quad (x,y)\in\overline{k_R(0,0)}=\{ (x,y)\in\R^2\ | \ x^2+y^2\leq \R^2 \}\quad (\forall 0<R<1)\quad \overset{\text{Heine.}}{\Rightarrow}\quad f\in EC(D_R) \]
+		\[ f(x,y)=\sin\frac{\pi}{1-x^2-y^2};\quad (x,y)\in\overline{k_R(0,0)}=\{ (x,y)\in\R^2\ | \ x^2+y^2\leq \R^2 \}\quad (\forall 0<R<1)\quad \overset{\text{Heine.}}{\Rightarrow}\quad f\in EC(D_R), \]
+		ahol a felülvonás lezártat jelent.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/55.png}
-			\caption{}
+			\caption{$D_R$ egy zárt körlap}
 		\end{figure}
 	\end{note}
 	\begin{task}
-		\[ f(x,y):=\sqrt{x^2+y^2}((x,y)\in\R^2) \]
+		\[ f(x,y):=\sqrt{x^2+y^2}\quad ((x,y)\in\R^2) \]
 		Igaz-e hogy $f\in EC$?
 		
 		\textit{Megoldás:} 
 		\[ \varepsilon>0\quad \text{fix},\quad |f(x,y)-f(a,b)|=|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}|\leq \]
 		A cél ismét egy felső becslés megadása. Ha ezt direkt módszerrel próbálnánk, elég nehezen adná magát.
 		
-		Ötlet: $f(x,y):=\norm{x,y}_2$
+		Ötlet: $f(x,y):=\norm{(x,y)}_2$
 		
 		Tétel: Legyen ($X,\norm{\cdot}$) normált tér,
 		\[ \Rightarrow\quad f(x,y):=\norm{x}\quad (x\in X) \]
@@ -2946,10 +2961,12 @@
 		\[ |f(x)-f(t)|=\big|\norm{x}-\norm{t}\big|\overset{*}{\leq}\norm{x-t}<\varepsilon\quad \Leftrightarrow\quad \delta:=\varepsilon\quad \text{jó.} \]
 		A kicsillagozott résznél lehet az átalakítás nem triviális, a kifejezés helyessége mögött ez áll:
 		\begin{align}
-			\norm{x}=\norm{(x-t)+t}
+			\norm{x}=\norm{(x-t)+t}\\
+			\text{félkész}
+			%TODO finish
 		\end{align}
 		De:
 		\[ \left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|=\frac{\left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}\leq|x-a|\frac{|x+a|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}+|y-b|\frac{y+b}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}= \]
-		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2}+\sqrt{a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y}^2+\sqrt{b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
+		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2 + a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y^2+b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
 	\end{task}
 \end{document}

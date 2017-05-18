@@ -141,7 +141,7 @@
 	\subsection{Egyenletes folytonosság}
 	\begin{revision}
 		(egyenletes folytonosság $\R^2$-en) Ha $f\in\R^2\to\R$, akkor $f$ egyenletesen folytonos egy $H\subset \mathcal{D}_f$ halmazon ($f\in EC(H))$, ha
-		\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall(x,y);(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|<\varepsilon \]
+		\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|<\varepsilon \]
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/52.png}
@@ -153,14 +153,15 @@
 	\end{revision}
 	\begin{task}
 		\[ f(x,y):=2x+3y-5\quad ((x,y)\in\R^2) \]
-		Bizonyítsuk be hogy egyenletesen folytonos!
+		Bizonyítsuk be, hogy egyenletesen folytonos!
 		
+		\smallskip
 		\textit{Megoldás:} Sejtés: $f$ egyenletesen folytonos (értelemszerűen $\mathcal{D}_f=\R^2$-en).
 		
 		Ugyanis:
 		\[ \varepsilon>0\quad \text{fix}\quad |f(x,y)-f(a,b)|=|2x+5y-5-(2a+3b-5)|=|2(x-a)+3(y-b)|\leq \]
 		Cél lenne ezt felülről becsülni $\norm{(x,y)-(a,b)}$ valamilyen konstans szorosával. Ezt nem lehet minden példánál megcsinálni, azonban direkt bizonyításnál gyakran célravezető.
-		\[ \leq2|2x-a|+3|y-b|\overset{*}{\leq} 3|x-a|+3|y-b|=3\norm{x-a,y-b}_1=3\norm{(x,y)-(a,b)}_1<\varepsilon\quad \Leftrightarrow\quad \norm{(x,y)-(a,b)}_1<\frac{\varepsilon}{3}  \]
+		\[ \leq2|x-a|+3|y-b|\overset{*}{\leq} 3|x-a|+3|y-b|=3\norm{x-a,y-b}_1=3\norm{(x,y)-(a,b)}_1<\varepsilon\quad \Leftrightarrow\quad \norm{(x,y)-(a,b)}_1<\frac{\varepsilon}{3}  \]
 		Így:
 		\[ \forall\varepsilon>0,\quad \exists\delta:=\frac{\varepsilon}{3},\quad \forall(x,y),(a,b)\in\R^2 : \norm{(x,y)-(a,b)}<\delta:\quad |f(x,y)-f(a,b)|\leq 3\norm{(x,y)-(a,b)}_1<3\frac{\varepsilon}{3}=\varepsilon  \]
 		A korábban csillaggal jelölt résznél máshogy is becsülhetünk:
@@ -168,7 +169,7 @@
 		
 	\end{task}
 	\begin{note}
-		Ha tekintsük a $z=3x+2y-5$ egyenletet, erről megllapítható hogy ez egy \textit{sík} egyenlete, ezt átrendezve megadható egy vektor ($n_s=(2,3,-1)$), melyre merőleges sík lesz az, melynek a fenti egyenlet megfeleltethető.
+		Ha tekintsük a $z=3x+2y-5$ egyenletet, erről megállapítható hogy ez egy \textit{sík} egyenlete, ezt átrendezve megadható egy vektor ($n_s=(2,3,-1)$), melyre merőleges sík lesz az, melynek a fenti egyenlet megfeleltethető.
 	\end{note}
 	\begin{task}
 		\[ f(x,y):=\sin\frac{\pi}{1-x^2-y^2} \quad ((x,y)\in D:=\{ (x,y)\in\R^2 \ | \ x^2+y^2<1 \}) \]
@@ -184,10 +185,10 @@
 		\textit{Megoldás:} Ki kéne alakítanunk egy sejtést, hogy vajon folytonos lesz-e ez a függvény. Érezhető, hogy problémás lesz a definíció, ha $(x^2+y^2)$ közelít 1-hez. Ez alapján
 		
 		\textit{Sejtés:} $f\notin EC(H)$, azaz
-		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y)(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
-		Ennek a belátására egy új módszer fogunk alkalmazni. Ezt a módszert azonabn függvnyek egyenletes folytonosságára ne alkalmazzuk!
+		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
+		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságára ne alkalmazzuk!
 		
-		Elég konstruálunk olyan ($x_n,y_n$);$(a_n,b_n):\N\to H$ sorozatot, melyekre
+		Elég konstruálnunk olyan ($x_n,y_n$),$(a_n,b_n):\N\to H$ sorozatot, melyekre
 		\[ \norm{(x_n,y_n)-(a_n,b_n)}_{\R^2}\to0\quad (\text{ha } n\to+\infty)\quad \text{és}\quad |f(x_n,y_n)-f(a_n,b_n)|\geq \varepsilon\quad \text{konstans} \] 
 		\begin{center}
 			\textit{,,Altassuk el az egyik változót!''}
@@ -195,17 +196,19 @@
 			/Filipp/
 		\end{center}
 		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad f(x,0)=\sin\frac{\pi}{1-x^2}\quad (x\in(-1,1)) \]
-		Ez ábrázolni se lenne nehéz, lényegében ez az $x$ tengelyen a $(-1,1)$ intervallum.
+		Ezt ábrázolni se lenne nehéz, lényegében ez az $x$ tengelyen a $(-1,1)$ intervallum.
 		
 		Ötlet: adjuk meg az $(x_n),(a_n)$ sorozatokat úgy, hogy:
-		\[ \sin\frac{\pi}{1-x_n^2}=1,\quad \sin\frac{\pi}{1-a_n^2}=0 \]
+		\[ \sin\frac{\pi}{1-x_n^2}=1,\quad \sin\frac{\pi}{1-a_n^2}=0 \] 
+		Ezzel ugyanis el tudnánk érni hogy az abszolút értékük különbsége $\varepsilon=1$ legyen mindig.
+		
 		Most szükségünk lesz egy olyan sorozatra, mely ezeknek meg is felel.
-		\[ \Rightarrow\quad \frac{\pi}{1-x_n^2}=\frac{\pi}{2}+2x\pi \quad \Rightarrow\quad 1-x_n^2=\frac{1}{\frac{1}{2}+2n}\quad \Rightarrow\quad x_n:=\sqrt{1-\frac{1}{\frac{1}{2}+2n}}\quad (1\leq n\in\N)  \]
+		\[ \Rightarrow\quad \frac{\pi}{1-x_n^2}=\frac{\pi}{2}+2n\pi \quad \Rightarrow\quad 1-x_n^2=\overbrace{\frac{1}{\frac{1}{2}+2n}}^{\in(0,1)\subset(-1,1)}\quad \Rightarrow\quad x_n:=\sqrt{1-\frac{1}{\frac{1}{2}+2n}}\quad (1\leq n\in\N)  \]
 		Ezzel sikeresen elértük hogy az $(x_n)$ a (-1,1) intervallum vegyen fel értékeket.
 		\[ \frac{\pi}{1-a_n^2}=2n\pi\quad \Rightarrow\quad \frac{1}{2n}=1-a_n^2\quad \Rightarrow\quad a_n:=\sqrt{1-\frac{1}{2n}}\quad (1\leq n\in\N) \]
 		Ezzel elértük hogy $(x_n),(a_n):\N\to(-1,1)\checkmark$. Ekkor:
-		\[ \norm{(x_n,1)-(a_n,0)}_1=\norm{(x_n-a_n,0)}_1=|x_n-a_n|=\]
-		\[=\left|\sqrt{1-\frac{1}{\frac{1}{2}+2n}}-\sqrt{1-\frac{1}{2n}}\right|\to|\sqrt{1}-\sqrt{1}|=0\checkmark\quad (\text{ha } n\to+\infty )\quad \text{és}\quad |f(x_n,0)-f(a_n,0)|=1=:\varepsilon \]
+		\[ \norm{(x_n,0)-(a_n,0)}_1=\norm{(x_n-a_n,0)}_1=|x_n-a_n|=\]
+		\[=\left|\sqrt{1-\frac{1}{\frac{1}{2}+2n}}-\sqrt{1-\frac{1}{2n}}\right|\to|\sqrt{1}-\sqrt{1}|=0\checkmark\quad (\text{ha } n\to+\infty )\quad \text{és}\quad |f(x_n,0)-f(a_n,0)|=1-0=:\varepsilon \]
 		Összefoglalva:
 		\[ \exists\varepsilon:=1\quad \forall\delta>0\quad \exists1\leq n_0\in\N\quad \text{és}\quad (x_{n_0},0)(a_{n_0},0)\in \mathcal{D}:\quad \norm{(x_{n_0})-(a_{n_0},0)}_1<\delta\]
 		\[ |f(x_{n_0},0)-f(a_{n_0},0)|=1 \geq\varepsilon=1\quad \Rightarrow\quad f\notin EC(\mathcal{D}) \]
@@ -230,7 +233,7 @@
 		Ekkor:
 		\[ y_n^2+1=\frac{\pi}{2}+2n\pi,\quad y_n:=\sqrt{\frac{\pi}{2}-1+2n\pi}\to+\infty\quad (\text{ha }n\to\infty) \]
 		Valamint
-		\[ b_n+1=2n\pi\Rightarrow\quad b_n:=\sqrt{2n\pi-1},\quad (1\leq n\in\N) \]
+		\[ b_n^2+1=2n\pi\Rightarrow\quad b_n:=\sqrt{2n\pi-1}\to+\infty,\quad (\text{ha } n\to\infty)\quad (1\leq n\in\N) \]
 		Tehát:
 		\[ \norm{(0,y_n)-(0,b_n)}_1=\left|\sqrt{\frac{\pi}{2}-1+2n\pi}-\sqrt{2n\pi-1}\right|=\frac{\frac{\pi}{2}}{\sqrt{\frac{\pi}{2}-1+2n\pi}+\sqrt{2n\pi-1}}\to0\quad (\text{ha }n\to+\infty) \]
 		\[ |f(0,y_n)-f(0,b_n)|=|1-0|=1 \]
@@ -239,22 +242,23 @@
 		$\Rightarrow\quad f\notin EC(\R^2)$.
 	\end{task}
 	\begin{note}
-		\[ f(x,y)=\sin\frac{\pi}{1-x^2-y^2};\quad (x,y)\in\overline{k_R(0,0)}=\{ (x,y)\in\R^2\ | \ x^2+y^2\leq \R^2 \}\quad (\forall 0<R<1)\quad \overset{\text{Heine.}}{\Rightarrow}\quad f\in EC(D_R) \]
+		\[ f(x,y)=\sin\frac{\pi}{1-x^2-y^2};\quad (x,y)\in\overline{k_R(0,0)}=\{ (x,y)\in\R^2\ | \ x^2+y^2\leq \R^2 \}\quad (\forall 0<R<1)\quad \overset{\text{Heine.}}{\Rightarrow}\quad f\in EC(D_R), \]
+		ahol a felülvonás lezártat jelent.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/55.png}
-			\caption{}
+			\caption{$D_R$ egy zárt körlap}
 		\end{figure}
 	\end{note}
 	\begin{task}
-		\[ f(x,y):=\sqrt{x^2+y^2}((x,y)\in\R^2) \]
+		\[ f(x,y):=\sqrt{x^2+y^2}\quad ((x,y)\in\R^2) \]
 		Igaz-e hogy $f\in EC$?
 		
 		\textit{Megoldás:} 
 		\[ \varepsilon>0\quad \text{fix},\quad |f(x,y)-f(a,b)|=|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}|\leq \]
 		A cél ismét egy felső becslés megadása. Ha ezt direkt módszerrel próbálnánk, elég nehezen adná magát.
 		
-		Ötlet: $f(x,y):=\norm{x,y}_2$
+		Ötlet: $f(x,y):=\norm{(x,y)}_2$
 		
 		Tétel: Legyen ($X,\norm{\cdot}$) normált tér,
 		\[ \Rightarrow\quad f(x,y):=\norm{x}\quad (x\in X) \]
@@ -263,10 +267,12 @@
 		\[ |f(x)-f(t)|=\big|\norm{x}-\norm{t}\big|\overset{*}{\leq}\norm{x-t}<\varepsilon\quad \Leftrightarrow\quad \delta:=\varepsilon\quad \text{jó.} \]
 		A kicsillagozott résznél lehet az átalakítás nem triviális, a kifejezés helyessége mögött ez áll:
 		\begin{align}
-			\norm{x}=\norm{(x-t)+t}
+			\norm{x}=\norm{(x-t)+t}\\
+			\text{félkész}
+			%TODO finish
 		\end{align}
 		De:
 		\[ \left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|=\frac{\left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}\leq|x-a|\frac{|x+a|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}+|y-b|\frac{y+b}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}= \]
-		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2}+\sqrt{a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y}^2+\sqrt{b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
+		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2 + a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y^2+b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
 	\end{task}
 \end{document}

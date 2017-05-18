@@ -216,10 +216,10 @@
 			\partial_{22}f(x,y)&=2 
 		\end{align*} 
 		$\forall(x,y)\in\R^2$ spec. $(2,1)$-ben is.
-		\[ \Rightarrow\quad f(x,y)=\begin{bmatrix}
+		\[ \Rightarrow\quad f'(x,y)=\begin{bmatrix}
 			2&1\\
 			1&2
-		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)\begin{bmatrix}
+		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)=\begin{bmatrix}
 			2&1\\
 			1&2
 		\end{bmatrix}\quad \Leftrightarrow\quad \varDelta_1=2>0,\quad \varDelta_2=3>0 \]
@@ -232,8 +232,8 @@
 		\end{figure}
 	\end{example}
 	\begin{task}
-		\[ f(x,y)=(1+e^y)\cos x-y\cdot 3^y\quad \big((x,y)\in\R^2 \big) \]
-		Keressük meg a lkális szélső érték(ek)et.
+		\[ f(x,y)=(1+e^y)\cos x-y\cdot e^y\quad \big((x,y)\in\R^2 \big) \]
+		Keressük meg a lokális szélső érték(ek)et.
 		
 		\textit{Megoldás:} Első lépés:
 		\[\left.\begin{gathered}
@@ -242,7 +242,7 @@
 		\end{gathered}\right\}  \]
 		Ez alapján
 		\[\begin{cases}
-			\sin x=0\quad \Leftrightarrow\quad X_k=k\pi\quad (k\in\Z)\\
+			\sin x=0\quad \Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
 			\cos x-1-y=0\quad \Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
 		\end{cases}\]
 		Ez alapján a stacionárius helyek: $\big((k\pi; (-1)^k-1)\quad k\in\Z\big)$, azaz
@@ -261,10 +261,11 @@
 		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			-(1+e^y)\cos x&-e^y\sin x\\
 			-e^y\sin x&e^y\cos x-2e^y-ye^y
-		\end{bmatrix}\quad \Rightarrow\quad \overbrace{f''(2k\pi,0)}^{k\in\Z}=\begin{bmatrix}
+		\end{bmatrix}\]
+		\[ \Rightarrow\quad \overbrace{f''(2k\pi,0)}^{k\in\Z}=\begin{bmatrix}
 			-2&0\\
 			0&-1
-		\end{bmatrix},\quad \varDelta_1=-2>0, \quad \varDelta_2=2>0 \]
+		\end{bmatrix},\quad \varDelta_1=-2<0, \quad \varDelta_2=2>0 \]
 		Ez a Sylvester tétel szerint $f''(2k\pi,0)$ egy negatív definit mátrix$\quad \Rightarrow\quad \forall k\in\Z \quad (2k\pi,0)$ pontok lokális maximum helyek. Értékük: $(2k\pi,0)=(1+e^0)\cos2k\pi=2$.
 		
 		Illetve:
@@ -295,10 +296,11 @@
 			\includegraphics[height=4cm]{../2zh/kepek/40.png}
 			\caption{}
 		\end{figure}
+		\vspace{-9mm}
 		\begin{align*}
-			\partial_{11}f(x,y)=12x^2-2
-			\partial_{12}f(x,y)=-2
-			\partial_{22}f(x,y)=12y^2-2
+			\partial_{11}f(x,y)&=12x^2-2\\
+			\partial_{12}f(x,y)&=-2\\	
+			\partial_{22}f(x,y)&=12y^2-2
 		\end{align*}
 		A Hesse mátrix ez alapján
 		\[ f''(x,y)=\begin{bmatrix}
@@ -316,8 +318,8 @@
 		\[ f''(0,0)=\begin{bmatrix}
 			-2&-2\\
 			-2&-2
-		\end{bmatrix}\quad \delta_1=2>0,\quad \delta_2=0 \]
-		Negatív szemidefinit, itt msot nem alkalmazhatjuk a tételt, további vizsgálat kell.
+		\end{bmatrix}\quad \delta_1=-2<0,\quad \delta_2=0 \]
+		Negatív szemidefinit, itt most nem alkalmazhatjuk a tételt, további vizsgálat kell.
 		\begin{center}
 			[gondolatmenet közepe]
 			\smallskip
