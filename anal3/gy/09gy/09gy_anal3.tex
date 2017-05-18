@@ -170,7 +170,7 @@
 		Ha nincs külön kijelentve, akkor kettes normával dolgozunk.
 	\end{note}
 	\begin{note}
-		Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$\[ \exists\partial_ef(a)=f'(a)\quad e=\langle f'(a),e\rangle \]
+		Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$\[ \exists\partial_ef(a)=f'(a)\cdot e=\langle f'(a),e\rangle \]
 	\end{note}
 	\textit{Visszatérve:} A megjegyzésben lévő állításhoz lássuk be hogy $f\in D\big(\R^2\big).\quad \forall (x,y)\in\R^2:$
 	\begin{align*}
@@ -263,7 +263,7 @@
 		\textit{Megoldás:} 
 		\[f(x,y)=\int x^2y\,dx =y\cdot\int x^2\,dx=y\cdot\frac{x^3}{3}+c(y)\quad \text{ahol}\quad c\in\R\to\R,\quad c\in D \]
 		Illetve:
-		\[ \exists\partial_2f(x,y)=\partial_2\left(y\frac{x^3}{3}+c(y)\right)=\frac{x^3}{3}+x'(y)\quad \overset{\text{feltétel}}{=}\quad 1+\frac{x^3}{3}\quad \Rightarrow\quad c'(y)=1, \quad \text{azaz}\]
+		\[ \exists\partial_2f(x,y)=\partial_2\left(y\frac{x^3}{3}+c'(y)\right)=\frac{x^3}{3}+x'(y)\quad \overset{\text{feltétel}}{=}\quad 1+\frac{x^3}{3}\quad \Rightarrow\quad c'(y)=1, \quad \text{azaz}\]
 		\[\quad c(y)=\int1\,dy=y+c, \quad c\in\R \]
 		Mivel most az $x$-es tagok kiesnek, így lesz eredmény. 
 		Így a keresett függvények:
