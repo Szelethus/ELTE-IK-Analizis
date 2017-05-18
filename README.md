@@ -18,7 +18,9 @@ A hallgatóság az alábbi linkeken fér hozzá a kidolgozásokhoz:
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/10gy/10gy_anal3.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/11gy/11gy_anal3.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/12gy/12gy_anal3.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/13gy/13gy_anal3.pdf
 
 #### ZH/Vizsga kidolgozások
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/1zh/1zh_anal3.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/2zh/2zh_anal3.pdf
