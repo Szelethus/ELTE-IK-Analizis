@@ -152,7 +152,7 @@
 		\end{enumerate}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[height=3cm]{kepek/25.png}
+			\includegraphics[height=3cm]{../2zh/kepek/25.png}
 			\caption{}
 		\end{figure}
 		\textit{Bizonyítás:}
@@ -191,7 +191,7 @@
 		\textit{Megoldás:}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[height=3cm]{kepek/26.png}
+			\includegraphics[height=3cm]{../2zh/kepek/26.png}
 			\caption{Megjegyzendő, hogy $x=0$ nem függvény.}
 		\end{figure}
 		\begin{enumerate}
@@ -227,7 +227,7 @@
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[height=3cm]{kepek/27.png}
+				\includegraphics[height=3cm]{../2zh/kepek/27.png}
 				\caption{}
 			\end{figure}
 			Ha $\displaystyle y = x^2\quad \Rightarrow\quad \lim_{x\to0}\frac{x^2\cdot x^2}{x^4+x^4}=\lim_{x\to0}\frac{x^4}{2x^4}=\lim_{x\to0}\frac{1}{2}=\frac{1}{2}\not=0$
@@ -258,7 +258,7 @@
 		\[ f(a+h)-f(a)=f(x+1,y+2)-f(1,2)=2(x+1)^2+3(x+1)(y+2)-(y+2)^2-4=\]\[=2x^2+4x+2+3xy+6x+3y+6-y^2-4y-4-4=\underbrace{10x-y}_{\text{lineáris tagok}}+(\underbrace{2x^2+3xy-y^2}_{\text{maradék}}) \]
 		\begin{figure}[H]
 			\centering
-			\includegraphics[height=3cm]{kepek/28.png}
+			\includegraphics[height=3cm]{../2zh/kepek/28.png}
 			\caption{Az analízis egyik fő gondolatmenete, hogy ha az $a$ pontot $h$-val eltoljuk, akkor ezen ponton képe hogyan változik.}
 		\end{figure}
 		Legyen: $L(h):=L(x,y):=10x-y=\langle(10,-1),(x,y)\rangle=\begin{bmatrix}
@@ -313,7 +313,7 @@
 		\textit{Megoldás:}
 		\begin{figure}[H]
 			\centering
-			\includegraphics[height=3cm]{kepek/29.png}
+			\includegraphics[height=3cm]{../2zh/kepek/29.png}
 			\caption{Egy $\R^2\to\R^3$ leképezés}
 		\end{figure}
 		Legyen $h:=(x,y),\quad  a:=(1,2)$
@@ -358,18 +358,22 @@
 					0
 				\end{bmatrix}
 		}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
-		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\]
-		\[\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
+		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\]
+		\[=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
 		a def-beli $\lim=0\quad \Rightarrow
 		\quad$
-		\[ f\in D(1,2)\quad \text{és}\quad f'(1,2)=\begin{bmatrix}
+		\[ f\in D\{(1,2)\}\quad \text{és}\quad f'(1,2)=\begin{bmatrix}
 			5&1\\
 			1&-4\\
 			0&1
 		\end{bmatrix}\in\R^{3\times 2} \]
-		\textit{Ellenőrzés}
-		Ha $f\in D\{(x,y)\}\quad \Rightarrow$
-		\[ f'(x,y)=\begin{bmatrix}
+		\textit{Ellenőrzés:}
+		Ha $f\in D\{(x,y)\}\quad \Rightarrow \quad (\forall (x,y)\in\R^2)$
+		\[ f(x,y)=:\begin{bmatrix}
+			f1(x,y)\\
+			f2(x,y)\\
+			f3(x,y)
+		\end{bmatrix}\quad \Rightarrow\quad f'(x,y)=\begin{bmatrix}
 			\grad f_1(x,y)\\
 			\grad f_2(x,y)\\
 			\grad f_3(x,y)
@@ -381,7 +385,7 @@
 			3x^2+y&y\\
 			1&-2y\\
 			0&1
-		\end{bmatrix}\quad (\forall (x,y)\in\R^2) \]
+		\end{bmatrix} \]
 		
 		Enek a mátrixnak mind a 6 komponense folytonos fv (polinomok)$\quad \Rightarrow\quad f\in D(\R^2)$
 	\end{task}
