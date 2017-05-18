@@ -201,7 +201,7 @@
 		Lássuk be, hogy $\partial_{12}f(0,0)\not=\partial_{21}f(0,0)$
 		
 		\textit{Megoldás:}
-		\[ \partial_{12}f(0,0)=\partial_1(\partial_2f)(0,0)=\lim_{x\to0}\frac{\partial_2f(x,0)-\partial_2f(0,0)}{x-0}=\lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{f(x,y)-f(x,0)}{y-0}-\lim_{\to0}\frac{f(0,y)-f(0,0)}{y-0}\right]= \]
+		\[ \partial_{12}f(0,0)=\partial_1(\partial_2f)(0,0)=\lim_{x\to0}\frac{\partial_2f(x,0)-\partial_2f(0,0)}{x-0}=\lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{f(x,y)-f(x,0)}{y-0}-\lim_{y\to0}\frac{f(0,y)-f(0,0)}{y-0}\right]= \]
 		\[= \lim_{x\to0}\frac{1}{x}\left[\lim_{y\to0}\frac{xy\cdot\frac{x^2-y^2}{x^2+y^2}-0}{y}-\lim_{y\to0}\frac{0-0}{y}\right]=\lim_{x\to0}\frac{1}{x}\cdot\lim_{y\to0}\left(x\frac{x^2-y^2}{x^2+y^2}\right)=\lim_{x\to0}\left(\frac{1}{x}\cdot x\cdot\frac{x^2}{x^2}\right)=\lim_{x\to0}(1)=1 \]
 	\end{task}
 	\begin{exercise}
@@ -215,7 +215,7 @@
 	\end{revision}
 	\begin{example}
 		\[ f(x,y)=x^2y+xy^2-2xy\quad ((x,y)\in\R^2) \]
-		Adjuk meg azon $a_{nk}$ együtthatókat, melekkel felírható:
+		Adjuk meg azon $a_{nk}$ együtthatókat, melyekkel felírható:
 		\[ f(x,y)=\sum_{n,k=0}^{+\infty}a_{nk}\cdot(x-1)^n(y+1)^k \]
 		(azaz $(x-1)^n(y+1)^n$ lineáris kombinációjaként)
 		\begin{figure}[H]
@@ -248,12 +248,12 @@
 			i=(3,0)&\quad \to\quad \frac{\partial_{111}f(3,-1)}{2!0!}(x-1)^3(y+1)^0\\
 			i=(2,1)&\quad \to\quad \frac{\partial_{112}f(1,-1)}{2!1!}(x-1)^2(y+1)^1\\
 			i=(1,2)&\quad \to\quad \frac{\partial_{122}f(1,-1)}{0!2!}(x-1)^1(y+1)^2\\
-			i=(0,3)&\quad \to\quad \frac{\partial_{212}f(1,-1)}{0!2!}(x-1)^1(y+1)^2
+			i=(0,3)&\quad \to\quad \frac{\partial_{222}f(1,-1)}{0!2!}(x-1)^0(y+1)^3
 			%TODO WHAT?
 		\end{align*}
 		Tehát az együtthatók:
 		\begin{align*}
-			\partial_1f(x,y)&=2xy+y^2-2y;\quad \partial_1f(1,-1)=1\\
+			\partial_1f(x,y)&=2xy+y^2-2x;\quad \partial_1f(1,-1)=1\\
 			\partial_2f(x,y)&=x^2+2xy-2y;\quad \partial_2f(1,-1)=-3\\
 			\partial_{11}f(x,y)&=2y;\quad \partial_{11}f(1,-1)=-2\\
 			\partial_{12}f(x,y)&=\partial_1(\partial_2f)(x,y)=2x+2y-2;\quad \partial_{12}f(1,-1)=-2\\
@@ -275,7 +275,7 @@
 	\begin{note}
 		Az elsőfokú Taylor polinomra: ($n=2$)
 		\[ T_1f(x,y)=f(a)+\partial_1f(a)(x-a_1)+\partial_2f(a)(x-a_2)=z \]
-		az érinti sík egyenlete $a$-ban
+		az érintő sík egyenlete $a$-ban
 		\[ z=2+(x-1)-3(y+1) \]
 	\end{note}
 \end{document}

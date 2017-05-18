@@ -141,15 +141,15 @@
 	\subsection{Folytonosság}
 	\begin{example}
 		\[ f(x,y):=\begin{cases}
-		\frac{xy}{x^2+y^2};\quad (x,y)\in\R^2\setminus\{ (0,0) \}\\
-		0,,\quad (x,y)=(0,0)
+			\frac{xy}{x^2+y^2},\quad (x,y)\in\R^2\setminus\{ (0,0) \}\\
+			0,\quad (x,y)=(0,0)
 		\end{cases} \]
 		Vizsgáljuk az $f$ folytonosságát!
 		
 		\textit{Megoldás:}
 		\begin{enumerate}
-			\item $\forall y_0\in\R\Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
-			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R)\quad \Rightarrow\quad g\in C(\R)$
+			\item $\forall y_0\in\R\quad \Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
+			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  g\in C(\R))$
 			\item $f\notin C\{(0,0)\}$
 		\end{enumerate}
 		\begin{figure}[H]
@@ -162,8 +162,8 @@
 		\begin{enumerate}
 			\item Ha $y_0=0$:
 			\[ g(x)=\begin{cases}
-			\frac{x\cdot0}{x^2+0^2}=\frac{0}{x^2}=0\quad x\not=0\\
-			0,\quad (x,0)=(0,0)\quad \Leftrightarrow\quad x=0
+				\frac{x\cdot0}{x^2+0^2}=\frac{0}{x^2}=0\quad x\not=0\\
+				0,\quad (x,0)=(0,0)\quad \Leftrightarrow\quad x=0
 			\end{cases} \]
 			\[ \Rightarrow\quad g(x)=0\quad (\forall x\in\R) \quad \Rightarrow\quad g\in C(\R) \]
 			Ha $y_0\in\R\setminus\{ 0 \}$:
@@ -279,7 +279,7 @@
 		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq \]
 		Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
 		\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=}{\underset{=\max\{|x|,|y|\}}{\leq}}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)^2}_\infty}{\norm{(x,y)}_\infty}=6\cdot0=0 \]
-		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
+		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé, hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
 		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
 		$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=\begin{bmatrix}
 		10&-1
@@ -376,9 +376,9 @@
 		\textit{Ellenőrzés:}
 		Ha $f\in D\{(x,y)\}\quad \Rightarrow \quad (\forall (x,y)\in\R^2)$
 		\[ f(x,y)=:\begin{bmatrix}
-			f1(x,y)\\
-			f2(x,y)\\
-			f3(x,y)
+			f_1(x,y)\\
+			f_2(x,y)\\
+			f_3(x,y)
 		\end{bmatrix}\quad \Rightarrow\quad f'(x,y)=\begin{bmatrix}
 			\grad f_1(x,y)\\
 			\grad f_2(x,y)\\

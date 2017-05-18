@@ -140,11 +140,9 @@
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Filipp} Zoltán István gyakorlatán.\\ (2017. április 20.
 	\includegraphics[height=3cm]{../2zh/kepek/420.jpg}) 
 	\subsubsection{Irány menti és parciális derivált}
-	\begin{revision}
-		\begin{enumerate} 
-			\item $f\in\R{^n}\to\R;\quad 1\leq n\in\N;\quad a\in\int\mathcal{D}_f;\quad e\in\R^n;\quad \norm{e}_{\R^n}=1 m\quad F(t):=f(a+te),\quad t\in k_\partial(0)\quad (\partial$ alkalmas $a+te\in\mathcal{D}_f).$ Ha
-			\[ \exists F'(0):=\partial_ef(a)\in\R \]
-		\end{enumerate}
+	\begin{revision}\label{iranymenti-key}
+			$f\in\R{^n}\to\R;\quad 1\leq n\in\N;\quad a\in\Int\mathcal{D}_f;\quad e\in\R^n;\quad \norm{e}_{\R^n}=1, \quad F(t):=f(a+t\cdot e),\quad t\in k_\delta(0)\quad (\delta$ alkalmas $a+t\cdot e\in\mathcal{D}_f).$ Ha
+			\[ \exists F'(0)=:\partial_ef(a)\in\R \]
 	\end{revision}
 	\begin{task}
 		\[ f(x,y):=x^2-xy+y^2\quad ((x,y)\in\R^2) \]
@@ -159,73 +157,78 @@
 			\includegraphics[height=3cm]{../2zh/kepek/30.png}
 			\caption{$l(t)=a+te,\quad  t\in\R$}
 		\end{figure}
-		\textit{Megoldás:} $a:=(1,1), e=\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right)\in\R^2$
-		\[ \Rightarrow\quad \norm{e}_2=\sqrt{\frac{1}{4}+\frac{3}{4}}=2\checkmark \]
-		\[ \Rightarrow \quad F(t)=f(a+te)=f((1,1)+t\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right))=f\left(1+\frac{t}{2};1+\frac{t\sqrt{3}}{2}\right)=\left(1+\frac{t}{2}\right)^2-\left(1+\frac{t}{2}\right)\left(1+\frac{t\sqrt{3}}{2}\right)+\left(1+\frac{t\sqrt{3}}{2}\right)^2\]
-		\[\quad \Rightarrow\quad F\in D\quad \text{és} \]
-		\[ F'(t)=2\cdot\left(1+\frac{t}{2}\right)\cdot\frac{1}{2}-\frac{1}{2}\left(1+\frac{t\sqrt{3}}{2}\right)-\left(1+\frac{t}{2}\right)\frac{\sqrt{}}{2}+2\left(1+\frac{t\sqrt{3}}{2}\right)\cdot\frac{\sqrt{3}}{2}\quad (t\in\R) \]
-		\[\Rightarrow\quad \text{(def)}\quad \partial_ef(1,1)=F'(0)=2\cdot\frac{1}{2}-\frac{1}{2}-\frac{\sqrt{3}}{2}+2\cdot\frac{\sqrt{3}}{2}=\frac{1}{2}+\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2}\in\R \]
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=3cm]{../2zh/kepek/31.png}
-			\caption{}
-		\end{figure}
+		\textit{Megoldás:} $a:=(1,1),\quad  e:=\left(\cos\left(\frac{\pi}{3}\right),\sin\left(\frac{\pi}{3}\right)\right)=\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right)\in\R^2,\quad \norm{e}_2=\sqrt{\left(\frac{1}{2}\right)^2+\left(\frac{\sqrt{3}}{2}\right)^2}=\sqrt{\frac{1}{4}+\frac{3}{4}}=1\checkmark.$ Így definíció alapján:
+		\[ F(t)=f(a+te)=f\left((1,1)+t\left(\frac{1}{2},\ \frac{\sqrt{3}}{2}\right)\right)=f\left(1+\frac{t}{2},\ 1+\frac{t\sqrt{3}}{2}\right)=\]
+		\[=\left(1+\frac{t}{2}\right)^2-\left(1+\frac{t}{2}\right)\left(1+\frac{t\sqrt{3}}{2}\right)+\left(1+\frac{t\sqrt{3}}{2}\right)^2\]
+		Ebből már megállapítható hogy $ F\in D\quad \text{és}$
+		\[ F'(t)=2\cdot\left(1+\frac{t}{2}\right)\cdot\frac{1}{2}-\frac{1}{2}\left(1+\frac{t\sqrt{3}}{2}\right)-\left(1+\frac{t}{2}\right)\frac{\sqrt{3}}{2}+2\left(1+\frac{t\sqrt{3}}{2}\right)\cdot\frac{\sqrt{3}}{2}\quad (t\in\R) \]
+		A \ref{iranymenti-key}. def alapján:
+		\[ \partial_ef(1,1)=F'(0)=2\cdot\frac{1}{2}-\frac{1}{2}-\frac{\sqrt{3}}{2}+2\cdot\frac{\sqrt{3}}{2}=\frac{1}{2}+\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2}\in\R \]
 		
 	\end{task}
 	\begin{note}
 		Ha nincs külön kijelentve, akkor kettes normával dolgozunk.
 	\end{note}
 	\begin{note}
-		\begin{enumerate}
-			\item Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$
-			\[ \exists\partial_ef(a)=f'(a)\quad e=\langle f'(a),e\rangle \]
-			Most: $\forall (x,y)\in\R^2$
-			\begin{align*}
-				\partial_1f(x,y)=2x-y\\
-				\partial_2f(x,y)=-x+2y	
-			\end{align*}
-			Mivel $\exists\partial_1f, \partial_2f: \R^2\to\R$ és folytonosak:
-			\[ \R^2\text{-en}\quad \Rightarrow\quad f\in D(\R^2) \]
-			SPeciálisan:
-			\[ f'(1,1)=(\partial_1f(1,1);\partial_2f(1,1))=(2\cdot1-1;-1+2\cdot1)=(1,1)=\grad f(1,1)\quad \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle \]
-			\[ =\langle(1,1),\left(\frac{1}{2};\frac{\sqrt{3}}{2}\right)=1\cdot\frac{1}{2}+1\cdot\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2} \]
-			\item Legyen $e:=(\cos\alpha; \sin\alpha)\quad \alpha\in[0;2\pi]$
-			\[ \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle\quad \overset{\norm{e}_2}{=}\quad \langle(1,1);(\cos\alpha,\sin\alpha)\rangle=\sin\alpha+\cos\alpha=:g(\alpha)\quad \Rightarrow \]
-			$g'(\alpha)=\cos\alpha-\sin\alpha=0\quad \Leftrightarrow\quad \tg\alpha=0$
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{../2zh/kepek/32.png}
-				\caption{}
-			\end{figure}
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{../2zh/kepek/33.png}
-				\caption{$e_{\min}= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_{\max}= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right)$}
-			\end{figure}
-			Véletlen, higy a max grádiens irányú? hf.
-		\end{enumerate}
+		Ha $f\in D\{a\}\quad \Rightarrow\quad \forall e\in\R^n,\quad \norm{e}=1$\[ \exists\partial_ef(a)=f'(a)\quad e=\langle f'(a),e\rangle \]
 	\end{note}
-	\begin{note}
-		Legyen
-		\[ f(x,y):=\begin{cases}
-			1\quad (x,y)\in A\cup B\cup C\\
-			0\quad \text{különben}
-		\end{cases} \]
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=3cm]{../2zh/kepek/34.png}
-			\caption{}
-		\end{figure}
-		$e$ fix.
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=3cm]{../2zh/kepek/35.png}
-			\caption{}
-		\end{figure}
-		\[ \Rightarrow\quad \exists\partial_ef(0,0)=0\quad (\forall e\in\R^2,\quad \norm{e}=1) \]
-		De:
-		\[ f\notin C\{(0,0)\} \quad \text{ui.}\quad \nexists\lim_{(0,0)}f\quad \Rightarrow\quad f\notin D(0,0) \]
-	\end{note}
+	\textit{Visszatérve:} A megjegyzésben lévő állításhoz lássuk be hogy $f\in D\big(\R^2\big).\quad \forall (x,y)\in\R^2:$
+	\begin{align*}
+		\partial_1f(x,y)&=2x-y\\
+		\partial_2f(x,y)&=-x+2y	
+	\end{align*}
+	Mivel $\exists\partial_1f, \partial_2f: \R^2\to\R$ és folytonosak  $\R^2\text{-en}\quad \Rightarrow\quad f\in D(\R^2).$ Speciálisan:
+	\[ f'(1,1)=(\partial_1f(1,1);\partial_2f(1,1))=(2\cdot1-1;-1+2\cdot1)=(1,1)=\grad f(1,1)\quad \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle \]
+	\[ =\Big\langle(1,1),\left(\frac{1}{2},\ \frac{\sqrt{3}}{2}\right)\Big\rangle=1\cdot\frac{1}{2}+1\cdot\frac{\sqrt{3}}{2}=\frac{\sqrt{3}+1}{2} \]
+	
+	\textit{A feladat második részére térve:} Legyen $e:=(\cos\alpha; \sin\alpha)\quad \alpha\in[0;2\pi]$
+	\[ \Rightarrow\quad \exists\partial_ef(1,1)=\langle f'(1,1);e\rangle\quad \overset{\norm{e}_2}{=}\quad \langle(1,1);(\cos\alpha,\sin\alpha)\rangle=\sin\alpha+\cos\alpha=:g(\alpha)\quad \Rightarrow \]
+	$g'(\alpha)=\cos\alpha-\sin\alpha=0\quad \Leftrightarrow\quad \cos\alpha=\sin\alpha\quad \Leftrightarrow\quad \tg\alpha=1$, ennek a függvénynek a szélső értékei adják $\min\partial_ef(1,1)$-t és $\max\partial_ef(1,1)$-t.
+	\setlength\extrarowheight{2pt}
+	\begin{figure}[H]
+		\centering
+		$\begin{array}{|c||c|c|c|c|c|c|c|}
+		\hline
+		\alpha&0&&\frac{\pi}{4}&&\frac{5\pi}{4}&&2\pi\\
+		\hline
+		\hline
+		g'(\alpha)&0&\oplus&0&\ominus&0&\oplus&0\\
+		\hline
+		g(\alpha)&1&\nearrow&\sqrt{2}&\searrow&-\sqrt{2}&\nearrow&1\\
+		\hline
+		\end{array}$
+		\caption{A táblázatban $\oplus$ pozitív, $\ominus$ negatív függvényértéket jelöl. Világos, hogy a periódusosság miatt elegendő a $[0,2\pi]$ intervallumot vizsgálni. }
+	\end{figure}
+	Azaz, minimum az $\alpha:=\frac{\pi}{4}$, és a maximum az $\alpha:=\frac{5\pi}{4}$ választással kapható.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=3cm]{../2zh/kepek/33.png}
+		\caption{$e_{\min}= \left(-\frac{\sqrt{2}}{2};-\frac{\sqrt{2}}{2}\right),\quad e_{\max}= \left(\frac{\sqrt{2}}{2};\frac{\sqrt{2}}{2}\right)$}
+	\end{figure}
+	\begin{exercise}	
+		Véletlen, hogy a max grádiens irányú? hf.
+	\end{exercise}
+%	\begin{note}
+%		Legyen
+%		\[ f(x,y):=\begin{cases}
+%			1\quad (x,y)\in A\cup B\cup C\\
+%			0\quad \text{különben}
+%		\end{cases} \]
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[height=3cm]{../2zh/kepek/34.png}
+%			\caption{}
+%		\end{figure}
+%		$e$ fix.
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[height=3cm]{../2zh/kepek/35.png}
+%			\caption{}
+%		\end{figure}
+%		\[ \Rightarrow\quad \exists\partial_ef(0,0)=0\quad (\forall e\in\R^2,\quad \norm{e}=1) \]
+%		De:
+%		\[ f\notin C\{(0,0)\} \quad \text{ui.}\quad \nexists\lim_{(0,0)}f\quad \Rightarrow\quad f\notin D(0,0) \]
+%	\end{note}
 	\begin{center}
 		\textit{,,Itt áll Gizi a Himalája tetején. Azt kérdezzük Gizitől, hogy indulj el, hogy a lehető legmeredekebb pályán menjél?''}
 		
@@ -233,21 +236,22 @@
 	\end{center}
 	\begin{task}
 		\[ f(x,y)=e^x\cdot y+x\cos y\quad ((x,y)\in\R^2) \]
-		$a:=(0,1);\quad u:=(1,-\sqrt{3})\quad \Rightarrow\quad \partial_ef(a)=?\quad \text{ahol}\quad e$ az $a$ irányú egységvektor (kettes normával)
+		$a:=(0,1);\quad u:=(1,-\sqrt{3})\quad \Rightarrow\quad \partial_ef(a)=?\quad \text{ahol}\quad e$ az $u$ irányú egységvektor (kettes normával)
 		
 		Egyes normával hf.
 		
 		\textit{Megoldás (2es norma:)} 
 		%TODO 07
 		\[ e:=\frac{u}{\norm{u}_2} \]
-		Ha más normában szmolnánk, ahhol más norma szerint kell ozstnai is.
-		\[ e=\frac{(1,-\sqrt{3})}{\norm{1,-\sqrt{3}}_2}=\frac{(1,-\sqrt{3})}{ \sqrt{1^2+3}}=\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right) \]
+		Ha más normában számolnánk, ahhol más norma szerint kell osztani is.
+		\[ e=\frac{(1,-\sqrt{3})}{\norm{(1,-\sqrt{3})}_2}=\frac{(1,-\sqrt{3})}{ \sqrt{1^2+3}}=\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right) \]
 		\begin{align*}
 			\partial_1f(x,y)=&ye^x+\cos y\\
 			\partial_2f(x,y)=&e^x-x\sin y
 		\end{align*}
 		$((x,y)\in\R^2)$, és $\partial_1f\partial_2f:\R^2\to\R$ folytonosak
-		\[ f\in D(\R^2)\quad \text{spec.}\quad f\in D\{(0,1)\}\quad \text{és}\quad \Rightarrow\quad \exists\partial_ef(0,1)=\langle f'(0,1);e\rangle=\]\[\langle \partial_1f(0,1),\partial_2f(0,1);\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right)\rangle=\frac{1}{2}(1+\cos 1)-\frac{\sqrt{3}}{2}=\frac{1-\sqrt{3}-\cos1}{2} \]
+		\[ f\in D(\R^2)\quad \text{spec.}\quad f\in D\{(0,1)\}\quad \text{és}\quad \Rightarrow\quad \exists\partial_ef(0,1)=\langle f'(0,1),e\rangle=\]
+		\[\Big\langle \partial_1f(0,1),\partial_2f(0,1),\left(\frac{1}{2},-\frac{\sqrt{3}}{2}\right)\Big\rangle=\frac{1}{2}(1+\cos 1)-\frac{\sqrt{3}}{2}=\frac{1-\sqrt{3}-\cos1}{2} \]
 	\end{task}
 	\begin{task}$f:\R^2\to\R$ úgy, hogy: \quad ($(x,y)\in\R^2)$
 		\[ \begin{cases}
@@ -269,9 +273,7 @@
 		Vajon csak $+c$ a derivált vége? A megoldás az hogy nem, bármilyen deriválható egyváltozós függvény mehet oda, mely $y$-tól függ.
 	\end{note}
 	\begin{note}
-		\begin{enumerate}
-			\item Legyen $g(x,y):=(x^2y;1+\frac{x^3}{3})\quad ((x,y)\in\R^2);\quad \Rightarrow\quad f:\R^2\to\R^2;$ azt kaptuk, hogy $\exists f:\R^2\to\R,\quad f\in D (?)$ és $f'(x,y)=(\partial_1f(x,y),\partial_2f(x,y))=g(x,y)$ vagy $f'=g$. EZt mondjuk, hogy $f$ a $g$ primitív függvénye.
-		\end{enumerate}
+		Legyen $g(x,y):=\left(x^2y;1+\frac{x^3}{3}\right)\quad ((x,y)\in\R^2);\quad \Rightarrow\quad f:\R^2\to\R^2;$ azt kaptuk, hogy $\exists f:\R^2\to\R,\quad f\in D (?)$ és $f'(x,y)=(\partial_1f(x,y),\partial_2f(x,y))=g(x,y)$ vagy $f'=g$. Azt mondjuk, hogy $f$ a $g$ primitív függvénye.
 	\end{note}
 	\begin{task}
 		\[ f(x,y):=\sqrt{|xy|}\quad ((x,y)\in\R^2) \]
