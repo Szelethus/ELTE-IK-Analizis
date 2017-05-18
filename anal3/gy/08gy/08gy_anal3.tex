@@ -198,7 +198,7 @@
 			\item\begin{enumerate}
 				\item eset: $x=0\quad \Rightarrow\quad $
 				\[ f(0,y)=h(y)=\begin{cases}
-					\frac{0}{y^2}\quad \text{ha}\quad y\not=0
+					\frac{0}{y^2}\quad \text{ha}\quad y\not=0\\
 					0\quad y=0
 				\end{cases}=0\quad (\forall x\in\R)\quad \Rightarrow\quad h\in C(\R) \]
 				\item eset: $m=0\quad \Rightarrow\quad l(x)=y=0$\quad ($x$-tengely)
@@ -208,10 +208,10 @@
 				\end{cases}=0\quad \Rightarrow\quad  \]
 				$g=0\quad \Rightarrow\quad g\in C(\R)$
 				\item eset $y=mx\quad (m\in\R\setminus\{0\})\quad \Rightarrow$
-				\[ g(x):=f(x,m)=\begin{cases}
-					\frac{x^2mx}{x^4+m^2x^2},\quad \text{ha}\quad (x,mx)\not=(0,0)
+				\[ g(x):=f(x,mx)=\begin{cases}
+					\frac{x^2mx}{x^4+m^2x^2},\quad \text{ha}\quad (x,mx)\not=(0,0)\\
 					0\quad \text{ha}\quad (x,\underbrace{m}_{\not=0,\quad x=0}x)=(0,0)
-				\end{cases}\quad \Rightarrow\quad g(x)=\begin{cases}
+				\end{cases}\quad  \Rightarrow\quad g(x)=\begin{cases}
 					\frac{mx}{x^2+m^2}\quad x\not=0\\
 					0\quad x=0
 				\end{cases}\quad \Rightarrow\quad   \]
@@ -221,151 +221,168 @@
 			\end{enumerate}
 			\item $f\in C\{ (0,0) \}$\quad ui.:
 			\[ f(0,0)=0=?=\lim_{(x,y)\to(0,0)}\left(\frac{x^2y}{x^4+y^2}\right) \]
-			Ha $y=0\quad \Rightarrow\lim_{x\to0}\frac{0}{\underbrace{x^4}_{\not=0}}=\lim_{x\to0}(0)=0$
+			Ha $\displaystyle y=0\quad \Rightarrow\lim_{x\to0}\frac{0}{\underbrace{x^4}_{\not=0}}=\lim_{x\to0}(0)=0$
 			
-			Ha $y=x\quad \Rightarrow\quad \lim_{x\to0}\left(\frac{x^3}{x^4+x^2}\right)=\lim\left(\frac{x}{x^2+1}\right)=\frac{0}{1}=0$
+			Ha $\displaystyle y=x\quad \Rightarrow\quad \lim_{x\to0}\left(\frac{x^3}{x^4+x^2}\right)=\lim\left(\frac{x}{x^2+1}\right)=\frac{0}{1}=0$
 			
 			\begin{figure}[H]
 				\centering
 				\includegraphics[height=3cm]{kepek/27.png}
 				\caption{}
 			\end{figure}
-			\[ \lim_{x\to0}\frac{x^2\cdot x^2}{x^4+x^4}=\lim_{x\to0}\frac{x^4}{2x^4}=\lim_{x\to0}\frac{1}{2}=\frac{1}{2}\not=0\quad \Rightarrow\quad  \]
-			$\nexists\lim_{(0,0)}\quad \Rightarrow \quad f\notin C\{(0,0)\}$
+			Ha $\displaystyle y = x^2\quad \Rightarrow\quad \lim_{x\to0}\frac{x^2\cdot x^2}{x^4+x^4}=\lim_{x\to0}\frac{x^4}{2x^4}=\lim_{x\to0}\frac{1}{2}=\frac{1}{2}\not=0$
+			
+			Így viszont már ellentmondásra jutottunk: $\nexists\lim_{(0,0)}\quad \Rightarrow \quad f\notin C\{(0,0)\}$
 		\end{enumerate}
 		\begin{note}
-			Ha azt írom hogy $g\equiv0$, az azt jelenti, hogy $g$ az azonosan 0 függvény.
+			A $g\equiv0$ azt jelenti, hogy $g$ az azonosan 0 függvény.
 		\end{note}
-		\subsection{Differenciálás}
-		\begin{task} Mutassok meg hogy erősen deriválható $f$ az $a:=(1,2)$ pontban.
-			\[ f(x,y):=2x^2+3xy-y^2 \quad ((x,y)\in\R^2) \]
-			$\Rightarrow\quad f\in D\{a\}\quad \text{és}\quad f'(1,2)=?\quad \text{és}$ ellenőrzés a parciálisokkal.
-			
-			\textit{Megoldás:}
-			\begin{revision}
-				$1\leq n,m\in\N\quad f\in\R^n\to\R^m,\quad a\in \Int \mathcal{D}_f,\quad f\in D\{ a \}\quad \Leftrightarrow \quad \exists L\in\LARGE(\R^n,\R^m)$.
-				\[ \lim_{h\to0} \frac{\norm{f(a,h)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
-			\end{revision}
-			\begin{revision}
-				$L\in L(\R^n,\R^m)\quad \Leftrightarrow\quad \exists A\in\R^{m\times n}\quad L(h)=Ah\quad (\forall h\in\R^n)$
-				 Ekkor: $f'(a)=A$ Jacobi mátrix.
-			\end{revision}
-			\textit{Visszatérve a feladathoz:}
-			Most: $f:\R^2\to\R\quad \Rightarrow\quad f'(1,2)\in\R^{1\times 2}\equiv \R{^2}$
-			Legyen: $h:=(x,y);\quad a=(1,2)$
-			\[ f(a+h)-f(a)=f(x+1,y+2)-f(1,2)=2(x+1)^2+3(x+1)(y+2)-(y+2)^2-4=\]\[=2x^2+4x+2+3xy+6x+3y+6-y^2-4y-4-4=\underbrace{10x-y}_{\text{lineáris tagok}}+(\underbrace{2x^2+3xy-y^2}_{\text{maradék}}) \]
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{kepek/28.png}
-				\caption{}
-			\end{figure}
-			Legyen: $L(h):=L(x,y):=10x-y=\langle(10,-1),(x,y)\rangle=A\cdot\binom{x}{y}=Ah$ ahol $A=(10,-1)\in\R^{1\times2}$
-			
-			Kell, hogy igaz (*)
-			\[ \lim_{(x,y)\to(0,0)}=\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_a}}{\norm{x,y}_{\R^2}} \]
-			Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
-			\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}=\frac{0}{0}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=\max\{|x|,|y|\}}{\leq}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)}_\infty}{\norm{(x,y)}_\infty}=\]
-			\[=6\cdot0=0 \]
-			Mivel normák hányadosa nemnegatív, így alsó becslésünk is van.
-			\[ \Rightarrow\quad (\text{közrefogás})\quad \text{a definícióbeli $\lim$ valóban } 0 \]
-			$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=(10,-1)$.
-			\textit{Ellenőrzés:}
-			\begin{revision}
-				Ha $f\in\R^n\to\R$ típus\quad $(m=1)$\quad és\quad $f\in D\{a\}\quad \Rightarrow$
-				\[ f'(a)=\grad f(a)=(\partial_1 f(a),\partial_2 f(a),\dots,\partial_nf(a)) \]
-				Most: $((x,y)\in\R^2)$
-				\[ \partial_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
-				\[ \partial_2f(\underbrace{x}_{\text{fix}},\underbrace{y}_{\text{változó}})=3x-2y  \]
-				$\Rightarrow\quad \exists\partial_1 f,\partial_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok
-				
-				$\overset{\text{tétel}}{\Rightarrow}\quad f\in D(\R^2)$ és 
-				\[ f'(x,y)=\grad f(x,y)=(\partial_1 f(x,y), \partial_2f(x,y)) \]
-				Most:
-				\[ f'(x,y)=(4x+3y,3x-2y)\quad (\forall(x,y)\in\R^2) \]
-				Spec:
-				\[ f'(1,2)=(4\cdot1+\cdot2;3\cdot1-2\cdot2)=(10;-1) \]
-			\end{revision}
-		\end{task}
+	\end{task}
+	\subsection{Differenciálás}
+	\begin{task} 
+		Mutassok meg hogy erősen deriválható $f$ az $a:=(1,2)$ pontban.
+		\[ f(x,y):=2x^2+3xy-y^2 \quad ((x,y)\in\R^2) \]
+		$\Rightarrow\quad f\in D\{a\}\quad \text{és}\quad f'(1,2)=?\quad \text{és}$ ellenőrzés a parciálisokkal.
+		
+		\textit{Megoldás:}
+		\begin{revision}
+			$1\leq n,m\in\N\quad f\in\R^n\to\R^m,\quad a\in \Int \mathcal{D}_f,\quad f\in D\{ a \}\quad \Leftrightarrow \quad \exists L\in\LARGE(\R^n,\R^m)$.
+			\[ \lim_{h\to0} \frac{\norm{f(a+hh)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
+		\end{revision}
+		\begin{revision}
+			$L\in L(\R^n,\R^m)\quad \Leftrightarrow\quad \exists A\in\R^{m\times n}\quad L(h)=Ah\quad (\forall h\in\R^n)$
+		 Ekkor: $f'(a)=A$ Jacobi mátrix.
+		\end{revision}
+		\textit{Visszatérve a feladathoz:} $f:\R^2\to\R\quad \Rightarrow\quad f'(1,2)\in\R^{1\times 2}\equiv \R{^2}$.\quad 
+		Legyen: $h:=(x,y),\quad a=(1,2)$
+		\[ f(a+h)-f(a)=f(x+1,y+2)-f(1,2)=2(x+1)^2+3(x+1)(y+2)-(y+2)^2-4=\]\[=2x^2+4x+2+3xy+6x+3y+6-y^2-4y-4-4=\underbrace{10x-y}_{\text{lineáris tagok}}+(\underbrace{2x^2+3xy-y^2}_{\text{maradék}}) \]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/28.png}
+			\caption{Az analízis egyik fő gondolatmenete, hogy ha az $a$ pontot $h$-val eltoljuk, akkor ezen ponton képe hogyan változik.}
+		\end{figure}
+		Legyen: $L(h):=L(x,y):=10x-y=\langle(10,-1),(x,y)\rangle=\begin{bmatrix}
+			10&-1
+		\end{bmatrix}\cdot \begin{bmatrix}
+			x\\y
+		\end{bmatrix} =Ah$ ahol $A=\begin{bmatrix}
+		10&-1
+		\end{bmatrix}\in\R^{1\times2}$
+		
+		A maradéktagokkal így:
+		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq \]
+		Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
+		\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=}{\underset{=\max\{|x|,|y|\}}{\leq}}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)^2}_\infty}{\norm{(x,y)}_\infty}=6\cdot0=0 \]
+		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
+		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
+		$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=\begin{bmatrix}
+		10&-1
+		\end{bmatrix}$.
 		\begin{note}
-			Itt $\equiv$ izomorfiát jelöl.
+			Értelemszerűen, a gömbölyű és szögletes zárójel között érdemi különbség nincs, Filipp tanár úr inkább gömbölyű zárójelet használ, míg én a szögleteset szeretem jobban.
 		\end{note}
 		
-		\begin{task}
-			\[ f(x,y)=\begin{bmatrix}
-				x^3+xy\\
-				x-y^2\\
-				1+y
-			\end{bmatrix}\quad (x,y)\in\R^2;\quad \Rightarrow\quad \exists f'(1,2)=? \]
-			Ellenőrzés jacobival.
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{kepek/29.png}
-				\caption{}
-			\end{figure}
-			Def: $h:=(x,y); a:=(1,2)$
-			\[ f(a+h)-f(a)=f(x+1,y+2)-f(1,2)=\begin{bmatrix}
-				(x+1)^2+(x+1)(y+2)\\
-				x+1-(y+2)^2\\
-				1+(y+2)
-			\end{bmatrix}-\begin{bmatrix}
-				3\\
-				-3\\
-				3
-			\end{bmatrix}=\]
-			\[=\begin{bmatrix}
-				x^3+3x^2+3x+1+xy+2x+y+2-3\\
-				x+1-y^2-4y-4+3\\
-				y+3-3
-			\end{bmatrix}=\begin{bmatrix}
-			5x+y\\
-			x-4y\\
-			y
-			\end{bmatrix}-\begin{bmatrix}
-				x^3+3x^2+xy\\
-				-y^2\\
-				0
-			\end{bmatrix} \]
-			Legyen: $L(h):=L(x,y):=\begin{bmatrix}
-			5x+y\\
-			x-4y\\
-			y
-			\end{bmatrix}=\begin{bmatrix}
+		\textit{Ellenőrzés:}
+		\begin{revision}
+			Ha $f\in\R^n\to\R$ típus\quad $(m=1)$\quad és\quad $f\in D\{a\}\quad \Rightarrow$
+			\[ f'(a)=\grad f(a)=(
+				\partial_1 f(a), \partial_2 f(a), \dots, \partial_nf(a)) \]
+		\end{revision}
+		\textit{Visszatérvén az ellenőrzéshez}: $((x,y)\in\R^2)$
+		\[ \partial_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
+		\[ \partial_2f(\underbrace{x}_{\text{változó}},\underbrace{y}_{\text{változó}})=3x-2y  \]
+		$\Rightarrow\quad \exists\partial_1 f,\partial_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok $\overset{\text{tétel}}{\Rightarrow}\quad f\in D(\R^2)$ és 
+		\[ f'(x,y)=\grad f(x,y)=(\partial_1 f(x,y),\  \partial_2f(x,y)) \]
+		Ez az általunk definiált $f$ függvénnyel:
+		\[ f'(x,y)=(4x+3y,3x-2y)\quad (\forall(x,y)\in\R^2) \]
+		Speciálisan:
+		\[ f'(1,2)=(4\cdot1+\cdot2;\ 3\cdot1-2\cdot2)=(10;\ -1) \]
+	\end{task}
+	\begin{note}
+		Itt $\equiv$ izomorfiát jelöl.
+	\end{note}
+	
+	\begin{task}
+		\[ f(x,y)=\begin{bmatrix}
+			x^3+xy\\
+			x-y^2\\
+			1+y
+		\end{bmatrix}\quad (x,y)\in\R^2 \]
+		$\exists f'(1,2)=?$ Ellenőrizzünk jacobival.
+		
+		\textit{Megoldás:}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=3cm]{kepek/29.png}
+			\caption{Egy $\R^2\to\R^3$ leképezés}
+		\end{figure}
+		Legyen $h:=(x,y),\quad  a:=(1,2)$
+		\[ f(a+h)-f(a)=f(x+1,y+2)-f(1,2)=\begin{bmatrix}
+			(x+1)^3+(x+1)(y+2)\\
+			x+1-(y+2)^2\\
+			1+(y+2)
+		\end{bmatrix}-\begin{bmatrix}
+			3\\
+			-3\\
+			3
+		\end{bmatrix}=\]
+		\[=\begin{bmatrix}
+			x^3+3x^2+3x+1+xy+2x+y+2-3\\
+			x+1-y^2-4y-4+3\\
+			y+3-3
+		\end{bmatrix}=\begin{bmatrix}
+		5x+y\\
+		x-4y\\
+		y
+		\end{bmatrix}-\begin{bmatrix}
+			x^3+3x^2+xy\\
+			-y^2\\
+			0
+		\end{bmatrix} \]
+		Legyen: $L(h):=L(x,y):=\begin{bmatrix}
+		5x+y\\
+		x-4y\\
+		y
+		\end{bmatrix}=\begin{bmatrix}
+		5&1\\
+		1&-4\\
+		0&1
+		\end{bmatrix}\cdot \begin{bmatrix}
+		x\\
+		y
+		\end{bmatrix}$
+		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\norm{
+				\begin{bmatrix}
+					x^3+3x^2+xy\\
+					-y^2\\
+					0
+				\end{bmatrix}
+		}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
+		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\]
+		\[\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
+		a def-beli $\lim=0\quad \Rightarrow
+		\quad$
+		\[ f\in D(1,2)\quad \text{és}\quad f'(1,2)=\begin{bmatrix}
 			5&1\\
 			1&-4\\
 			0&1
-			\end{bmatrix}\cdot \begin{bmatrix}
-			x\\
-			y
-			\end{bmatrix}$
-			\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\norm{
-					\begin{bmatrix}x^3+3x^2\\
-					-y^2\\
-					0\end{bmatrix}
-			}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
-			a def-beli $\lim=0\quad \Rightarrow
-			\quad$
-			\[ f\in D(1,2)\quad \text{és}\quad f'(1,2)=\begin{bmatrix}
-				5&1\\
-				1&-4\\
-				0&1
-			\end{bmatrix}\in\R^{3\times 2} \]
-			\textit{Ellenőrzés}
-			Ha $f\in D\{(x,y)\}\quad \Rightarrow$
-			\[ f'(x,y)=\begin{bmatrix}
-				\grad f_1(x,y)\\
-				\grad f_2(x,y)\\
-				\grad f_3(x,y)
-			\end{bmatrix} =\begin{bmatrix}
-				\partial_1 f_1(x,y)&\partial_2 f_1(x,y)\\
-				\partial_1 f_2(x,y)&\partial_2 f_2(x,y)\\
-				\partial_1 f_3(x,y)&\partial_2 f_3(x,y)
-			\end{bmatrix}=\begin{bmatrix}
-				3x^2+y&y\\
-				1&-2y\\
-				0&1
-			\end{bmatrix}\quad (\forall (x,y)\in\R^2) \]
-			
-			Enek a mátrixnak mind a 6 komponense folytonos fv (polinomok)$\quad \Rightarrow\quad f\in D(\R^2)$
-		\end{task}
+		\end{bmatrix}\in\R^{3\times 2} \]
+		\textit{Ellenőrzés}
+		Ha $f\in D\{(x,y)\}\quad \Rightarrow$
+		\[ f'(x,y)=\begin{bmatrix}
+			\grad f_1(x,y)\\
+			\grad f_2(x,y)\\
+			\grad f_3(x,y)
+		\end{bmatrix} =\begin{bmatrix}
+			\partial_1 f_1(x,y)&\partial_2 f_1(x,y)\\
+			\partial_1 f_2(x,y)&\partial_2 f_2(x,y)\\
+			\partial_1 f_3(x,y)&\partial_2 f_3(x,y)
+		\end{bmatrix}=\begin{bmatrix}
+			3x^2+y&y\\
+			1&-2y\\
+			0&1
+		\end{bmatrix}\quad (\forall (x,y)\in\R^2) \]
+		
+		Enek a mátrixnak mind a 6 komponense folytonos fv (polinomok)$\quad \Rightarrow\quad f\in D(\R^2)$
 	\end{task}
 \end{document}

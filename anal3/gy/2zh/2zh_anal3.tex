@@ -1762,7 +1762,7 @@
 	\begin{revision} (határérték definíciója és átviteli elv)
 		\begin{enumerate}
 			\item $f\in\R^n\to\R^m;\quad 1\leq n,m\in\N;\quad a\in\mathcal{D}_f',\quad A\in\R^m$:
-			\[ \lim_{x\to a}f(x)=\lim_af=A\quad \overset{\text{def.}}{\Longleftrightarrow}\quad \forall\varepsilon>0\quad \exists\partial>0\quad \forall x\in\mathcal{D}_f\setminus\{a\}:\quad 0<||x-a||_{\R^n}<\partial\quad ||f(x)-A||_{\R^m}<\varepsilon \]
+			\[ \lim_{x\to a}f(x)=\lim_af=A\quad \overset{\text{def.}}{\Longleftrightarrow}\quad \forall\varepsilon>0\quad \exists\delta>0\quad \forall x\in\mathcal{D}_f\setminus\{a\}:\quad 0<||x-a||_{\R^n}<\delta\quad ||f(x)-A||_{\R^m}<\varepsilon \]
 			\item (átviteli elv)\[ \forall (x_k):\N\to\R^n\setminus\{a\}\quad \text{és}\quad \lim_{k\to\infty}(x_k)=a:\quad \lim_{k\to\infty}f(x_k)=A \]
 		\end{enumerate}
 	\end{revision}
@@ -1819,24 +1819,23 @@
 	\begin{note}
 		Mindig más irányból közelítjük az origót. Rendre $x, y$ és $z$ tengely mentén.
 	\end{note}
-	\begin{task}
+	\begin{exercise}
 		Bizonyítsuk be, hogy
 		\begin{enumerate}
 			\item \[ \exists\lim_{x\to0}\left(\lim_{y\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)=\lim_{x\to0}\left(\frac{1}{x^2}\right)=\lim_{x\to0}(0)=0 \]
 			\item \[ \exists\lim_{y\to0}\left(\lim_{x\to0}\frac{x^2y^2}{x^2y^2+(x-y^2)}\right)= \]
-			\begin{figure}[H]
-				\centering
-				\includegraphics[height=3cm]{kepek/24.png}
-				\caption{}
-			\end{figure}
-			%TODO hiányos 07
+%			\begin{figure}[H]
+%				\centering
+%				\includegraphics[height=3cm]{kepek/24.png}
+%				\caption{}
+%			\end{figure}
 		\end{enumerate}
-	\end{task}
+	\end{exercise}
 	\begin{task}
 		\[ \lim_{(x,y)\to(0,0)}\left(\frac{xy}{\sqrt{x^2+y^2}}\right) \]
 		Rövid jelölés: Sorozatok helyett irányokkal dolgozunk.
 		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad \underbrace{f(x,y)}_{x\not=0}=\frac{x\cdot0}{\sqrt{x^2}}=\frac{0}{|x|}=0\to0\quad (\text{ha}\quad x\to0) \]
-		Ha $\exists\lim_{(0,0)}f=0$ lehet csak.
+		Ha a határérték létezik, akkor $\lim_{(0,0)}f=0$ lehet csak.
 		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad f(0,y)=\frac{0\cdot y}{\sqrt{y^2}}=\frac{0}{|y|}=0\to 0 \]
 		ha $y\to0$.
 		
@@ -1846,13 +1845,13 @@
 		Sejtés: $\lim_{(0,0)}f=0$. (lévén nem tudtuk cáfolni)
 		
 		Definíció alapján:
-		\[ \forall\varepsilon>0\quad \exists\partial>0\quad \forall(x,y)\in\mathcal{D}_f=\R^2\setminus\{(0,0)\}:\quad 0<||(x,y)-(0,0)||_{\R^2}<\partial\quad |f(x,y)-0|<\varepsilon \]
-		Legyen $\varepsilon>0$ fix; és $|f(x,y)-0|=\left|\frac{xy}{\sqrt{x^2+y^2}}\right|=\frac{|xy|}{\sqrt{x^2+y^2}}$
+		\[ \forall\varepsilon>0\quad \exists\delta>0\quad \forall(x,y)\in\mathcal{D}_f=\R^2\setminus\{(0,0)\}:\quad 0<||(x,y)-(0,0)||_{\R^2}<\delta\quad |f(x,y)-0|<\varepsilon \]
+		Legyen $\varepsilon>0$ fix, így \[|f(x,y)-0|=\left|\frac{xy}{\sqrt{x^2+y^2}}\right|=\frac{|xy|}{\sqrt{x^2+y^2}}\leq \]
 		
 		Mi a cél? $||f(x,y)-0||\leq K||(x,y)-(0,0)||_{\R{^2}}$
 		\[ \underset{|xy|=\sqrt{x^2y^2}\leq\frac{x^2+y^2}{2}}{\leq}\quad\frac{x^2+y^2}{2\sqrt{x^2+y^2}}=\frac{1}{2}\sqrt{x^2+y^2}=\frac{1}{2}||(x,y)-(0,0)||_2<\varepsilon  \]
 		\[ \Leftrightarrow||(x,y)-(0,0)||_2<2\varepsilon \]
-		Legyen $\partial:=2\varepsilon$ jó.
+		Legyen $\delta:=2\varepsilon$ jó.
 	\end{task}
 	\subsection{Folytonosság}
 	\begin{example}
@@ -1914,7 +1913,7 @@
 			\item\begin{enumerate}
 				\item eset: $x=0\quad \Rightarrow\quad $
 				\[ f(0,y)=h(y)=\begin{cases}
-					\frac{0}{y^2}\quad \text{ha}\quad y\not=0
+					\frac{0}{y^2}\quad \text{ha}\quad y\not=0\\
 					0\quad y=0
 				\end{cases}=0\quad (\forall x\in\R)\quad \Rightarrow\quad h\in C(\R) \]
 				\item eset: $m=0\quad \Rightarrow\quad l(x)=y=0$\quad ($x$-tengely)
@@ -1925,9 +1924,9 @@
 				$g=0\quad \Rightarrow\quad g\in C(\R)$
 				\item eset $y=mx\quad (m\in\R\setminus\{0\})\quad \Rightarrow$
 				\[ g(x):=f(x,m)=\begin{cases}
-					\frac{x^2mx}{x^4+m^2x^2},\quad \text{ha}\quad (x,mx)\not=(0,0)
+					\frac{x^2mx}{x^4+m^2x^2},\quad \text{ha}\quad (x,mx)\not=(0,0)\\
 					0\quad \text{ha}\quad (x,\underbrace{m}_{\not=0,\quad x=0}x)=(0,0)
-				\end{cases}\quad \Rightarrow\quad g(x)=\begin{cases}
+				\end{cases}\quad  \Rightarrow\quad g(x)=\begin{cases}
 					\frac{mx}{x^2+m^2}\quad x\not=0\\
 					0\quad x=0
 				\end{cases}\quad \Rightarrow\quad   \]
@@ -2057,7 +2056,8 @@
 					\begin{bmatrix}x^3+3x^2\\
 					-y^2\\
 					0\end{bmatrix}
-			}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
+			}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\]
+			\[\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
 			a def-beli $\lim=0\quad \Rightarrow
 			\quad$
 			\[ f\in D(1,2)\quad \text{és}\quad f'(1,2)=\begin{bmatrix}
@@ -2576,7 +2576,7 @@
 	\begin{task}
 		%TODO feladatfolytatás
 		\[ f(x,y)=x^4+y^4-x^2-2xy-y^2 \]
-		Megállapítottuk korábban, hogy a $(0,0)$ ponthoz kellett külön vizsgálat, lévén za általunk kapott mátrix negatív szemidefinit volt.
+		Megállapítottuk korábban, hogy a $(0,0)$ ponthoz kellett külön vizsgálat, lévén az általunk kapott mátrix negatív szemidefinit volt.
 		\[ f(0,0)=0 \]
 		
 		\begin{figure}[H]
@@ -2608,7 +2608,7 @@
 			\includegraphics[height=4cm]{kepek/44.png}
 			\caption{}
 		\end{figure}
-		$\Rightarrow \quad (0,0)$ nem lokélis szélső érték hely.
+		$\Rightarrow \quad (0,0)$ nem lokális szélső érték hely.
 	\end{task}
 	\begin{task}
 		\[ f(x,y):=x^4+y^2\quad ((x,y)\in\R^2) \]
@@ -2617,7 +2617,7 @@
 		\textit{Megoldás:} Első lépésben:
 		\begin{align*}
 			\partial_1f(x,y)=4x^3=0\\
-			\partial_1f(x,y)=2y=0
+			\partial_2f(x,y)=2y=0
 		\end{align*}
 		Ebből követekzik hogy $(x,y)=(0,0)$.
 		
@@ -2630,11 +2630,11 @@
 		0&2
 		\end{bmatrix},\quad \varDelta_1=0,\quad \varDelta_2=0 \]
 		Ismét nem működnek a tételek, további vizsgálatra van szükség.
-		\[ f(0,0)=0\leq x3+y^2=f(x,y)\quad (\forall(x,y)\in\R^2)\quad \Rightarrow\quad \text{abszolút minimum hely.} \]
+		\[ f(0,0)=0\leq x^4+y^2=f(x,y)\quad (\forall(x,y)\in\R^2)\quad \Rightarrow\quad \text{abszolút minimum hely.} \]
 	\end{task}
 	\begin{task}
 		\[ f(x,y)=x^3+y^2\quad ((x,y)\in\R^2) \]
-		\textit{Megoldás:} ELső lépésben
+		\textit{Megoldás:} Első lépésben
 		\begin{align*}
 			\partial_1f(x,y)=3x^2=0\\
 			\partial_2f(x,y)=2y=0
@@ -2664,7 +2664,7 @@
 	\end{task}
 	\subsection{Abszolút szélső érték keresés}
 	\begin{task}
-		\[ f(x,y):=y(2y-3)\quad ((x,y)\in A) \]
+		\[ f(x,y):=y(2x-3)\quad ((x,y)\in A) \]
 		$A$: Az $>=x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
 		\begin{figure}[H]
 			\centering
@@ -2677,10 +2677,10 @@
 		Bontsuk szép az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
 		
 		\medskip
-		VIzsgáljuk a belső pontokat. Ha $(x,y)\in\Int A$:
+		Vizsgáljuk a belső pontokat. Ha $(x,y)\in\Int A$:
 		\begin{align*}
-			\partial_1f(x,y)=2y=0\\
-			\partial_1f(x,y)=2x=0\\
+			\partial_1f(x,y)&=2y=0\\
+			\partial_2f(x,y)&=2x-3=0\\
 		\end{align*}
 		Ebből a $\left(\frac{3}{2},0\right)$-t kapjuk, azonabn ez nem belső pont: $\left(\frac{3}{2},0\right)\notin\Int A$. Ebből már azt is tudhatjuk, hogy belső pontokban ($\Int A$) nem lehet szélső érték.
 		\medskip
@@ -2700,8 +2700,8 @@
 		\[ y\in(0,4)\quad \Rightarrow\quad h'(y)=1\not=0 \]
 		$h$ függvény határai: 
 		\begin{align*}
-			y=0\quad \Rightarrow\quad (2,0) \quad \text{már volt.}\\
-			y=4\quad \Rightarrow\quad (2,4)
+			y=0\quad \Rightarrow&\quad (2,0) \quad \text{már volt.}\\
+			y=4\quad \Rightarrow&\quad (2,4)
 		\end{align*}
 		$D:=\{(x,x^2)\in\R^2\ | \ 0\leq x\leq 2\}$
 		\[ \Rightarrow\quad l(x):=f(x,x^2)=x^2(2x-3)=2x^3-3x^2\quad x\in[0,2] \]
@@ -2717,7 +2717,7 @@
 		\begin{align*}
 			f(x,0)=&0\\
 			f(2,4)=&4\cdot(2\cdot2-3)=4\quad \text{abszolút maximum}\\
-			f(1,1)=&1\cdot(-1)=4\quad \text{abszolút minimum}\
+			f(1,1)=&1\cdot(-1)=-1\quad \text{abszolút minimum}\
 		\end{align*}
 	\end{task}
 	\begin{task}
@@ -2735,10 +2735,10 @@
 		
 		Ha $(x,y)\in\Int A\quad \Rightarrow$
 		\begin{align*}
-			\partial_1f(x,y)=3x^2-6x=0\\
-			\partial_2f(x,y)=-2y
+			\partial_1f(x,y)&=3x^2-6x=0\\
+			\partial_2f(x,y)&=-2y=0
 		\end{align*}
-		Ebből $x_1=y_1=0$, vbalamint $x_2=2,\quad y_2=0$ következik. 
+		Ebből $x_1=y_1=0$, valamint $x_2=2,\quad y_2=0$ következik. 
 		\[ (0,0)\in\Int A,\quad (2,0)\notin\Int A \]
 		Így (2,0) nem lehet abszolút szélső érték, (0,0)-t pedig később kell vizsgálnunk.
 		
@@ -2751,15 +2751,15 @@
 		
 		
 		$B:=\{ (-1,y)\in\R\ | \ -2\leq y\leq 4 \}$
-		\[ g(y):=f(-1,y)=-3-y^2\quad y\in[-2,4] \]
-		Ha $y\in(-2,y)\quad \Rightarrow\quad g'(y)=-2y=0\quad \Leftrightarrow\quad y=0\in(-2,y)\quad \Rightarrow\quad (-1,0)$.
+		\[ g(y):=f(-1,y)=-4-y^2\quad y\in[-2,4] \]
+		Ha $y\in(-2,4)\quad \Rightarrow\quad g'(y)=-2y=0\quad \Leftrightarrow\quad y=0\in(-2,4)\quad \Rightarrow\quad (-1,0)$.
 		
 		Végpontok:
 		\begin{align*}
-			y=-2\quad \Rightarrow\quad (-1,-2)\\
-			y=4\quad \Rightarrow\quad (-1,4)
+			y=-2\quad \Rightarrow&\quad (-1,-2)\\
+			y=4\quad \Rightarrow&\quad (-1,4)
 		\end{align*}
-		Mind a kettő pontot meg kel majd vizsálunk.
+		Mind a kettő pontot meg kel majd vizsgálunk.
 		
 		$C:=\{ (x,4)\in\R^2\ | \ -1\leq x\leq 5 \}$
 		\[ l(x):=f(x,4)=x^3-3x^2-16\quad x\in[-1,5] \]
@@ -2767,8 +2767,8 @@
 		
 		Sarokpontok:
 		\begin{align*}
-			x=-1\quad \Rightarrow\quad (-1,4)\quad \text{már volt}\\
-			x = 5\quad \Rightarrow\quad (5,4)
+			x=-1\quad \Rightarrow&\quad (-1,4)\quad \text{már volt}\\
+			x = 5\quad \Rightarrow&\quad (5,4)
 		\end{align*}
 		$D:=\{ (x,x-1)\in\R^2\ | \ -1\leq x\leq 5 \}$
 		\[ h(x):=f(x,x-1)=x^3-3x^2-(x-1)^2\quad x\in[-1,5] \]
@@ -2801,4 +2801,135 @@
 	\begin{note}
 		Az $A$ halmaz ábrázolása 1 pont, a Weierstass tétel felírása 1 pont, a deriváltak felírása (ált.) 2 pont, a határvonalak 1-2 pontot érnek darabonkéntösszevetés 1pont
 	\end{note}
+	\subsection{Egyenletes folytonosság}
+	\begin{revision}
+		(egyenletes folytonosság $\R^2$-en) Ha $f\in\R^2\to\R$, akkor $f$ egyenletesen folytonos egy $H\subset \mathcal{D}_f$ halmazon ($f\in EC(H))$, ha
+		\[ \forall\varepsilon>0,\quad \exists\delta>0,\quad \forall(x,y);(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|<\varepsilon \]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/52.png}
+			\caption{}
+		\end{figure}
+	\end{revision}
+	\begin{revision}
+		Ha $f\in EC(H)\Rightarrow\quad f\in C(H)$.
+	\end{revision}
+	\begin{task}
+		\[ f(x,y):=2x+3y-5\quad ((x,y)\in\R^2) \]
+		Bizonyítsuk be hogy egyenletesen folytonos!
+		
+		\textit{Megoldás:} Sejtés: $f$ egyenletesen folytonos (értelemszerűen $\mathcal{D}_f=\R^2$-en).
+		
+		Ugyanis:
+		\[ \varepsilon>0\quad \text{fix}\quad |f(x,y)-f(a,b)|=|2x+5y-5-(2a+3b-5)|=|2(x-a)+3(y-b)|\leq \]
+		Cél lenne ezt felülről becsülni $\norm{(x,y)-(a,b)}$ valamilyen konstans szorosával. Ezt nem lehet minden példánál megcsinálni, azonban direkt bizonyításnál gyakran célravezető.
+		\[ \leq2|2x-a|+3|y-b|\overset{*}{\leq} 3|x-a|+3|y-b|=3\norm{x-a,y-b}_1=3\norm{(x,y)-(a,b)}_1<\varepsilon\quad \Leftrightarrow\quad \norm{(x,y)-(a,b)}_1<\frac{\varepsilon}{3}  \]
+		Így:
+		\[ \forall\varepsilon>0,\quad \exists\delta:=\frac{\varepsilon}{3},\quad \forall(x,y),(a,b)\in\R^2 : \norm{(x,y)-(a,b)}<\delta:\quad |f(x,y)-f(a,b)|\leq 3\norm{(x,y)-(a,b)}_1<3\frac{\varepsilon}{3}=\varepsilon  \]
+		A korábban csillaggal jelölt résznél máshogy is becsülhetünk:
+		\[ \leq 5\cdot\max\{ |x-a|;|y-b|\}=5\norm{(x,y)-(a,b)}_\infty<\varepsilon\quad \Leftrightarrow\quad \delta:=\frac{\varepsilon}{5}\quad \text{jó.} \]
+		
+	\end{task}
+	\begin{note}
+		Ha tekintsük a $z=3x+2y-5$ egyenletet, erről megllapítható hogy ez egy \textit{sík} egyenlete, ezt átrendezve megadható egy vektor ($n_s=(2,3,-1)$), melyre merőleges sík lesz az, melynek a fenti egyenlet megfeleltethető.
+	\end{note}
+	\begin{task}
+		\[ f(x,y):=\sin\frac{\pi}{1-x^2-y^2} \quad ((x,y)\in D:=\{ (x,y)\in\R^2 \ | \ x^2+y^2<1 \}) \]
+		
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/53.png}
+			\caption{Így néz ki az $f$ függvény értelmezési tartománya.}
+		\end{figure}
+		
+		
+		\textit{Megoldás:} Ki kéne alakítanunk egy sejtést, hogy vajon folytonos lesz-e ez a függvény. Érezhető, hogy problémás lesz a definíció, ha $(x^2+y^2)$ közelít 1-hez. Ez alapján
+		
+		\textit{Sejtés:} $f\notin EC(H)$, azaz
+		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y)(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
+		Ennek a belátására egy új módszer fogunk alkalmazni. Ezt a módszert azonabn függvnyek egyenletes folytonosságára ne alkalmazzuk!
+		
+		Elég konstruálunk olyan ($x_n,y_n$);$(a_n,b_n):\N\to H$ sorozatot, melyekre
+		\[ \norm{(x_n,y_n)-(a_n,b_n)}_{\R^2}\to0\quad (\text{ha } n\to+\infty)\quad \text{és}\quad |f(x_n,y_n)-f(a_n,b_n)|\geq \varepsilon\quad \text{konstans} \] 
+		\begin{center}
+			\textit{,,Altassuk el az egyik változót!''}
+			
+			/Filipp/
+		\end{center}
+		\[ y=0\quad \text{mentén}\quad \Rightarrow\quad f(x,0)=\sin\frac{\pi}{1-x^2}\quad (x\in(-1,1)) \]
+		Ez ábrázolni se lenne nehéz, lényegében ez az $x$ tengelyen a $(-1,1)$ intervallum.
+		
+		Ötlet: adjuk meg az $(x_n),(a_n)$ sorozatokat úgy, hogy:
+		\[ \sin\frac{\pi}{1-x_n^2}=1,\quad \sin\frac{\pi}{1-a_n^2}=0 \]
+		Most szükségünk lesz egy olyan sorozatra, mely ezeknek meg is felel.
+		\[ \Rightarrow\quad \frac{\pi}{1-x_n^2}=\frac{\pi}{2}+2x\pi \quad \Rightarrow\quad 1-x_n^2=\frac{1}{\frac{1}{2}+2n}\quad \Rightarrow\quad x_n:=\sqrt{1-\frac{1}{\frac{1}{2}+2n}}\quad (1\leq n\in\N)  \]
+		Ezzel sikeresen elértük hogy az $(x_n)$ a (-1,1) intervallum vegyen fel értékeket.
+		\[ \frac{\pi}{1-a_n^2}=2n\pi\quad \Rightarrow\quad \frac{1}{2n}=1-a_n^2\quad \Rightarrow\quad a_n:=\sqrt{1-\frac{1}{2n}}\quad (1\leq n\in\N) \]
+		Ezzel elértük hogy $(x_n),(a_n):\N\to(-1,1)\checkmark$. Ekkor:
+		\[ \norm{(x_n,1)-(a_n,0)}_1=\norm{(x_n-a_n,0)}_1=|x_n-a_n|=\]
+		\[=\left|\sqrt{1-\frac{1}{\frac{1}{2}+2n}}-\sqrt{1-\frac{1}{2n}}\right|\to|\sqrt{1}-\sqrt{1}|=0\checkmark\quad (\text{ha } n\to+\infty )\quad \text{és}\quad |f(x_n,0)-f(a_n,0)|=1=:\varepsilon \]
+		Összefoglalva:
+		\[ \exists\varepsilon:=1\quad \forall\delta>0\quad \exists1\leq n_0\in\N\quad \text{és}\quad (x_{n_0},0)(a_{n_0},0)\in \mathcal{D}:\quad \norm{(x_{n_0})-(a_{n_0},0)}_1<\delta\]
+		\[ |f(x_{n_0},0)-f(a_{n_0},0)|=1 \geq\varepsilon=1\quad \Rightarrow\quad f\notin EC(\mathcal{D}) \]
+		
+	\end{task}
+	\begin{task}
+		\[ f(x,y):=\frac{\sin\left(x^2+y^2+e^{x^4}\right)}{1+\arctg^2x}\quad ((x,y)\in\R^2) \]
+		,,Lőjünk ki egy változót'', ezzel egyszerűsítve a függvényt.
+		\[ x=0\quad \text{mentén}\quad f(0,y)=\sin(1+y^2)\quad (y\in\R) \]
+		Lássuk be, hogy ez nem egyenletesen folytonos!
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/54.png}
+			\caption{Az $f(x)=x^2$ fv. nem egyenletesen folytonos.}
+		\end{figure}
+		
+		\textit{Sejtés:} $f\notin EC(\R^2)$.
+		
+		\textit{Bizonyítás:} Legyen $(y_n),(b_n):\N\to\R$ olyanok, hogy:
+		\[ \sin(y_n^2+1)=1,\quad \sin(b_n^2+1)=0 \]
+		Ekkor:
+		\[ y_n^2+1=\frac{\pi}{2}+2n\pi,\quad y_n:=\sqrt{\frac{\pi}{2}-1+2n\pi}\to+\infty\quad (\text{ha }n\to\infty) \]
+		Valamint
+		\[ b_n+1=2n\pi\Rightarrow\quad b_n:=\sqrt{2n\pi-1},\quad (1\leq n\in\N) \]
+		Tehát:
+		\[ \norm{(0,y_n)-(0,b_n)}_1=\left|\sqrt{\frac{\pi}{2}-1+2n\pi}-\sqrt{2n\pi-1}\right|=\frac{\frac{\pi}{2}}{\sqrt{\frac{\pi}{2}-1+2n\pi}+\sqrt{2n\pi-1}}\to0\quad (\text{ha }n\to+\infty) \]
+		\[ |f(0,y_n)-f(0,b_n)|=|1-0|=1 \]
+		Összefoglalva:
+		\[ \exists\varepsilon:=1\quad \forall>0\quad \exists n_0\in\N:\quad (0,y_{n_0}),(0,b_{n_0})\in\mathcal{D}_f:\quad \norm{(0,y_{n_0})-f(0,b_{n_0})}|=1\geq\varepsilon:=1 \]
+		$\Rightarrow\quad f\notin EC(\R^2)$.
+	\end{task}
+	\begin{note}
+		\[ f(x,y)=\sin\frac{\pi}{1-x^2-y^2};\quad (x,y)\in\overline{k_R(0,0)}=\{ (x,y)\in\R^2\ | \ x^2+y^2\leq \R^2 \}\quad (\forall 0<R<1)\quad \overset{\text{Heine.}}{\Rightarrow}\quad f\in EC(D_R) \]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[height=4cm]{kepek/55.png}
+			\caption{}
+		\end{figure}
+	\end{note}
+	\begin{task}
+		\[ f(x,y):=\sqrt{x^2+y^2}((x,y)\in\R^2) \]
+		Igaz-e hogy $f\in EC$?
+		
+		\textit{Megoldás:} 
+		\[ \varepsilon>0\quad \text{fix},\quad |f(x,y)-f(a,b)|=|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}|\leq \]
+		A cél ismét egy felső becslés megadása. Ha ezt direkt módszerrel próbálnánk, elég nehezen adná magát.
+		
+		Ötlet: $f(x,y):=\norm{x,y}_2$
+		
+		Tétel: Legyen ($X,\norm{\cdot}$) normált tér,
+		\[ \Rightarrow\quad f(x,y):=\norm{x}\quad (x\in X) \]
+		
+		Ekkor:
+		\[ |f(x)-f(t)|=\big|\norm{x}-\norm{t}\big|\overset{*}{\leq}\norm{x-t}<\varepsilon\quad \Leftrightarrow\quad \delta:=\varepsilon\quad \text{jó.} \]
+		A kicsillagozott résznél lehet az átalakítás nem triviális, a kifejezés helyessége mögött ez áll:
+		\begin{align}
+			\norm{x}=\norm{(x-t)+t}
+		\end{align}
+		De:
+		\[ \left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|=\frac{\left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}\leq|x-a|\frac{|x+a|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}+|y-b|\frac{y+b}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}= \]
+		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2}+\sqrt{a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y}^2+\sqrt{b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
+	\end{task}
 \end{document}
