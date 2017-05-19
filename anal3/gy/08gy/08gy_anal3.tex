@@ -149,7 +149,7 @@
 		\textit{Megoldás:}
 		\begin{enumerate}
 			\item $\forall y_0\in\R\quad \Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
-			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  g\in C(\R))$
+			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  h\in C(\R))$
 			\item $f\notin C\{(0,0)\}$
 		\end{enumerate}
 		\begin{figure}[H]
@@ -276,11 +276,11 @@
 		\end{bmatrix}\in\R^{1\times2}$
 		
 		A maradéktagokkal így:
-		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq \]
+		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{(x,y)}_{\R^2}}\leq \]
 		Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
 		\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=}{\underset{=\max\{|x|,|y|\}}{\leq}}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)^2}_\infty}{\norm{(x,y)}_\infty}=6\cdot0=0 \]
 		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé, hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
-		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
+		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{(x,y)}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
 		$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=\begin{bmatrix}
 		10&-1
 		\end{bmatrix}$.
@@ -296,7 +296,7 @@
 		\end{revision}
 		\textit{Visszatérvén az ellenőrzéshez}: $((x,y)\in\R^2)$
 		\[ \partial_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
-		\[ \partial_2f(\underbrace{x}_{\text{változó}},\underbrace{y}_{\text{változó}})=3x-2y  \]
+		\[ \partial_2f(\underbrace{x}_{\text{konstans}},\underbrace{y}_{\text{változó}})=3x-2y  \]
 		$\Rightarrow\quad \exists\partial_1 f,\partial_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok $\overset{\text{tétel}}{\Rightarrow}\quad f\in D(\R^2)$ és 
 		\[ f'(x,y)=\grad f(x,y)=(\partial_1 f(x,y),\  \partial_2f(x,y)) \]
 		Ez az általunk definiált $f$ függvénnyel:
@@ -363,7 +363,7 @@
 					-y^2\\
 					0
 				\end{bmatrix}
-		}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
+		}_{\R^3}}{\norm{(x,y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
 		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\]
 		\[=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
 		a def-beli $\lim=0\quad \Rightarrow
@@ -388,7 +388,7 @@
 			\partial_1 f_2(x,y)&\partial_2 f_2(x,y)\\
 			\partial_1 f_3(x,y)&\partial_2 f_3(x,y)
 		\end{bmatrix}=\begin{bmatrix}
-			3x^2+y&y\\
+			3x^2+y&x\\
 			1&-2y\\
 			0&1
 		\end{bmatrix} \]
