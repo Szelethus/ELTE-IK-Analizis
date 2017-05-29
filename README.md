@@ -14,6 +14,13 @@
 
 ## Analízis 2
 
+### Pluszminusz
+
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/01pm_anal2/01pm_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/02pm_anal2/02pm_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/04pm_anal2/04pm_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/08pm_anal2/08pm_anal2.pdf
+
 ### Gyakorlati jegyzetek
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/01gy/01gy_anal2.pdf
