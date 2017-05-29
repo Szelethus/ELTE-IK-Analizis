@@ -2,26 +2,26 @@
 
 ## Analízis 1
 
-### Pluszminusz
+#### Pluszminusz
 
 * http://people.inf.elte.hu/szelethus/LaTeX/analizis/08pm_anal1/08pm_anal1.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/analizis/09pm_anal1/09pm_anal1.pdf
 
-### Kidolgozások
+#### Kidolgozások
 
 * http://people.inf.elte.hu/szelethus/LaTeX/analizis/02zh_anal1/02zh_anal1.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/analizis/vizsga_anal1/vizsga_anal1.pdf
 
 ## Analízis 2
 
-### Pluszminusz
+#### Pluszminusz
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/01pm_anal2/01pm_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/02pm_anal2/02pm_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/04pm_anal2/04pm_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/pluszminusz/08pm_anal2/08pm_anal2.pdf
 
-### Gyakorlati jegyzetek
+#### Gyakorlati jegyzetek
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/01gy/01gy_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/02gy/02gy_anal2.pdf
@@ -37,7 +37,7 @@
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/12gy/12gy_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/13gy/13gy_anal2.pdf
 
-### Előadásjegyzetek
+#### Előadásjegyzetek
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/01ea/01ea_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/02ea/02ea_anal2.pdf
@@ -53,18 +53,18 @@
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/12ea/12ea_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/13ea/13ea_anal2.pdf
 
-### Konzultáció jegyzet
+#### Konzultáció jegyzet
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/konz/konz_anal2/konz_anal2.pdf
 
-### ZH kidolgozások
+#### ZH kidolgozások
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/1zh_anal2/1zh_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/2zh_anal2/2zh_anal2.pdf
 
 ## Analízis 3
 
-### Órai jegyzetek
+#### Órai jegyzetek
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/01gy/01gy_anal3.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/02gy/02gy_anal3.pdf
