@@ -53,6 +53,10 @@
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/12ea/12ea_anal2.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/13ea/13ea_anal2.pdf
 
+### Konzultáció jegyzet
+
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/konz/konz_anal2/konz_anal2.pdf
+
 ### ZH kidolgozások
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/1zh_anal2/1zh_anal2.pdf
