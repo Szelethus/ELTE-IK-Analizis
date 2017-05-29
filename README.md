@@ -2,14 +2,15 @@
 
 ## Analízis 1
 
-### 8. pluszminusz:
-* http://people.inf.elte.hu/…/anali…/08pm_anal1/08pm_anal1.pdf
-### 9. pluszminusz:
-* http://people.inf.elte.hu/…/anali…/09pm_anal1/09pm_anal1.pdf
-### 2. zh kidolgozás:
-* http://people.inf.elte.hu/…/anali…/02zh_anal1/02zh_anal1.pdf
-### Vizsgakidolgozás:
-* http://people.inf.elte.hu/…/a…/vizsga_anal1/vizsga_anal1.pdf
+### Pluszminusz
+
+* http://people.inf.elte.hu/szelethus/LaTeX/analizis/08pm_anal1/08pm_anal1.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/analizis/09pm_anal1/09pm_anal1.pdf
+
+### Kidolgozások
+
+* http://people.inf.elte.hu/szelethus/LaTeX/analizis/02zh_anal1/02zh_anal1.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/analizis/vizsga_anal1/vizsga_anal1.pdf
 
 ## Analízis 2
 
