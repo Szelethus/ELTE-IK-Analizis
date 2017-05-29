@@ -253,7 +253,7 @@
 		\textit{Megoldás:}
 		\begin{revision}
 			$1\leq n,m\in\N\quad f\in\R^n\to\R^m,\quad a\in \Int \mathcal{D}_f,\quad f\in D\{ a \}\quad \Leftrightarrow \quad \exists L\in\LARGE(\R^n,\R^m)$.
-			\[ \lim_{h\to0} \frac{\norm{f(a+hh)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
+			\[ \lim_{h\to0} \frac{\norm{f(a+h)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
 		\end{revision}
 		\begin{revision}
 			$L\in L(\R^n,\R^m)\quad \Leftrightarrow\quad \exists A\in\R^{m\times n}\quad L(h)=Ah\quad (\forall h\in\R^n)$
@@ -363,7 +363,7 @@
 					-y^2\\
 					0
 				\end{bmatrix}
-		}_{\R^3}}{\norm{(x,y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
+		}_{\R^3}}{\norm{(x,y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^23+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
 		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\]
 		\[=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
 		a def-beli $\lim=0\quad \Rightarrow

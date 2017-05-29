@@ -290,9 +290,10 @@
 			\item \[\partial_1f(0,0)=g(0)=\lim_{x\to0}g(x)-g(0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=\lim_{x\to}\left(\frac{\sqrt{|x\cdot0}}{x}\right)=\lim_{x\to0}\frac{0}{x}=\lim_{x\to0}0=0 \]
 			Illetve:
 			\[ \partial_2f(0,0)=\lim_{y\to0}\frac{(0,y)-f(0,0)}{y-0}=\lim_{y\to0}\left(\frac{\sqrt{|0\cdot y|}}{y}\right)=0 \]
+			\item
 			Azaz, ha $f\in D\{(0,0)\}\quad \Rightarrow\quad f'(0,0)=(\partial_1f(0,0), \partial_2f(0,0))=(0,0)$
 			A def. beli lim:
-			\[ \lim_{(x,y)\to(0,0)}\frac{|f(x,y-f(0,0)-\partial_1f(0,0)-\partial_2f(0,0)}{\norm{x,y}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{\sqrt{|xy|}}{|x|+|y|}\not=0 \]
+			\[ \lim_{(x,y)\to(0,0)}\frac{|f(x,y)-f(0,0)-\partial_1f(0,0)-\partial_2f(0,0)}{\norm{x,y}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{\sqrt{|xy|}}{|x|+|y|}\not=0 \]
 			Ugyanis $x=y$ mentén:
 			\[ \lim_{x\to0}\frac{\sqrt{|x|^2}}{2|x|}=\lim_{x\to0}\frac{|x|}{2|x|}=\frac{1}{2}\not=0\quad \Rightarrow\quad f\notin D\{(0,0)\} \]
 		\end{enumerate}

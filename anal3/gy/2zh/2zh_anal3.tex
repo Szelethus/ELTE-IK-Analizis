@@ -1721,20 +1721,20 @@
 		\[ f(x,y):=\sqrt{1-x^2-y^2}=z,\quad ((x,y)\in\mathcal{D}_f=?) \]
 		Világos, mikor értelmezhető.
 		\[ \mathcal{D}_f=\left\{(x,y)\in\R^2~|~\sqrt{x^2+y^2}\leq 1 \right\}=\left\{ (x,y)\in\R^2~|~\norm{(x,y)-(0,0)}_2\leq 1 \right\} \]
-		Ezek azok a pontok, melyek az origótól 1 távolságra vannak.
+		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=3cm]{../2zh/kepek/22.png}
-			\caption{}
+			\caption{Ezek azok a pontok, melyek az origótól legfeljebb 1 távolságra vannak.}
 		\end{figure}
 		Megállapítható, hogy 1 és $-1$-en kívül nincsenek függvényértékek.
 		\smallskip
 		
 		Síkvonalak:
 		\begin{align*}
-			x=0&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \quad \text{(ábrán fekete körvonal)}\\
-			x=1&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=1\quad \Leftrightarrow\quad x^2+y^2=0\quad \Rightarrow\quad (x,y)=(0,0) \\
-			x=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2 \quad \text{(ábrán zöld körvonal)}
+			z=0&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=0\quad \Leftrightarrow\quad x^2+y^2=1 \quad \text{(ábrán fekete körvonal)}\\
+			z=1&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=1\quad \Leftrightarrow\quad x^2+y^2=0\quad \Rightarrow\quad (x,y)=(0,0) \\
+			z=\frac{1}{2}&\quad \Rightarrow\quad \sqrt{1-x^2-y^2}=\frac{1}{2}\quad \Leftrightarrow\quad x^2+y^2=\frac{3}{4}=\left(\frac{a\sqrt{3}}{2}\right)^2 \quad \text{(ábrán zöld körvonal)}
 		\end{align*}
 		Függőleges
 		\[ x=0\quad \text{mentén}\quad \Rightarrow\quad z=f(x,0)=\sqrt{1-x^2}\quad x\in[-1,1]\quad \text{ábrán kék félkörvonal} \]
@@ -1864,7 +1864,7 @@
 		\textit{Megoldás:}
 		\begin{enumerate}
 			\item $\forall y_0\in\R\quad \Rightarrow\quad g(x):=f(x,y_0) \quad (x\in\R,\quad g\in C(\R))$
-			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  g\in C(\R))$
+			\item $\forall x_0\in\R\quad \Rightarrow\quad h(y):=f(x_0,y)\quad (y\in\R,\quad  h\in C(\R))$
 			\item $f\notin C\{(0,0)\}$
 		\end{enumerate}
 		\begin{figure}[H]
@@ -1968,7 +1968,7 @@
 		\textit{Megoldás:}
 		\begin{revision}
 			$1\leq n,m\in\N\quad f\in\R^n\to\R^m,\quad a\in \Int \mathcal{D}_f,\quad f\in D\{ a \}\quad \Leftrightarrow \quad \exists L\in\LARGE(\R^n,\R^m)$.
-			\[ \lim_{h\to0} \frac{\norm{f(a+hh)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
+			\[ \lim_{h\to0} \frac{\norm{f(a+h)-f(a)-L(h)}_{\R^m}}{\norm{h}_{\R^n}}=0 \]
 		\end{revision}
 		\begin{revision}
 			$L\in L(\R^n,\R^m)\quad \Leftrightarrow\quad \exists A\in\R^{m\times n}\quad L(h)=Ah\quad (\forall h\in\R^n)$
@@ -1991,11 +1991,11 @@
 		\end{bmatrix}\in\R^{1\times2}$
 		
 		A maradéktagokkal így:
-		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq \]
+		\[ \lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{(x,y)}_{\R^2}}\leq \]
 		Tökmindegy, milyen normával dolgozunk. Itt célszerű (mint az esetek többségében is) végtelen normával dolgozni.
 		\[ \overset{\text{háromszög}}{\underset{\text{egyenlőtelenség}}{\leq}}\lim_{(x,y)\to(0,0)}\frac{2|x|^2+3|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\quad \overset{|x|,|y|\leq\norm{(x,y)}_\infty=}{\underset{=\max\{|x|,|y|\}}{\leq}}\quad \lim_{(x,y)\to(0,0)}\frac{6\cdot\norm{(x,y)^2}_\infty}{\norm{(x,y)}_\infty}=6\cdot0=0 \]
 		Mivel normák hányadosa nemnegatív, így alsó becslésünk is van, kapásból odaírhatjuk a legelső $\lim$ elé, hogy $0\leq$ (melyet itt a csattanó kedvéért nem tettünk meg).
-		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{x,y}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
+		\[ 0\leq\lim_{(x,y)\to(0,0)}\frac{\overbrace{|2x^2+3xy-y^2|}^{\norm{.}_{\R^1}}}{\norm{(x,y)}_{\R^2}}\leq 0\quad  \overset{\text{közrefogás}}{\Rightarrow}\quad \text{a definícióbeli $\lim$ valóban } 0. \]
 		$\Rightarrow \quad f\in D\{(1,2)\}$ és $f'(1,2)=\begin{bmatrix}
 		10&-1
 		\end{bmatrix}$.
@@ -2011,7 +2011,7 @@
 		\end{revision}
 		\textit{Visszatérvén az ellenőrzéshez}: $((x,y)\in\R^2)$
 		\[ \partial_1 f(\overbrace{x}^{\text{változó}},\overbrace{y}^{\text{konstans}})=4x+3y \]
-		\[ \partial_2f(\underbrace{x}_{\text{változó}},\underbrace{y}_{\text{változó}})=3x-2y  \]
+		\[ \partial_2f(\underbrace{x}_{\text{konstans}},\underbrace{y}_{\text{változó}})=3x-2y  \]
 		$\Rightarrow\quad \exists\partial_1 f,\partial_2 f:\quad \R^2\to\R$ parciális derivált fvek és folytonosak $\R^2$-en polinomok $\overset{\text{tétel}}{\Rightarrow}\quad f\in D(\R^2)$ és 
 		\[ f'(x,y)=\grad f(x,y)=(\partial_1 f(x,y),\  \partial_2f(x,y)) \]
 		Ez az általunk definiált $f$ függvénnyel:
@@ -2078,7 +2078,7 @@
 					-y^2\\
 					0
 				\end{bmatrix}
-		}_{\R^3}}{\norm{(x+y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^2+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
+		}_{\R^3}}{\norm{(x,y)}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{|x^23+3x^2+xy|+|-y^2|+|0|}{\norm{(x,y)}_\infty}\leq\]
 		\[\leq \lim_{(x,y)\to(0,0)}\frac{|x|^3+3|x|^2+|x|\cdot|y|+|y|^2}{\norm{(x,y)}_\infty}\leq\lim_{(x,y)\to(0,0)}\frac{\norm{(x,y)}^3_\infty+5\norm{(x,y)}^2_\infty}{\norm{(x,y)}_\infty}=\]
 		\[=\lim_{(x,y)\to(0,0)}(\norm{(x,y)}^2_\infty+5\norm{(x,y)}_\infty)=0^2+5\cdot0=0\quad \Rightarrow \]
 		a def-beli $\lim=0\quad \Rightarrow
@@ -2103,7 +2103,7 @@
 			\partial_1 f_2(x,y)&\partial_2 f_2(x,y)\\
 			\partial_1 f_3(x,y)&\partial_2 f_3(x,y)
 		\end{bmatrix}=\begin{bmatrix}
-			3x^2+y&y\\
+			3x^2+y&x\\
 			1&-2y\\
 			0&1
 		\end{bmatrix} \]
@@ -2258,12 +2258,13 @@
 			\item 
 			\[ \varepsilon>0\quad \text{fix.}\quad |f(x,y)-f(0,0)|=\sqrt{|x,y|}\quad \overset{\text{sz-m}}{\leq}\quad \frac{|x|+|y|}{2}=\frac{1}{2}\cdot\norm{(x,y)-(0,0)}_1<\varepsilon \]
 			Ha $\norm{(x,y)-(0,0)}_1<2\varepsilon\quad \Rightarrow\quad \partial:=2\varepsilon$ jó a definícióhoz\quad $\Rightarrow\quad f\in C\{(0,0)\}$
-			\item \[\partial_1f(0,0)=g(0)=\lim_{x\to0}g(y)-g(0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=\lim_{x\to}\left(\frac{\sqrt{|x\cdot0}}{x}\right)=\lim_{x\to0}\frac{0}{x}=\lim_{x\to0}0=0 \]
+			\item \[\partial_1f(0,0)=g(0)=\lim_{x\to0}g(x)-g(0)=\lim_{x\to0}\frac{f(x,0)-f(0,0)}{x-0}=\lim_{x\to}\left(\frac{\sqrt{|x\cdot0}}{x}\right)=\lim_{x\to0}\frac{0}{x}=\lim_{x\to0}0=0 \]
 			Illetve:
 			\[ \partial_2f(0,0)=\lim_{y\to0}\frac{(0,y)-f(0,0)}{y-0}=\lim_{y\to0}\left(\frac{\sqrt{|0\cdot y|}}{y}\right)=0 \]
+			\item
 			Azaz, ha $f\in D\{(0,0)\}\quad \Rightarrow\quad f'(0,0)=(\partial_1f(0,0), \partial_2f(0,0))=(0,0)$
 			A def. beli lim:
-			\[ \lim_{(x,y)\to(0,0)}\frac{|f(x,y-f(0,0)-\partial_1f(0,0)-\partial_2f(0,0)}{\norm{x,y}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{\sqrt{|xy|}}{|x|+|y|}\not=0 \]
+			\[ \lim_{(x,y)\to(0,0)}\frac{|f(x,y)-f(0,0)-\partial_1f(0,0)-\partial_2f(0,0)}{\norm{x,y}_{\R^2}}=\lim_{(x,y)\to(0,0)}\frac{\sqrt{|xy|}}{|x|+|y|}\not=0 \]
 			Ugyanis $x=y$ mentén:
 			\[ \lim_{x\to0}\frac{\sqrt{|x|^2}}{2|x|}=\lim_{x\to0}\frac{|x|}{2|x|}=\frac{1}{2}\not=0\quad \Rightarrow\quad f\notin D\{(0,0)\} \]
 		\end{enumerate}
@@ -2361,7 +2362,7 @@
 		\[ k=1\quad |i|=2 \]
 		\[ i=(1;0)\to\frac{\partial_1f(1,-1)}{1!\cdot0!}(x-1)^1(y+1)^0 \]
 		\[ i=(0,1)\to\frac{\partial_2f(1,-1)}{0!1!}(x-1)^0(y+1)^1 \]
-		Tehát au 1. fokú tagok:
+		Tehát az 1. fokú tagok:
 		\[ \partial_1f(1,-1)(x-1)+\partial_2f(1,-1)(y+1); \]
 		\begin{align*}
 			k=2&\quad \Rightarrow\quad i\in\N^2,\quad |i|=2\quad \Rightarrow\quad\\
@@ -2484,7 +2485,7 @@
 			\partial_{22}f(x,y)&=2 
 		\end{align*} 
 		$\forall(x,y)\in\R^2$ spec. $(2,1)$-ben is.
-		\[ \Rightarrow\quad f'(x,y)=\begin{bmatrix}
+		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			2&1\\
 			1&2
 		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)=\begin{bmatrix}
@@ -2492,7 +2493,6 @@
 			1&2
 		\end{bmatrix}\quad \Leftrightarrow\quad \varDelta_1=2>0,\quad \varDelta_2=3>0 \]
 		Ahol $\varDelta_i$ az $i$-edik főminor. Mivel így ez a mátrix pozitív definit, a Sylvester tételből így következik, hogy $f''(2,1)$ lokális minimum hely, értéke $f(2,1)=6$
-		%TODO 01
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/38.png}
@@ -2504,15 +2504,15 @@
 		Keressük meg a lokális szélső érték(ek)et.
 		
 		\textit{Megoldás:} Első lépés:
-		\[\left.\begin{gathered}
-			\partial_1f(x,y)=(1+e^y)(-\sin x)=0\\
-			\partial_2f(x,y)=e^y\cdot\cos x-e^y-y\cdot e^y=0\\
-		\end{gathered}\right\}  \]
+		\begin{align*}
+			\partial_1f(x,y)&=(1+e^y)(-\sin x)=0\\
+			\partial_2f(x,y)&=e^y\cdot\cos x-e^y-y\cdot e^y=0\\
+		\end{align*}
 		Ez alapján
-		\[\begin{cases}
-			\sin x=0\quad \Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
-			\cos x-1-y=0\quad \Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
-		\end{cases}\]
+		\begin{align*}
+			\sin x=0\quad &\Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
+			\cos x-1-y=0\quad &\Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
+		\end{align*}
 		Ez alapján a stacionárius helyek: $\big((k\pi; (-1)^k-1)\quad k\in\Z\big)$, azaz
 		\[ (2k\pi,0)\quad \text{és}\quad ((2k+1)\pi; -2) \quad (k\in\Z)\]
 		\begin{figure}[H]
@@ -2522,9 +2522,9 @@
 		\end{figure}
 		Második lépés
 		\begin{align*}
-			\partial_{11}f(x,y)=-(1+e^y)\cos x\\
-			\partial_{12}f(x,y)=-e^y\sin x\\
-			\partial_{22}f(x,y)=e^y\cos x-e^y-e^y-ye^y
+			\partial_{11}f(x,y)&=-(1+e^y)\cos x\\
+			\partial_{12}f(x,y)&=-e^y\sin x\\
+			\partial_{22}f(x,y)&=e^y\cos x-e^y-e^y-ye^y
 		\end{align*}
 		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			-(1+e^y)\cos x&-e^y\sin x\\
@@ -2540,7 +2540,7 @@
 		\[f''((2k+1)\pi;-2)=\begin{bmatrix}
 			1+\frac{1}{e^2}&0\\
 			0&-\frac{1}{e^2}
-		\end{bmatrix},\quad \varDelta_1=1+\frac{1}{e^2}>0,\quad \varDelta_2=-\frac{1}{e^2}<0 \]
+		\end{bmatrix},\quad \varDelta_1=1+\frac{1}{e^2}>0,\quad \varDelta_2=\left(1+\frac{1}{e^2}\right)\cdot\left(-\frac{1}{e^2}\right)<0 \]
 		$\Rightarrow\quad f''((2k+1)\pi,2)\quad (\forall k\in\Z)$ indefinit mátrix. A másodrendű szükséges feltétel alapján ezek $((2k+1)\pi,2)\quad (k\in\Z)$ biztosan nem lokális szélső érték helyek (NYEREG PONTOK).
 	\end{task}
 	\begin{task}
@@ -2548,16 +2548,12 @@
 		\textit{Megoldás:}
 		\begin{align*}
 			\partial_1f(x,y)=4x^3-2x-2y=0\\
-			\partial_2f(x,y)=4y^3-2x-2y=0\\
+			\partial_2f(x,y)=4y^3-2x-2y=0
 		\end{align*}
 		\[ 4x^3-4y^3=0\quad \Leftrightarrow\quad x^3=y^3\quad \Leftrightarrow\quad x=y \]
 		\[ 4x^3-4x=0\quad \Leftrightarrow\quad 4x(x^2-1)=0 \]
 		Ez alapján
-		\begin{align*}
-			x_1=y_1=0\\
-			x_2=y_2=1\\
-			x_3=y_3=-1\\
-		\end{align*}
+		\[x_1=y_1=0,\quad x_2=y_2=1,\quad x_3=y_3=-1\]
 		Stacionárius helyek: $(0,0),\quad (1,1),\quad (-1,-1)$
 		\begin{figure}[H]
 			\centering
@@ -2654,7 +2650,7 @@
 		
 		Második lépésben?
 		\[ f''(x,y)=\begin{bmatrix}
-			12y^2&0\\
+			12x^2&0\\
 			0&2
 		\end{bmatrix}\quad ((x,y)\in\R^2)\quad \Rightarrow\quad f''(0,0)=\begin{bmatrix}
 		0&0\\
@@ -2680,8 +2676,8 @@
 			0&0\\
 			0&2
 		\end{bmatrix} \]
-		Tételek ismét nem máködnek, tovább kell vizsgálni (0,0)-t. Kínálja magát az $y=0$ irány:
-		\[ f(x,y)=x^3\quad \Rightarrow\quad f(x,0)=x^3=\begin{cases}
+		Tételek ismét nem működnek, tovább kell vizsgálni (0,0)-t. Kínálja magát az $y=0$ irány:
+		\[ y=0\quad \Rightarrow\quad f(x,0)=x^3=\begin{cases}
 			>0\quad x>0\\
 			<0\quad x<0
 		\end{cases} \]
@@ -2696,7 +2692,7 @@
 	\subsection{Abszolút szélső érték keresés}
 	\begin{task}
 		\[ f(x,y):=y(2x-3)\quad ((x,y)\in A) \]
-		$A$: Az $>=x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
+		$A$: Az $x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/46.png}\quad \quad \quad 
@@ -2705,15 +2701,15 @@
 		\end{figure}
 		Erre a problémakörre egy tételünk is van: $f\in C(A)$ és $A\subset\R^2$ korlátos és zárt halmaz ($\Leftrightarrow A$ kompakt): $\exists\min\mathcal{R}_f, \max\mathcal{R}_f$.
 		
-		Bontsuk szép az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
+		Bontsuk szét az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
 		
-		\medskip
+		\smallskip
 		Vizsgáljuk a belső pontokat. Ha $(x,y)\in\Int A$:
 		\begin{align*}
 			\partial_1f(x,y)&=2y=0\\
 			\partial_2f(x,y)&=2x-3=0\\
 		\end{align*}
-		Ebből a $\left(\frac{3}{2},0\right)$-t kapjuk, azonabn ez nem belső pont: $\left(\frac{3}{2},0\right)\notin\Int A$. Ebből már azt is tudhatjuk, hogy belső pontokban ($\Int A$) nem lehet szélső érték.
+		Ebből a $\left(\frac{3}{2},0\right)$-t kapjuk, azonban ez nem belső pont: $\left(\frac{3}{2},0\right)\notin\Int A$. Ebből már azt is tudhatjuk, hogy belső pontokban ($\Int A$) nem lehet szélső érték.
 		\medskip
 		
 		Most vizsgáljuk a határpontokat, melyek azon pontok, melyeknek létezik olyan környezete, melyben belső és külső pont is található.
@@ -2880,7 +2876,7 @@
 		
 		\textit{Sejtés:} $f\notin EC(H)$, azaz
 		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
-		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságára ne alkalmazzuk!
+		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságának \textit{bizonyítására} ne alkalmazzuk!
 		
 		Elég konstruálnunk olyan ($x_n,y_n$),$(a_n,b_n):\N\to H$ sorozatot, melyekre
 		\[ \norm{(x_n,y_n)-(a_n,b_n)}_{\R^2}\to0\quad (\text{ha } n\to+\infty)\quad \text{és}\quad |f(x_n,y_n)-f(a_n,b_n)|\geq \varepsilon\quad \text{konstans} \] 
@@ -2960,13 +2956,17 @@
 		Ekkor:
 		\[ |f(x)-f(t)|=\big|\norm{x}-\norm{t}\big|\overset{*}{\leq}\norm{x-t}<\varepsilon\quad \Leftrightarrow\quad \delta:=\varepsilon\quad \text{jó.} \]
 		A kicsillagozott résznél lehet az átalakítás nem triviális, a kifejezés helyessége mögött ez áll:
-		\begin{align}
-			\norm{x}=\norm{(x-t)+t}\\
-			\text{félkész}
+		\begin{align*}
+			\norm{x}=\norm{(x-t)+t}\leq\norm{x-t}+\norm{t}\quad& \Leftrightarrow\quad \norm{x}-\norm{t}\leq\norm{x-t}\\
+			\norm{t}=\norm{(t-x)+x}\leq\norm{t-x}+\norm{x}\quad& \Leftrightarrow\quad \norm{t}-\norm{x}\leq\norm{t-x}\\
+			\Rightarrow\quad -\norm{x-t}\leq\norm{x}-\norm{t}\leq\norm{x-t}\quad& \Leftrightarrow\quad \big|\norm{x}-\norm{t}\big|\leq \norm{x-t}
 			%TODO finish
-		\end{align}
+		\end{align*}
 		De:
 		\[ \left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|=\frac{\left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}\leq|x-a|\frac{|x+a|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}+|y-b|\frac{y+b}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}= \]
 		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2 + a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y^2+b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
 	\end{task}
+	
+	\bigskip
+	Óriási köszönet \textsc{Qian} Líviának és \textsc{Hoang} Lászlónak a jegyzet javításáért, és természetesen \textsc{Filipp} Zoltánnak, aki fantasztikus gyakorlatot tartott a félév folyamán.
 \end{document}

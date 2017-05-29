@@ -189,7 +189,7 @@
 		
 		Második lépésben?
 		\[ f''(x,y)=\begin{bmatrix}
-			12y^2&0\\
+			12x^2&0\\
 			0&2
 		\end{bmatrix}\quad ((x,y)\in\R^2)\quad \Rightarrow\quad f''(0,0)=\begin{bmatrix}
 		0&0\\
@@ -215,8 +215,8 @@
 			0&0\\
 			0&2
 		\end{bmatrix} \]
-		Tételek ismét nem máködnek, tovább kell vizsgálni (0,0)-t. Kínálja magát az $y=0$ irány:
-		\[ f(x,y)=x^3\quad \Rightarrow\quad f(x,0)=x^3=\begin{cases}
+		Tételek ismét nem működnek, tovább kell vizsgálni (0,0)-t. Kínálja magát az $y=0$ irány:
+		\[ y=0\quad \Rightarrow\quad f(x,0)=x^3=\begin{cases}
 			>0\quad x>0\\
 			<0\quad x<0
 		\end{cases} \]
@@ -231,7 +231,7 @@
 	\subsection{Abszolút szélső érték keresés}
 	\begin{task}
 		\[ f(x,y):=y(2x-3)\quad ((x,y)\in A) \]
-		$A$: Az $>=x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
+		$A$: Az $x^2;\quad y=0;$ és $x=2$ egyenletű götbék által határolt korlátos és zárt. Keressünk abszolút szélső értéket $A$-n.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/46.png}\quad \quad \quad 
@@ -240,15 +240,15 @@
 		\end{figure}
 		Erre a problémakörre egy tételünk is van: $f\in C(A)$ és $A\subset\R^2$ korlátos és zárt halmaz ($\Leftrightarrow A$ kompakt): $\exists\min\mathcal{R}_f, \max\mathcal{R}_f$.
 		
-		Bontsuk szép az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
+		Bontsuk szét az A halmazt belső pontokra és határpontokra. Belső pontokban tudunk deriválni, itt ha $f'=0$, akkor ott lehet szélső érték. A határpontoknál vissza kell vezetnünk egyváltozós esetre, és az 1 dimenziós technikákat vesszük elő.
 		
-		\medskip
+		\smallskip
 		Vizsgáljuk a belső pontokat. Ha $(x,y)\in\Int A$:
 		\begin{align*}
 			\partial_1f(x,y)&=2y=0\\
 			\partial_2f(x,y)&=2x-3=0\\
 		\end{align*}
-		Ebből a $\left(\frac{3}{2},0\right)$-t kapjuk, azonabn ez nem belső pont: $\left(\frac{3}{2},0\right)\notin\Int A$. Ebből már azt is tudhatjuk, hogy belső pontokban ($\Int A$) nem lehet szélső érték.
+		Ebből a $\left(\frac{3}{2},0\right)$-t kapjuk, azonban ez nem belső pont: $\left(\frac{3}{2},0\right)\notin\Int A$. Ebből már azt is tudhatjuk, hogy belső pontokban ($\Int A$) nem lehet szélső érték.
 		\medskip
 		
 		Most vizsgáljuk a határpontokat, melyek azon pontok, melyeknek létezik olyan környezete, melyben belső és külső pont is található.

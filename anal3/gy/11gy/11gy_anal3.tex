@@ -216,7 +216,7 @@
 			\partial_{22}f(x,y)&=2 
 		\end{align*} 
 		$\forall(x,y)\in\R^2$ spec. $(2,1)$-ben is.
-		\[ \Rightarrow\quad f'(x,y)=\begin{bmatrix}
+		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			2&1\\
 			1&2
 		\end{bmatrix}\quad \Rightarrow\quad f''(2,1)=\begin{bmatrix}
@@ -224,7 +224,6 @@
 			1&2
 		\end{bmatrix}\quad \Leftrightarrow\quad \varDelta_1=2>0,\quad \varDelta_2=3>0 \]
 		Ahol $\varDelta_i$ az $i$-edik főminor. Mivel így ez a mátrix pozitív definit, a Sylvester tételből így következik, hogy $f''(2,1)$ lokális minimum hely, értéke $f(2,1)=6$
-		%TODO 01
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=4cm]{../2zh/kepek/38.png}
@@ -236,15 +235,15 @@
 		Keressük meg a lokális szélső érték(ek)et.
 		
 		\textit{Megoldás:} Első lépés:
-		\[\left.\begin{gathered}
-			\partial_1f(x,y)=(1+e^y)(-\sin x)=0\\
-			\partial_2f(x,y)=e^y\cdot\cos x-e^y-y\cdot e^y=0\\
-		\end{gathered}\right\}  \]
+		\begin{align*}
+			\partial_1f(x,y)&=(1+e^y)(-\sin x)=0\\
+			\partial_2f(x,y)&=e^y\cdot\cos x-e^y-y\cdot e^y=0\\
+		\end{align*}
 		Ez alapján
-		\[\begin{cases}
-			\sin x=0\quad \Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
-			\cos x-1-y=0\quad \Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
-		\end{cases}\]
+		\begin{align*}
+			\sin x=0\quad &\Leftrightarrow\quad x_k=k\pi\quad (k\in\Z)\\
+			\cos x-1-y=0\quad &\Leftrightarrow\quad y_k=\cos(k\pi)-1=(-1)^k-1
+		\end{align*}
 		Ez alapján a stacionárius helyek: $\big((k\pi; (-1)^k-1)\quad k\in\Z\big)$, azaz
 		\[ (2k\pi,0)\quad \text{és}\quad ((2k+1)\pi; -2) \quad (k\in\Z)\]
 		\begin{figure}[H]
@@ -254,9 +253,9 @@
 		\end{figure}
 		Második lépés
 		\begin{align*}
-			\partial_{11}f(x,y)=-(1+e^y)\cos x\\
-			\partial_{12}f(x,y)=-e^y\sin x\\
-			\partial_{22}f(x,y)=e^y\cos x-e^y-e^y-ye^y
+			\partial_{11}f(x,y)&=-(1+e^y)\cos x\\
+			\partial_{12}f(x,y)&=-e^y\sin x\\
+			\partial_{22}f(x,y)&=e^y\cos x-e^y-e^y-ye^y
 		\end{align*}
 		\[ \Rightarrow\quad f''(x,y)=\begin{bmatrix}
 			-(1+e^y)\cos x&-e^y\sin x\\
@@ -280,16 +279,12 @@
 		\textit{Megoldás:}
 		\begin{align*}
 			\partial_1f(x,y)=4x^3-2x-2y=0\\
-			\partial_2f(x,y)=4y^3-2x-2y=0\\
+			\partial_2f(x,y)=4y^3-2x-2y=0
 		\end{align*}
 		\[ 4x^3-4y^3=0\quad \Leftrightarrow\quad x^3=y^3\quad \Leftrightarrow\quad x=y \]
 		\[ 4x^3-4x=0\quad \Leftrightarrow\quad 4x(x^2-1)=0 \]
 		Ez alapján
-		\begin{align*}
-			x_1=y_1=0\\
-			x_2=y_2=1\\
-			x_3=y_3=-1\\
-		\end{align*}
+		\[x_1=y_1=0,\quad x_2=y_2=1,\quad x_3=y_3=-1\]
 		Stacionárius helyek: $(0,0),\quad (1,1),\quad (-1,-1)$
 		\begin{figure}[H]
 			\centering

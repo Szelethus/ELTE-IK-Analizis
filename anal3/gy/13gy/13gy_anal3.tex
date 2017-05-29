@@ -186,7 +186,7 @@
 		
 		\textit{Sejtés:} $f\notin EC(H)$, azaz
 		\[ \exists\varepsilon>0:\quad \forall\delta>0,\quad \exists(x,y),(a,b)\in H:\quad \norm{(x,y)-(a,b)}_{\R^2}<\delta:\quad |f(x,y)-f(a,b)|\geq \varepsilon  \]
-		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságára ne alkalmazzuk!
+		Ennek a belátására egy új módszert fogunk alkalmazni. Ezt a módszert azonban függvények egyenletes folytonosságának \textit{bizonyítására} ne alkalmazzuk!
 		
 		Elég konstruálnunk olyan ($x_n,y_n$),$(a_n,b_n):\N\to H$ sorozatot, melyekre
 		\[ \norm{(x_n,y_n)-(a_n,b_n)}_{\R^2}\to0\quad (\text{ha } n\to+\infty)\quad \text{és}\quad |f(x_n,y_n)-f(a_n,b_n)|\geq \varepsilon\quad \text{konstans} \] 
@@ -266,13 +266,17 @@
 		Ekkor:
 		\[ |f(x)-f(t)|=\big|\norm{x}-\norm{t}\big|\overset{*}{\leq}\norm{x-t}<\varepsilon\quad \Leftrightarrow\quad \delta:=\varepsilon\quad \text{jó.} \]
 		A kicsillagozott résznél lehet az átalakítás nem triviális, a kifejezés helyessége mögött ez áll:
-		\begin{align}
-			\norm{x}=\norm{(x-t)+t}\\
-			\text{félkész}
+		\begin{align*}
+			\norm{x}=\norm{(x-t)+t}\leq\norm{x-t}+\norm{t}\quad& \Leftrightarrow\quad \norm{x}-\norm{t}\leq\norm{x-t}\\
+			\norm{t}=\norm{(t-x)+x}\leq\norm{t-x}+\norm{x}\quad& \Leftrightarrow\quad \norm{t}-\norm{x}\leq\norm{t-x}\\
+			\Rightarrow\quad -\norm{x-t}\leq\norm{x}-\norm{t}\leq\norm{x-t}\quad& \Leftrightarrow\quad \big|\norm{x}-\norm{t}\big|\leq \norm{x-t}
 			%TODO finish
-		\end{align}
+		\end{align*}
 		De:
 		\[ \left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|=\frac{\left|\sqrt{x^2+y^2}-\sqrt{a^2+b^2}\right|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}\leq|x-a|\frac{|x+a|}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}+|y-b|\frac{y+b}{\sqrt{x^2+y^2}-\sqrt{a^2+b^2}}= \]
 		\[ = |x-a|\frac{|x|+|a|}{\sqrt{x^2 + a}^2}+|y-b|\frac{|y|+|b|}{\sqrt{y^2+b}^2}=|x-a|+|y-b|=\norm{(x,y)-(a,b)}_1 \] 
 	\end{task}
+	
+	\bigskip
+	Óriási köszönet \textsc{Qian} Líviának és \textsc{Hoang} Lászlónak a jegyzet javításáért, és természetesen \textsc{Filipp} Zoltánnak, aki fantasztikus gyakorlatot tartott a félév folyamán.
 \end{document}
