@@ -15,35 +15,40 @@
 
 ### Gyakorlati jegyzetek
 
-* http://people.inf.elte.hu/szelethus/…/anal2/gy/01gy/01gy.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/02gy/02gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/03gy/03gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/04gy/04gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/05gy/05gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/06gy/06gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/07gy/07gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/08gy/08gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/09gy/09gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/10gy/10gy_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/gy/11gy/11gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/01gy/01gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/02gy/02gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/03gy/03gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/04gy/04gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/05gy/05gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/06gy/06gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/07gy/07gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/08gy/08gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/09gy/09gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/10gy/10gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/11gy/11gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/12gy/12gy_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/gy/13gy/13gy_anal2.pdf
 
 ### Előadásjegyzetek
 
-* http://people.inf.elte.hu/…/La…/anal2/ea/07ea/07ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/10ea/10ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/11ea/11ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/12ea/12ea_anal2.pdf
-* http://people.inf.elte.hu/szelethus/…/anal2/ea/01ea/01ea.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/02ea/02ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/03ea/03ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/04ea/04ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/05ea/05ea_anal2.pdf
-* http://people.inf.elte.hu/…/La…/anal2/ea/06ea/06ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/01ea/01ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/02ea/02ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/03ea/03ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/04ea/04ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/05ea/05ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/06ea/06ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/07ea/07ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/08ea/08ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/09ea/09ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/10ea/10ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/11ea/11ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/12ea/12ea_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/ea/13ea/13ea_anal2.pdf
 
 ### ZH kidolgozások
 
-* http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/1_zh_tetelek_anal2/1_zh_tetelek_anal2.pdf
-* http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/2_anal2_zh/2_zh_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/1zh_anal2/1zh_anal2.pdf
+* http://people.inf.elte.hu/szelethus/LaTeX/anal2/kidolgozasok/2zh_anal2/2zh_anal2.pdf
 
 ## Analízis 3
 
