@@ -9,7 +9,7 @@ Ha hibát találtok egy meglevő kidolgozásban, e szerint járjatok el:
 1. Töltsétek le/be újra a legfrissebb pdf-et (amennyiben browswerből nézitek, F5 lenyomásával, amennyiben letöltöttétek, töltéstek le újra), és nézzétek meg, hogy ez a hiba szerepel-e a legfrissebb pdf-ben is. Amennyiben a hiba még mindig szerepel:
 2. Töltsétek le a ezt a repo-t, fordítsátok le azt a .tex fájlt, melyben hibát találtatok. Amennyiben a hiba még mindig szerepel, akkor baj van. Ez esetben:
 4. Módosítsátok a kódot úgy, hogy a hiba javítva legyen, és küldjetek pull requestet. Amennyiben én erre 1 héten belül nem reagálnék, facebookon írjatok rám.
-5. Amennyiben nem rendelkeztek minimális LaTeX ismerettel sem (ajánlom, hogy ismerkedjetek a nyelvvel, ugyanis szakdolgozathoz közel elengedhetetlen lesz (a nyelv megismeréséhez igyekszek mennél hamarabb egy tutotrialt kirakni agithub page-re)) akkor írjatok nekem facebookon, képpel együtt, mely mutatja a hibát, és hogy mire kéne javítani.
+5. Amennyiben nem rendelkeztek minimális LaTeX ismerettel sem (ajánlom, hogy ismerkedjetek a nyelvvel, ugyanis szakdolgozathoz közel elengedhetetlen lesz) akkor írjatok nekem facebookon, képpel együtt, mely mutatja a hibát, és hogy mire kéne javítani.
 
 A LaTeX telepítéséhez, megismeréséhez útmutató és tananyag az alábbi honlapon található: http://tomacstibor.uni-eger.hu/tananyagok.html.
 
