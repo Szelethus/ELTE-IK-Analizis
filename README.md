@@ -98,8 +98,9 @@ A LaTeX telepítéséhez, megismeréséhez útmutató és tananyag az alábbi ho
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/1zh/1zh_anal3.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal3/gy/2zh/2zh_anal3.pdf
 
-## Az analízis alkalmazásai (Analaízis 4)
+## Az analízis alkalmazásai (Analízis 4)
 
 #### Órai jegyzetek
 
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/01gy_anal4/01gy_anal4.pdf (javítás alatt)
+* http://people.inf.elte.hu/szelethus/LaTeX/anal4/02gy_anal4/02gy_anal4.pdf (javítás alatt)
