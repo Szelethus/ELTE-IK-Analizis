@@ -1,0 +1,283 @@
+
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\Graph}{\Graph}
+\DeclareMathOperator{\arcctg}{arc ctg}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsubsection]
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció}
+	\newtheorem{example}[theorem]{Példa}
+	\newtheorem{exercise}[theorem]{Házi feladat}
+	\newtheorem{note}[theorem]{Megjegyzés}
+	\newtheorem{task}[theorem]{Feladat}
+	\newtheorem{revision}[theorem]{Emlékeztető}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Az analízis alkalmazásai}}
+		\smallskip
+
+		{\Large Gyakorlati jegyzet}
+
+		\smallskip
+		4. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Kovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
+	
+	\subsection{Paraméteres integrál (folyt.)}
+	\begin{note}
+		Adott $f\in\R^2\to\R$ esetén van-e olyan $\varphi\in\R\to\R$, hogy
+		\[ \{ (x,\varphi(x))\in\R^2:\quad x\in\mathcal{D}_f \}=:graph\,\varphi=H:=\{ (x,y)\in\mathcal{D}_f:\quad f(x,y)=0 \} \]
+		\[ graph\,\varphi=H\quad \Leftrightarrow\quad \forall x\in\mathcal{D}_f:\quad f(x,\varphi(x))=0 \]
+	\end{note}
+	\begin{example}
+		\[ f(x,y):=x^2+y^2-1 \quad ((x,y)\in\R^2)\]
+		\[ graph\,\varphi=H\quad \Rightarrow\quad \{ \varphi(0) \}=\{-1,1\}\quad \# \]
+		Ahol a \# az ellentmondást jelenti.
+	\end{example}
+	\begin{example}
+		\[ f(x,y):=x^2+y^2-1\quad ((x,y)\in\R^2,\quad y\leq 0) \]
+		\[ \varphi(x):=-\sqrt{1-x^2}\quad (x\in[-1,1])\quad \text{jó} \]
+	\end{example}
+	\begin{theorem}
+		$a,b\in\R,\quad f\in\R^2\to\R,\quad f\in C^1,\quad f(a,b)=0,\quad \partial_2f(a,b)\not=0.$
+		\[ \exists \varepsilon>0\quad \exists\delta>0\quad \exists\varphi:(a-\varepsilon,a+\varepsilon)\to(b-\varepsilon,b+\varepsilon),\quad y\in C^1: \]
+		\begin{enumerate}
+			\item 
+			$ f(x,\varphi(x))=0\quad (|x-a|<\varepsilon) $
+			\item $\partial_2f(x,\varphi(x))\not=0\quad \text{ÉS}$
+			\[ \varphi'(x)= -\frac{\partial_1f(x,\varphi(x))}{\partial_2f(x,\varphi(x))}\quad (|x-a|<\varepsilon) \]
+		\end{enumerate}
+	\end{theorem}
+	\begin{task}
+		Bizonyítsuk be, hogy
+		\[ \exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D \]
+		\begin{enumerate}
+			\item $\ln(x)+\varphi(x)e^{\varphi^2(x)}=0\quad (|x-e|<\varepsilon)\quad \varphi'(e)=?$
+			\item $\ln(x^2+\varphi^2(x)=x\cdot \varphi(x)\quad (|x-1|<\varepsilon)\quad \varphi'(1)$
+			\item $ xe^{-\varphi(x)}+\varphi(x)e^x=a\in\R\quad (|x|<\varepsilon)\quad \varphi'(0)=?$
+			\item $x\cos(\varphi(x))=\varphi(x)\cos(x)\quad (|x|<\varepsilon),\quad \varphi'(0)=?$
+		\end{enumerate}
+		A feladatok megoldása:
+		\begin{enumerate}
+			\item 
+			\[ f(x,y):=\ln(x)+\varphi(x)e^{\varphi^2(x)}=0\quad ((x,y)\in\R^2:\quad x>0) \]
+			\[ f(e,0)=0,\quad \partial_2f(e,0)=\left[e^{y^2}+2y^2e^{y^2}\right]_{\substack{x=e\\y=0}}1\not=0 \]
+			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(e-\varepsilon,e+\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-e|<\varepsilon) \]
+			\[ \varphi'(x)\equiv -\frac{\frac{1}{x}}{e^{\varphi^2(x)}}+2\varphi^2(x)e^{\varphi^2(x)}\quad \Rightarrow\quad \varphi'(e)=-\frac{\frac{1}{e}}{1}=-\frac{1}{e} \]
+			\item \[ f(x,y):=\ln(x^2+y^2)-xy\quad ((x,y)\in\R^2:\quad x^2+y^2>0) \]
+			\[ f(1,0)=0,\quad \partial_2f(1,0)=\left[\frac{2y}{x^2+y^2}-x\right]_{\substack{x=1\\y=0}}=-1\not=0 \]
+			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(1-\varepsilon,1+\varepsilon\to\R),\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-1|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv \]
+			\[=-\frac{\frac{2x}{x^2+\varphi^2(x)}-\varphi(x)}{\frac{2\varphi(x)}{x^2+\varphi^2(x)}-x} \quad \Rightarrow\quad \varphi'(1)\frac{2-0}{-1-1}=-1 \]
+			\item
+			\[ f(x,y):=xe^{-y}+xe^y-a\quad ((x,y)\in\R^2) \]
+			\[ f(0,a)=0,\quad \partial_2f(0,a)=\left[-xe^{-y}+e^x\right]_{\substack{x=0\\y=a}}=e^0=1\not=0 \]
+			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv -\frac{e^{-\varphi(x)}+\varphi(x)e^x}{-xe^{-\varphi(x)}+e^x} \]
+			\[ \Rightarrow\quad \varphi'(0)=-\frac{e^{-a}+a}{1}=-(e^{-a}+a) \]
+			\item \[ f(x,y):=x\cos(y)-y\cos(x)\quad ((x,y)\in\R^2) \]
+			\[ f(0,0)=0,\quad \partial_2f(0,0)=[-x\sin(y)-\cos(x)]_{\substack{x=0\\y=0}}=-1\not=0 \]
+			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad y\in D:\quad f(x,\varphi(x))=0,\quad (|x|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv -\frac{\cos(\varphi(x)+\varphi(x)\sin(x)}{-x\sin(\varphi(x))-\cos(x)} \]
+			\[ \Rightarrow\quad \varphi'(0)=-\frac{1+0}{-1}=1 \]
+		\end{enumerate}
+	\end{task}
+	\begin{note}
+		Megállapítható (ez utolsó feladatnál), hogy
+		\[ \varphi(x):=x\quad (x\in\R)\quad \text{jó},\quad \varphi(0)=1 \]
+		Ennek örömére ez a feladat nem fog szerepelni a ZH-ban.
+	\end{note}
+	\begin{note}
+		$m,n\in\N,\quad A\subset \R^m,\quad B\subset \R^n$ nyílt halmazok,
+		\[ f\in C^1(A\times B,\R^2),\quad a\in A,\quad b\in B;\quad g(r):=f(r,b)\quad (r\in A) \]
+		Legyen továbbá legyen a második parciális függvény 
+		\[ h(s):=f(a,s)\quad (s\in B) \]
+		\[ \R\ni g'(r)=:\partial_1f(r,b)=:\frac{\partial}{\partial_r}f(r,b)\quad (r\in A) \]
+		\[ \R^{n\times n}\ni h'(s)=:\partial_2f(a,s)=:\frac{\partial}{\partial_s}f(a,s)\quad (s\in B) \]
+	\end{note}
+	\begin{theorem}
+		$f(a,b)=0,\quad \det[\partial_2f(a,b)\not=0]\quad \Rightarrow\quad \exists K(a)\subset A\quad \exists K(b)\subset B:$
+		\[ \forall r\in K(a),\quad \exists!\varphi(r)\in K(b):\quad f(r,\varphi(r))=0\quad \text{és}\quad \varphi\in C^1,\quad \varphi'(r)=-[\partial_2f(r,\varphi(r))]^{-1}:\quad \partial_1f(r,\varphi(r))\quad (r\in K(a)) \]
+	\end{theorem}
+	\begin{task}
+		\[ xy^2z^3+2x^2ye^{z-1}=0\quad \Rightarrow\quad \exists(a,b)\in\R^2\quad \exists c\in\R:\quad \exists \mathcal{K}(a,b)\subset\R^2 \]
+		\[ \exists\varphi:\mathcal{K}(a,b)\to\R,\quad \varphi\in D:\quad \varphi(a,b)=c\quad \text{és}\quad \forall(x,y)\in\mathcal{K}(a,b):\quad (x,y,\varphi(x,y))\]
+		\text{megoldása az egyenletnek!} 
+		\[ \varphi'(a,b)=? \]
+		Vajon megoldás lesz a $z=1,\ x=-1,\ y=2$ hármas?
+		\[ f(x,y,z):=xy^2z^3+2x^2ye^{z-1}\quad ((x,y,z)\in\R^2): \]
+		\[ f(-1,2,1)=0,\quad f\in C^1,\quad \frac{\partial}{\partial_z}f(-1,2,1)=\left[3xy^2z^3+2x^2ye^{z-1}\right]_{\substack{x=-1\\y=2\\z=1}}=-8\not=0 \]
+		\[ \Rightarrow\quad \exists\mathcal{K}(-1,2),\quad \exists\varphi:\mathcal{K}(-1,2)\to\R,\quad \varphi\in C^1:\quad f(x,y,\varphi(x,y))\equiv0 \]
+		\[ \varphi'(-1,2)=\frac{1}{-8}\cdot\left[\frac{\partial}{\partial_{(x,y)}}f(-1,2,1)\right]=-\frac{1}{8}\left(y^2z^3+4xye^{z-1},2xyz^3+2x^2e^{z-1}\right)_{\substack{x=-1\\y=2\\z=1}}=-\frac{1}{8}(-4,2)=\left(\frac{1}{2},\frac{1}{4}\right) \]
+	\end{task}
+	\begin{task}
+		 \begin{align*}
+			7x+\sin(y)+3z&=5\\
+			x+e^y-2z&=9
+		\end{align*}
+		\[ \exists\varepsilon>0,\quad \exists\varphi=(\phi_1,\phi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \phi\in D,\quad \phi(-3)=(2,0)\quad \text{és}\quad \forall z\in(-3-\varepsilon,-3+\varepsilon), \]
+		\[(\phi_1(z),\phi_2(z),z)\quad \text{megoldása az egyenletnek!}\quad \phi'(-3)=?  \]
+		Megoldás:
+		\[ f(x,y,z):=(7x+\sin(y)+3z-5,x+e^y-2z-9)\quad ((x,y,z)\in\R^3) \]
+		\[ f\in C^1,\quad f(2,0,-3)=(0,0),\quad \det\left[\frac{\partial}{\partial_{(x,y)}}f(2,0,-3)\right]=\det \begin{bmatrix}
+			7&\cos(y)\\
+			1&e^y
+		\end{bmatrix}_{\substack{x=2\\y=0\\z=-3}}=\det \begin{bmatrix}
+			7&1\\
+			1&1
+		\end{bmatrix}=6\not=0 \]
+		\[ \exists\varepsilon>0,\quad \exists\phi(\phi_1,\phi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \phi\in D:\quad f(\phi_1(z),\phi_2(z),z)\equiv0 \]
+		És:
+		\[ \phi'(-3)=-\left[\frac{\partial}{\partial(x,y)}f(2,0,-3)\right]^{-1}\cdot\frac{\partial}{\partial z}f(2,0,-3)=-\begin{bmatrix}
+			7&1\\
+			1&1
+		\end{bmatrix}^{-1}\cdot \begin{bmatrix}
+		3\\
+		-2
+		\end{bmatrix}=-\frac{1}{6} \begin{bmatrix}
+			1&-1\\
+			-1&7
+		\end{bmatrix} \cdot \begin{bmatrix}
+			3\\
+			-2
+		\end{bmatrix}=-\frac{1}{6} \begin{bmatrix}
+			7\\
+			-17
+		\end{bmatrix}= \begin{bmatrix}
+		5/6\\
+		17/6
+		\end{bmatrix} \]
+		%TODO alsó index wtf???
+	\end{task}
+	\section{Inverz tétel}
+	\begin{revision}
+		$p,q\in\N$
+		\begin{enumerate}
+			\item $f:\R^p\to\R^q$ lineáris, ha $\forall u,v\in\R^p,\quad \forall\alpha,\beta\in\R:\quad f(\alpha u+\beta r)=\alpha f(u)+\beta f(v)$
+			\item $f$ lineáris $\quad \Leftrightarrow\quad \exists M\in\R^{q\times r},\quad \forall n\in\R^p:\quad f(u)=Mu$
+		\end{enumerate}
+	\end{revision}
+	\begin{theorem}
+		$f:\R^d\to\R^d,\quad M\in\R^{d\times d},\quad f(u)=Mu\quad (u\in\R^d)$.
+		\[ f \quad \text{invertálható}\quad \Leftrightarrow\quad \det(M)\not=0 \]
+		és ez utóbbi esetben $f$ bijektív, $f^{-1}:\R^d\to\R^d$ lineáris s $f^{-1}(v)=M^{-1}v\quad (v\in\R^d)$.
+		
+		Bizonyítás: %TODO
+	\end{theorem}
+\end{document}
