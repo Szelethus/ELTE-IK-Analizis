@@ -150,27 +150,35 @@
 		\end{enumerate}
 		
 		Megoldás (1.): Megállapítható, hogy az első két egyenlet közös gyöke a (0,0), a második kettőnek a (6,0).
-		%TODO 01
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=7cm]{kepek/01.png}
+			\caption{$\varOmega$ egy rombusz.}
+		\end{figure}
 		
 		Megoldás (2.): 
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=7cm]{kepek/02.png}
+			\caption{}
+		\end{figure}
 		\[ \left.\begin{gathered}
 		u+v=2x\\
 		u-v=6
 		\end{gathered}\right\}\quad \begin{bmatrix}
 		x\\y
-		\end{bmatrix}=\varPhi \begin{bmatrix}
+		\end{bmatrix}=\phi \begin{bmatrix}
 		u\\v
-		\end{bmatrix}:=\begin{bmatrix}
+		\end{bmatrix}=\begin{bmatrix}
 		\frac{u+v}{2}\\\frac{u-v}{6}
-		\end{bmatrix},\quad \varOmega\varPhi\left([0,6]\times[0,6]\right) \]
-		%TODO 02
+		\end{bmatrix},\quad \varOmega\phi\left([0,6]\times[0,6]\right) \]
 		Megoldás (3.):
-		\[ \int_{\varOmega}^{}xy\,d(x,y)=\int_{[0,6]\times[0,6]}^{}\frac{u+v}{6}\cdot\frac{u-v}{6}\cdot\frac{1}{6}\,d(x,y)=\frac{1}{72}\int_{0}^{6}\left(\int_0^6(u^2-v^2)\,du\right)\,dv=* \]
-		\[ \det[\varPhi'(u,v)]=\det \begin{bmatrix}
+		\[ \int_{\varOmega}^{}xy\,d(x,y)\overset{\#}{=}\int_{[0,6]\times[0,6]}^{}\frac{u+v}{6}\cdot\frac{u-v}{6}\cdot\frac{1}{6}\,d(u,v)=\frac{1}{72}\int_{0}^{6}\left(\int_0^6(u^2-v^2)\,du\right)\,dv=* \]
+		\[ \#: \quad \det[\phi'(u,v)]=\det \begin{bmatrix}
 			\frac{1}{2}&\frac{1}{2}\\
 			\frac{1}{6}&-\frac{1}{6}
-		\end{bmatrix} \frac{1}{12}-\frac{1}{12}=-\frac{1}{6}\not=0\]
-		%when kovács sanyi asks a question and a minute and half minutes of awkward silence follows
+		\end{bmatrix}= \frac{1}{12}-\frac{1}{12}=-\frac{1}{6}\not=0\]
+		%when kovács sanyi asks a question and one and a half of minutes awkward silence follows
 		\[ *=\frac{1}{72}\int_{0}^{6}\left( \left[\frac{u^3}{3}-uv^2\right]_{u=0}^{u=6} \right)\,dv=\frac{1}{72}\int_0^6\{72-6v^2 \}\,dv=\frac{1}{72}[72v-2v^3]_0^6=0  \]  
 		%NOTE id: AnalAlkKS pw: eljenazanalizis
 	\end{task}
@@ -179,49 +187,61 @@
 		\[ \varOmega:=\{ (x,y)\in\R^2\ : \ 1\leq x^2+y^2\leq4 \},\quad \int_{\varOmega}^{}\ln(x^2+y^2)\,d(x,y)=? \]
 		
 		Megoldás: Megállapítható, hogy egy gyűrű az $\varOmega$.
-		%TODO 03
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=3cm]{kepek/03.png}
+			\caption{}
+		\end{figure}
 		
-		\[ \varOmega=\{ \varPhi(r,v)\in\R\ :\ : r\in[1,4],v\in[0,2\pi] \} \]
-		\[ \varPhi(r,v):=\left(r\cos(v),r\sin(v)\right),\quad (r\in(0,+\infty),\ v\in[0,2\pi]) \]
-		\[ \det[\varPhi'(r,v)]=\det \begin{bmatrix}
+		\[ \varOmega=\{ \phi(r,v)\in\R\ :\ r\in[1,4],v\in[0,2\pi] \} \]
+		\[ \phi(r,v):=\left(r\cos(v),r\sin(v)\right),\quad (r\in(0,+\infty),\ v\in[0,2\pi]) \]
+		\[ \det[\phi'(r,v)]=\det \begin{bmatrix}
 			\cos(v&-r\sin(v)\\
 			\sin(v)&r\cos(v)
-		\end{bmatrix}=r\cos(v)+r\sin^2(v)=r\not=0 \]
+		\end{bmatrix}=r\cos^2(v)+r\sin^2(v)=r\not=0 \]
 		\[\Rightarrow\quad \int_{\varOmega}^{}\ln(x^2+y^2)\,d(x,y)=\int_{[1,4]\times[0,2\pi]}^{}\ln(r^2\cos^2(v)+r^2\sin^2(v))r\,d(r,v)=\]
-		\[=\int_{0}^{2\pi}\left(\frac{1}{2}\int_{0}^{4}2r\ln(r^2)\,dr\right)\,dv=\frac{1}{2}\int_{0}^{2\pi}\left\{[e^2\ln(r^2)]_1^2-\int_{1}^{2}r^2\cdot\frac{2r}{r^2}\,dr\right\}\,dv=\frac{1}{2}\int_0^{2\pi}\left\{4\ln(4)-[r^2]_1^4 \right\}\,dv=\pi(8\ln(2)-3) \] 
+		\[=\int_{0}^{2\pi}\left(\frac{1}{2}\int_{1}^{2}2r\ln(r^2)\,dr\right)\,dv=\frac{1}{2}\int_{0}^{2\pi}\left\{[r^2\ln(r^2)]_1^2-\int_{1}^{2}r^2\cdot\frac{2r}{r^2}\,dr\right\}\,dv=\frac{1}{2}\int_0^{2\pi}\left\{4\ln(4)-[r^2]_1^4 \right\}\,dv=\pi(8\ln(2)-3) \] 
 	\end{task}
 	\begin{task}
 		$a,b>0$
 		\[ \varOmega:=\{ (x,y)\in\R^2:\quad \frac{x^2}{a^2}+\frac{y^2}{b^2}\leq1 \} \]
-		%TODO04
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=7cm]{kepek/04.png}
+			\caption{}
+		\end{figure}
 		
-		Megoldás: $|\varOmega|=2$
+		Megoldás: $|\varOmega|=?$
 		\[ |\varOmega|=\int_{\varOmega}^{}1=* \]
-		\[ \varOmega=\{ \varPhi(r,v)\in\R^2\ : \ r\in[0,1],\ v\in[0,2\pi] \} \]
-		\[ \varPhi:=(ar\cos(v),br\sin(v)) \]
-		\[ \det[\varPhi'(r,v)]=\det \begin{bmatrix}
-			a\cos(v)&-ar\sin(v)\\
+		\[ \varOmega=\{ \phi(r,v)\in\R^2\ : \ r\in[0,1],\ v\in[0,2\pi] \} \]
+		\[ \phi:=(ar\cos(v),br\sin(v)) \]
+		\[ \det[\phi'(r,v)]=\det \begin{bmatrix}
+			a\cos(v)&-br\sin(v)\\
 			b\sin(v)&br\cos(v)
 		\end{bmatrix}=\ldots=abr\not=0 \]
 		\[ *=\int_{[0,1]\times[0,2\pi]}^{}1abr\,d(r,v)=\int_{0}^{2\pi}\left(\int_0^4abr\,dr\right)\,dv=\int_0^{2\pi}\left(ab\left[\frac{r^2}{2}\right]_0^1\right)\,dv=\int_0^{2\pi}\frac{ab}{2}\,dv=ab\pi \]
 	\end{task}
 	\begin{task}
 		\[ R_F=6380km,\quad R_M=1700km,\quad d=60m \]
-		%TODO 05
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=7cm]{kepek/05.png}
+			\caption{}
+		\end{figure}
 		
 		Megoldás:
-		\[ \varPhi:=\R^+\times[0,2\pi]\times\R,\quad \varPhi(r,v,z):=\begin{cases}
+		\[ \phi:=\R^+\times[0,2\pi]\times\R,\quad \phi(r,v,z):=\begin{cases}
 			r\cos(v)\\
 			r\sin(v)\\
 			z
-		\end{cases}\]\[ \det[\varPhi'(r,v,t)]=\det \begin{bmatrix}
+		\end{cases}\]\[ \det[\phi'(r,v,t)]=\det \begin{bmatrix}
 			\cos(v)&-r\sin(v)&0\\
 			\sin(v)&r\cos(v)&0\\
 			0&0&1
 		\end{bmatrix}=...=r \]
 		\[ |\varOmega|=\int_{\varOmega}^{}1=\int_{-b}^{b}\left(\int_{0}^{2\pi}\left(\int_{\sqrt{R^2-b^2}}^{\sqrt{R^2-z^2}}1r\,dr\right)\,dv\right)\,dz=\int_{-b}^{b}\left(\int_0^{2\pi}\left(\left[\frac{r^2}{2}\right]_{\sqrt{R^2-b^2}}^{\sqrt{R^2-z^2}} \right)\,dv\right)\,dz=\]
 		\[=\frac{1}{2}\int_{-b}^{b}\left(\int_{0}^{2\pi}(b^2-z^2)\,dv\right)\,dz=\pi\int_{-b}^{b}(b^2-z^2)\,dz=\pi\int_{-b}^{b}(b^2-z^2)\,dz=\pi\left[b^2z-\frac{z^3}{3}\right]^b{-b}=\]
-		\[=\pi\{ b^3-\frac{b^3}{3}+b^3-\frac{b^3}{3} \}=\frac{4b^3}{3}\pi=\pi\cdot\frac{d^3}{6} \]
+		\[=\pi\left\{ b^3-\frac{b^3}{3}+b^3-\frac{b^3}{3} \right\}=\frac{4b^3}{3}\pi=\pi\cdot\frac{d^3}{6} \]
 	\end{task}
 	\begin{revision}
 		$U\subset\R^d$ nyílt halmaz, $f:U\times[a,b]\to\R,\ f\in C$
@@ -235,15 +255,15 @@
 	\end{revision}
 	\begin{example}
 		\[ F(x):=\int_1^\pi \frac{\sin(tx)}{t}\,dt\quad (0<x\in\R) \]
-		\[ \Rightarrow\quad F'(x)=\int_1^\pi\cos(tx)\,dt,\quad F''(x)=\int_1^\pi -t\in(tx)\,dt \]
+		\[ \Rightarrow\quad F'(x)=\int_1^\pi\cos(tx)\,dt,\quad F''(x)=\int_1^\pi -t\sin(tx)\,dt \]
 	\end{example}
 	\begin{example}
-		$$\pi(x):=\int_0^1\ln(x^2+t^2)\,dt\quad (0<x\in\R)\quad \Rightarrow\quad \phi\in C^1$$ és $$\phi'(x)=\int_0^1\frac{\partial}{\partial x}\ln(x^2+t^2)\,dt=\int_0^1\frac{2x}{x^2+t^2}\,dt=\frac{2x}{x^2}\int_0^1\frac{1}{1+\left(\frac{t}{x}\right)^2}\,dt=$$
+		$$\phi(x):=\int_0^1\ln(x^2+t^2)\,dt\quad (0<x\in\R)\quad \Rightarrow\quad \phi\in C^1$$ és $$\phi'(x)=\int_0^1\frac{\partial}{\partial x}\ln(x^2+t^2)\,dt=\int_0^1\frac{2x}{x^2+t^2}\,dt=\frac{2x}{x^2}\int_0^1\frac{1}{1+\left(\frac{t}{x}\right)^2}\,dt=$$
 		$$=\frac{2}{x}\int_0^1\frac{1}{1+\left(\frac{t}{x}\right)^2}\,dt=2\left[\arc\tg\left(\frac{t}{x}\right)\right]_{t=0}^{t=1}=2\arc\tg\left(\frac{1}{x}\right)$$
 	\end{example}
 	\begin{note}
 		$$\phi(x)=\int_0^11\ln(x^2+t^2)\,dt=[t\ln(x^2+t^2)]_{t=0}^{t=1}-\int_0^1t\cdot\frac{2t}{x^2+t^2}\,dt=\ln(x^2+1)-2\int_0^1\frac{t^2}{x^2+t^2}\,dt=$$
-		$$=\ln(x^2+1)-2\int_0^1\frac{x^2+t^2-x^2}{x^2+t^2}\,d=\ln(x^2+1)-2\left\{ 1-\int_0^1\frac{x^2}{x^2+t^2}\,dt \right\}=$$ $$=\ln(x^2+1)-2+2\int_0^1\frac{1}{1+\left(\frac{1}{x}\right)^2}\,dt=\ln(x^2+1)-2+2x\arc\tg\frac{1}{x}\quad (x>0)$$
+		$$=\ln(x^2+1)-2\int_0^1\frac{x^2+t^2-x^2}{x^2+t^2}\,dt=\ln(x^2+1)-2\left\{ 1-\int_0^1\frac{x^2}{x^2+t^2}\,dt \right\}=$$ $$=\ln(x^2+1)-2+2\int_0^1\frac{1}{1+\left(\frac{1}{x}\right)^2}\,dt=\ln(x^2+1)-2+2x\arc\tg\frac{1}{x}\quad (x>0)$$
 		$$\Rightarrow\quad \phi'(x)=\frac{2x}{x^2+1}+2\arc\tg\left(\frac{1}{x}\right)+2x\cdot\frac{-\frac{1}{x^2}}{1+\left(\frac{1}{x}\right)^2}=\frac{2x}{x^2+1}+2\arc\tg\left(\frac{1}{x}\right)-\frac{2x}{x^2+1}$$
 	\end{note}
 	\begin{theorem}
