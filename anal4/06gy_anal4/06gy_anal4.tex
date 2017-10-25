@@ -1,0 +1,306 @@
+
+\documentclass[a4paper,11.5pt]{article}
+\usepackage[textwidth=170mm, textheight=230mm, inner=20mm, top=20mm, bottom=30mm]{geometry}
+\usepackage[normalem]{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\usepackage[magyar]{babel}
+\usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
+%\usepackage{marvosym}
+
+\makeatletter
+\renewcommand*{\mathellipsis}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\ldotp}\kern\ellipsisgap
+		{\ldotp}\kern\ellipsisgap%
+		{\ldotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\dotsb@}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\@cdots}{%
+	\mathinner{%
+		\kern\ellipsisbeforegap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisgap%
+		{\cdotp}\kern\ellipsisaftergap%
+	}%
+}
+\renewcommand*{\ellipsis@default}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	\ellipsis@after\relax}
+\renewcommand*{\ellipsis@centered}{%
+	\ellipsis@before
+	\kern\ellipsisbeforegap
+	.\kern\ellipsisgap
+	.\kern\ellipsisgap
+	.\kern\ellipsisaftergap
+	\ellipsis@after\relax}
+\AtBeginDocument{%
+	\DeclareRobustCommand*{\dots}{%
+		\ifmmode\@xp\mdots@\else\@xp\textellipsis\fi}}
+\def\ellipsisgap{.1em}
+\def\ellipsisbeforegap{.05em}
+\def\ellipsisaftergap{.05em}
+\makeatother
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true	
+}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Th}{th}
+\DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\arsh}{arsh}
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\arth}{arth}
+\DeclareMathOperator{\arcth}{arcth}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\arc}{arc}
+\DeclareMathOperator{\arctg}{arc tg}
+\DeclareMathOperator{\Graph}{\Graph}
+\DeclareMathOperator{\arcctg}{arc ctg}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	\setlength\parindent{0pt}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\N{\hskip 10 true mm}
+	\def\a{\textbf{a}}
+	\def\b{\textbf{b}}
+	\def\c{\textbf{c}}
+	\def\d{\textbf{d}}
+	\def\e{\textbf{e}}
+	\def\gg{$\gamma$}
+	\def\vi{\textbf{i}}
+	\def\jj{\textbf{j}}
+	\def\kk{\textbf{k}}
+	\def\fh{\overrightarrow}
+	\def\l{\lambda}
+	\def\m{\mu}
+	\def\v{\textbf{v}}
+	\def\0{\textbf{0}}
+	\def\s{\hspace{0.2mm}\vphantom{\beta}}
+	\def\Z{\mathbb{Z}}
+	\def\Q{\mathbb{Q}}
+	\def\R{\mathbb{R}}
+	\def\C{\mathbb{C}}
+	\def\N{\mathbb{N}}
+	\def\Rn{\mathbb{R}^{n}}
+	\def\Ra{\overline{\mathbb{R}}}
+	\def\sume{\displaystyle\sum_{n=1}^{+\infty}}
+	\def\sumn{\displaystyle\sum_{n=0}^{+\infty}}
+	\def\biz{\emph{Bizonyítás:\ }}
+	\def\narrow{\underset{n\rightarrow+\infty}{\longrightarrow}}
+	\def\limn{\displaystyle\lim_{n\to +\infty}}
+	%	\def\definition{\textbf{Definíció:\ }}
+	%	\def\theorem{\textbf{Tétel:\ }}
+	%\def\note{\emph{Megjegyzés:\ }}
+	%\def\example{\textbf{Példa:\ }} 
+	
+	\theoremstyle{definition}
+	\newtheorem{theorem}{Tétel}[subsubsection]
+	
+	\theoremstyle{definition}
+	\newtheorem{definition}[theorem]{Definíció}
+	\newtheorem{example}[theorem]{Példa}
+	\newtheorem{exercise}[theorem]{Házi feladat}
+	\newtheorem{note}[theorem]{Megjegyzés}
+	\newtheorem{task}[theorem]{Feladat}
+	\newtheorem{revision}[theorem]{Emlékeztető}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		{\LARGE\textbf{Az analízis alkalmazásai}}
+		\smallskip
+
+		{\Large Gyakorlati jegyzet}
+
+		\smallskip
+		6. óra.
+	\end{center}
+	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Kovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
+	
+	\section{Vesztettem}
+	\begin{task}
+		Adott egy boroshordó (henger) melyet meg kell csapolni. Mennyi idő alatt folyik ki belőle a bor?
+		%TODO 01, caption: $2r$: hordó szélessége, $h$: bor mahassága kiindulásból, $2\rho$: lyuk átmérője, $\rho << r$, $\varDelta t$: kifolyt bor, $v$: kifolyó bor sebessége, $z$: tengely neve
+		\[ \varDelta t:\quad \rho^2\pi\cdot v\cdot\varDelta t=-r^2\pi\varDelta t\quad \Rightarrow\quad \frac{\varDelta z}{\varDelta t}=-\frac{\rho^2}{r^2}\cdot v,\quad \varDelta t\to0 \]
+		\[ \Rightarrow\quad z'=-\frac{\rho^2}{r^2}\cdot v \]
+		Toricelli-törvény:
+		\[ v(z)=c\sqrt{2gz} \]
+		Ahol $c>0$ konstans, és $g$ a nehézségi gyorsulás.
+		\[ z'=-\frac{\rho^2}{r^2}c\sqrt{2gz},\quad z(0)=h \]
+		Amíg ki nem ürüs a hordóból a bor, addig $z>0$.
+		\[(2\sqrt{z})' =\frac{z'}{\sqrt{z}}=-\frac{\rho^2}{r^2}\cdot c\sqrt{2g}\quad \Rightarrow\quad 2\sqrt{z}=-\frac{\rho^2}{r^2}c\sqrt{2g}t+k,\quad z(0)=h \]
+		\[ \Rightarrow\quad z(t)=\frac{1}{4}\left(2\sqrt{h}-\frac{\rho^2c}{r^2}\sqrt{2g}\cdot t\right)^2 \]
+		\[ \lim_{t\to T}z(t)=0\quad \Leftrightarrow\quad 2\sqrt{h}=\frac{\rho^2c}{r^2}\sqrt{2g}\cdot T\quad \Rightarrow\quad T=\frac{r^2}{\rho^2c}\sqrt{\frac{2h}{g}} \]
+		\[ z(t)=\begin{cases}
+			\frac{1}{4}\left(2\sqrt{h}-\frac{\rho^2c}{r^2}\sqrt{2g}\cdot t \right)^2\quad (t\in [0,T])\\
+			0\quad (t\in[T,+\infty])
+		\end{cases} \]
+	\end{task}
+	%NOTE unicitás
+	\begin{definition}
+		$I\subset \R$ intervallum, $\tau\in I,\quad \xi \in \R^m\ (m\in\N),\quad f: I\times\R^m\to\R^m,\quad f\in C$
+		
+		Azt mondjuk, hogy a $\varphi:J\to\R^m$ fv megoldása az
+		\begin{gather}\label{1}
+		y'=f(x,y(x))\quad (x\in I),\quad y(t)=\xi
+		\end{gather}
+		k.é.f-nak, ha
+		\begin{enumerate}
+			\item $J\subset I$ intervallum,
+			\item $\varphi \in D$
+			\item $\varphi(\tau)=xi$
+			\item $\varphi'(x)=f(x,\varphi(x))\quad (x\in J)$
+		\end{enumerate}
+	\end{definition}
+	\begin{theorem}
+		$\varphi$ megoldása:
+		\begin{gather}\label{2}
+		\ref{1}\quad \Leftrightarrow\quad \varphi(x)=\xi+\int_{\tau}^{x}f(t,\varphi(t))\,dt\quad (x\in J)
+		\end{gather}
+		\textit{Bizonyítás:}
+		
+		1. lépés: Ha $\varphi$-re \ref{2} jobb oldala teljesül, akkor $\phi(\tau)=\xi+\int_{\tau}^{^\tau}\ldots=\xi+0=\xi$
+		\[ \forall x\in J:\quad \varphi'(x)=0+f(x,\varphi(x))=f(x,\varphi(x))\checkmark \]
+		2. lépés: Tegyük fel $\varphi$-re \ref{1} teljesül\quad $\Rightarrow\quad \forall x\in J$:
+		\[ \varphi(x)-\xi=\varphi(x)-\varphi(\tau)=\int_{\tau}^{x}\varphi'(t)\,dt=\int_{\tau}^{x}f(t,\varphi(t))\,dt\checkmark \]
+	\end{theorem}
+	\begin{note}
+		\ref{2} jobb oldala miatt $\varphi=\lim(\varphi_n)$, ahol
+		\[ \varphi_0:I\to\R^m,\quad \varphi_0\in C\quad \text{tetszőleges} \]
+		\[ \varphi_{n+1}=\xi+\int_{\tau}^{x}f(t,\varphi_n(t))\,dt\quad (n\in\N_0,\quad x\in I) \]
+	\end{note}
+	\begin{theorem}
+		$f:I\times\R^m\to\R^m:\quad f\in C\quad /I\subset\R \text{ intervallum}/,\quad \tau\in I, \quad \xi\in\R^m,\exists L:I\to\R^+_0,\quad L\in C$
+		\[ \norm{f(x,y)-f(x,z)}\leq L(x)\norm{y-z}\quad (y,z\in\R^m,\quad x\in I) \]
+		$\Rightarrow \quad \exists!\varphi:I\to\R^m:\quad \varphi\in D:\quad \varphi(\tau)=\xi,\quad \varphi'(x)=f(x,\varphi(x))\quad (x\in I)$
+	\end{theorem}
+	\begin{example}
+		$I\subset\R$ intervallum, $A:I\to\R^{m\times m}:\quad A\in C,\quad b:I\to\R^m:b\in C, \quad \tau\in I,\quad \xi\in\R^m$
+		\[ y'=Ay+b,\quad y(\tau)=\xi \]
+		\[ f(x,y):\equiv A(x)y+b(x)\quad \Rightarrow\quad \norm{f(x,y)-f(x,z)}=\norm{A(x)y+b(x)-(A(x)z+b(x)}=\]
+		\[=\norm{A(x)(y-z)}\leq\norm{A(x)}\cdot\norm{y-z}\checkmark \]
+	\end{example}
+	\begin{example}
+		$a:\R\to\R,\quad a\in C,\quad \tau,\xi\in\R:$
+		\[ y'=ay,\quad y(\tau)=\xi \]
+		Induljunk ki egy tetszőleges $\varphi:\R\to\R$ függvényből, pl. legyen 
+		\[ \varphi_0(x)=3 \]
+		Így
+		\[ \varphi_1(x)=\xi+\int_{\tau}^{x}a(t)\varphi_0(t)\,dt=\xi+\xi\overbrace{\int_{\tau}^{x}a(t)\,dt}^{=:A}=\xi+\xi A(x)\quad (x\in\R) \]
+		\[ \varphi_2(x)=\xi+\int_{\tau}^{x}a(t)\cdot\varphi_1(t)\,dt=\xi+\int_{\tau}^{x}a(t)(\xi+\xi A(t))\,dt=\xi+\xi\left\{ \int_{\tau}^{x}a(t)\,dt+\int_{\tau}^{x}a(t)\cdot A(t)\,dt \right\}= \]
+		\[ =\xi + \xi\left\{ A(x)+\left[\frac{A^2(t)}{2}\right]_\tau^x \right\}=\xi+\xi A(x)+\xi\cdot\frac{A^2(x)}{2}\quad (x\in\R) \]
+		\[ \varphi_3(x)=\xi+\int_{\tau}^{x}a(t)\varphi_2(t)\,dt=\xi + \int_{\tau}^{x}\xi\left\{a(t)+a(t)A(t)+a(t)\cdot\frac{A^2(t)}{2} \right\}\,dt= \]
+		\[ =\xi + \xi\left\{ \int_{\tau}^{x}a(t)\,dt+\int_{\tau}^{x}a(t)A(t)\,dt+\int_{\tau}^{x}a(t)\cdot\frac{A^2(t)}{2}\,dt \right\}=\xi+\xi A(x)+\xi\frac{A^2(x)}{2}+\xi\cdot\frac{A^3(x)}{6}\quad (x\in\R) \]
+		\[\vdots \]
+		\[ \varphi_n(x)=\xi\sum_{k=0}^n\frac{A^k(x)}{k!}\quad (x\in\R) \]
+		\[ \forall x\in\R:\quad \varphi_n(x)\to\xi\sum_{k=0}^\infty\frac{A^k(x)}{k!}=\xi e^{A(x)}=\xi e^{\int_{\tau}^{x}a(t)\,dt} \]
+		Tehát $y'=ay,\quad y(\tau)=\xi$ megoldása:
+		\[\varphi(x):=\xi\exp(\int_{\tau}^{x}a(t)\,dt)\quad (x\in\R) \]
+	\end{example}
+	\begin{note}
+		$a(t)\equiv a\quad \Rightarrow\quad \xi e^{a(x-\tau)}$
+	\end{note}
+	\begin{task}
+		\[ y'(x)=(2y_1(x)+4y_2(x), 2y_1(x))\quad (x\in\R),\quad y(0)=(1,2) \]
+		\[y'=My,\quad y(\tau)=\xi,\quad M:= \begin{bmatrix}
+			2&4\\
+			2&0
+		\end{bmatrix},\quad \tau:=0,\quad \xi:=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}\]
+		\[ \varphi_0(x):=\xi=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}\quad (x\in\R) \]
+		\[ \varphi_1(x):=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+\int_0^xM\varphi_0(t)\,dt=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+\int_0^x \begin{bmatrix}
+			2&4\\
+			2&0
+		\end{bmatrix}\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}\,dt=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+x \begin{bmatrix}
+			2&4\\
+			2&0
+		\end{bmatrix}\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}=\left( \begin{bmatrix}
+			1&0\\
+			0&1
+		\end{bmatrix} + x \begin{bmatrix}
+			2&4\\
+			2&0
+		\end{bmatrix} \right) \begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix} \]
+		\[\varphi_2(x)=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+\int_0^xM\varphi_1(t)\,dt=\begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+\int_0^x\left\{ M \begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}+ tM^2 \begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix} \right\} \]
+		%TODO túl hamar letörölte :'(
+		\[\displaystyle  \varphi_n(x)=(\underbrace{E_2+xM+\frac{x^2}{2}M^2+\ldots+\frac{x^n}{n!}M^n) \begin{bmatrix}
+			1\\
+			2
+		\end{bmatrix}}_{\displaystyle 
+			\sum_{k=0}^n\frac{x^kM^k}{k!} \begin{bmatrix}
+				1\\
+				2
+			\end{bmatrix}=\sum_{k=0}^n\frac{x^k}{k!}M^k \begin{bmatrix}
+				1\\
+				2
+			\end{bmatrix}
+		}\quad (x\in\R) \]
+		\[ \text{(karakterisztikus polinom) }P_M(z)=z^2-2z-8=(z+2)(z-4)\quad (z\in\C) \]
+		\[ \text{\fbox{$\lambda=-2$:}}\quad 
+		\left[\begin{array}{cc|c}
+			4&4&0\\
+			2&2&0
+		\end{array}\right]\to \]
+		%TODO finish
+	\end{task}
+\end{document}
