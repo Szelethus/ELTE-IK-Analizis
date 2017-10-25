@@ -154,7 +154,7 @@
 	\begin{definition}
 		$N\in\N$. Legyen $T\in\R^N$, $N$ dimenziós {intervallum} vagy {tégla}, ha $$\exists a,b\in\R^N,\quad a=(a_1,\ldots,a_N),\quad b=(b_1,\ldots,b_N), \quad a_i\leq b_i\quad (i\in\{1,\ldots,N\}),$$
 		$$(a_1,b_1)\times\ldots\times(a_N,b_N)\subset T\subset[a_1,b_1]\times\ldots\times[a_N,b_N]$$
-		Ekkor $$\displaystyle \mu(T):=\prod_{N}^{i=1}(b_i-a_i)$$ $T$ \textit{mértéke}, és $$\displaystyle d(T):=\sqrt{\sum_{i=1}^{N}(b_i-a_i)^2}$$ $T$ \textit{átmérője}.
+		Ekkor $$\displaystyle \mu(T):=\prod^{N}_{i=1}(b_i-a_i)$$ $T$ \textit{mértéke}, és $$\displaystyle d(T):=\sqrt{\sum_{i=1}^{N}(b_i-a_i)^2}$$ $T$ \textit{átmérője}.
 	\end{definition}
 	\begin{note}\
 		
@@ -175,7 +175,7 @@
 		$T\subset\R^N$ tégla, $\tau\in\mathcal{F}(T)$ (jel.: $T\rightsquigarrow T_1,\ldots,T_n$) \textit{osztástégla}. Ez pontosan
 		\[ n=\prod_{i=1}^Nn_i \]
 		,,részre esik'', és
-		\[ \nu(T)=\sum_{i=1}^n\nu(T_i) \]
+		\[ \mu(T)=\sum_{i=1}^n\mu(T_i) \]
 	\end{note}
 	\begin{example}
 %		$T:=[a,b]\times[c,d],\quad \tau^1:=\{x_0,\ldots\x_m \}\in\mathcal{F}([a,b]),\quad \tau^2:=\{y_0,\ldots,y_n\}\in\mathcal{F}([c,d])$.
@@ -193,7 +193,7 @@
 		$T\subset\R^N$ tégla, $f:T\to\R$ korlátos függvény $\Rightarrow \quad \forall\tau,\mu\in\mathcal{F}(T)$
 		\begin{enumerate}
 			\item $s(f,\tau)\leq S(f,\tau)$
-			\item $\mu\subset\tau\quad \Rightarrow\quad s(f,\mu)\leq s(f,\tau)$ ÉS $f(f,\tau)\geq S(f,\tau)$
+			\item $\mu\subset\tau\quad \Rightarrow\quad s(f,\mu)\leq s(f,\tau)$ ÉS $S(f,\tau)\geq S(f,\tau)$
 		\end{enumerate}
 	\end{theorem}
 	\begin{note}
@@ -201,29 +201,30 @@
 		\[ s(f,\tau)\in\R:\quad T\in\mathcal{F}(T)\quad \text{felülről korlátos} \]
 		\[ S(f,\tau)\in\R:\quad T\in\mathcal{F}(T)\quad \text{alulról korlátos} \]
 		azaz $\forall\mu\in\mathcal{F}(T)$
-		\[ I_*(f):=\sup\{ s(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T) \}\leq S(f,\nu)<+\infty \]
-		\[ I_*(f):=\inf\{ S(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T) \}\geq s(f,\nu)<-\infty \]
+		\[ I_*(f):=\sup\{ s(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T) \}\leq S(f,\mu)<+\infty \]
+		\[ I_*(f):=\inf\{ S(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T) \}\geq s(f,\mu)<-\infty \]
 		Tehát $I_*(f), I^*(f)\in\R$, ill. $\forall\tau,\mu\in\mathcal{F}(T):$
 		\[ s(f,\tau)\leq I_*(f)\leq I^*(f)\leq S(f,\mu) \]
 	\end{note}
 	\begin{definition}
 		$T\subset\R^N$ tégla, $f:T\to\R$ korlátos fv. Azt mondjuk hogy $f$ \textit{Riemann-integrálható}, ha $I_*(f)=I^*(f)$, és ez utóbbi esetben az
-		\[ \int_If:=\int_If(r)\,dr=\int_If(x_1,\ldots,x_N)\,d(x_1,\ldots x_N):=\int_{a_1}^{b_1}\dots\int_{a_N}^{b_N}f(x_1,\ldots,x_N)\,dx_1\dots dx_N:=I_*(f)=I^*(F) \]
+		\[ \int_If:=\int_If(r)\,dr=\int_If(x_1,\ldots,x_N)\,d(x_1,\ldots x_N):=\int_{a_1}^{b_1}\dots\int_{a_N}^{b_N}f(x_1,\ldots,x_N)\,dx_1\dots dx_N:=I_*(f)=I^*(f) \]
 		számot az $f$ függvény \textit{Riemann integráljának} nevezzük.
 	\end{definition}
 	\begin{example}
 		$c\in\R, \quad T\subset\R^N$ tégla,\quad $f:T\to\R,$ $f(r):=c$. $$\tau\in\mathcal{F}(T):\quad \{f(r)\in\R:\quad r\in T_i \}=\{c\}\quad (i\in\{1,\ldots,n\})$$
 		\[ \Rightarrow\quad \inf\{f(r)\in \R:\quad r\in T_i \}=c=\sup\{ f(r)\in\R:\quad r\in T \}\quad (i\in\{1,\ldots,n\}) \]
-		\[ \Rightarrow\quad s(f,\tau)=\sum_{i=1}^nc\cdot\mu(T_i)=x\cdot\sum_{i=1}^n\mu(T_i)=c\cdot\mu(T) \]
-		\[ \Rightarrow\quad S(f,\tau)=\sum_{i=1}^nc\cdot\mu(T_i)=x\cdot\sum_{i=1}^n\mu(T_i)=c\cdot\mu(T) \]
-		$\tau$ tetszőleges $\quad \Rightarrow\quad f\in R(T)$ és $\int_If=c\mu(T)$.
+		\[ \left.\begin{gathered}
+			\Rightarrow\quad s(f,\tau)=\sum_{i=1}^nc\cdot\mu(T_i)=x\cdot\sum_{i=1}^n\mu(T_i)=c\cdot\mu(T) \\
+			\Rightarrow\quad S(f,\tau)=\sum_{i=1}^nc\cdot\mu(T_i)=x\cdot\sum_{i=1}^n\mu(T_i)=c\cdot\mu(T)
+		\end{gathered}\right\}\quad \Rightarrow\quad \tau \text{ tetszőleges\quad } \Rightarrow\quad f\in R(T) \text{\quad és\quad } \int_Tf=c\mu(T).\]
 	\end{example}
 	\begin{example}
-		$T\subset\R^N$ tégla:\quad $\nu(T)>0,$
+		$T\subset\R^N$ tégla:\quad $\mu(T)>0,$
 		\[ f(r):=
 		\begin{cases}
 			1\quad (r\in T\cap\Q^N)\\
-			0\quad (r=(x_1,\ldots,\xi_n)\in T,\quad \exists i\in\{1,\ldots,N:\quad x_i\in\R\setminus \Q\})
+			0\quad (r=(x_1,\ldots,x_n)\in T,\quad \exists i\in\{1,\ldots,N:\quad x_i\in\R\setminus \Q\})
 		\end{cases}
 		\]
 		\[ \Rightarrow\quad \{ f(r)\in\R:\quad r\in T_i \}=\{0,1\}\quad (i\in\{1,\ldots,n\}) \]
@@ -240,28 +241,37 @@
 			0\quad (x\in\R\setminus\Q)
 		\end{cases} \]
 		\[ \tilde{\varDelta}:[0,1]\times\{0\}\to\R,\quad \tilde{\varDelta}(x,y):=\varDelta(x) \]
-		\[ \Rightarrow\quad \tilde{\varDelta}\in\R([0,1]\times\{0\})\text{\quad és\quad }\int_{[0,1]\times\{0\}}\tilde{\varDelta}(x,y)\,d(x,y)=0 \]
+		\[ \Rightarrow\quad \tilde{\varDelta}\in R([0,1]\times\{0\})\text{\quad és\quad }\int_{[0,1]\times\{0\}}\tilde{\varDelta}(x,y)\,d(x,y)=0 \]
 	\end{example}
 	\begin{task}
-		$f(x,y):=xy,\quad ((x,y)\in T:=[0,1]\times[0,1])\quad \Rightarrow\quad f\in R(T)$ és $\int_T f=?$
-		\[ \tau_n^1:=\{ \frac{i}{n}\in\R:\quad i\in\{0,\ldots,n\} \}=:T_n^2,\quad \tau_n:=\tau_n^1\times\tau_n^2\in\mathcal{F}(T)(n\in\N) \]
-		\[ x_i:=\frac{i}{n},\quad y_j:=\frac{j}{n}\quad (i,j\in\{a,\ldots,b\}),\quad T_{ij}:=[x_{i-j},x_i]\times[y_{i-1},y_i] \quad (i,j\in\{1,\ldots,n\}) \]
-		$\Rightarrow\quad \mu(T_{ij})=(x_i-x_{i-n})(y_j-y_{j-n})=\left(\frac{1}{n}-\frac{i-1}{n}\right)\left(\frac{j}{n}-\frac{j-1}{n}\right)=\frac{1}{n^2}$
-		\[ s(f,\tau)=\sum_{i,j=1}^n\inf\{ f(r)\in\R:\quad r\in T_{ij} \}\cdot\mu (T_{ij})=\sum_{i,j=1}^nx_{i-1}y_{j-1}\cdot\frac{1}{n^2}=\frac{1}{n^2}\sum_{i,j=1}^n\frac{i-1}{n}\frac{j-1}{n}=\]
+		\[f(x,y):=xy,\quad ((x,y)\in T:=[0,1]\times[0,1])\quad \Rightarrow\quad f\in R(T)\quad \text{és}\quad \int_T f=?\]
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=4cm]{kepek/01.png}
+			\caption{}
+		\end{figure}
+		\[ \tau_n^1:=\left\{ \frac{i}{n}\in\R:\quad i\in\{0,\ldots,n\} \right\}=:\tau_n^2,\quad \tau_n:=\tau_n^1\times\tau_n^2\in\mathcal{F}(T)(n\in\N) \]
+		\[ x_i:=\frac{i}{n},\quad y_j:=\frac{j}{n}\quad (i,j\in\{0,\ldots,n\}),\quad T_{ij}:=[x_{i-1},x_i]\times[y_{j-1},y_j] \quad (i,j\in\{1,\ldots,n\}) \]
+		\[\Rightarrow\quad \mu(T_{ij})=(x_i-x_{i-1})(y_j-y_{j-1})=\left(\frac{1}{n}-\frac{i-1}{n}\right)\left(\frac{j}{n}-\frac{j-1}{n}\right)=\frac{1}{n^2}\]
+		\[ s(f,\tau)=\sum_{i,j=1}^n\inf\{ f(r)\in\R:\quad r\in T_{ij} \}\cdot\mu (T_{ij})=\sum_{i,j=1}^nx_{i-1}y_{j-1}\cdot\frac{1}{n^2}=\frac{1}{n^2}\sum_{i,j=1}^n\frac{i-1}{n}\cdot\frac{j-1}{n}=\]
 		\[=\frac{1}{n^4}\cdot\left(\sum_{i=1}^n(i-1)\right)\left(\sum_{j=1}^n(j-1)\right)=\frac{1}{n^4}\cdot\frac{(n-1)n}{2}\cdot\frac{(n-1)n}{2}=\frac{1}{4}\left(1-\frac{1}{n}\right)^2 \]
-		\[ S(f,\tau_1)=\sum_{i,j=1}^n\sup\{ f(r)\in\R:\quad r\in T{ij} \}\mu(T_{ij})=\sum_{i,j=1}^nx_iy_i\cdot\frac{1}{n^2}=\frac{1}{n^2}\left(\sum_{i=1}^n\right)\left(\sum_{j=1}^nj\right)=\frac{1}{n^2}\cdot\frac{n(n+1)}{2}\cdot\frac{n(n+1)}{2}=\frac{1}{4}\left(1+\frac{1}{n}\right)^2 \]
-		\[ \lim_{n\to\infty}(s(f,\tau_n))=\frac{1}{4}=\lim{n\to\infty}(S(f,\tau_n)) \]
+		\[ S(f,\tau_1)=\sum_{i,j=1}^n\sup\{ f(r)\in\R:\quad r\in T{ij} \}\mu(T_{ij})=\sum_{i,j=1}^nx_iy_i\cdot\frac{1}{n^2}=\frac{1}{n^2}\left(\sum_{i=1}^n\right)\left(\sum_{j=1}^nj\right)=\]
+		\[=\frac{1}{n^2}\cdot\frac{n(n+1)}{2}\cdot\frac{n(n+1)}{2}=\frac{1}{4}\left(1+\frac{1}{n}\right)^2 \]
+		\[ \lim_{n\to\infty}(s(f,\tau_n))=\frac{1}{4}=\lim_{n\to\infty}(S(f,\tau_n)) \]
 	\end{task}
-	\begin{theorem}
-		(állítás)
-		
-		$\sup\{ s(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T)=\frac{1}{4} \}$
-		
-		\textit{Biz.:}
-		
-		%TODO bepótolni
-	\end{theorem}
-	\begin{theorem}
-		$T\subset\R^N$ tégla, $f:T\to\R$ korlátos függvény %TODO pótolni
-	\end{theorem}
+%	\begin{theorem}
+%		(állítás)
+%		
+%		\[\sup\{ s(f,\tau)\in\R:\quad \tau\in\mathcal{F}(T)\}=\frac{1}{4}\]
+%		
+%		\textit{Bizonyítás:} 
+%		
+%		1. lépés: $\forall \tau, \mu\in \mathcal{F}(T)$ \[s(f,\tau)\leq S(f,\mu)\quad \Rightarrow\quad s(f,\tau)\leq\inf\{ s(f,\tau_n)\in\R: \quad n\in\N \}=\lim(S(f,\tau_n))=\frac{1}{4}\]
+%		2. lépés: 
+%		
+%		%TODO bepótolni
+%	\end{theorem}
+%	\begin{theorem}
+%		$T\subset\R^N$ tégla, $f:T\to\R$ korlátos függvény %TODO pótolni
+%	\end{theorem}
 \end{document}
