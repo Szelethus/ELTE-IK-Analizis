@@ -196,7 +196,7 @@
 		\[ \varOmega=\{ \phi(r,v)\in\R\ :\ r\in[1,4],v\in[0,2\pi] \} \]
 		\[ \phi(r,v):=\left(r\cos(v),r\sin(v)\right),\quad (r\in(0,+\infty),\ v\in[0,2\pi]) \]
 		\[ \det[\phi'(r,v)]=\det \begin{bmatrix}
-			\cos(v&-r\sin(v)\\
+			\cos(v)&-r\sin(v)\\
 			\sin(v)&r\cos(v)
 		\end{bmatrix}=r\cos^2(v)+r\sin^2(v)=r\not=0 \]
 		\[\Rightarrow\quad \int_{\varOmega}^{}\ln(x^2+y^2)\,d(x,y)=\int_{[1,4]\times[0,2\pi]}^{}\ln(r^2\cos^2(v)+r^2\sin^2(v))r\,d(r,v)=\]
@@ -263,7 +263,7 @@
 	\end{example}
 	\begin{note}
 		$$\phi(x)=\int_0^11\ln(x^2+t^2)\,dt=[t\ln(x^2+t^2)]_{t=0}^{t=1}-\int_0^1t\cdot\frac{2t}{x^2+t^2}\,dt=\ln(x^2+1)-2\int_0^1\frac{t^2}{x^2+t^2}\,dt=$$
-		$$=\ln(x^2+1)-2\int_0^1\frac{x^2+t^2-x^2}{x^2+t^2}\,dt=\ln(x^2+1)-2\left\{ 1-\int_0^1\frac{x^2}{x^2+t^2}\,dt \right\}=$$ $$=\ln(x^2+1)-2+2\int_0^1\frac{1}{1+\left(\frac{1}{x}\right)^2}\,dt=\ln(x^2+1)-2+2x\arc\tg\frac{1}{x}\quad (x>0)$$
+		$$=\ln(x^2+1)-2\int_0^1\frac{x^2+t^2-x^2}{x^2+t^2}\,dt=\ln(x^2+1)-2\left\{ 1-\int_0^1\frac{x^2}{x^2+t^2}\,dt \right\}=$$ $$=\ln(x^2+1)-2+2\int_0^1\frac{1}{1+\left(\frac{t}{x}\right)^2}\,dt=\ln(x^2+1)-2+2x\arc\tg\frac{1}{x}\quad (x>0)$$
 		$$\Rightarrow\quad \phi'(x)=\frac{2x}{x^2+1}+2\arc\tg\left(\frac{1}{x}\right)+2x\cdot\frac{-\frac{1}{x^2}}{1+\left(\frac{1}{x}\right)^2}=\frac{2x}{x^2+1}+2\arc\tg\left(\frac{1}{x}\right)-\frac{2x}{x^2+1}$$
 	\end{note}
 	\begin{theorem}
