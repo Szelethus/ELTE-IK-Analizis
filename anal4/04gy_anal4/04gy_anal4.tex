@@ -10,8 +10,8 @@
 \usepgfplotslibrary{fillbetween}
 \usepackage[magyar]{babel}
 \usepackage{amsmath, amsthm,amssymb,paralist,array, ellipsis, graphicx, float, bigints,tikz}
-%\usepackage{marvosym}
-
+\usepackage{marvosym}
+\renewcommand{\mvchr}[1]{\mbox{\mvs\symbol{#1}}} %to make \Lightning work in math mode
 \makeatletter
 \renewcommand*{\mathellipsis}{%
 	\mathinner{%
@@ -78,12 +78,12 @@
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\arc}{arc}
 \DeclareMathOperator{\arctg}{arc tg}
-\DeclareMathOperator{\Graph}{\Graph}
+\DeclareMathOperator{\Graph}{graph}
 \DeclareMathOperator{\arcctg}{arc ctg}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \begin{document}
-	%%%%%%%%%%%RÖVIDÍTÉSEK%%%%%%%%%%
+	%%%%%%%%%%%RÖVIDÍTÉSE K %%%%%%%%%%
 	\setlength\parindent{0pt}
 	\def\a{\textbf{a}}
 	\def\b{\textbf{b}}
@@ -140,63 +140,69 @@
 		\smallskip
 		4. óra.
 	\end{center}
-	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Kovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
+	A jegyzetet \textsc{Umann}  K ristóf készítette \textsc{ K ovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
 	
 	\subsection{Paraméteres integrál (folyt.)}
 	\begin{note}
 		Adott $f\in\R^2\to\R$ esetén van-e olyan $\varphi\in\R\to\R$, hogy
-		\[ \{ (x,\varphi(x))\in\R^2:\quad x\in\mathcal{D}_f \}=:graph\,\varphi=H:=\{ (x,y)\in\mathcal{D}_f:\quad f(x,y)=0 \} \]
-		\[ graph\,\varphi=H\quad \Leftrightarrow\quad \forall x\in\mathcal{D}_f:\quad f(x,\varphi(x))=0 \]
+		\[ \{ (x,\varphi(x))\in\R^2:\quad x\in\mathcal{D}_f \}=:\Graph\,\varphi=H:=\{ (x,y)\in\mathcal{D}_f:\quad f(x,y)=0 \} \]
+		\[ \Graph\,\varphi=H\quad \Leftrightarrow\quad \forall x\in\mathcal{D}_f:\quad f(x,\varphi(x))=0 \]
 	\end{note}
 	\begin{example}
 		\[ f(x,y):=x^2+y^2-1 \quad ((x,y)\in\R^2)\]
-		\[ graph\,\varphi=H\quad \Rightarrow\quad \{ \varphi(0) \}=\{-1,1\}\quad \# \]
-		Ahol a \# az ellentmondást jelenti.
+		\[ \Graph\,\varphi=H\quad \Rightarrow\quad \{ \varphi(0) \}=\{-1,1\}\quad \Lightning \]
 	\end{example}
 	\begin{example}
 		\[ f(x,y):=x^2+y^2-1\quad ((x,y)\in\R^2,\quad y\leq 0) \]
 		\[ \varphi(x):=-\sqrt{1-x^2}\quad (x\in[-1,1])\quad \text{jó} \]
 	\end{example}
 	\begin{theorem}
-		$a,b\in\R,\quad f\in\R^2\to\R,\quad f\in C^1,\quad f(a,b)=0,\quad \partial_2f(a,b)\not=0.$
-		\[ \exists \varepsilon>0\quad \exists\delta>0\quad \exists\varphi:(a-\varepsilon,a+\varepsilon)\to(b-\varepsilon,b+\varepsilon),\quad y\in C^1: \]
+		$a,b\in\R,\quad f\in\R^2\to\R,\quad f\in C^1,\quad f(a,b)=0,\quad \partial_2f(a,b)\not=0.$ Ekkor
+		\[ \exists \varepsilon>0\quad \exists\delta>0\quad \exists\varphi:(a-\varepsilon,a+\varepsilon)\to(b-\varepsilon,b+\varepsilon),\quad \varphi\in C^1: \]
 		\begin{enumerate}
 			\item 
 			$ f(x,\varphi(x))=0\quad (|x-a|<\varepsilon) $
-			\item $\partial_2f(x,\varphi(x))\not=0\quad \text{ÉS}$
-			\[ \varphi'(x)= -\frac{\partial_1f(x,\varphi(x))}{\partial_2f(x,\varphi(x))}\quad (|x-a|<\varepsilon) \]
+			\item $\partial_2f(x,\varphi(x))\not=0\quad \text{ÉS} \quad \varphi'(x)= -\frac{\partial_1f(x,\varphi(x))}{\partial_2f(x,\varphi(x))}\quad (|x-a|<\varepsilon)$
 		\end{enumerate}
 	\end{theorem}
 	\begin{task}
-		Bizonyítsuk be, hogy
-		\[ \exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D \]
-		\begin{enumerate}
-			\item $\ln(x)+\varphi(x)e^{\varphi^2(x)}=0\quad (|x-e|<\varepsilon)\quad \varphi'(e)=?$
-			\item $\ln(x^2+\varphi^2(x)=x\cdot \varphi(x)\quad (|x-1|<\varepsilon)\quad \varphi'(1)$
-			\item $ xe^{-\varphi(x)}+\varphi(x)e^x=a\in\R\quad (|x|<\varepsilon)\quad \varphi'(0)=?$
-			\item $x\cos(\varphi(x))=\varphi(x)\cos(x)\quad (|x|<\varepsilon),\quad \varphi'(0)=?$
-		\end{enumerate}
-		A feladatok megoldása:
-		\begin{enumerate}
-			\item 
-			\[ f(x,y):=\ln(x)+\varphi(x)e^{\varphi^2(x)}=0\quad ((x,y)\in\R^2:\quad x>0) \]
-			\[ f(e,0)=0,\quad \partial_2f(e,0)=\left[e^{y^2}+2y^2e^{y^2}\right]_{\substack{x=e\\y=0}}1\not=0 \]
-			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(e-\varepsilon,e+\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-e|<\varepsilon) \]
-			\[ \varphi'(x)\equiv -\frac{\frac{1}{x}}{e^{\varphi^2(x)}}+2\varphi^2(x)e^{\varphi^2(x)}\quad \Rightarrow\quad \varphi'(e)=-\frac{\frac{1}{e}}{1}=-\frac{1}{e} \]
-			\item \[ f(x,y):=\ln(x^2+y^2)-xy\quad ((x,y)\in\R^2:\quad x^2+y^2>0) \]
-			\[ f(1,0)=0,\quad \partial_2f(1,0)=\left[\frac{2y}{x^2+y^2}-x\right]_{\substack{x=1\\y=0}}=-1\not=0 \]
-			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(1-\varepsilon,1+\varepsilon\to\R),\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-1|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv \]
-			\[=-\frac{\frac{2x}{x^2+\varphi^2(x)}-\varphi(x)}{\frac{2\varphi(x)}{x^2+\varphi^2(x)}-x} \quad \Rightarrow\quad \varphi'(1)\frac{2-0}{-1-1}=-1 \]
-			\item
-			\[ f(x,y):=xe^{-y}+xe^y-a\quad ((x,y)\in\R^2) \]
-			\[ f(0,a)=0,\quad \partial_2f(0,a)=\left[-xe^{-y}+e^x\right]_{\substack{x=0\\y=a}}=e^0=1\not=0 \]
-			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv -\frac{e^{-\varphi(x)}+\varphi(x)e^x}{-xe^{-\varphi(x)}+e^x} \]
-			\[ \Rightarrow\quad \varphi'(0)=-\frac{e^{-a}+a}{1}=-(e^{-a}+a) \]
-			\item \[ f(x,y):=x\cos(y)-y\cos(x)\quad ((x,y)\in\R^2) \]
+		Bizonyítsuk be, hogy $\exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D$, hogy
+		\[\ln(x)+\varphi(x)e^{\varphi^2(x)}=1\quad (|x-e|<\varepsilon)\quad \varphi'(e)=?\]
+		\textit{Megoldás:}
+		\[ f(x,y):=\ln(x)+ye^{y^2}-1=0\quad ((x,y)\in\R^2:\quad x>0) \]
+		\[ f(e,0)=0,\quad \partial_2f(e,0)=\left[e^{y^2}+2y^2e^{y^2}\right]_{\substack{x=e\\y=0}}=1\not=0 \]
+		\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(e-\varepsilon,e+\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-e|<\varepsilon) \]
+		\[ \varphi'(x)\equiv -\frac{\frac{1}{x}}{e^{\varphi^2(x)}+2\varphi^2(x)e^{\varphi^2(x)}}\quad \Rightarrow\quad \varphi'(e)=-\frac{\frac{1}{e}}{1}=-\frac{1}{e} \]
+	\end{task}
+			
+			
+	\begin{task}
+		Bizonyítsuk be, hogy $\exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D$, hogy
+		$$\ln(x^2+\varphi^2(x))=x\cdot \varphi(x)\quad (|x-e|<\varepsilon)\quad \varphi'(1)=?$$
+		\textit{Megoldás:}
+		\[ f(x,y):=\ln(x^2+y^2)-xy\quad ((x,y)\in\R^2:\quad x^2+y^2>0) \]
+		\[ f(1,0)=0,\quad \partial_2f(1,0)=\left[\frac{2y}{x^2+y^2}-x\right]_{\substack{x=1\\y=0}}=-1\not=0 \]
+		\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(1-\varepsilon,1+\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x-1|<\varepsilon)\quad \text{és}\] \[\varphi'(x)\equiv-\frac{\frac{2x}{x^2+\varphi^2(x)}-\varphi(x)}{\frac{2\varphi(x)}{x^2+\varphi^2(x)}-x} \quad \Rightarrow\quad \varphi'(1)\frac{2-0}{-1-1}=-1 \]
+	\end{task}
+			
+	\begin{task}
+		Bizonyítsuk be, hogy $\exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D$, hogy
+		$$ xe^{-\varphi(x)}+\varphi(x)e^x=a\in\R\quad (|x|<\varepsilon)\quad \varphi'(0)=?$$
+		\textit{Megoldás:}
+		\[ f(x,y):=xe^{-y}+ye^x-a\quad ((x,y)\in\R^2) \]
+		\[ f(0,a)=0,\quad \partial_2f(0,a)=\left[-xe^{-y}+e^x\right]_{\substack{x=0\\y=a}}=e^0=1\not=0 \]
+		\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad \varphi\in D:\quad f(x,\varphi(x))=0\quad (|x|<\varepsilon)\quad \text{és}\]
+		\[\varphi'(x)\equiv -\frac{e^{-\varphi(x)}+\varphi(x)e^x}{-xe^{-\varphi(x)}+e^x} \quad  \Rightarrow\quad \varphi'(0)=-\frac{e^{-a}+a}{1}=-(e^{-a}+a) \]
+	\end{task}
+			
+	\begin{task}
+		Bizonyítsuk be, hogy $\exists\varepsilon>0,\quad \exists\varphi\in\R\to\R,\quad \varphi\in D$, hogy
+			$$x\cos(\varphi(x))=\varphi(x)\cos(x)\quad (|x|<\varepsilon),\quad \varphi'(0)=?$$
+			\textit{Megoldás:}
+			\[ f(x,y):=x\cos(y)-y\cos(x)\quad ((x,y)\in\R^2) \]
 			\[ f(0,0)=0,\quad \partial_2f(0,0)=[-x\sin(y)-\cos(x)]_{\substack{x=0\\y=0}}=-1\not=0 \]
-			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad y\in D:\quad f(x,\varphi(x))=0,\quad (|x|<\varepsilon)\quad \text{és}\quad \varphi'(x)\equiv -\frac{\cos(\varphi(x)+\varphi(x)\sin(x)}{-x\sin(\varphi(x))-\cos(x)} \]
-			\[ \Rightarrow\quad \varphi'(0)=-\frac{1+0}{-1}=1 \]
-		\end{enumerate}
+			\[ \Rightarrow\quad \exists\varepsilon>0,\quad \exists\varphi:(-\varepsilon,\varepsilon)\to\R,\quad y\in D:\quad f(x,\varphi(x))=0,\quad (|x|<\varepsilon)\quad \text{és}\]
+			\[ \varphi'(x)\equiv -\frac{\cos(\varphi(x)+\varphi(x)\sin(x)}{-x\sin(\varphi(x))-\cos(x)}\quad  \Rightarrow\quad \varphi'(0)=-\frac{1+0}{-1}=1 \]
 	\end{task}
 	\begin{note}
 		Megállapítható (ez utolsó feladatnál), hogy
@@ -208,31 +214,32 @@
 		\[ f\in C^1(A\times B,\R^2),\quad a\in A,\quad b\in B;\quad g(r):=f(r,b)\quad (r\in A) \]
 		Legyen továbbá legyen a második parciális függvény 
 		\[ h(s):=f(a,s)\quad (s\in B) \]
-		\[ \R\ni g'(r)=:\partial_1f(r,b)=:\frac{\partial}{\partial_r}f(r,b)\quad (r\in A) \]
+		\[ \R^{n\times m}\ni g'(r)=:\partial_1f(r,b)=:\frac{\partial}{\partial_r}f(r,b)\quad (r\in A) \]
 		\[ \R^{n\times n}\ni h'(s)=:\partial_2f(a,s)=:\frac{\partial}{\partial_s}f(a,s)\quad (s\in B) \]
 	\end{note}
 	\begin{theorem}
-		$f(a,b)=0,\quad \det[\partial_2f(a,b)\not=0]\quad \Rightarrow\quad \exists K(a)\subset A\quad \exists K(b)\subset B:$
-		\[ \forall r\in K(a),\quad \exists!\varphi(r)\in K(b):\quad f(r,\varphi(r))=0\quad \text{és}\quad \varphi\in C^1,\quad \varphi'(r)=-[\partial_2f(r,\varphi(r))]^{-1}:\quad \partial_1f(r,\varphi(r))\quad (r\in K(a)) \]
+		$f(a,b)=0,\quad \det[\partial_2f(a,b)]\not=0\quad \Rightarrow\quad \exists  K (a)\subset A\quad \exists  K (b)\subset B:$
+		\[ \forall r\in  K (a),\quad \exists!\varphi(r)\in  K (b):\quad f(r,\varphi(r))=0\quad \text{és}\]
+		\[ \varphi\in C^1,\quad \varphi'(r)=-[\partial_2f(r,\varphi(r))]^{-1}\cdot\partial_1f(r,\varphi(r))\quad (r\in  K (a)) \]
 	\end{theorem}
 	\begin{task}
-		\[ xy^2z^3+2x^2ye^{z-1}=0\quad \Rightarrow\quad \exists(a,b)\in\R^2\quad \exists c\in\R:\quad \exists \mathcal{K}(a,b)\subset\R^2 \]
-		\[ \exists\varphi:\mathcal{K}(a,b)\to\R,\quad \varphi\in D:\quad \varphi(a,b)=c\quad \text{és}\quad \forall(x,y)\in\mathcal{K}(a,b):\quad (x,y,\varphi(x,y))\]
+		\[ xy^2z^3+2x^2ye^{z-1}=0\quad \Rightarrow\quad \exists(a,b)\in\R^2\quad \exists c\in\R:\quad \exists  K (a,b)\subset\R^2 \]
+		\[ \exists\varphi: K (a,b)\to\R,\quad \varphi\in D:\quad \varphi(a,b)=c\quad \text{és}\quad \forall(x,y)\in K (a,b):\quad (x,y,\varphi(x,y))\]
 		\text{megoldása az egyenletnek!} 
 		\[ \varphi'(a,b)=? \]
-		Vajon megoldás lesz a $z=1,\ x=-1,\ y=2$ hármas?
+		Vajon megoldás lesz a $\ x=-1,\ y=2, z=1$ hármas?
 		\[ f(x,y,z):=xy^2z^3+2x^2ye^{z-1}\quad ((x,y,z)\in\R^2): \]
-		\[ f(-1,2,1)=0,\quad f\in C^1,\quad \frac{\partial}{\partial_z}f(-1,2,1)=\left[3xy^2z^3+2x^2ye^{z-1}\right]_{\substack{x=-1\\y=2\\z=1}}=-8\not=0 \]
-		\[ \Rightarrow\quad \exists\mathcal{K}(-1,2),\quad \exists\varphi:\mathcal{K}(-1,2)\to\R,\quad \varphi\in C^1:\quad f(x,y,\varphi(x,y))\equiv0 \]
-		\[ \varphi'(-1,2)=\frac{1}{-8}\cdot\left[\frac{\partial}{\partial_{(x,y)}}f(-1,2,1)\right]=-\frac{1}{8}\left(y^2z^3+4xye^{z-1},2xyz^3+2x^2e^{z-1}\right)_{\substack{x=-1\\y=2\\z=1}}=-\frac{1}{8}(-4,2)=\left(\frac{1}{2},\frac{1}{4}\right) \]
+		\[ f(-1,2,1)=0,\quad f\in C^1,\quad \frac{\partial}{\partial_z}f(-1,2,1)=\left[3xy^2z^2+2x^2ye^{z-1}\right]_{\substack{x=-1\\y=2\\z=1}}=-8\not=0 \]
+		\[ \Rightarrow\quad \exists K (-1,2),\quad \exists\varphi: K (-1,2)\to\R,\quad \varphi\in C^1:\quad f(x,y,\varphi(x,y))=0 \]
+		\[ \varphi'(-1,2)=\frac{1}{-8}\cdot\left[\frac{\partial}{\partial_{(x,y)}}f(-1,2,1)\right]=-\frac{1}{8}\left(y^2z^3+4xye^{z-1},\ 2xyz^3+2x^2e^{z-1}\right)_{\substack{x=-1\\y=2\\z=1}}=-\frac{1}{8}(-4,2)=\left(\frac{1}{2},\frac{1}{4}\right) \]
 	\end{task}
 	\begin{task}
 		 \begin{align*}
 			7x+\sin(y)+3z&=5\\
 			x+e^y-2z&=9
 		\end{align*}
-		\[ \exists\varepsilon>0,\quad \exists\varphi=(\phi_1,\phi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \phi\in D,\quad \phi(-3)=(2,0)\quad \text{és}\quad \forall z\in(-3-\varepsilon,-3+\varepsilon), \]
-		\[(\phi_1(z),\phi_2(z),z)\quad \text{megoldása az egyenletnek!}\quad \phi'(-3)=?  \]
+		\[ \exists\varepsilon>0,\quad \exists\varphi=(\varphi_1,\varphi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \varphi\in D,\quad \varphi(-3)=(2,0)\quad \text{és}\quad \forall z\in(-3-\varepsilon,-3+\varepsilon), \]
+		\[(\varphi_1(z),\varphi_2(z),z)\quad \text{megoldása az egyenletnek!}\quad \varphi'(-3)=?  \]
 		Megoldás:
 		\[ f(x,y,z):=(7x+\sin(y)+3z-5,x+e^y-2z-9)\quad ((x,y,z)\in\R^3) \]
 		\[ f\in C^1,\quad f(2,0,-3)=(0,0),\quad \det\left[\frac{\partial}{\partial_{(x,y)}}f(2,0,-3)\right]=\det \begin{bmatrix}
@@ -242,9 +249,9 @@
 			7&1\\
 			1&1
 		\end{bmatrix}=6\not=0 \]
-		\[ \exists\varepsilon>0,\quad \exists\phi(\phi_1,\phi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \phi\in D:\quad f(\phi_1(z),\phi_2(z),z)\equiv0 \]
+		\[ \exists\varepsilon>0,\quad \exists\varphi(\varphi_1,\varphi_2):(-3-\varepsilon,-3+\varepsilon)\to\R^2,\quad \varphi\in D:\quad f(\varphi_1(z),\varphi_2(z),z)\equiv0 \]
 		És:
-		\[ \phi'(-3)=-\left[\frac{\partial}{\partial(x,y)}f(2,0,-3)\right]^{-1}\cdot\frac{\partial}{\partial z}f(2,0,-3)=-\begin{bmatrix}
+		\[ \varphi'(-3)=-\left[\frac{\partial}{\partial(x,y)}f(2,0,-3)\right]^{-1}\cdot\frac{\partial}{\partial z}f(2,0,-3)=-\begin{bmatrix}
 			7&1\\
 			1&1
 		\end{bmatrix}^{-1}\cdot \begin{bmatrix}
