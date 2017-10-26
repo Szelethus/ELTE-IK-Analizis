@@ -146,14 +146,14 @@
 	\begin{theorem}
 		$d\in\N,\ \phi\not=\omega\subset\R^d$ nyílt, $f:\omega\to\R^d,\ f\in C^1,\ a\in\omega,\ \det[f'(a)]\not=0$:
 		\begin{enumerate}
-			\item $\exists a\in U\subset\omega$ nyílt, $\exists f(a)\in V\subset\R^d$ nyílt:
+			\item $\exists a\in U\subset\varOmega$ nyílt, $\exists f(a)\in V\subset\R^d$ nyílt:
 			\[ f_{\big|_U}\quad \text{injektív és}\quad f[U]=V \]
 			\item $g:=\left(f_{\big|_U}\right)^{-1}\quad \Rightarrow\quad g\in C^1$ és
 			\[ \forall y\in V:\quad (f^{-1})'(y)=g'(y)=[f'(f'^{-1}(y))]^{-1} \]
 		\end{enumerate}
 	\end{theorem}
 	\begin{example}
-		$f:\R^2\to\R^2,\quad f(x,y):=(x^2-y^2, 2xy)$ \[\Rightarrow\quad f(1,-1)=(0,2),\quad f\in C^1, \det[f'(1,-1)]=\det \begin{bmatrix}
+		$f:\R^2\to\R^2,\quad f(x,y):=(x^2-y^2, 2xy)$ \[\Rightarrow\quad f(1,-1)=(0,-2),\quad f\in C^1, \det[f'(1,-1)]=\det \begin{bmatrix}
 			2x&-2y\\
 			2y&2x
 		\end{bmatrix}_{\substack{x=1\\y=-1}}=(4x^2+4y^2)_{\substack{x=1\\y=-1}}=8\not=0\]
