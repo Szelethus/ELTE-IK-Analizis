@@ -105,6 +105,6 @@ A LaTeX telepítéséhez, megismeréséhez útmutató és tananyag az alábbi ho
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/01gy_anal4/01gy_anal4.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/02gy_anal4/02gy_anal4.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/03gy_anal4/03gy_anal4.pdf (javítás alatt)
-* http://people.inf.elte.hu/szelethus/LaTeX/anal4/04gy_anal4/04gy_anal4.pdf (javítás alatt)
+* http://people.inf.elte.hu/szelethus/LaTeX/anal4/04gy_anal4/04gy_anal4.pdf
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/05gy_anal4/05gy_anal4.pdf (javítás alatt)
 * http://people.inf.elte.hu/szelethus/LaTeX/anal4/06gy_anal4/06gy_anal4.pdf (javítás alatt)
