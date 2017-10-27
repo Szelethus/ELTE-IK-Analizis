@@ -142,7 +142,8 @@
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Kovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
 	\section{Helyettesítéses integrálás (folyt.)}
 	\begin{task}
-		$ \varOmega\subset\R^2$ tartomány: $$\partial \varOmega:=\{x+3y=0\}\cup\{x-3y=0\}\cup\{x+3y=6\}\cup\{x-3y=6\}$$
+		$ \varOmega\subset\R^2$ tartomány: 
+		$$ \varOmega:=\{x+3y=0\}\cup\{x-3y=0\}\cup\{x+3y=6\}\cup\{x-3y=6\}$$
 		\begin{enumerate}
 			\item Vázoljuk $ \varOmega$-t!
 			\item Írjuk le $ \varOmega$-t az $u:=x+3y,\ v:=x-3y$ koordinátatrasznformációkkal!
@@ -171,7 +172,7 @@
 		u\\v
 		\end{bmatrix}=\begin{bmatrix}
 		\frac{u+v}{2}\\\frac{u-v}{6}
-		\end{bmatrix},\quad \varOmega\phi\left([0,6]\times[0,6]\right) \]
+		\end{bmatrix},\quad \varOmega=\phi\left([0,6]\times[0,6]\right) \]
 		Megoldás (3.):
 		\[ \int_{\varOmega}^{}xy\,d(x,y)\overset{\#}{=}\int_{[0,6]\times[0,6]}^{}\frac{u+v}{6}\cdot\frac{u-v}{6}\cdot\frac{1}{6}\,d(u,v)=\frac{1}{72}\int_{0}^{6}\left(\int_0^6(u^2-v^2)\,du\right)\,dv=* \]
 		\[ \#: \quad \det[\phi'(u,v)]=\det \begin{bmatrix}
@@ -243,6 +244,7 @@
 		\[=\frac{1}{2}\int_{-b}^{b}\left(\int_{0}^{2\pi}(b^2-z^2)\,dv\right)\,dz=\pi\int_{-b}^{b}(b^2-z^2)\,dz=\pi\int_{-b}^{b}(b^2-z^2)\,dz=\pi\left[b^2z-\frac{z^3}{3}\right]^b{-b}=\]
 		\[=\pi\left\{ b^3-\frac{b^3}{3}+b^3-\frac{b^3}{3} \right\}=\frac{4b^3}{3}\pi=\pi\cdot\frac{d^3}{6} \]
 	\end{task}
+	\subsection{Paraméteres integrál}
 	\begin{revision}
 		$U\subset\R^d$ nyílt halmaz, $f:U\times[a,b]\to\R,\ f\in C$
 		\[ F(r):=\int_{a}^{b}f(r,t)\,dt\quad (r\in U) \]

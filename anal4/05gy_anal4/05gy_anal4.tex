@@ -142,7 +142,21 @@
 	\end{center}
 	A jegyzetet \textsc{Umann} Kristóf készítette \textsc{Kovács} Sándor gyakorlatán. (Utoljára frissítve: \today)
 	
-	\subsection{???}
+	\section{Inverz tétel}
+	\begin{revision}
+		$p,q\in\N$
+		\begin{enumerate}
+			\item $f:\R^p\to\R^q$ lineáris, ha $\forall u,v\in\R^p,\quad \forall\alpha,\beta\in\R:\quad f(\alpha u+\beta r)=\alpha f(u)+\beta f(v)$
+			\item $f$ lineáris $\quad \Leftrightarrow\quad \exists M\in\R^{q\times r},\quad \forall n\in\R^p:\quad f(u)=Mu$
+		\end{enumerate}
+	\end{revision}
+	\begin{theorem}
+		$f:\R^d\to\R^d,\quad M\in\R^{d\times d},\quad f(u)=Mu\quad (u\in\R^d)$.
+		\[ f \quad \text{invertálható}\quad \Leftrightarrow\quad \det(M)\not=0 \]
+		és ez utóbbi esetben $f$ bijektív, $f^{-1}:\R^d\to\R^d$ lineáris s $f^{-1}(v)=M^{-1}v\quad (v\in\R^d)$.
+		
+		Bizonyítás: TODO %TODO
+	\end{theorem}
 	\begin{theorem}
 		$d\in\N,\ \phi\not=\omega\subset\R^d$ nyílt, $f:\omega\to\R^d,\ f\in C^1,\ a\in\omega,\ \det[f'(a)]\not=0$:
 		\begin{enumerate}
